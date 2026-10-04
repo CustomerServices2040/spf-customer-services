@@ -542,7 +542,7 @@ text = text.replace('src="assets/platform-enhancements.js?v=20260927-5"', 'src="
 asset_revision = os.environ.get("GITHUB_SHA", "local-preview")[:12]
 for asset in [
     "data.js","plan-data-2026.js","excel-import.js","app.js",
-    "platform-enhancements.js","privacy-lock.js","exhibition.js","executive-mode.js"
+    "platform-enhancements.js","privacy-lock.js","exhibition.js","executive-mode.js","ux-system.js"
 ]:
     text = re.sub(rf'src="assets/{re.escape(asset)}(?:\?v=[^"]*)?"', f'src="assets/{asset}?v={asset_revision}"', text)
 text = re.sub(r'href="assets/styles.css(?:\?v=[^"]*)?"', f'href="assets/styles.css?v={asset_revision}"', text)
@@ -554,6 +554,10 @@ text = re.sub(r'src="assets/work-tracker.html(?:\?v=[^"]*)?"', f'src="assets/wor
 text = text.replace('</head>', f'  <link rel="stylesheet" href="assets/card-refinements.css?v={asset_revision}" />\n</head>', 1)
 navigation_css = f'  <link rel="stylesheet" href="assets/navigation-reliability.css?v={asset_revision}" />'
 text = text.replace('</head>', navigation_css + '\n</head>', 1)
+ux_css = f'  <link rel="stylesheet" href="assets/ux-system.css?v={asset_revision}" />'
+text = text.replace('</head>', ux_css + '\n</head>', 1)
+ux_script = f'  <script src="assets/ux-system.js?v={asset_revision}"></script>'
+text = text.replace('</body>', ux_script + '\n</body>', 1)
 
 text = re.sub(r'<script>\(function\(\)\{function c\(\).*?</script>', '', text, flags=re.S)
 path.write_text(text, encoding="utf-8")
