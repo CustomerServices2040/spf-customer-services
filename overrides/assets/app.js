@@ -116,6 +116,7 @@
     return $$("h1,h2,h3,p,li,th,td,time,span,strong,b,small,em",root).filter(el=>
       !el.querySelector("h1,h2,h3,p,li,th,td,time,span,strong,b,small,em") &&
       !el.closest(".editor-toolbar,.top-navigation,button,.document-editor,.modal-close") &&
+      !el.hasAttribute("data-calculated") &&
       !el.classList.contains("project-id") && !isCalculatedKey(stablePath(el)) && (el.dataset.editKey||el.textContent.trim())
     );
   }
@@ -534,7 +535,7 @@
     panel.innerHTML=`<div class="tracker-kanban-head"><div><span data-edit-key="tracker.kanban.eyebrow">${escapeHtml(headerValue("tracker.kanban.eyebrow","المشهد التشغيلي"))}</span><h3 data-edit-key="tracker.kanban.title">${escapeHtml(headerValue("tracker.kanban.title","المهام حسب الحالة"))}</h3></div><small data-edit-key="tracker.kanban.subtitle">${escapeHtml(headerValue("tracker.kanban.subtitle","الأعداد من السجل التفصيلي المباشر · تُعرض ثلاث مهام نموذجية من كل حالة"))}</small></div>
     <div class="tracker-kanban-columns">${groups.map(group=>{
       const items=tasks.filter(task=>classify(task)===group.code);
-      return `<section class="tracker-kanban-column ${group.tone}" aria-label="${group.label}: ${items.length} مهام"><h4><span><i aria-hidden="true">${group.icon}</i>${group.label}</span><strong>${items.length}</strong></h4><div class="tracker-kanban-list">${items.slice(0,3).map(task=>{
+      return `<section class="tracker-kanban-column ${group.tone}" aria-label="${group.label}: ${items.length} مهام"><h4><span><i aria-hidden="true">${group.icon}</i>${group.label}</span><strong data-calculated="true">${items.length}</strong></h4><div class="tracker-kanban-list">${items.slice(0,3).map(task=>{
         const pct=Number(task.pct),valid=Number.isFinite(pct)&&task.pct!=null;
         return `<article><small>${escapeHtml(task.dept||"قسم غير محدد")}</small><b>${escapeHtml(task.title)}</b><div class="tracker-kanban-progress"><i><em style="width:${valid?Math.max(0,Math.min(100,pct)):0}%"></em></i><span>${valid?`${Math.round(pct)}%`:"—"}</span></div><footer><span>${escapeHtml(task.emp||"غير محدد")}</span><time>${escapeHtml(task.date||task.due||"—")}</time></footer></article>`;
       }).join("")||'<p>لا توجد مهام بهذه الحالة</p>'}</div><a href="assets/work-tracker.html" target="_blank" rel="noopener">فتح السجل التفصيلي ←</a></section>`;
