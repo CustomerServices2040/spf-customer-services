@@ -15,7 +15,7 @@
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: "DIN Next LT Arabic", "Noto Sans Arabic", "IBM Plex Sans Arabic", Tahoma, "Segoe UI", sans-serif;
+  font-family: "DIN Next LT Arabic", "Noto Sans Arabic", "IBM Plex Sans Arabic", "Segoe UI", system-ui, Tahoma, Arial, sans-serif;
   color: var(--ux-text);
 }
 button, input, select, textarea { font: inherit; }
@@ -37,7 +37,7 @@ h1, h2, h3, h4, strong, .metric-value { font-family: inherit; }
 }
 .ux-skip-link:focus { transform: translateY(0); }
 
-.top-navigation { display: none !important; }
+.ux-enhanced .top-navigation { display: none !important; }
 .ux-nav-groups {
   position: sticky;
   top: 0;
