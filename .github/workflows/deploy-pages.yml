@@ -28,6 +28,7 @@ jobs:
         shell: python
         run: |
           from pathlib import Path
+          from shutil import copytree
           from urllib.parse import quote
           from urllib.request import Request, urlopen
 
@@ -35,6 +36,8 @@ jobs:
           legacy = site / "legacy"
           legacy.mkdir(parents=True, exist_ok=True)
           (site / "index.html").write_bytes(Path("index.html").read_bytes())
+          if Path("v5-assets").is_dir():
+              copytree("v5-assets", site / "v5-assets", dirs_exist_ok=True)
           (site / ".nojekyll").write_text("", encoding="utf-8")
 
           base = "https://spf-customer-services-gallery.spf2040.chatgpt.site/"

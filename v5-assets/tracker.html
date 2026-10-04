@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><script src="./tracker-script-1.js"></script><script>window.SPF_PREVIEW=true;
+(()=>{const real=window.fetch.bind(window);window.fetch=async(input,options={})=>{
+ const u=String(input?.url||input),method=String(options.method||input?.method||'GET').toUpperCase();
+ if(!['GET','HEAD'].includes(method))throw new Error('نسخة للمراجعة: النشر الخارجي غير متاح');
+ const name=u.split('?')[0].split('/').pop(),key=name==='dashboard-edits.json'?'spf-review-content-v3':name==='tasks-data.json'?'spf-review-tasks-v3':null;
+ if(key){try{const local=localStorage.getItem(key);if(local)return new Response(local,{headers:{'Content-Type':'application/json'}});}catch(_){} }
+ if(window.SPF_EMBEDDED&&name in window.SPF_EMBEDDED)return new Response(JSON.stringify(window.SPF_EMBEDDED[name]),{headers:{'Content-Type':'application/json'}});
+ return real(input,options);
+};})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بوصلة المتعامل — الموقف التنفيذي</title>
+
+<script src="./tracker-script-2.js"></script>
+<script src="./tracker-script-3.js"></script>
+<link rel="stylesheet" href="./tracker-style-1.css">
+<style>@font-face{font-family:"SPF Plex";src:url("./6f611412270a132b.ttf");font-weight:400}@font-face{font-family:"SPF Plex";src:url("./691e0c891a38637a.ttf");font-weight:600 900}:root{--navy:#3A564C;--navy-deep:#28433a;--navy-soft:#eaf0eb;--gold:#CCA862;--ink:#23302b;--ink-soft:#52645c;--ink-faint:#52645c;--bg:#f4f6f3;--line:#dce3dd}body,button,input,select,textarea{font-family:"SPF Plex",Tahoma,sans-serif}button{min-height:44px}a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #ae8135;outline-offset:3px}</style>
+<style id="visual-v3-tracker">
+:root{--bg:#faf9f8;--surface-alt:#f7f4f8;--ink:#3A564C;--ink-soft:#617267;--ink-faint:#738176;--line:#e9e2eb;--line-strong:#d8cddd;--navy:#3A564C;--navy-deep:#284539;--navy-soft:#f1f5f1;--gold:#967139;--gold-bright:#CCA862;--radius:14px}
+.hero{background:linear-gradient(110deg,#eee5f4,#f4f7f2 65%,#fff);border-bottom:1px solid var(--line);padding:32px 24px}
+.hero::before{background:none}.hero-figure .label,.hero-stat .l{color:var(--ink-soft)}.hero-figure .value{color:#54152f;font-size:50px}.hero-figure .value .unit{color:var(--ink)}.hero-stat .n{color:var(--ink)}.brand-mark{background:#f1eaf5;color:#6A1832;border-color:#e5d9eb;border-radius:10px}
+.card,.table-wrap,.attn-panel{box-shadow:none}.tabs button.active{color:#54152f;border-color:#54152f}
+</style>
+<style id="visual-v4-tracker">
+body{background:radial-gradient(ellipse at 0 0,#e6d9ed,transparent 50%),linear-gradient(145deg,#eef3e8,#f6eedb 75%,#ebe0f0)}
+header{background:linear-gradient(100deg,#efe7f2,#f8f2e2 50%,#e8f0e3)}
+.hero{background:radial-gradient(ellipse at 15% 100%,#d5c3e1,transparent 60%),linear-gradient(120deg,#ede3f3,#f6ecd1 65%,#e0eadb);border-bottom-color:#d7c8dd}
+.card{background:linear-gradient(140deg,#fffef8,#F6ECEF);border-color:#dfd3e4}.table-wrap{background:#fffdf7}
+</style><style>.presentation-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.presentation-controls .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap}.presentation-controls .btn:focus-visible{outline:2px solid #CCA862;outline-offset:3px}#languageButton{min-width:76px}#nightModeButton [aria-hidden]{font-size:20px;line-height:1}html{color-scheme:light}html[data-theme=dark]{color-scheme:dark;--ink:#e7ede6;--muted:#b6c4ba;--surface:#182c25;--surface-alt:#243a30;--canvas:#102019;--line:#3d5046;--purple-ink:#F0C4D0;--purple-soft:#3B242C;--gold-2:#efd7a2;--bg:#11211a;--ink-soft:#b6c4ba;--ink-faint:#a8b9af;--navy:#b8cdbb;--navy-deep:#173328;--navy-soft:#223b2d;--gold-soft:#54472d;--good:#99c6a7;--good-soft:#2c4433;--warn:#e4bc76;--warn-soft:#4c402c;--bad:#e9a0b6;--bad-soft:#482b35;--line-strong:#657b69}
+html[data-theme=dark] body,html[data-theme=dark] .app-shell{color:#e7ede6;background:radial-gradient(ellipse at 0 0,#392033,transparent 50%),radial-gradient(ellipse at 100% 40%,#253c2b,transparent 50%),#0f211a}
+html[data-theme=dark] :is(.topbar,.navigation-groups,.top-navigation,header){background:linear-gradient(110deg,#2e1c2a,#142d23 70%,#223a2b);border-color:#3d5046;color:#e7ede6}
+html[data-theme=dark] :is(.platform-identity h1,.brand-name){color:#f0e7ce}html[data-theme=dark] :is(.eyebrow,.platform-identity>small,.brand-sub){color:#b8c8bd}
+html[data-theme=dark] .top-actions .btn.secondary,html[data-theme=dark] .presentation-controls .btn,html[data-theme=dark] .btn-reset{background:#26392e;color:#e8e4d8;border:1px solid #5f5a48}
+html[data-theme=dark] .top-actions .btn.primary{background:#652a46;color:#fff1df;border:1px solid #98617b}html[data-theme=dark] .reporting-period{background:#443047;color:#dec0e6}
+html[data-theme=dark] .navigation-groups button{color:#c5d1c8}html[data-theme=dark] .navigation-groups button[aria-pressed=true]{background:linear-gradient(110deg,#56364e,#374936);color:#ffe7bf;border-color:#826d5e}
+html[data-theme=dark] .top-navigation a{color:#c4d0c7}html[data-theme=dark] .top-navigation a.active{background:#46604d;color:#fff1d6}
+html[data-theme=dark] .section-block{background-color:#182b23;background-image:var(--scene-art),radial-gradient(ellipse at 100% 0,#38513b55,transparent 70%);border-color:#3d5145;box-shadow:0 14px 35px #0003}
+html[data-theme=dark] :is(#performance,#projects,#achievements,#community-line,#media-center){background-color:#2b202d;border-color:#58435c;background-image:var(--scene-art),radial-gradient(ellipse at 100% 0,#5d36553d,transparent 70%)}
+html[data-theme=dark] :is(#operational-plan,#risk-register,#committees){background-color:#29291f;border-color:#57503a}
+html[data-theme=dark] .section-block>.section-heading,html[data-theme=dark] .section-block:not(#operational-plan):not(#work-tracker):not(.community-v2):not(.media-v2)>.section-heading{background:linear-gradient(110deg,#22382b,#38283a);border-color:#655444}
+html[data-theme=dark] .section-block :is(h2,h3,h4,b,strong){color:#e9e6d4}html[data-theme=dark] .section-block :is(p,small,span,li,dt,dd){color:#bbc9bd}
+html[data-theme=dark] .section-block .section-kicker{color:#ffeccc;background:linear-gradient(110deg,#6c2a48,#574262)}html[data-theme=dark] .section-note{background:#273b2d;color:#d3c5d9}
+html[data-theme=dark] .executive-hero{background:radial-gradient(ellipse at 90% 0,#294935,transparent 60%),linear-gradient(130deg,#3c2438,#172c23 75%);border-color:#64543e;color:#ebedde}
+html[data-theme=dark] .hero-copy h2{color:#efdbb3}html[data-theme=dark] .hero-copy p{color:#bfccc2}html[data-theme=dark] .hero-meta span,html[data-theme=dark] .executive-context a{background:#263b2e;color:#d3dbcc;border-color:#53614b}
+html[data-theme=dark] .impact-number::before{background:radial-gradient(circle at 30% 20%,#48654e,#253e2e 55%,#442d45);box-shadow:0 12px 35px #0003,inset 0 0 0 1px #677a5a}html[data-theme=dark] .impact-number strong{color:#eddbbd}html[data-theme=dark] .impact-number strong small{color:#eedbb5}html[data-theme=dark] .impact-number>span,html[data-theme=dark] .impact-number em{color:#c4d1c5}html[data-theme=dark] .impact-number::after{background:#7a663f}
+html[data-theme=dark] .pulse-metric :is(span,small,em){color:#b8c7bd}html[data-theme=dark] .pulse-metric strong{color:#efdab0}html[data-theme=dark] .pulse-metric:last-child strong{color:#dabbe6}
+html[data-theme=dark] .executive-attention{background:linear-gradient(110deg,#463524,#382c3b);border-color:#bf9953;color:#dcc7a1}html[data-theme=dark] .executive-attention :is(b,span){color:#e7d2af}
+html[data-theme=dark] .overview-route-grid a{background:linear-gradient(145deg,#45304b,#233a2b);border-color:#69586e}html[data-theme=dark] .overview-route-grid a:nth-child(even){background:linear-gradient(145deg,#493d26,#233a2b);border-color:#6f6142}html[data-theme=dark] .overview-route-grid :is(b,small){color:#e4e4cf}html[data-theme=dark] .route-icon{background:#503951;color:#dec3eb}
+html[data-theme=dark] .operational-budget-card{background:var(--scene-art) left center/430px auto no-repeat,linear-gradient(125deg,#342639,#20362a 70%);border-color:#5f5342}html[data-theme=dark] .operational-budget-card :is(h2,b,strong){color:#e6d8b4}html[data-theme=dark] .operational-budget-card :is(p,span,small){color:#bbc9bd}html[data-theme=dark] .budget-values article{background:#29352c;border-color:#566c58}html[data-theme=dark] .budget-values article:nth-child(2){background:#392b3c}html[data-theme=dark] .budget-ring{background:radial-gradient(circle,#1f3328 58%,transparent 60%),conic-gradient(#cca862 36%,#4d5945 0)}
+html[data-theme=dark] .primary-kpi-hero{background:var(--scene-art) left center/490px auto no-repeat,linear-gradient(115deg,#47283d,#22392c 80%);border-color:#735269}html[data-theme=dark] .primary-kpi-copy :is(span,h3){color:#e9dcc3}html[data-theme=dark] .v2-kpi-trend{color:#c1cfc2}html[data-theme=dark] .v2-kpi-trend b{color:#efd4a1}html[data-theme=dark] .score-ring{background:linear-gradient(140deg,#49664e,#2e4032 55%,#4b324b)}html[data-theme=dark] .score-ring strong{color:#f6e8c5}html[data-theme=dark] .score-ring::before{background:#7c633b}html[data-theme=dark] .score-ring span{color:#c5d6c5}
+html[data-theme=dark] .section-block :is(.component-card,.committee-card,.project-card,.metric-card,.plan-goal-open,.risk-card,.risk-priority,.reach-card,.digital-channel-card,.tracker-frame-card,.workload-panel,.media-quarter-card,.media-archive-card,.iso-badges article,.satisfaction-sources article){background-color:#20372a;background-image:linear-gradient(145deg,#253e2d,#342b38);border-color:#526447;box-shadow:none}
+html[data-theme=dark] .component-card.communication-component{background:linear-gradient(145deg,#3c3524,#302b20);border-color:#706244}html[data-theme=dark] .component-head>b{background:#48334b;color:#ddc7e5}html[data-theme=dark] .component-ring{background:radial-gradient(circle,#24382a 60%,transparent 62%),conic-gradient(#b992cd calc(var(--value)*1%),#4d3a55 0)}html[data-theme=dark] .component-ring.gold-ring{background:radial-gradient(circle,#36321f 60%,transparent 62%),conic-gradient(#cca862 calc(var(--value)*1%),#55492e 0)}
+html[data-theme=dark] #performance .component-score-layout .quarter-comparison .quarter-period{background:#304132;color:#d1ddce}html[data-theme=dark] #performance .component-score-layout .quarter-comparison .quarter-q2{background:#3c2a3c}html[data-theme=dark] #performance .component-score-layout .quarter-comparison :is(b,strong){color:#efdcb8}html[data-theme=dark] #performance .component-score-layout .quarter-comparison :is(span,small){color:#c3d0c4}
+html[data-theme=dark] .section-block :is(.risk-summary article,.plan-hero-kpis article,.tracker-summary article,.channel-tiles article,.availability-card,.network-card,.coverage-main,.coverage-bars>div,.risk-detail-grid,.register-disclosure,.risk-readout,.governorate-inspector,.governorate-population,.inspector-kpis article,.work-metrics article,.smart-capabilities article,.cadre-ribbon,.cadre-ribbon article,.workload-metrics article,.tracker-kanban-column,.tracker-kanban-list article,.tracker-departments article,.tajawob-type-grid article,.tajawob-peaks article,.tajawob-flow article,.tajawob-year-card,.pillars-grid article,.pillar-track article,.achievement-feature,.timeline article,.community-kpis article,.community-numbers article){background-color:#233a2c;background-image:linear-gradient(130deg,#2b3d2e,#342c36);border-color:#53644b;color:#cbd6c9;box-shadow:none}
+html[data-theme=dark] .geographic-map-card{background:var(--scene-art) left top/480px auto no-repeat,linear-gradient(130deg,#253b2b,#302b31);border-color:#59694e}html[data-theme=dark] .map-label{background:#263d2c;border-color:#8c7852;color:#ead8b0}html[data-theme=dark] .map-label.active{border-color:#e0bd75}html[data-theme=dark] .map-label :is(b,span){color:#e2d9bf}html[data-theme=dark] .channel-logo{background:#e5e8de;border-radius:10px;padding:5px}html[data-theme=dark] .oman-map-scroll{background:#b5be9c;border-color:#6b7358}html[data-theme=dark] .governorate-inspector .inspector-title{background:#304837}
+html[data-theme=dark] :is(.plan-controls button,.project-tabs button,.committee-filters button){background:#233b2c;color:#d8dfcc;border-color:#607454}html[data-theme=dark] :is(.plan-controls button.active,.project-tabs button.active,.committee-filters button.active){background:#516548;color:#fff0d0}html[data-theme=dark] .plan-goal-state{background:#48354b;color:#e7cde9}html[data-theme=dark] .plan-goal-id{color:#342c1c}html[data-theme=dark] .project-id,html[data-theme=dark] .risk-ref{background:#4c3550;color:#e5c8ed}html[data-theme=dark] .chapter-footer{background:linear-gradient(110deg,#36283a,#203528);border-color:#4b6548;color:#c5d3c5}html[data-theme=dark] .chapter-footer button{background:#423346;color:#f0d5de}html[data-theme=dark] .chapter-footer output{color:#c2d1c3}
+html[data-theme=dark] :is(.modal-panel,.plan-goal-panel,.drawer,.token-panel,.privacy-panel){background:#21372a;color:#e5e8d9;border-color:#5a7150}html[data-theme=dark] :is(.modal-panel,.plan-goal-panel,.drawer) :is(h2,h3,h4,b,strong){color:#e9dbb9}html[data-theme=dark] :is(.modal-panel,.plan-goal-panel,.drawer) :is(p,span,small,label,td,th){color:#c4d1c5}html[data-theme=dark] :is(.modal-details>div,.plan-result-card,.workbook-grid article,.update-flow>div,.excel-update-hero,.privacy-pin,.privacy-grid label,.recommendation){background:#2b4030;border-color:#54694d}html[data-theme=dark] :is(input,select,textarea){background:#182f23;color:#e5e8d9;border-color:#627c59}html[data-theme=dark] input::placeholder{color:#aabcae}html[data-theme=dark] .modal-close{background:#523549;color:#f5d8e3}
+html[data-theme=dark] :is(.card,.table-wrap,.attn-panel,.filters,.header-tag,.tab-panel,.import-zone,.drawer-section){background:#21382a;border-color:#536a4c;color:#ced8cb}html[data-theme=dark] :is(thead th,.attn-item:hover,tbody tr:hover){background:#304431;color:#dfe6d7}html[data-theme=dark] .hero{background:linear-gradient(115deg,#48283e,#20392a);border-color:#615238}html[data-theme=dark] .hero-figure .value,html[data-theme=dark] .hero-stat .n{color:#efdbad}html[data-theme=dark] .hero :is(.label,.l,.unit){color:#c4d1c2}html[data-theme=dark] .tabs button{color:#bdcfbc}html[data-theme=dark] .tabs button.active{color:#edd3ab;border-color:#cca862}html[data-theme=dark] .brand-mark{background:#493248;color:#e5c8eb;border-color:#826482}
+html[lang=en] body{direction:ltr;text-align:left;font-family:'SPF Plex',Arial,Helvetica,sans-serif}html[lang=en] :is(.hero-copy,.section-heading,.page-heading,.component-head,.card-title-row,.governorate-inspector,.project-card,.committee-card,.plan-goal-copy,.privacy-panel,.modal-panel){text-align:left}html[lang=en] :is(.topbar,.top-actions,.navigation-groups,.top-navigation,.chapter-footer,.tabs,header,.header-left,.header-right){direction:ltr}html[lang=en] .top-navigation{justify-content:flex-start}html[lang=en] .topbar .page-heading{margin-right:auto;margin-left:0}html[lang=en] .platform-identity h1{font-size:32px}html[lang=en] .hero-copy h2{font-size:38px;line-height:1.3}html[lang=en] .hero-copy p{line-height:1.75}html[lang=en] .section-heading h2{font-size:28px;line-height:1.4}html[lang=en] .section-kicker{letter-spacing:.01em}html[lang=en] .hero-meta{justify-content:flex-start}html[lang=en] .pulse-metric{text-align:left}html[lang=en] .chapter-footer button{direction:ltr}html[lang=en] .map-label{direction:ltr;text-align:center}html[lang=en] .oman-map-scroll,html[lang=en] .oman-map{direction:rtl}html[lang=en] .board-slide{text-align:left}html[lang=en] :is(.target-table,.plan-result-schedule,.plan-milestones){direction:ltr}html[lang=en] .plan-goal-copy strong{line-height:1.5}html[lang=en] .section-block :is(.project-card,.committee-card){min-width:0}html[lang=en] .project-card h3{font-size:17px;line-height:1.4}html[lang=en] .quarter-period span{font-size:13px}
+html[data-theme=dark] .save-notice{background:#3e5c40;color:#fff3d5}.presentation-controls{flex-shrink:0}
+@media(max-width:700px){.presentation-controls{width:100%;display:grid;grid-template-columns:1fr 1fr}.top-actions .presentation-controls .btn{min-height:42px}.top-actions{flex-wrap:wrap}html[lang=en] .hero-copy h2{font-size:29px}html[lang=en] .section-heading h2{font-size:24px}html[lang=en] .platform-identity h1{font-size:26px}html[lang=en] .pulse-metric strong{text-align:right}html[lang=en] .component-head h3{font-size:17px}html[lang=en] .section-kicker{font-size:12px}.header-right .presentation-controls{width:auto;display:flex}.header-right #nightModeButton{font-size:0}.header-right #nightModeButton [aria-hidden]{font-size:20px}}
+@media print{html[data-theme=dark] body,html[data-theme=dark] .app-shell,html[data-theme=dark] .section-block{background:#fff;color:#222;--ink:#222;--muted:#555;--surface:#fff}.presentation-controls{display:none}html[data-theme=dark] .section-block :is(h2,h3,h4,b,strong,p,small,span,li,dt,dd){color:#222}html[data-theme=dark] :is(.executive-hero,.primary-kpi-hero,.component-card,.operational-budget-card){background:#fff;color:#222}html[data-theme=dark] :is(.hero-copy h2,.hero-copy p,.pulse-metric strong,.pulse-metric span,.score-ring strong){color:#222}}
+
+html[data-theme=dark] .topbar .top-logo{background:#eceee1;border-radius:12px;padding:6px}
+html[data-theme=dark] .executive-attention :is(a,strong,b,span){color:#efd7af}
+html[data-theme=dark] .presentation-controls .btn:hover{background:#40563b;color:#fff0d0}
+html[lang=en] :is(.app-shell,.main-content,.content-wrap,.executive-hero,.hero-copy,.executive-pulse,.pulse-metric,.hero-meta,.executive-context,.overview-route-grid,.executive-attention,.operational-budget-card,.primary-kpi-hero,.component-score-layout,.section-block,.chapter-footer,.modal-panel,.board-stage){direction:ltr}
+html[lang=en] :is(.executive-attention,.overview-route-grid a,.budget-heading,.budget-values,.primary-kpi-copy,.satisfaction-sources,.component-head,.workload-panel,.coverage-main,.risk-title,.plan-goal-copy,.hero-copy,.pulse-metric){text-align:left}
+html[lang=en] .pulse-metric{border-inline-end:1px solid #DDC7CE}html[lang=en] .executive-pulse .pulse-metric:last-child{border-inline-end:0}
+html[lang=en] .primary-kpi-copy .v2-kpi-trend{direction:ltr}html[lang=en] .hero-copy h2{direction:ltr}html[lang=en] .platform-identity{min-width:0}html[lang=en] [dir=rtl][lang=ar]{direction:rtl;text-align:right}
+html[data-theme=dark] :is(#overview,#directorate,#methodology,#coverage,#channels,#operational-plan,#work-tracker,#risk-register,#performance,#tajawob,#committees,#projects,#community-line,#media-center,#achievements) :is(.performance-tier-heading,.workload-panel,.workload-metrics article,.channel-share,.contact-facts article,.operational-priority-grid>article,.workload-overview>article,.digital-workload-row>div,.coverage-bars>div,.mission-card,.strategy-card,.org-card,.people-card,.unit-bars,.community-journey,.community-pathway,.media-stat-strip article,.community-kpis article,.achievement-feature){background:linear-gradient(130deg,#2c402f,#342d38);border-color:#5a6b4e;color:#dce2d0}
+html[data-theme=dark] #performance .contact-facts :is(article,article.contact-primary-metric,article.contact-satisfaction-metric,article.contact-wide,article.contact-x-metric){background:linear-gradient(135deg,#2d4231,#3d303b);border-color:#7a6848}
+html[data-theme=dark] #performance .contact-facts :is(strong,span){color:#ecdcbc}
+html[data-theme=dark] #performance :is(.operational-priority-grid,.workload-overview,.workload-details) :is(strong,h3,h4,b){color:#eddbb4}
+html[data-theme=dark] #performance .target-ring{background:radial-gradient(circle,#24372a 58%,transparent 60%),conic-gradient(#cca862 calc(var(--target)*1%),#54674d 0)}
+html[data-theme=dark] #performance .priority-result em{color:#c5dbb6;background:#344d37}
+html[data-theme=dark] #performance .component-score-layout .quarter-comparison .quarter-change.quarter-down strong{color:#efb6ca}
+html[data-theme=dark] :is(.smart-flow,.channel-share small,.performance-tier-heading small,.component-head .card-icon){background:#344837;color:#d8dfcb}
+html[data-theme=dark] .operational-budget-card .budget-progress{background:#45563e}
+
+html[data-theme=dark] #performance :is(.workload-group,.workload-metrics>div,.contact-kpi-grid>div){background:linear-gradient(130deg,#2c402f,#342d38);border-color:#5b6e50}
+html[data-theme=dark] #performance .operational-priority-grid>article>div:nth-child(2) :is(span,strong){color:#ecdaba}
+html[data-theme=dark] #performance .operational-priority-grid>article>div:nth-child(2)::after{background:#3a4f37;color:#d6e6ca;border-color:#73925d}
+html[lang=en] #performance .operational-priority-grid>article>div:nth-child(2)::after{content:'Above target'}
+@media(max-width:700px){html[lang=en] .pulse-metric{border-inline-end:0}}
+
+/* Avoid transient pale-on-pale text while legacy color transitions run. */
+html[data-theme=dark] *,html[data-theme=dark] *::before,html[data-theme=dark] *::after{transition-property:transform,opacity,box-shadow!important}
+</style><style>/* V5 visual review: readable institutional surfaces in both modes. */
+html{--reading-ink:#223c31;--reading-gold:#735323}
+html[data-theme=dark]{--reading-ink:#f1efdd;--reading-gold:#ead09b}
+.reach-card>strong,.reach-card>p,.reach-card>span,.iso-badges strong,.iso-badges small{color:var(--reading-ink)!important}
+.iso-badges i{color:var(--reading-gold)!important;border-color:var(--reading-gold)!important}
+.media-hero-v2 :is(.media-orbit strong,.media-orbit span){color:var(--reading-ink)!important}
+.smart-center-intro{background:linear-gradient(135deg,#52152e,#6b2848)!important;color:#fff9eb!important}
+.smart-center-intro :is(h3,p,span){color:#fff9eb!important}
+.smart-center-intro .smart-progress :is(strong,span){color:#223c31!important}
+.cadre-ribbon{background:linear-gradient(120deg,#244f42,#173a32)!important}
+.cadre-ribbon :is(b,strong,span){color:#fff5df!important}.cadre-ribbon b:before{background-color:#efd3a0!important}
+html[data-theme=dark] .committee-logo,html[data-theme=dark] .brand-mark{background:#f3f3e8!important;border:1px solid #d6dbc9!important;border-radius:12px;padding:8px}
+html[data-theme=dark] .network-card>svg{color:#ead09b!important;background:#354d3c;border-radius:10px;padding:5px}
+html[data-theme=dark] .unit-bars i{background:#516258!important}.unit-bars em{background:linear-gradient(90deg,#83b298,#b6d4b7)!important}
+html[data-theme=dark] :is(.micro-bar,.plan-goal-progress){background:#506056!important}
+html[data-theme=dark] :is(.micro-bar i,.plan-goal-progress i){background:#a1c7aa!important}
+html[data-theme=dark] .pillar-track article>svg{background:#344d3d!important;color:#eddfbd!important;border:1px solid #647965}
+html[data-theme=dark] .pillar-track article em{background:#3c5142!important;color:#eee9d7!important}
+html[lang=en] :is(.mission-card,.strategy-card,.customer-question,.cycle-step,.pillar-track article,.community-hero-copy,.community-pathway,.media-quarter-card){text-align:left!important}
+html[lang=en] .cycle-step{padding:12px 45px 12px 13px}html[lang=en] .cycle-step i{right:10px}html[lang=en] .cycle-step :is(b,span){padding-right:0}
+.modal-panel{position:relative;scrollbar-gutter:stable}.modal-panel>.modal-close{position:sticky;top:0;z-index:8;float:inline-end;box-shadow:0 0 0 5px var(--surface,#fff)}
+.modal-panel> :is(h2,h3,p,.section-kicker){padding-inline-end:52px}
+.modal-panel :is(.modal-eyebrow,.modal-kicker){padding-inline-end:52px}
+.hero-figure .value,.hero-figure .value .unit,.hero-figure .label{color:#fff4dc!important}
+.hero-figure::before{background:#204638!important}.hero-figure .value{font-size:48px!important}
+.header-right .btn{border-radius:10px;background:#e7ece3;color:#223c31;border:1px solid #bdcabc;font:700 13px 'SPF Plex',Tahoma,sans-serif;padding:9px 12px;min-height:44px}
+html[data-theme=dark] .header-right .btn{background:#334b39;color:#f4edda;border-color:#71816b}
+html[data-theme=dark] .tab.active{color:#fff3d5!important;background:linear-gradient(130deg,#496348,#334d3c)!important}
+html:not([data-theme=dark]) .tab.active{color:#fff9eb!important}
+.header-left,.header-right,.hero-intro,.hero-stats,.page,.filter-bar,.card,.attn-panel,.tab-panel{min-width:0}
+.hero-intro h1,.hero-intro p,.brand-text{overflow-wrap:anywhere}
+.reading-search{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0}.reading-search label{flex:1;min-width:190px}.reading-search input{width:100%;min-height:46px;padding:10px 14px;border:1px solid #849888;border-radius:12px;background:#fffdf7;color:#223c31;font:inherit}.reading-search output{font-size:14px}.reading-search button{min-height:44px;padding:8px 18px;border-radius:12px;border:1px solid #849888;background:#e9eee4;color:#223c31;cursor:pointer;font:inherit}
+html[data-theme=dark] .reading-search input,html[data-theme=dark] .reading-search button{background:#304736;color:#fff4dc;border-color:#849888}
+[data-reading-hidden=true]{display:none!important}.reading-empty{padding:18px}
+.timeline-reading-hint{display:none}.mobile-tools-button{display:none}
+@media(max-width:760px){
+ header:not(.topbar){height:auto;flex-direction:column;align-items:stretch;padding:14px;position:relative;gap:12px}.header-left,.header-right{width:100%;flex-wrap:wrap}.header-right{justify-content:space-between}.header-right .presentation-controls{width:100%;display:grid;grid-template-columns:1fr 1fr}.header-right #nightModeButton{font-size:13px}.header-tag{white-space:normal;max-width:100%}
+ .hero{padding:24px 16px}.hero-figure{justify-self:center!important}.hero-stats{gap:10px}.table-wrap{max-width:100%;overflow:auto}table{max-width:none}.donut-legend,.donut-wrap,.bar-chart-wrap{min-width:0;max-width:100%}canvas{max-width:100%}
+ .top-actions{display:flex;flex-wrap:wrap;gap:8px}.top-actions .presentation-controls{width:100%;display:grid;grid-template-columns:1fr 1fr}.mobile-tools-button{display:block;min-height:44px;width:100%;border:1px solid #849888;border-radius:10px;background:#e9eee4;color:#223c31;font:700 14px 'SPF Plex',Tahoma,sans-serif}.top-actions:not(.tools-open)> :is(button,span){display:none}.top-actions:not(.tools-open)>button.mobile-tools-button{display:block}.top-actions.tools-open>.mobile-tools-button{display:block}
+ html[data-theme=dark] .mobile-tools-button{background:#304736;color:#fff4dc;border-color:#849888}.reporting-period{display:none!important}
+ .customer-cycle{min-height:0!important;padding:20px 14px;display:flex;flex-direction:column;align-items:center;gap:12px;background:#f6f3e9}.customer-cycle::before{inset:auto!important;top:20px;left:50%;transform:translateX(-50%) rotate(18deg);width:172px;height:172px;box-sizing:border-box}.cycle-core{position:relative;left:auto;top:auto!important;transform:none;width:172px;height:172px;margin-bottom:8px;flex-shrink:0;box-shadow:none}.cycle-step{position:relative;inset:auto!important;width:100%;min-height:76px}.cycle-core strong{font-size:25px}
+ .timeline-reading-hint{display:block;margin:12px 0;font-size:14px}.plan-schedule-disclosure #planMilestones{overflow-x:auto;max-width:100%}.plan-schedule-disclosure #planMilestones>div{min-width:900px}
+ .top-navigation{scrollbar-width:thin;border-bottom:2px solid #9fae9c;padding-bottom:10px;scroll-snap-type:x proximity}.top-navigation a{scroll-snap-align:start}
+ .section-block :is(.committee-card,.project-card) :is(p,span,small){font-size:14px!important}.section-block .project-card h3{font-size:18px!important;line-height:1.65}
+}
+@media print{.reading-search,.mobile-tools-button,.timeline-reading-hint{display:none!important}[data-reading-hidden=true]{display:block!important}}
+html.presentation-fullscreen .mobile-tools-button{display:none!important}
+@media(max-width:760px){.top-actions:not(.tools-open)> :is(button,span){display:none!important}.top-actions:not(.tools-open)>button.mobile-tools-button{display:block!important}}
+html.presentation-fullscreen .presentation-controls,html.presentation-fullscreen .mobile-tools-button{display:none!important}
+html[data-theme=dark] .smart-center-intro .smart-progress :is(strong,span){color:#fff5df!important}
+.community-hero-copy :is(h2,p){color:#fff5df!important}
+.community-channel-strip>div:nth-child(3){background:#e5cca0!important}.community-channel-strip>div:nth-child(3) :is(i,b,span){color:#223c31!important;opacity:1!important}
+html[data-theme=dark] .community-channel-strip>div:nth-child(3){background:#52452f!important}html[data-theme=dark] .community-channel-strip>div:nth-child(3) :is(i,b,span){color:#fff0d0!important}
+html[data-theme=dark] .network-card i{background:#354d3c!important}.network-card svg{stroke-width:1.7}
+html[data-theme=dark] .network-card svg,html[data-theme=dark] .network-card svg *{stroke:#efdbaf!important}
+html[data-theme=dark] .pillar-illustration,html[data-theme=dark] .pillar-illustration *{stroke:#efdbaf!important}
+html[data-theme=dark] .pillar-visual-flow span{background:#3b5040!important;color:#fff1d6!important;border-color:#718169!important}
+/* Color changes apply immediately; motion remains available for navigation. */
+html *,html *::before,html *::after{transition-property:transform,opacity,box-shadow!important}
+.community-hero-v2{background:linear-gradient(120deg,#204b3c,#334f43 65%,#423043)!important}
+html[data-theme=dark] .community-hero-v2{background:linear-gradient(120deg,#1d4031,#294333 65%,#3c2a3d)!important}
+html[lang=en] .tajawob-compare .tajawob-year-card::after{content:'Completion rate'}
+html[lang=en] #performance .operational-priority-grid>article>div:nth-child(2)::after{content:'Above target'}
+html[lang=en] .filter-bar::before{content:'Filter view'}
+html[data-theme=dark] .tajawob-compare .tajawob-year-card::after{color:#eddfbd}
+/* Keep navigation readable while hovering or using the keyboard in night mode. */
+html[data-theme=dark] .top-navigation a:hover,html[data-theme=dark] .top-navigation a:focus-visible{background:#3b5541!important;color:#fff1d6!important;outline-color:#efdbaf}
+/* Allow longer Arabic and English labels to wrap inside their cards. */
+.governorate-productivity,.work-metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.governorate-work,.governorate-productivity article,.work-metrics article,.icon-title>div{min-width:0}
+.governorate-work :is(span,small),.icon-title :is(div,strong,span),.community-event-stream time{overflow-wrap:anywhere;white-space:normal}
+.community-main-number :is(span,small){max-width:calc(100% - 24px);text-align:center;overflow-wrap:anywhere}
+@media(max-width:760px){.workload-heading{flex-wrap:wrap;gap:10px}.workload-heading>span{width:auto!important;max-width:100%;white-space:normal}.digital-channel small{overflow-wrap:anywhere}}
+/* Final parity review: remove mixed-language labels and keep schedule graphics inside the viewport. */
+html[lang=en] .tajawob-compare .year-2026 p::after{content:attr(data-growth) ' request growth'!important}
+@media(min-width:761px){
+ .plan-milestone-scroll{overflow-x:visible!important}
+ .plan-milestone-axis,.plan-milestone-row{min-width:0!important;width:100%!important;grid-template-columns:minmax(220px,3fr) repeat(12,minmax(0,.72fr)) minmax(96px,1.25fr)!important}
+ .plan-milestone-axis span,.plan-milestone-row>div,.plan-milestone-row>.plan-milestone-status{padding-inline:3px!important}
+ .plan-target{grid-template-columns:1fr!important;justify-items:center;gap:2px!important;padding:4px 2px!important}
+ .plan-target b{grid-row:auto!important;width:22px!important;height:20px!important}
+ .plan-target :is(time,em){max-width:100%;font-size:12px!important;white-space:normal!important;overflow-wrap:anywhere}
+}
+@media(max-width:760px){
+ .plan-schedule-disclosure #planMilestones{overflow:visible!important}
+ .plan-schedule-disclosure #planMilestones>div{min-width:0!important}
+ .timeline-reading-hint{display:none!important}
+}
+#governorateInspector :is(.governorate-work,.governorate-productivity,.governorate-productivity article){max-width:100%;box-sizing:border-box}
+#governorateInspector .governorate-productivity article{overflow:hidden}
+/* Restore the intended size of operational SVG symbols after the shared icon padding rules. */
+#performance .operational-rank svg.card-icon{width:30px!important;height:30px!important;max-width:30px!important;max-height:30px!important;padding:0!important;color:#fff!important;stroke:#fff!important}
+</style></head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="brand-mark"><img src="./66b640e6eead5670.png" alt="شعار صندوق الحماية الاجتماعية"></div>
+    <div class="brand-text">
+      <span class="brand-name">بوصلة المتعامل</span>
+      <span class="brand-sub">المنصة التنفيذية للمديرية العامة لخدمات المتعاملين</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="header-tag" id="last-update-tag"><span class="live-dot"></span>آخر تحديث: —</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-intro">
+      <span>لوحة القيادة التشغيلية</span>
+      <h1>الموقف التنفيذي وكفاءة الاستجابة</h1>
+      <p>قراءة بصرية موحّدة لحالة الأعمال، ونسب الإنجاز، وتوزيع المسؤوليات عبر أقسام المديرية.</p>
+      <div class="hero-context"><span id="context-total">354 بندًا تشغيليًا</span><span id="context-depts">5 أقسام</span><span>السجل التنفيذي الموحّد حتى 26 أغسطس 2026</span></div>
+    </div>
+    <div class="hero-figure">
+      <span class="label">نسبة الإنجاز الكلي</span>
+      <span class="value" id="hero-rate">—<span class="unit">%</span></span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat" onclick="setStatusFilter('all')"><span class="n" id="stat-total">—</span><span class="l">إجمالي المهام</span></div>
+      <div class="hero-stat is-good" onclick="setStatusFilter('منجز')"><span class="n" id="stat-done">—</span><span class="l">منجز</span></div>
+      <div class="hero-stat is-warn" onclick="setStatusFilter('قيد الإجراء')"><span class="n" id="stat-prog">—</span><span class="l">قيد الإجراء</span></div>
+      <div class="hero-stat is-bad" onclick="setStatusFilter('متأخر')"><span class="n" id="stat-late">—</span><span class="l">متأخر</span></div>
+      <div class="hero-stat"><span class="n" id="stat-depts">—</span><span class="l">الأقسام</span></div>
+      <div class="hero-stat"><span class="n" id="stat-emps">—</span><span class="l">الموظفون</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="filter-bar">
+    <select id="f-month" onchange="onFilterChange()"></select>
+    <select id="f-dept" onchange="onFilterChange()"></select>
+    <select id="f-emp" onchange="onFilterChange()"></select>
+    <select id="f-status" onchange="onFilterChange()">
+      <option value="all">كل الحالات</option>
+      <option value="منجز">منجز</option>
+      <option value="قيد الإجراء">قيد الإجراء</option>
+      <option value="متأخر">متأخر</option>
+    </select>
+    <input type="text" id="f-search" placeholder="بحث في المهام أو الموظفين..." oninput="onSearchInput()">
+    <button class="btn-reset" onclick="resetFilters()">إعادة تعيين</button>
+    <span class="filter-count" id="filter-count"></span>
+  </div>
+
+  <div class="tabs" aria-label="أقسام لوحة الموقف التنفيذي">
+    <button class="tab active" data-tab="overview" onclick="switchTab('overview')"><span class="tab-icon" aria-hidden="true">◉</span><span><b>نظرة عامة</b><small>المشهد التنفيذي</small></span></button>
+    <button class="tab" data-tab="table" onclick="switchTab('table')"><span class="tab-icon" aria-hidden="true">▤</span><span><b>السجل التفصيلي</b><small>عرض وتحديث المهام</small></span></button>
+    <button class="tab" data-tab="perf" onclick="switchTab('perf')"><span class="tab-icon" aria-hidden="true">↗</span><span><b>الأداء</b><small>الأقسام والموظفون</small></span></button>
+    <button class="tab" data-tab="dq" onclick="switchTab('dq')"><span class="tab-icon" aria-hidden="true">✓</span><span><b>جودة البيانات</b><small>اكتمال السجل <em class="badge" id="dq-badge">0</em></small></span></button>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="tab-panel active" id="panel-overview">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head"><h3>توزيع الحالات</h3><span class="hint">حسب الفلاتر الحالية</span></div>
+        <div class="donut-wrap">
+          <canvas id="donut"></canvas>
+          <div class="donut-legend" id="donut-legend"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>يحتاج انتباه</h3><span class="hint">متأخر أو قارب على الإنجاز</span></div>
+        <div class="attn-list" id="attn-list"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>نسبة الإنجاز حسب القسم</h3><span class="hint">اضغط للتصفية</span></div>
+      <div class="deptbar-list" id="deptbar-list"></div>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="tab-panel" id="panel-table">
+    <div class="card table-card">
+      <div class="table-actions"><p>يمكن للجميع الاطلاع على البيانات. يدخل الحساب المخوّل مرة واحدة للتعديل المتكرر؛ تبقى الجلسة فعالة حتى الخروج أو إغلاق التبويب.</p><div class="owner-access"><span class="owner-status" id="owner-status">وضع العرض</span><button class="btn-secondary" id="owner-login-button" type="button" onclick="loginOwner()">دخول المالك</button><button class="btn-secondary" id="refresh-tasks-button" type="button" onclick="refreshTasksFromGithub()" hidden>تحديث السجل</button><button class="btn-primary" id="add-task-button" type="button" onclick="openNewTaskDrawer()" hidden>إضافة مهمة</button></div></div>
+      <p id="tracker-load-error" role="alert" style="padding:12px;color:#8E2948" hidden>تعذر تحميل ملف بيانات المهام. حدّث الصفحة قبل إجراء أي تعديل.</p>
+      <div class="import-panel" id="import-panel" hidden>
+        <h3>تحديث وإضافة المهام من ملف</h3>
+        <p>اختر عدة ملفات Excel أو CSV، أو اسحبها إلى المنطقة أدناه. نتعرّف على المهمة والموظف والقسم والحالة ونسبة الإنجاز مهما اختلف ترتيب الأعمدة. إذا لم تتضح عناوين ورقة، اختر أعمدتها مرة واحدة من المعاينة دون تعديل الملف. الخانات الفارغة لا تمحو البيانات السابقة، ولا تُرفع الملفات الأصلية إلى الموقع.</p>
+        <input type="file" id="tasks-import-file" accept=".xlsx,.xls,.csv,.tsv" aria-label="اختيار ملفات تحديث المهام" multiple hidden onchange="previewTaskImport(event.target.files)">
+        <button type="button" class="import-dropzone" id="tasks-import-dropzone" onclick="document.getElementById('tasks-import-file').click()" ondragenter="taskImportDragEnter(event)" ondragover="taskImportDragOver(event)" ondragleave="taskImportDragLeave(event)" ondrop="taskImportDrop(event)"><span class="import-dropzone-icon" aria-hidden="true">⇧</span><span><strong>اسحب الملفات هنا أو انقر لاختيارها</strong><small>اختيار متعدد · Excel ‏(.xlsx / .xls) أو CSV / TSV</small></span></button>
+        <div class="import-file-list" id="import-file-list" aria-live="polite"></div>
+        <div class="import-actions"><button type="button" class="btn-primary" id="confirm-task-import" onclick="confirmTaskImport()" hidden>اعتماد التحديثات والإضافات ونشرها</button></div>
+        <div class="import-feedback" id="import-feedback" role="status"></div><div class="import-mappings" id="import-mappings"></div><div class="import-preview" id="import-preview"></div>
+      </div>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr>
+            <th>المهمة</th><th>القسم</th><th>الموظف</th><th>النسبة</th><th>التاريخ</th><th>الحالة</th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <div class="pager">
+        <span class="info" id="pager-info"></span>
+        <div class="nav">
+          <button id="pg-prev" onclick="changePage(-1)">السابق</button>
+          <button id="pg-next" onclick="changePage(1)">التالي</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERFORMANCE -->
+  <div class="tab-panel" id="panel-perf">
+    <div class="perf-toggle">
+      <button class="active" data-mode="dept" onclick="setPerfMode('dept')">حسب القسم</button>
+      <button data-mode="emp" onclick="setPerfMode('emp')">حسب الموظف</button>
+    </div>
+    <div class="grid-3" id="perf-grid"></div>
+  </div>
+
+  <!-- DATA QUALITY -->
+  <div class="tab-panel" id="panel-dq">
+    <div class="card dq-card">
+      <div class="card-head" style="padding:0 0 12px;border:none;"><h3>تصحيحات تم تطبيقها تلقائياً</h3></div>
+      <div id="dq-fixed"></div>
+    </div>
+    <div class="card dq-card">
+      <div class="card-head" style="padding:0 0 12px;border:none;"><h3>بنود تحتاج مراجعتك</h3></div>
+      <div id="dq-flags"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3 id="drawer-title">—</h3>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+</div>
+
+
+<script src="./tracker-script-4.js"></script>
+<script src="./tracker-script-5.js"></script><script>(() => {
+  'use strict';
+  const root = document.documentElement;
+  const dictionary = window.SPF_TRANSLATIONS || {};
+  const normal = s => s.replace(/[\u200e\u200f\u202a-\u202e\u2066-\u2069]/g,'').replace(/\s+/g, ' ').trim();
+  const translations = new Map(Object.entries(dictionary).map(([a,b])=>[normal(a),b]));
+  const charts = new WeakMap();
+  const painted = new Map();
+  const originals = new WeakMap(), attributes = new WeakMap();
+  const embedded = window.parent !== window;
+  let language='ar', theme='light', pending=false, scheduled=false, observer;
+  let preferred='ar';
+  const read=(key,fallback)=>{try{return localStorage.getItem(key)||fallback;}catch(_){return fallback;}};
+  const persist=()=>{try{localStorage.setItem('spf-language',preferred);localStorage.setItem('spf-theme',theme);}catch(_){}};
+  preferred=read('spf-language','ar')==='en'?'en':'ar'; language=preferred;
+  theme=read('spf-theme','light')==='dark'?'dark':'light';
+  if(window.SPF_PRESENTATION_INITIAL){language=preferred=window.SPF_PRESENTATION_INITIAL.language==='en'?'en':'ar';theme=window.SPF_PRESENTATION_INITIAL.theme==='dark'?'dark':'light';}
+  function translate(s) {
+    const key=normal(s);
+    if(key==='معدل الإنجاز')return 'Completion rate';
+    if(key==='نمو الطلبات')return 'Request growth';
+    if(key==='نمو في الطلبات')return 'Request growth';
+    if(key==='أدوات العرض')return 'Display tools';
+    if(key==='ابحث في البطاقات')return 'Search cards';
+    if(key==='عرض المزيد')return 'Show more';
+    if(key==='عرض أقل')return 'Show less';
+    if(key==='لا توجد نتائج مطابقة')return 'No matching results';
+    if(key==='مرّر أفقيًا لعرض الأشهر والتفاصيل')return 'Scroll horizontally to view months and details';
+    if(key.includes('نمو الطلبات'))return key.replace('نمو الطلبات','Request growth');
+    if(key.includes('نمو في الطلبات'))return key.replace('نمو في الطلبات','Request growth');
+    if(translations.has(key))return translations.get(key);
+    if(!/[\u0600-\u06ff]/.test(key))return s;
+    if(key.startsWith('عرض تفاصيل '))return 'View details: '+translate(key.slice('عرض تفاصيل '.length));
+    if(key.startsWith('عرض التفاصيل الشاملة للهدف '))return 'View full details: '+key.slice(28);
+    let m;
+    if((m=key.match(/^عرض (\d+) من أصل (\d+) مهمة$/)))return `Showing ${m[1]} of ${m[2]} tasks`;
+    if((m=key.match(/^(\d+)% من البنود منجزة$/)))return `${m[1]}% of items completed`;
+    if((m=key.match(/^(\d+) من (\d+) نتائج$/)))return `${m[1]} of ${m[2]} outputs`;
+    if((m=key.match(/^(.+): (\d+) مهام$/)))return `${translate(m[1])}: ${m[2]} tasks`;
+    if((m=key.match(/^(.+) · (.+)$/)))return key.split(' · ').map(translate).join(' · ');
+    if((m=key.match(/^(\d+ \/ \d+) — (.+)$/)))return `${m[1]} — ${translate(m[2])}`;
+    if((m=key.match(/^(\d+) (يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)(.*)$/)))return `${m[1]} ${translate(m[2])}${m[3]}`;
+    if((m=key.match(/^(يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)( \d{4})$/)))return `${translate(m[1])}${m[2]}`;
+    if((m=key.match(/^(الربع الثالث|الربع الرابع) (\d{4})$/)))return `${translate(m[1])} ${m[2]}`;
+    return s;
+  }
+  window.SPF_TRANSLATE=translate;
+  window.SPF_SOURCE_TEXT=el=>{if(!el)return '';let out='',w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),n;while(n=w.nextNode()){const cached=originals.get(n);out+=cached&&n.nodeValue===cached.rendered?cached.original:n.nodeValue;}return out;};
+  window.SPF_SET_TEXT=(el,value)=>{if(!el)return;const original=String(value),rendered=language==='en'?translate(original):original;if(el.textContent!==rendered)el.textContent=rendered;if(el.firstChild)originals.set(el.firstChild,{original,rendered});};
+  const controls=document.createElement('div');controls.className='presentation-controls';controls.setAttribute('data-no-translate','');
+  const reading=[];
+  for(const selector of ['#projectsGrid','#committeesGrid','.media-archive-grid']){
+    const grid=document.querySelector(selector);if(!grid)continue;
+    const bar=document.createElement('div');bar.className='reading-search';bar.setAttribute('data-no-translate','');
+    const label=document.createElement('label'),input=document.createElement('input');input.type='search';label.append(input);
+    const count=document.createElement('output'),more=document.createElement('button');more.type='button';
+    const empty=document.createElement('p');empty.className='reading-empty';empty.setAttribute('data-no-translate','');
+    bar.append(label,count,more);grid.before(bar);grid.after(empty);
+    const state={grid,input,count,more,empty,expanded:false};reading.push(state);
+    input.addEventListener('input',()=>{state.expanded=false;refreshReading();});
+    more.addEventListener('click',()=>{state.expanded=!state.expanded;refreshReading();});
+  }
+  function refreshReading(){
+    for(const state of reading){
+      const {grid,input,count,more,empty}=state,query=normal(input.value).toLowerCase(),cards=[...grid.children];
+      const matches=cards.filter(c=>normal(c.textContent+' '+(window.SPF_SOURCE_TEXT?.(c)||'')).toLowerCase().includes(query));
+      const mobile=matchMedia('(max-width:760px)').matches,limit=mobile&&!state.expanded?8:matches.length;
+      const visible=new Set(matches.slice(0,limit));cards.forEach(c=>c.dataset.readingHidden=String(!visible.has(c)));
+      const words=language==='en'?['Search cards','Show less','Show more','No matching results']:['ابحث في البطاقات','عرض أقل','عرض المزيد','لا توجد نتائج مطابقة'];
+      if(input.placeholder!==words[0])input.placeholder=words[0];
+      if(input.getAttribute('aria-label')!==words[0])input.setAttribute('aria-label',words[0]);
+      const value=`${Math.min(limit,matches.length)} / ${matches.length}`;if(count.textContent!==value)count.textContent=value;
+      const text=state.expanded?words[1]:words[2];if(more.textContent!==text)more.textContent=text;
+      more.hidden=!mobile||matches.length<=8;more.setAttribute('aria-expanded',String(state.expanded));
+      empty.hidden=!!matches.length;if(empty.textContent!==words[3])empty.textContent=words[3];
+    }
+  }
+  const topActions=document.querySelector('.top-actions');
+  if(topActions){const tools=document.createElement('button');tools.type='button';tools.className='mobile-tools-button';tools.textContent='أدوات العرض';tools.setAttribute('aria-expanded','false');topActions.append(tools);tools.addEventListener('click',()=>{const open=topActions.classList.toggle('tools-open');tools.setAttribute('aria-expanded',String(open));});}
+  const schedule=document.querySelector('.plan-schedule-disclosure');if(schedule){const hint=document.createElement('p');hint.className='timeline-reading-hint';hint.textContent='مرّر أفقيًا لعرض الأشهر والتفاصيل';schedule.querySelector('summary').after(hint);}
+  window.addEventListener('resize',()=>{refreshReading();});
+  const night=document.createElement('button');night.type='button';night.id='nightModeButton';night.className='btn secondary';
+  const toggle=document.createElement('button');toggle.type='button';toggle.id='languageButton';toggle.className='btn secondary';
+  controls.append(night,toggle);
+  (document.querySelector('.top-actions')||document.querySelector('.header-right'))?.prepend(controls);
+  function updateControls(){
+    night.innerHTML=`<span aria-hidden="true">${theme==='dark'?'☀':'☾'}</span><span>${language==='en'?(theme==='dark'?'Day mode':'Night mode'):(theme==='dark'?'العرض النهاري':'العرض الليلي')}</span>`;
+    night.setAttribute('aria-pressed',String(theme==='dark'));
+    toggle.textContent=language==='en'?'العربية':'English';toggle.setAttribute('aria-label',language==='en'?'Switch to Arabic':'التبديل إلى الإنجليزية');
+    toggle.disabled=document.body.classList.contains('editing')||pending;
+  }
+  function apply(){
+    if(!document.body)return;
+    scheduled=false;observer?.disconnect();
+    const editing=document.body.classList.contains('editing')||pending;
+    language=editing?'ar':preferred;
+    root.lang=language;root.dir=language==='en'?'ltr':'rtl';root.dataset.theme=theme;
+    let walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),node;
+    while(node=walker.nextNode()){
+      if(!node.parentElement||node.parentElement.closest('script,style,[data-no-translate],input,textarea,[contenteditable=true]'))continue;
+      const current=node.nodeValue, prior=originals.get(node);
+      const original=prior && current===prior.rendered?prior.original:current;
+      const trimmed=original.trim(); const rendered=language==='en'?original.replace(trimmed,translate(trimmed)):original;
+      originals.set(node,{original,rendered});if(current!==rendered)node.nodeValue=rendered;
+    }
+    for(const el of document.querySelectorAll('[title],[aria-label],[placeholder],[alt]')){
+      if(el.closest('[data-no-translate]'))continue;
+      const cache=attributes.get(el)||{};
+      for(const key of ['title','aria-label','placeholder','alt']){
+        if(!el.hasAttribute(key))continue;
+        const value=el.getAttribute(key),prior=cache[key],original=prior&&prior.rendered===value?prior.original:value;
+        const rendered=language==='en'?translate(original):original;cache[key]={original,rendered};if(value!==rendered)el.setAttribute(key,rendered);
+      }
+      attributes.set(el,cache);
+    }
+    // Restore source styles before each pass, so switching modes is reversible.
+    {
+      for(const [el,properties] of painted)for(const [property,value] of Object.entries(properties))if(el.style.getPropertyValue(property)===value.applied){value.original?el.style.setProperty(property,value.original):el.style.removeProperty(property);}
+      painted.clear();
+    }
+    {
+      const paint=(el,property,value)=>{const properties=painted.get(el)||{};if(!properties[property])properties[property]={original:el.style.getPropertyValue(property)};el.style.setProperty(property,value);properties[property].applied=el.style.getPropertyValue(property);painted.set(el,properties);};
+      const rgb=value=>(value.match(/rgba?\([^)]+\)/g)||[]).map(v=>v.match(/[\d.]+/g).map(Number));
+      const opaque=c=>c.length<4||c[3]>.85;
+      const luminance=c=>c.slice(0,3).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;}).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+      const contrast=(a,b)=>(Math.max(luminance(a),luminance(b))+.05)/(Math.min(luminance(a),luminance(b))+.05);
+      const elements=[...document.querySelectorAll('body *')].filter(el=>el instanceof HTMLElement&&!el.closest('script,style,.channel-logo,.top-logo,.committee-logo,.brand-mark,.hero-figure'));
+      // Include CSS gradients, list items, definition lists and badges, not only solid card backgrounds.
+      for(const el of elements){
+        if(theme!=='dark')continue;
+        const cs=getComputedStyle(el),background=rgb(cs.backgroundColor)[0];
+        if(background&&opaque(background)&&luminance(background)>.55)paint(el,'background-color','#24382C');
+        if(cs.backgroundImage.includes('gradient(')){
+          const adapted=cs.backgroundImage.replace(/rgba?\([^)]+\)/g,value=>{
+            const c=rgb(value)[0];return c&&luminance(c)>.55?`rgba(36, 56, 44, ${c[3]??1})`:value;
+          });
+          if(adapted!==cs.backgroundImage)paint(el,'background-image',cs.backgroundImage.startsWith('linear-gradient')?'linear-gradient(130deg,#2C402F,#382D31)':adapted);
+        }
+      }
+      // Compare each text against its actual surface. Keep dark text on retained gold/light badges.
+      for(const el of elements){
+        if(![...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()))continue;
+        const cs=getComputedStyle(el),foreground=rgb(cs.color)[0];let surfaces=[],surfaceElement;
+        for(let ancestor=el;ancestor;ancestor=ancestor.parentElement){
+          const style=getComputedStyle(ancestor);
+          // For rings the first radial layer is the text's central disc, not the surrounding arc.
+          let image=style.backgroundImage;
+          if(image.startsWith('radial-gradient')){let depth=0,end=image.length;for(let i=0;i<image.length;i++){if(image[i]==='(')depth++;if(image[i]===')')depth--;if(image[i]===','&&depth===0){end=i;break;}}image=image.slice(0,end);}
+          surfaces=rgb(image).filter(opaque);
+          if(image.startsWith('radial-gradient')&&surfaces.length)surfaces=surfaces.slice(0,1);
+          if(!surfaces.length)surfaces=rgb(style.backgroundColor).filter(opaque);
+          if(surfaces.length){surfaceElement=ancestor;break;}
+        }
+        if(!foreground||!surfaces.length)continue;
+        const required=parseFloat(cs.fontSize)>=24||(parseFloat(cs.fontSize)>=18.66&&parseFloat(cs.fontWeight)>=700)?3:4.5;
+        if(Math.min(...surfaces.map(c=>contrast(foreground,c)))>=required)continue;
+        const candidates=theme==='dark'?['#F4F5E9','#172C23']:['#223C31','#FFF9EB'];
+        const score=hex=>Math.min(...surfaces.map(c=>contrast([1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)),c)));
+        let best=candidates.sort((a,b)=>score(b)-score(a))[0];
+        if(score(best)<required&&surfaceElement){paint(surfaceElement,'background-image',theme==='dark'?'linear-gradient(130deg,#2C402F,#382D31)':'linear-gradient(130deg,#F5F5EC,#E4F1E9)');best=theme==='dark'?'#F4F5E9':'#223C31';}
+        paint(el,'color',best);
+      }
+    }
+    // Customer-entered records remain source data; translated display values never change records.
+    if(language==='en')for(const el of document.querySelectorAll('tbody td'))if(/[\u0600-\u06ff]/.test(el.textContent)){el.dir='rtl';el.lang='ar';}
+    if(window.Chart?.instances) for(const chart of Object.values(window.Chart.instances)){
+      const labels=chart.data.labels||[],prior=charts.get(chart);
+      const source=prior&&JSON.stringify(prior.rendered)===JSON.stringify(labels)?prior.original:[...labels];
+      const rendered=language==='en'?source.map(x=>typeof x==='string'?translate(x):x):source;
+      charts.set(chart,{original:source,rendered});chart.data.labels=rendered;
+      chart.options.color=theme==='dark'?'#C9D8C9':'#3A564C';
+      if(chart.options.plugins?.legend?.labels)chart.options.plugins.legend.labels.color=chart.options.color;
+      chart.update('none');
+    }
+    updateControls();observer?.observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['class','title','placeholder','aria-label','alt']});
+    refreshReading();
+    syncFrames();
+  }
+  function queue(){if(scheduled)return;scheduled=true;requestAnimationFrame(apply);}
+  function syncFrames(){for(const f of document.querySelectorAll('iframe.tracker-frame'))try{f.contentWindow.postMessage({type:'spf-presentation',language:preferred,theme},'*');}catch(_){}}
+  night.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';persist();apply();if(embedded)parent.postMessage({type:'spf-presentation-change',language:preferred,theme},'*');});
+  toggle.addEventListener('click',()=>{preferred=preferred==='ar'?'en':'ar';persist();apply();if(embedded)parent.postMessage({type:'spf-presentation-change',language:preferred,theme},'*');});
+  window.addEventListener('message',e=>{
+    const ownFrame=[...document.querySelectorAll('iframe.tracker-frame')].some(f=>f.contentWindow===e.source);
+    if(e.data?.type==='spf-presentation-ready'&&ownFrame){syncFrames();return;}
+    if((embedded&&e.source===parent&&e.data?.type==='spf-presentation')||(ownFrame&&e.data?.type==='spf-presentation-change')){
+      const nextLang=e.data.language==='en'?'en':'ar',nextTheme=e.data.theme==='dark'?'dark':'light';
+      if(preferred===nextLang&&theme===nextTheme)return;preferred=nextLang;theme=nextTheme;persist();apply();
+    }
+  });
+  window.addEventListener('storage',e=>{if(['spf-language','spf-theme'].includes(e.key)){preferred=read('spf-language','ar');theme=read('spf-theme','light');apply();}});
+  for(const frame of document.querySelectorAll('iframe.tracker-frame'))frame.addEventListener('load',syncFrames);
+  // Edit the Arabic source instead of accidentally saving the English rendering.
+  document.addEventListener('click',e=>{if(e.target.closest('#editContent')){pending=true;apply();setTimeout(()=>{pending=false;apply();},2000);}},true);
+  observer=new MutationObserver(queue);apply();
+  if(embedded)parent.postMessage({type:'spf-presentation-ready'},'*');
+  let printTheme;
+  window.addEventListener('beforeprint',()=>{printTheme=theme;theme='light';apply();});
+  window.addEventListener('afterprint',()=>{if(printTheme){theme=printTheme;printTheme=null;apply();}});
+  window.SPF_PRESENTATION={setLanguage:value=>{preferred=value==='en'?'en':'ar';persist();apply();},setTheme:value=>{theme=value==='dark'?'dark':'light';persist();apply();},getState:()=>({language:preferred,theme})};
+})();
+</script></body>
+</html>
