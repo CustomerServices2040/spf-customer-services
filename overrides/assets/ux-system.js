@@ -53,6 +53,7 @@
     });
 
     source.after(navigation);
+    document.documentElement.classList.add("ux-enhanced");
     const closeOthers = event => {
       const opened = event.target.closest("details");
       if (!opened?.open) return;
