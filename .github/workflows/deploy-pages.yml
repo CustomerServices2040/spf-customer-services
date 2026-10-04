@@ -113,9 +113,12 @@ jobs:
                   self.nav=[]
                   self.scripts=[]
                   self.styles=[]
+                  self.main_count=0
                   self.in_nav=False
               def handle_starttag(self, tag, attrs):
                   a=dict(attrs)
+                  if tag=="main":
+                      self.main_count+=1
                   if "id" in a:
                       self.ids.append(a["id"])
                   if tag=="nav" and "top-navigation" in a.get("class","").split():
@@ -143,6 +146,8 @@ jobs:
               raise SystemExit(f"Missing required navigation links: {missing_nav}")
           if duplicate_ids:
               raise SystemExit(f"Duplicate HTML ids found: {duplicate_ids[:20]}")
+          if audit.main_count != 1:
+              raise SystemExit(f"Expected exactly one main landmark, found {audit.main_count}")
           if audit.nav != required_tabs:
               raise SystemExit(f"Navigation order mismatch: {audit.nav}")
 
