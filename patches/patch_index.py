@@ -537,6 +537,11 @@ text = text[:match.start(1)] + pipeline + text[match.end(1):]
 text = text.replace('src="assets/exhibition.js"', 'src="assets/exhibition.js?v=20260927-final"')
 text = text.replace('src="assets/platform-enhancements.js?v=20260927-5"', 'src="assets/platform-enhancements.js?v=20260927-final"')
 
+# The fullscreen board is an alternative presentation surface inside the page,
+# not a second primary document landmark.
+replace_required('<main class="board-stage">', '<div class="board-stage" role="region" aria-label="شرائح العرض التنفيذي">')
+replace_required('</main>\n    <footer class="board-footer">', '</div>\n    <footer class="board-footer">')
+
 # A different asset URL for every deployment avoids mixing cached JavaScript
 # from an earlier publication with this page's current chapter markup.
 asset_revision = os.environ.get("GITHUB_SHA", "local-preview")[:12]
