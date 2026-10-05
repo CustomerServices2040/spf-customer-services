@@ -527,6 +527,10 @@ if 'id="community-line"' not in text:
 award_anchor = '<article><time>2024</time><div><h3>شهادة التميز في جودة الخدمات</h3><p>تطبيق المبادئ التوجيهية للجمعية الدولية للضمان الاجتماعي (ISSA).</p></div></article>\n          </div>'
 replace_required(award_anchor, '<article><time>2024</time><div><h3>شهادة التميز في جودة الخدمات</h3><p>تطبيق المبادئ التوجيهية للجمعية الدولية للضمان الاجتماعي (ISSA).</p></div></article>\n            <article class="award-2026"><time>2026</time><div><h3>جائزة التميز المؤسسي لأفضل منفذ خدمة</h3><p>حصلت 8 دوائر في المحافظات على جائزة التميز المؤسسي لأفضل منفذ خدمة.</p></div></article>\n          </div>')
 
+
+# Geographic reach label describes governorates only.
+replace_required('<small>محافظة مرتبطة<br>عبر واتساب</small>', '<small>محافظة</small>')
+
 # Compact illustrations show the five practical steps without repeating paragraphs.
 pillar_paths = [
     '<circle cx="12" cy="8" r="3"/><path d="M6 20v-2a6 6 0 0 1 12 0v2M3 7h3M18 7h3M3 12h3M18 12h3"/>',
