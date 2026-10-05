@@ -277,6 +277,23 @@ tajawob_section = '''        <section class="section-block tajawob-updated" id="
             <article><span>أكثر أيام الأسبوع</span><strong>الأحد</strong><small>811 طلبًا إجمالًا</small></article>
             <article><span>أكثر ساعة ازدحامًا</span><strong>11:00 صباحًا</strong><small>362 طلبًا</small></article>
           </div>
+          <aside class="tajawob-response-guide" aria-labelledby="tajawob-response-guide-title">
+            <div class="response-guide-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M10 8h20a6 6 0 0 1 6 6v22H16a6 6 0 0 0-6 6V8Z"/><path d="M16 14h14M16 20h14M16 26h9M36 36H16a6 6 0 0 0-6 6M34 8h4v24"/></svg>
+            </div>
+            <div class="response-guide-content">
+              <span>مرجع معرفي موحّد</span>
+              <h3 id="tajawob-response-guide-title">دليل الردود النموذجية</h3>
+              <p>دليل عملي يساعد الموظفين على تقديم ردود دقيقة ومتسقة على استفسارات المتعاملين، مع نماذج جاهزة ومنظمة تسهّل الوصول إلى المعلومة المناسبة.</p>
+              <div class="response-guide-features" aria-label="مزايا دليل الردود النموذجية">
+                <small>ردود موحّدة</small><small>بحث سريع</small><small>صياغة مهنية</small>
+              </div>
+            </div>
+            <a class="response-guide-link" href="https://ethmar-om.github.io/spf-responses/" target="_blank" rel="noopener noreferrer" aria-label="فتح الدليل الشامل للردود النموذجية في نافذة جديدة">
+              <span>فتح الدليل الشامل</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </aside>
         </section>'''
 
 text, tajawob_replacements = re.subn(
