@@ -194,6 +194,19 @@ jobs:
           print("Styles:", len(audit.styles))
           PY
 
+      - name: Encrypt platform and approved private tabs
+        shell: bash
+        env:
+          PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
+          PRIVATE_TABS_PASSWORD: ${{ secrets.PRIVATE_TABS_PASSWORD }}
+        run: |
+          set -euo pipefail
+          node scripts/encrypt_two_layer.mjs _site
+          if grep -q 'صوت المتعامل في مسار قابل للقياس' _site/legacy/index.html; then
+            echo "Plaintext dashboard content remained after encryption" >&2
+            exit 1
+          fi
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
