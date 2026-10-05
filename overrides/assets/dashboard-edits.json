@@ -235,7 +235,7 @@
     "#governorates-map>div:1>div:1>span:1": "الوصول الجغرافي لخدمات المتعاملين",
     "#governorates-map>div:1>div:1>h3:1": "دوائر الحماية الاجتماعية في محافظات سلطنة عُمان",
     "#governorates-map>div:1>div:2>strong:1": "11",
-    "#governorates-map>div:1>div:2>small:1": "دائرة في المحافظات",
+    "#governorates-map>div:1>div:2>small:1": "محافظة",
     "#governorates-map>div:3>div:1>div:1>div:1>span:1": "قناة واتساب مخصصة للمحافظة",
     "#governorateInspector>div:1>span:1": "لوحة المحافظة",
     "#governorateInspector>div:2>small:1": "شبكة دوائر الحماية الاجتماعية",
