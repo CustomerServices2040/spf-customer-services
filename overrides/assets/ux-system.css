@@ -314,3 +314,69 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
   .response-guide-icon { margin-inline: auto; }
   .response-guide-features { justify-content: center; }
 }
+
+/* Consistent hierarchy and centred executive indicator values. */
+.hero-metrics .metric-card,
+.plan-hero-kpis > article,
+.tracker-summary > article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+  padding: 22px 18px;
+  text-align: center;
+}
+.hero-metrics .metric-top {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-inline: 24px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.hero-metrics .metric-top > b {
+  position: absolute;
+  inset-inline-end: 0;
+  top: 0;
+  font-size: 11px;
+}
+.hero-metrics .metric-card > strong,
+.plan-hero-kpis > article > strong,
+.tracker-summary > article > strong {
+  display: block;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: clamp(32px, 3.2vw, 46px);
+  line-height: 1.25;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  unicode-bidi: plaintext;
+}
+.hero-metrics .metric-card > small,
+.plan-hero-kpis > article > small,
+.tracker-summary > article > small {
+  margin: 0;
+  max-width: 100%;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.plan-hero-kpis > article > span,
+.tracker-summary > article > span { font-size: 14px; line-height: 1.5; }
+.hero-metrics .micro-bar,
+.hero-metrics .split-label { width: 100%; }
+.hero-metrics .metric-card > .trend { margin-inline: auto; margin-top: 2px; }
+.impact-number { align-items: center; text-align: center; }
+.impact-number strong { font-variant-numeric: tabular-nums; }
+.section-heading h2 { font-size: clamp(24px, 2.6vw, 34px); }
+.section-kicker { font-size: 12px; }
+@media (max-width: 700px) {
+  .hero-metrics, .plan-hero-kpis, .tracker-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-metrics .metric-card, .plan-hero-kpis > article, .tracker-summary > article { padding: 18px 12px; }
+}
+@media (max-width: 430px) {
+  .hero-metrics, .plan-hero-kpis, .tracker-summary { grid-template-columns: minmax(0, 1fr); }
+}

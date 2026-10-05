@@ -107,7 +107,9 @@
       if(node.id){parts.unshift(`#${node.id}`);break}
       const parent=node.parentElement;if(!parent)break;
       const siblings=[...parent.children].filter(x=>x.tagName===node.tagName);
-      parts.unshift(`${node.tagName.toLowerCase()}:${siblings.indexOf(node)+1}`);
+      // Keep saved board keys valid after changing the secondary main to a region.
+      if(node.classList.contains("board-stage"))parts.unshift("main:1");
+      else parts.unshift(`${node.tagName.toLowerCase()}:${siblings.indexOf(node)+1}`);
       node=parent;
     }
     return parts.join(">");
@@ -134,6 +136,7 @@
       if(Object.prototype.hasOwnProperty.call(values,key))el.textContent=values[key];
       else if(defaultValues.has(key))el.textContent=defaultValues.get(key);
     });
+    document.dispatchEvent(new Event("spf:content-applied"));
   }
   function setEditing(active){
     editing=active;document.body.classList.toggle("editing",active);

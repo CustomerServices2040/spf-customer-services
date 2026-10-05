@@ -252,9 +252,37 @@
     }
   }
 
+  // Executive presentation mirrors the saved headline indicators.
+  function syncHeadlineIndicators() {
+    const source = $$(".hero-metrics .metric-card > strong");
+    const target = $$("#boardModePanel .board-slide:first-child .board-metric-grid > article > strong");
+    source.forEach((value, index) => {
+      if (!target[index]) return;
+      target[index].removeAttribute("data-edit-key");
+      target[index].setAttribute("data-calculated", "true");
+      target[index].textContent = value.textContent;
+    });
+    const period = $("#overview .hero-meta > span")?.textContent.trim();
+    const heading = $("#boardModePanel .board-slide:first-child .board-slide-heading > p");
+    if (period && heading) {
+      heading.removeAttribute("data-edit-key");
+      heading.setAttribute("data-calculated", "true");
+      heading.textContent = `قراءة مركزة لأبرز مؤشرات المديرية · ${period}`;
+    }
+    const caption = $("#boardModePanel .board-slide:first-child .board-metric-grid > article:nth-child(3) > small");
+    if (caption) {
+      caption.removeAttribute("data-edit-key");
+      caption.setAttribute("data-calculated", "true");
+      caption.textContent = "مؤشر التواصل ورضا المستفيدين";
+    }
+  }
+
+  document.addEventListener("spf:content-applied", syncHeadlineIndicators);
+
   function boot() {
     buildGroupedNavigation();
     addAccessibilityAids();
+    syncHeadlineIndicators();
     loadTaskData();
   }
 
