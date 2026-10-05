@@ -86,7 +86,9 @@ jobs:
           node --check _site/legacy/assets/app.js
           node --check _site/legacy/assets/exhibition.js
           node --check _site/legacy/assets/platform-enhancements.js
+          node --check _site/legacy/assets/ux-system.js
           node --check _site/legacy/assets/privacy-lock.js
+          node scripts/validate_data_integrity.mjs _site/legacy/assets/tasks-data.json
           node --check _site/legacy/assets/plan-data-2026.js
           node --check _site/legacy/assets/excel-import.js
           node --check _site/legacy/assets/executive-mode.js
@@ -111,9 +113,12 @@ jobs:
                   self.nav=[]
                   self.scripts=[]
                   self.styles=[]
+                  self.main_count=0
                   self.in_nav=False
               def handle_starttag(self, tag, attrs):
                   a=dict(attrs)
+                  if tag=="main":
+                      self.main_count+=1
                   if "id" in a:
                       self.ids.append(a["id"])
                   if tag=="nav" and "top-navigation" in a.get("class","").split():
@@ -141,13 +146,21 @@ jobs:
               raise SystemExit(f"Missing required navigation links: {missing_nav}")
           if duplicate_ids:
               raise SystemExit(f"Duplicate HTML ids found: {duplicate_ids[:20]}")
+          if audit.main_count != 1:
+              raise SystemExit(f"Expected exactly one main landmark, found {audit.main_count}")
           if audit.nav != required_tabs:
               raise SystemExit(f"Navigation order mismatch: {audit.nav}")
 
           revision = __import__("os").environ["GITHUB_SHA"][:12]
           expected_navigation_css = f"assets/navigation-reliability.css?v={revision}"
-          if not audit.styles or audit.styles[-1] != expected_navigation_css:
-              raise SystemExit("RTL navigation override must load after all other styles")
+          expected_ux_css = f"assets/ux-system.css?v={revision}"
+          if len(audit.styles) < 2 or audit.styles[-2] != expected_navigation_css:
+              raise SystemExit("RTL navigation override must load immediately before the unified UX stylesheet")
+          if audit.styles[-1] != expected_ux_css:
+              raise SystemExit("Unified UX stylesheet must load after all other styles")
+          expected_ux_script = f"assets/ux-system.js?v={revision}"
+          if not audit.scripts or audit.scripts[-1] != expected_ux_script:
+              raise SystemExit("Unified UX script must load after all other scripts")
           if any(f"?v={revision}" not in asset for asset in audit.scripts + audit.styles):
               raise SystemExit("All runtime assets must use the current commit revision")
           nav_css = (html_path.parent / "assets/navigation-reliability.css").read_text()
