@@ -596,7 +596,6 @@ const GITHUB_REPO='spf-customer-services';
 const TASKS_REPO_PATH='overrides/assets/tasks-data.json';
 const AUTH_PROXY='https://customer-compass-github-auth.spf2040.chatgpt.site';
 const FILTER_STORAGE_KEY='spf-work-tracker-filters-v1';
-const OWNER_SESSION_KEY='spf-work-tracker-owner-session-v1';
 let isOwner=false,ownerAccessToken='',loadedTasksUpdatedAt=null,loadedTasksSha=null,pendingTaskImport=null,taskMutationInFlight=false,importReadInFlight=false,importSheetLayouts=[];
 // Keep distinct people with the same first name (e.g. سعيد) separate, while
 // unifying harmless spelling differences and crediting shared work to everyone.
@@ -720,12 +719,10 @@ function updateOwnerUI(){
 }
 function clearOwnerSession(){
   ownerAccessToken='';isOwner=false;
-  try{sessionStorage.removeItem(OWNER_SESSION_KEY)}catch(_){/* Storage can be unavailable. */}
   updateOwnerUI();
 }
 function rememberOwnerSession(token){
   ownerAccessToken=token;isOwner=true;
-  try{sessionStorage.setItem(OWNER_SESSION_KEY,token)}catch(_){/* The in-memory session still works. */}
   updateOwnerUI();
 }
 async function fetchCurrentTaskSnapshot(token){
@@ -789,7 +786,7 @@ async function loginOwner(){
   if(isOwner){clearOwnerSession();closeDrawer();return;}
   const button=document.getElementById('owner-login-button');if(button)button.textContent='جارٍ التحقق…';
   try{
-    const cached=ownerAccessToken||(()=>{try{return sessionStorage.getItem(OWNER_SESSION_KEY)}catch(_){return null}})();
+    const cached=ownerAccessToken;
     let token;
     if(cached){await verifyOwnerToken(cached);token=cached;}
     else{const choice=await ownerLoginChoice();token=choice.mode==='token'?choice.token:await githubDeviceLogin();}
@@ -802,13 +799,9 @@ async function loginOwner(){
   }
 }
 async function restoreOwnerSession(){
-  const token=(()=>{try{return sessionStorage.getItem(OWNER_SESSION_KEY)}catch(_){return null}})();
-  if(!token){updateOwnerUI();return;}
-  try{await verifyOwnerToken(token);await syncTasksFromGithub(token);rememberOwnerSession(token);}
-  catch(error){
-    if(/غير صالح|انتهت صلاحيته|لا يملك صلاحية|لا يستطيع الوصول/.test(error.message||''))clearOwnerSession();
-    else{ownerAccessToken=token;isOwner=false;updateOwnerUI();}
-  }
+  // Keep credentials in memory only. A page refresh requires a new sign-in,
+  // while edits and repeated saves during the open session remain uninterrupted.
+  updateOwnerUI();
 }
 async function saveTasks(){
   if(!isOwner)throw new Error('يلزم دخول المالك قبل الحفظ');
