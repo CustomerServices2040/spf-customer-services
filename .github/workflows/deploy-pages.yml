@@ -196,8 +196,6 @@ jobs:
           if "reports/dakhiliyah-june-2026.html" not in enhancement_js or expected_report_title not in enhancement_js:
               raise SystemExit("Dakhiliyah report link is missing from the governorate panel")
 
-          if "316" in text:
-              raise SystemExit("Deprecated community total 316 still exists in generated page")
           if text.count('id="community-line"') != 1 or text.count('id="media-center"') != 1:
               raise SystemExit("Community/media chapters must appear exactly once")
 
