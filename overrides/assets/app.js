@@ -141,7 +141,7 @@
   function setEditing(active){
     editing=active;document.body.classList.toggle("editing",active);
     editorToolbar.classList.toggle("open",active);editorToolbar.setAttribute("aria-hidden",String(!active));
-    editButton.textContent=active?"جارٍ التحرير…":"تحرير المحتوى";editButton.disabled=active;
+    editButton.textContent=active?"جارٍ التعديل…":"تعديل المحتوى";editButton.disabled=active;
     prepareEditable();
     if(!active)$$('[contenteditable="true"]').forEach(el=>{el.removeAttribute("contenteditable");el.removeAttribute("role");el.removeAttribute("aria-label")});
   }
@@ -337,6 +337,10 @@
       </details>`;
   }
   function renderOperationalPlan(filter="core"){
+    // The two-layer deployment replaces private sections with encrypted
+    // placeholders until the second password is entered. Keep the public
+    // controls operational while the plan section is still unavailable.
+    if(!planGrid||!Array.isArray(window.SPF_OPERATIONAL_PLAN))return;
     const items=window.SPF_OPERATIONAL_PLAN.filter(item=>filter==="all"||item.group===filter);
     renderPlanHero();
     $("#planGoalModal")?.remove();
@@ -360,7 +364,7 @@
     detail.innerHTML=planDetailMarkup(item);const title=detail.querySelector("h2");if(title)title.id="planGoalTitle";
     prepareEditable(detail);dialog.classList.add("open");dialog.setAttribute("aria-hidden","false");
   }
-  planGrid.addEventListener("click",e=>{
+  planGrid?.addEventListener("click",e=>{
     const opener=e.target.closest("[data-plan-open]");if(opener){openPlanGoal(opener.dataset.planOpen);return}
     if(e.target.closest("[data-close-plan-goal]")){const dialog=$("#planGoalModal");dialog?.classList.remove("open");dialog?.setAttribute("aria-hidden","true")}
   });
@@ -420,7 +424,7 @@
   $$(".plan-controls button").forEach(btn=>btn.addEventListener("click",()=>{$$(".plan-controls button").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderOperationalPlan(btn.dataset.planFilter)}));
   $$(".committee-controls button").forEach(btn=>btn.addEventListener("click",()=>{$$(".committee-controls button").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderCommittees(btn.dataset.committeeFilter)}));
   $$("[data-close]").forEach(x=>x.addEventListener("click",()=>{modal.classList.remove("open");modal.setAttribute("aria-hidden","true")}));
-  $("#updateGuide").addEventListener("click",()=>{updateModal.classList.add("open");updateModal.setAttribute("aria-hidden","false")});
+  $("#updateGuide")?.addEventListener("click",()=>{if(!updateModal)return;updateModal.classList.add("open");updateModal.setAttribute("aria-hidden","false")});
   $$("[data-close-update]").forEach(x=>x.addEventListener("click",()=>{updateModal.classList.remove("open");updateModal.setAttribute("aria-hidden","true")}));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")$$(".modal.open").forEach(m=>{m.classList.remove("open");m.setAttribute("aria-hidden","true")})});
   document.addEventListener("input",e=>{const el=e.target.closest("[data-edit-key]");if(editing&&el)workingEdits[el.dataset.editKey]=el.textContent});
@@ -431,7 +435,7 @@
     doc.href=safeValue||"#";doc.classList.toggle("disabled",!safeValue);safeValue?doc.removeAttribute("aria-disabled"):doc.setAttribute("aria-disabled","true");
   });
 
-  editButton.addEventListener("click",async()=>{editButton.disabled=true;editButton.textContent="جارٍ التحقق…";try{if(!editAccessToken)editAccessToken=await authorizeGithub();workingEdits={...savedEdits};setEditing(true);toast("يمكنك التحرير الآن")}catch(error){editAccessToken="";editButton.disabled=false;editButton.textContent="تحرير المحتوى";toast(error.message||"تعذر تسجيل الدخول")}});
+  editButton.addEventListener("click",async()=>{editButton.disabled=true;editButton.textContent="جارٍ التحقق…";try{if(!editAccessToken)editAccessToken=await authorizeGithub();workingEdits={...savedEdits};setEditing(true);toast("يمكنك تعديل المحتوى الآن")}catch(error){editAccessToken="";editButton.disabled=false;editButton.textContent="تعديل المحتوى";toast(error.message||"تعذر تسجيل الدخول")}});
   $("#saveEdits").addEventListener("click",async()=>{
     if(!editAccessToken){toast("انتهت جلسة GitHub؛ ابدأ التحرير من جديد");return}
     const nextEdits=collectEdits();toast("جارٍ نشر التحديث للجميع…");
@@ -440,7 +444,7 @@
   $("#cancelEdits").addEventListener("click",()=>{workingEdits={...savedEdits};applyValues(savedEdits);setEditing(false);renderProjects($(".project-tabs button.active")?.dataset.filter||"inventory");renderOperationalPlan($(".plan-controls button.active")?.dataset.planFilter||"core");toast("تم إلغاء التعديلات")});
   $("#resetEdits").addEventListener("click",()=>{
     if(!confirm("هل تريد استعادة جميع محتويات النسخة الأصلية؟"))return;
-    localStorage.removeItem(STORAGE_KEY);localStorage.removeItem(PLAN_STORAGE_KEY);savedEdits={};workingEdits={};planDelivery={};applyValues({});setEditing(false);renderProjects("all");renderOperationalPlan("all");toast("عُرضت النسخة الأصلية محليًا؛ انقر تحرير المحتوى ثم حفظ لنشرها للجميع");
+    localStorage.removeItem(STORAGE_KEY);localStorage.removeItem(PLAN_STORAGE_KEY);savedEdits={};workingEdits={};planDelivery={};applyValues({});setEditing(false);renderProjects("all");renderOperationalPlan("all");toast("عُرضت النسخة الأصلية محليًا؛ انقر تعديل المحتوى ثم حفظ لنشرها للجميع");
   });
   $("#exportEdits").addEventListener("click",()=>{
     const payload={type:"spf-dashboard-edits",version:2,exportedAt:new Date().toISOString(),edits:collectEdits(),planDelivery};
@@ -449,7 +453,7 @@
   });
   $("#importEdits").addEventListener("change",async e=>{
     const file=e.target.files[0];if(!file)return;
-    try{const payload=JSON.parse(await file.text());if(payload.type!=="spf-dashboard-edits"||!payload.edits)throw new Error();workingEdits=sanitizeGlobalEdits(payload.edits);savedEdits={...workingEdits};planDelivery=payload.planDelivery||{};localStorage.setItem(STORAGE_KEY,JSON.stringify(savedEdits));savePlanDelivery();renderProjects("all");renderOperationalPlan("all");applyValues(savedEdits);setEditing(false);toast("تم استيرادها على هذا الجهاز فقط؛ استخدم تحرير المحتوى ثم حفظ لنشرها للجميع")}catch(_){toast("تعذر قراءة ملف التعديلات")}
+    try{const payload=JSON.parse(await file.text());if(payload.type!=="spf-dashboard-edits"||!payload.edits)throw new Error();workingEdits=sanitizeGlobalEdits(payload.edits);savedEdits={...workingEdits};planDelivery=payload.planDelivery||{};localStorage.setItem(STORAGE_KEY,JSON.stringify(savedEdits));savePlanDelivery();renderProjects("all");renderOperationalPlan("all");applyValues(savedEdits);setEditing(false);toast("تم استيرادها على هذا الجهاز فقط؛ استخدم تعديل المحتوى ثم حفظ لنشرها للجميع")}catch(_){toast("تعذر قراءة ملف التعديلات")}
     e.target.value="";
   });
   $("#importWorkbook")?.addEventListener("change",async e=>{
