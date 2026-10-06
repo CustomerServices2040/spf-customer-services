@@ -77,6 +77,9 @@ replace_required(
 replace_required(
     '<button class="btn secondary" id="updateGuide">دليل التحديث</button>',
     '<button class="btn secondary" id="privacyLockButton">قفل العرض</button>\n          <button class="btn secondary" id="updateGuide">دليل التحديث</button>')
+replace_required(
+    '<button class="btn primary edit-entry" id="editContent">تحرير المحتوى</button>',
+    '<button class="btn primary edit-entry" id="editContent">تعديل المحتوى</button>')
 replace_required('الأهداف التشغيلية السبعة', 'الأهداف التشغيلية التسعة')
 replace_required('سبعة أهداف رئيسية تقود التنفيذ', 'تسعة أهداف رئيسية تقود التنفيذ')
 
