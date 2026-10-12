@@ -19,7 +19,7 @@
     ));
   }
   function isCalculatedKey(key){
-    return key==="#governorateTotalWork" ||
+    return ["#governorateName","#governorateStaff","#governorateShare","#governorateComparison","#governoratePhone","#governorateTotalWork","#govTransactions","#govAppointments","#govWhatsapp","#govField","#govProactive","#govSelfService","#govCommunity","#govQr","#govWorkPerEmployee","#govDailyPerEmployee"].includes(key) ||
       ["#trackerRate","#trackerRateSummary","#trackerTotalCount","#trackerCountSummary","#trackerDoneCount","#trackerProgressCount","#boardRate","#boardDone","#boardProgressCount","#boardTotalItems>strong:1"].includes(key) ||
       key.startsWith("#boardModePanel>main:1>section:5>") ||
       /^#work-tracker>div:3>article:\d+>(?:div:1>b:1|small:1)$/.test(key);
@@ -618,3 +618,4 @@
   renderTrackerBoard();
   refreshTrackerSummary();
 })();
+

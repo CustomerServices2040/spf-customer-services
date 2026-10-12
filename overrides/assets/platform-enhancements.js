@@ -32,7 +32,7 @@
     let extra=$("#governorateProductivity",inspector);
     if(!extra && total){
       extra=document.createElement("div"); extra.id="governorateProductivity"; extra.className="governorate-productivity";
-      extra.innerHTML=`<article><span>متوسط الأعمال الشهري لكل موظف</span><b id="govWorkPerEmployee">—</b><small>متوسط يناير–أغسطس · 8 أشهر</small></article><article><span>المعدل اليومي لكل موظف</span><b id="govDailyPerEmployee">—</b><small>متوسط تقريبي على أساس 173 يومًا من الأحد–الخميس</small></article>`;
+      extra.innerHTML=`<article><span>متوسط الأعمال الشهري لكل موظف</span><b id="govWorkPerEmployee">—</b><small>متوسط يناير–سبتمبر · 9 أشهر</small></article><article><span>المعدل اليومي لكل موظف</span><b id="govDailyPerEmployee">—</b><small>متوسط تقريبي على أساس 198 يومًا من الأحد–الخميس</small></article>`;
       total.closest("div")?.parentElement?.appendChild(extra);
     }
     let population=$("#governoratePopulation",inspector);
@@ -113,8 +113,8 @@
       const w=Number(String(total?.textContent||"").replace(/[^0-9.]/g,""))||0;
       if(share && s) setText(share,(s/236*100).toFixed(1)+"%");
       const per=$("#govWorkPerEmployee"),daily=$("#govDailyPerEmployee");
-      setText(per,s?fmt(Math.round(w/s/8)):"—");
-      setText(daily,s?(w/s/173).toFixed(1):"—");
+      setText(per,s?fmt(Math.round(w/s/9)):"—");
+      setText(daily,s?(w/s/198).toFixed(1):"—");
     };
     update();
     new MutationObserver(update).observe(inspector,{subtree:true,childList:true,characterData:true});
@@ -225,3 +225,4 @@
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",()=>setTimeout(boot,0)); else setTimeout(boot,0);
 })();
+

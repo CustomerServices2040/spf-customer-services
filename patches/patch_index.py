@@ -589,4 +589,16 @@ ux_script = f'  <script src="assets/ux-system.js?v={asset_revision}"></script>'
 text = text.replace('</body>', ux_script + '\n</body>', 1)
 
 text = re.sub(r'<script>\(function\(\)\{function c\(\).*?</script>', '', text, flags=re.S)
+
+# September 2026 aggregate visuals and monthly source details.
+text = text.replace('--share:62', '--share:57.5').replace('--share:38', '--share:42.5')
+text = text.replace('width:62%', 'width:57.5%')
+text = text.replace('style="--rate:98"', 'style="--rate:98.4"', 1)
+text = text.replace('style="--rate:96"', 'style="--rate:96.9"', 1)
+text = text.replace('style="--rate:65"', 'style="--rate:66.7"', 1)
+text = text.replace('style="--rate:99"', 'style="--rate:98.8"', 1)
+text = text.replace('--year-rate:97.8', '--year-rate:98.2').replace('data-rate="97.8%"', 'data-rate="98.2%"').replace('data-growth="↑ 61.2%"', 'data-growth="↑ 109.4%"')
+text = text.replace('<aside class="tajawob-response-guide"', '<details class="tajawob-monthly"><summary>المؤشرات الشهرية · يناير–سبتمبر 2026</summary><div style="overflow-x:auto"><table style="width:100%;text-align:center"><thead><tr><th>الشهر</th><th>إجمالي الطلبات</th><th>المنجز</th><th>نسبة الإنجاز</th></tr></thead><tbody><tr><td>يناير</td><td>410</td><td>381</td><td>92.9%</td></tr><tr><td>فبراير</td><td>492</td><td>466</td><td>94.7%</td></tr><tr><td>مارس</td><td>371</td><td>362</td><td>97.6%</td></tr><tr><td>أبريل</td><td>721</td><td>715</td><td>99.2%</td></tr><tr><td>مايو</td><td>958</td><td>925</td><td>96.6%</td></tr><tr><td>يونيو</td><td>822</td><td>822</td><td>100.0%</td></tr><tr><td>يوليو</td><td>958</td><td>956</td><td>99.8%</td></tr><tr><td>أغسطس</td><td>864</td><td>861</td><td>99.7%</td></tr><tr><td>سبتمبر</td><td>1,693</td><td>1,667</td><td>98.5%</td></tr></tbody></table></div><p>تُحسب النسب من أعداد الطلبات والمنجز. يعرض مصدر سبتمبر نسبًا معدّلة يدويًا: الإجمالي 99.6%، الشكاوى 99.7%، والاستفسارات 98.6%. لم تُستخدم النسب المعدّلة لإعادة حساب الإجمالي التراكمي.</p><p>بيانات الذروة تعتمد على السجلات التفصيلية المتاحة في المصدر، دون يوليو وأغسطس.</p></details>' + '<aside class="tajawob-response-guide"', 1)
+
 path.write_text(text, encoding="utf-8")
+
