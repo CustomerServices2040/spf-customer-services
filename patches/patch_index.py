@@ -272,8 +272,9 @@ tajawob_section = '''        <section class="section-block tajawob-updated" id="
             <article style="--rate:98.8"><span>الاستفسارات</span><strong>4,851</strong><b>4,795 منجزة · 98.8%</b><i><em></em></i></article>
           </div>
           <div class="tajawob-compare" aria-label="مقارنة حجم الطلبات ونسبة الإنجاز بين 2025 و2026">
-            <article class="tajawob-year-card year-2025" style="--year-rate:74" data-rate="74%"><div><span>عام 2025</span><strong>3,481 <small>طلبًا</small></strong></div><p>معدل الإنجاز وفق التقرير السابق</p></article>
-            <article class="tajawob-year-card year-2026" style="--year-rate:98.2" data-rate="98.2%"><div><span>يناير–سبتمبر 2026</span><strong>7,289 <small>طلبات</small></strong></div><p data-growth="↑ 109.4%">نسبة الإنجاز مع نمو واضح في حجم الطلبات</p></article>
+            <article class="tajawob-year-card year-2025" style="--year-rate:74"><header><span>عام 2025</span><small>12 شهرًا</small></header><div class="tajawob-year-main"><div class="tajawob-volume"><small>حجم الطلبات</small><strong>3,481 <em>طلبًا</em></strong></div><div class="tajawob-rate-ring"><b>74%</b><small>معدل الإنجاز</small></div></div><footer><div><small>المتوسط الشهري</small><b>290</b><span>طلبًا</span></div><div><small>حالة المقارنة</small><b>سنة الأساس</b></div></footer></article>
+            <div class="tajawob-growth-bridge" aria-label="نمو حجم الطلبات بنسبة 109.4 بالمئة"><span>نمو الطلبات</span><strong>+109.4%</strong><small>مقارنة بعام 2025</small></div>
+            <article class="tajawob-year-card year-2026" style="--year-rate:98.2"><header><span>يناير–سبتمبر 2026</span><small>9 أشهر</small></header><div class="tajawob-year-main"><div class="tajawob-volume"><small>حجم الطلبات</small><strong>7,289 <em>طلبًا</em></strong></div><div class="tajawob-rate-ring"><b>98.2%</b><small>معدل الإنجاز</small></div></div><footer><div><small>المتوسط الشهري</small><b>810</b><span>طلبات</span></div><div class="tajawob-status-up"><small>مستوى الإنجاز</small><b>مرتفع</b></div></footer></article>
           </div>
           <div class="tajawob-peaks" aria-label="أوقات الذروة في منصة تجاوب">
             <article><span>أكثر يوم ازدحامًا</span><strong>الاثنين 27 أبريل</strong><small>97 طلبًا</small></article>
