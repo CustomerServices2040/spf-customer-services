@@ -42,17 +42,31 @@
 #performance .component-score-layout .quarter-period :is(span,b){margin:0;position:static;text-align:center}
 #performance .component-score-layout .quarter-change{display:flex!important;flex-direction:column;justify-content:center;align-items:center;gap:3px;min-height:64px!important;height:64px;width:64px;flex:none}
 #performance .component-score-layout .quarter-change :is(strong,small){margin:0;line-height:1.1;text-align:center}
-/* Communication and satisfaction are measured by half-year, not by quarter. */
-#performance .half-year-layout{grid-template-columns:142px minmax(0,1fr);align-items:center;gap:18px}
+/* One lively, visual half-year result instead of an empty second-half placeholder. */
+#performance .component-card{position:relative;isolation:isolate;overflow:hidden}
+#performance .component-card:after{content:"";position:absolute;z-index:-1;left:-58px;bottom:-76px;width:190px;height:190px;border:30px solid rgba(45,112,86,.055);border-radius:50%}
+#performance .communication-component:after{border-color:rgba(169,122,50,.065)}
+#performance .half-year-layout{position:relative;grid-template-columns:158px minmax(0,1fr);align-items:center;gap:25px;min-height:174px;padding:18px 20px;border:1px solid #d9e6de;border-radius:22px;background:radial-gradient(circle at 100% 0,rgba(69,132,105,.12),transparent 37%),linear-gradient(135deg,#f5faf7,#fff);box-shadow:0 12px 28px rgba(35,78,61,.08)}
+#performance .communication-component .half-year-layout{border-color:#eadfc9;background:radial-gradient(circle at 100% 0,rgba(184,139,69,.14),transparent 37%),linear-gradient(135deg,#fcf8ef,#fff)}
+#performance .half-year-layout .component-result{position:relative;display:grid;place-items:center;min-height:138px}
+#performance .half-year-layout .component-result:before,#performance .half-year-layout .component-result:after{content:"";position:absolute;border-radius:50%;background:#2d7056;box-shadow:0 0 0 5px rgba(45,112,86,.09)}
+#performance .half-year-layout .component-result:before{width:8px;height:8px;right:6px;top:15px}
+#performance .half-year-layout .component-result:after{width:5px;height:5px;left:10px;bottom:19px;opacity:.65}
+#performance .communication-component .half-year-layout .component-result:before,#performance .communication-component .half-year-layout .component-result:after{background:#a97732;box-shadow:0 0 0 5px rgba(169,119,50,.09)}
+#performance .half-year-layout .component-ring{width:132px;height:132px;box-shadow:0 12px 25px rgba(38,86,67,.15)}
+#performance .half-year-layout .component-ring strong{font-size:32px}
 #performance .half-year-layout .component-ring span{max-width:78px;line-height:1.35;text-align:center}
-#performance .half-year-status{position:relative;overflow:hidden;display:grid;align-content:center;min-height:122px;padding:20px 22px;border:1px solid #d7e5dc;border-radius:18px;background:linear-gradient(135deg,#f1f7f3,#fff);text-align:right}
-#performance .half-year-status:before{content:"H2";position:absolute;left:16px;top:13px;color:rgba(43,95,75,.12);font-size:48px;font-weight:900;line-height:1}
-#performance .half-year-status span{position:relative;color:#567065;font-size:11px;font-weight:900}
-#performance .half-year-status strong{position:relative;margin-top:5px;color:#2b654e;font-size:22px;line-height:1.25}
-#performance .half-year-status small{position:relative;margin-top:5px;color:#75857d;font-size:10px;line-height:1.5}
-#performance .communication-component .half-year-status{border-color:#eadfc9;background:linear-gradient(135deg,#fbf5e9,#fff)}
-#performance .communication-component .half-year-status:before{color:rgba(159,111,43,.12)}
-#performance .communication-component .half-year-status strong{color:#936729}
+#performance .half-year-details{display:grid;align-content:center;min-width:0;text-align:right}
+#performance .half-year-badge{display:inline-flex;align-items:center;gap:7px;width:max-content;max-width:100%;padding:7px 11px;border:1px solid #cfe0d6;border-radius:999px;background:#fff;color:#315f4d;font-size:11px;font-weight:900;box-shadow:0 4px 12px rgba(37,81,63,.06)}
+#performance .half-year-badge i{width:8px;height:8px;border-radius:50%;background:#2d7056;box-shadow:0 0 0 4px rgba(45,112,86,.12)}
+#performance .half-year-details>b{margin-top:13px;color:#244e3e;font-size:19px;line-height:1.4}
+#performance .half-year-meter{position:relative;height:12px;margin-top:16px;overflow:hidden;border-radius:999px;background:repeating-linear-gradient(90deg,#e3ebe6 0,#e3ebe6 calc(10% - 3px),transparent calc(10% - 3px),transparent 10%)}
+#performance .half-year-meter i{display:block;width:calc(var(--score)*1%);height:100%;border-radius:inherit;background:linear-gradient(90deg,#8fb7a4,#2d7056);box-shadow:0 2px 8px rgba(45,112,86,.25)}
+#performance .half-year-scale{display:flex;justify-content:space-between;margin-top:6px;color:#829087;font-size:9px;font-weight:800;direction:ltr}
+#performance .communication-component .half-year-badge{border-color:#eadbbd;color:#8d6228}
+#performance .communication-component .half-year-badge i{background:#a97732;box-shadow:0 0 0 4px rgba(169,119,50,.12)}
+#performance .communication-component .half-year-details>b{color:#7f5925}
+#performance .communication-component .half-year-meter i{background:linear-gradient(90deg,#d8bb7d,#a97732);box-shadow:0 2px 8px rgba(169,119,50,.25)}
 /* Tajawob uses completion rings, proportional bars and a compact process. */
 #tajawob .tajawob-hero{gap:12px}
 #tajawob .tajawob-hero>div{min-height:0;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:7px}
@@ -71,7 +85,7 @@
 #tajawob .tajawob-peaks strong{font-size:19px;line-height:1.5;margin:0}
 @media(max-width:1250px){#trackerKanban .tracker-kanban-columns{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:900px){#trackerKanban .tracker-kanban-columns{grid-template-columns:repeat(2,minmax(0,1fr))}#tajawob .tajawob-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){#methodology .pillar-track{grid-template-columns:minmax(0,1fr)}#methodology .pillar-track>article:last-child{grid-column:auto}#trackerKanban .tracker-kanban-columns{grid-template-columns:minmax(0,1fr)}#trackerKanban{padding:14px}#trackerKanban .tracker-kanban-column{padding:12px}#tajawob .tajawob-hero,#tajawob .tajawob-type-grid,#tajawob .tajawob-peaks{grid-template-columns:repeat(2,minmax(0,1fr))}#tajawob .tajawob-peaks article:last-child{grid-column:1/-1}#tajawob .tajawob-hero>div,#tajawob .tajawob-type-grid article{padding:14px}#tajawob .tajawob-flow article{padding:12px;grid-template-columns:28px minmax(0,1fr)}#tajawob .tajawob-flow article>i{width:28px;height:28px;font-size:13px}#methodology .pillar-track h3{font-size:16px}#performance .component-score-layout .quarter-period{min-height:104px!important;height:104px}#performance .component-score-layout .quarter-change{width:52px;height:52px;min-height:52px!important}#performance .half-year-layout{grid-template-columns:112px minmax(0,1fr);gap:12px}#performance .half-year-status{min-height:108px;padding:16px}#performance .half-year-status:before{left:10px;font-size:40px}}
+@media(max-width:700px){#methodology .pillar-track{grid-template-columns:minmax(0,1fr)}#methodology .pillar-track>article:last-child{grid-column:auto}#trackerKanban .tracker-kanban-columns{grid-template-columns:minmax(0,1fr)}#trackerKanban{padding:14px}#trackerKanban .tracker-kanban-column{padding:12px}#tajawob .tajawob-hero,#tajawob .tajawob-type-grid,#tajawob .tajawob-peaks{grid-template-columns:repeat(2,minmax(0,1fr))}#tajawob .tajawob-peaks article:last-child{grid-column:1/-1}#tajawob .tajawob-hero>div,#tajawob .tajawob-type-grid article{padding:14px}#tajawob .tajawob-flow article{padding:12px;grid-template-columns:28px minmax(0,1fr)}#tajawob .tajawob-flow article>i{width:28px;height:28px;font-size:13px}#methodology .pillar-track h3{font-size:16px}#performance .component-score-layout .quarter-period{min-height:104px!important;height:104px}#performance .component-score-layout .quarter-change{width:52px;height:52px;min-height:52px!important}#performance .half-year-layout{grid-template-columns:112px minmax(0,1fr);gap:14px;min-height:148px;padding:14px}#performance .half-year-layout .component-result{min-height:110px}#performance .half-year-layout .component-ring{width:104px;height:104px}#performance .half-year-layout .component-ring strong{font-size:25px}#performance .half-year-details>b{font-size:16px}#performance .half-year-meter{margin-top:12px}}
 @media(prefers-reduced-motion:reduce){#methodology .pillar-track>article,#planMilestones button{transition:none}}
 
 #planGoalModal{z-index:500}

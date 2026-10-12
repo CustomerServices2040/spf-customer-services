@@ -201,7 +201,7 @@ performance_section = '''        <section class="section-block performance-prior
           <div class="kpi-components" aria-label="مكونات المؤشر الرئيسي وأوزانها">
             <article class="component-card satisfaction-component">
               <div class="component-head"><div class="icon-title"><svg class="card-icon"><use href="#pi-heart"/></svg><div><span>المكوّن الأول</span><h3>مؤشر رضا المستفيدين</h3></div></div><b>70%<small>الوزن</small></b></div>
-              <div class="component-score-layout half-year-layout" aria-label="نتائج مؤشر رضا المستفيدين حسب النصف السنوي"><div class="component-result"><div class="component-ring" style="--value:86"><strong>86%</strong><span>النصف الأول 2026</span></div></div><div class="half-year-status"><span>النصف الثاني 2026</span><strong>قيد القياس</strong><small>تُضاف النتيجة بعد اعتمادها</small></div></div>
+              <div class="component-score-layout half-year-layout half-year-only" aria-label="نتيجة مؤشر رضا المستفيدين للنصف الأول 2026: 86 بالمئة"><div class="component-result"><div class="component-ring" style="--value:86"><strong>86%</strong><span>من 100</span></div></div><div class="half-year-details"><span class="half-year-badge"><i></i>النصف الأول 2026</span><b>النتيجة المعتمدة</b><div class="half-year-meter" style="--score:86" aria-hidden="true"><i></i></div><div class="half-year-scale"><span>0</span><span>50</span><span>100</span></div></div></div>
               <div class="satisfaction-sources">
                 <span>المؤشرات الفرعية المعتمدة</span>
                 <div><article><i>01</i><b>المركز الوطني للإحصاء والمعلومات</b><small>وفق مؤشرات المركز</small></article><article><i>02</i><b>وزارة العمل</b><small>وفق مؤشرات الوزارة</small></article><article><i>03</i><b>منصة تجاوب</b><small>المقترحات والشكاوى والبلاغات</small></article></div>
@@ -209,7 +209,7 @@ performance_section = '''        <section class="section-block performance-prior
             </article>
             <article class="component-card communication-component">
               <div class="component-head"><div class="icon-title"><svg class="card-icon gold-icon"><use href="#pi-message"/></svg><div><span>المكوّن الثاني</span><h3>مؤشر التواصل والتفاعل</h3></div></div><b>30%<small>الوزن</small></b></div>
-              <div class="component-score-layout half-year-layout" aria-label="نتائج مؤشر التواصل والتفاعل حسب النصف السنوي"><div class="component-result"><div class="component-ring gold-ring" style="--value:88"><strong>88%</strong><span>النصف الأول 2026</span></div></div><div class="half-year-status"><span>النصف الثاني 2026</span><strong>قيد القياس</strong><small>تُضاف النتيجة بعد اعتمادها</small></div></div>
+              <div class="component-score-layout half-year-layout half-year-only" aria-label="نتيجة مؤشر التواصل والتفاعل للنصف الأول 2026: 88 بالمئة"><div class="component-result"><div class="component-ring gold-ring" style="--value:88"><strong>88%</strong><span>من 100</span></div></div><div class="half-year-details"><span class="half-year-badge"><i></i>النصف الأول 2026</span><b>النتيجة المعتمدة</b><div class="half-year-meter" style="--score:88" aria-hidden="true"><i></i></div><div class="half-year-scale"><span>0</span><span>50</span><span>100</span></div></div></div>
             </article>
           </div>
 
