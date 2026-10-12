@@ -172,7 +172,7 @@ replace_required('11 · الريادة والشراكة المجتمعية', '12
 performance_section = '''        <section class="section-block performance-priority" id="performance">
           <div class="section-heading">
             <div><span class="section-kicker">08 · الأداء والمؤشرات</span><h2>المؤشر الرئيسي للمديرية ثم الأداء التشغيلي وحجم الأعمال</h2></div>
-            <span class="section-note">حتى أغسطس 2026 · وفق فترة توفر كل مصدر</span>
+            <span class="section-note">المؤشر المؤسسي: النصف الأول 2026</span>
           </div>
           <svg class="performance-icon-sprite" aria-hidden="true">
             <symbol id="pi-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></symbol>
@@ -213,27 +213,27 @@ performance_section = '''        <section class="section-block performance-prior
             </article>
           </div>
 
-          <div class="performance-tier-heading"><div><span>المستوى الثاني</span><h3>المؤشرات التشغيلية ذات الأولوية</h3></div><small>مؤشران مباشران لكفاءة الاستجابة</small></div>
+          <div class="performance-tier-heading"><div><span>المستوى الثاني</span><h3>المؤشرات التشغيلية ذات الأولوية</h3></div><small>يناير–سبتمبر 2026</small></div>
           <div class="operational-priority-grid">
             <article><div class="operational-rank"><svg class="card-icon"><use href="#pi-headset"/></svg></div><div><span>كفاءة استجابة مركز الخدمة الهاتفية</span><strong>100%</strong></div><div class="target-achievement target-ring" style="--target:90"><b>90%</b><small>المستهدف</small><em>+10</em></div></article>
             <article><div class="operational-rank"><svg class="card-icon"><use href="#pi-inbox"/></svg></div><div><span>الاستجابة لطلبات منصة تجاوب</span><strong>100%</strong></div><div class="target-achievement target-ring" style="--target:85"><b>85%</b><small>المستهدف</small><em>+15</em></div></article>
           </div>
 
-          <div class="performance-tier-heading workload-heading"><div><span>المستوى الثالث</span><h3>حجم الأعمال حسب قناة تقديم الخدمة</h3></div><small>تفاصيل تشغيلية بعد المؤشرات الرئيسية</small></div>
+          <div class="performance-tier-heading workload-heading"><div><span>المستوى الثالث</span><h3>حجم الأعمال المنجزة حسب قناة تقديم الخدمة</h3></div><small>يناير–سبتمبر 2026</small></div>
           <div class="workload-overview">
-            <article class="workload-total"><svg class="summary-icon"><use href="#pi-layers"/></svg><span>إجمالي حجم الأعمال</span><strong>452,453</strong><small>خدمة خلال ستة أشهر · 3,428 خدمة يوميًا</small></article>
-            <article class="channel-share"><div class="performance-share-ring" style="--share:62"><svg class="ring-icon"><use href="#pi-digital"/></svg><b>62%</b></div><div><span>القنوات الرقمية</span><strong>279,580</strong><small>من إجمالي الأعمال</small></div></article>
-            <article class="channel-share physical-share"><div class="performance-share-ring" style="--share:38"><svg class="ring-icon"><use href="#pi-building"/></svg><b>38%</b></div><div><span>القنوات غير الرقمية</span><strong>172,873</strong><small>من إجمالي الأعمال</small></div></article>
+            <article class="workload-total"><svg class="summary-icon"><use href="#pi-layers"/></svg><span>إجمالي حجم الأعمال</span><strong>681,015</strong><small>متوسط 3,439 خدمة يوميًا</small></article>
+            <article class="channel-share"><div class="performance-share-ring" style="--share:57.5"><svg class="ring-icon"><use href="#pi-digital"/></svg><b>57.5%</b></div><div><span>القنوات الرقمية</span><strong>391,290</strong><small>من إجمالي الأعمال</small></div></article>
+            <article class="channel-share physical-share"><div class="performance-share-ring" style="--share:42.5"><svg class="ring-icon"><use href="#pi-building"/></svg><b>42.5%</b></div><div><span>القنوات غير الرقمية</span><strong>289,725</strong><small>من إجمالي الأعمال</small></div></article>
           </div>
 
           <div class="workload-groups">
             <article class="workload-group branches-workload">
               <div class="workload-group-head"><div class="icon-title"><svg class="card-icon"><use href="#pi-building"/></svg><div><span>دوائر ومنافذ المحافظات</span><h3>الوصول والخدمات المباشرة</h3></div></div><b>7 مؤشرات</b></div>
-              <div class="workload-metrics visual-metrics"><div style="--v:62"><span>حجوزات المواعيد</span><strong>94,081</strong><i></i><small>713 يوميًا</small></div><div style="--v:100"><span>استخدام تقييم QR</span><strong>151,117</strong><i></i><small>الأعلى حجمًا</small></div><div style="--v:16"><span>الخدمات الميدانية</span><strong>24,773</strong><i></i><small>188 يوميًا</small></div><div style="--v:3"><span>الخدمات الاستباقية</span><strong>4,294</strong><i></i><small>33 يوميًا</small></div><div style="--v:11"><span>الخدمات الذاتية</span><strong>17,160</strong><i></i><small>130 يوميًا</small></div><div style="--v:1"><span>الأنشطة الإعلامية</span><strong>313</strong><i></i><small>52 شهريًا</small></div><div class="branch-whatsapp-metric"><img src="assets/channels/whatsapp.png" alt="واتساب"><span>الخدمات المقدمة عبر واتساب دوائر المحافظات</span><strong>7,728</strong><small>يوليو–أغسطس 2026</small></div></div>
+              <div class="workload-metrics visual-metrics"><div style="--v:100"><span>الزيارات لدوائر ومنافذ المحافظات</span><strong>198,121</strong><i></i><small>1,001 يوميًا</small></div><div style="--v:83"><span>عدد التقييم عبر QR الإجادة المؤسسية</span><strong>164,978</strong><i></i><small>تقييم وزارة العمل</small></div><div style="--v:16"><span>الخدمات الميدانية</span><strong>31,973</strong><i></i><small>161 يوميًا</small></div><div style="--v:3"><span>الخدمات الاستباقية</span><strong>5,012</strong><i></i><small>25 يوميًا</small></div><div style="--v:13"><span>الخدمات الذاتية</span><strong>25,345</strong><i></i><small>128 يوميًا</small></div><div style="--v:1"><span>الأنشطة والفعاليات</span><strong>367</strong><i></i><small>41 شهريًا</small></div><div class="branch-whatsapp-metric"><img src="assets/channels/whatsapp.png" alt="واتساب"><span>الخدمات المقدمة عبر واتساب دوائر المحافظات</span><strong>28,907</strong><small>خدمات منجزة عبر واتساب المحافظات</small></div></div>
             </article>
             <article class="workload-group contact-workload">
               <div class="workload-group-head"><div class="icon-title"><svg class="card-icon"><use href="#pi-headset"/></svg><div><span>مركز الاتصال</span><h3>المكالمات وجودة الاستجابة والتفاعل</h3></div></div><b>7 مؤشرات</b></div>
-              <div class="contact-kpi-grid"><div class="contact-primary-metric"><svg class="contact-lead-icon"><use href="#pi-headset"/></svg><strong>184,197</strong><span>مكالمة مستلمة</span></div><div class="contact-satisfaction-metric"><svg class="contact-metric-icon"><use href="#pi-smile"/></svg><strong>86.7%</strong><span>الرضا عن الخدمة الهاتفية</span><small>المؤشر الأهم</small></div><div><svg class="contact-metric-icon"><use href="#pi-inbox"/></svg><strong>100%</strong><span>كفاءة الاستجابة</span></div><div><svg class="contact-metric-icon"><use href="#pi-clock"/></svg><strong>52</strong><span>ثانية متوسط الانتظار</span></div><div><svg class="contact-metric-icon"><use href="#pi-timer"/></svg><strong>3:15</strong><span>متوسط مدة المكالمة</span></div><div class="contact-wide"><svg class="contact-metric-icon"><use href="#pi-bot"/></svg><strong>40,736</strong><span>خدمة عبر المساعد الذكي</span></div><div class="contact-x-metric"><img src="assets/channels/x.png" alt="منصة X"><strong>2,067</strong><span>خدمات مقدمة عبر منصة X</span><small>يناير–يونيو</small></div></div>
+              <div class="contact-kpi-grid"><div class="contact-primary-metric"><svg class="contact-lead-icon"><use href="#pi-headset"/></svg><strong>271,763</strong><span>مكالمة مستلمة</span></div><div class="contact-satisfaction-metric"><svg class="contact-metric-icon"><use href="#pi-smile"/></svg><strong>86.6%</strong><span>الرضا عن الخدمة الهاتفية</span><small>المؤشر الأهم</small></div><div><svg class="contact-metric-icon"><use href="#pi-inbox"/></svg><strong>100%</strong><span>كفاءة الاستجابة</span><small>متوفر حتى أغسطس 2026</small></div><div><svg class="contact-metric-icon"><use href="#pi-clock"/></svg><strong>39.7</strong><span>ثانية متوسط الانتظار</span></div><div><svg class="contact-metric-icon"><use href="#pi-timer"/></svg><strong>3:22</strong><span>متوسط مدة المكالمة</span></div><div class="contact-wide"><svg class="contact-metric-icon"><use href="#pi-bot"/></svg><strong>112,238</strong><span>خدمة عبر المساعد الذكي</span></div><div class="contact-x-metric"><img src="assets/channels/x.png" alt="منصة X"><strong>3,424</strong><span>خدمات مقدمة عبر منصة X</span><small>حساب عناية المتعاملين</small></div></div>
             </article>
           </div>
         </section>'''
@@ -251,13 +251,13 @@ if performance_replacements != 1:
 tajawob_section = '''        <section class="section-block tajawob-updated" id="tajawob">
           <div class="section-heading">
             <div><span class="section-kicker">09 · منصة تجاوب</span><h2>صوت المتعامل في مسار قابل للقياس</h2></div>
-            <span class="section-note">يناير–أغسطس 2026</span>
+            <span class="section-note">يناير–سبتمبر 2026</span>
           </div>
           <div class="tajawob-hero updated">
-            <div><span>إجمالي الطلبات</span><strong>5,610</strong><small>خلال ثمانية أشهر</small></div>
-            <div><span>متوسط نسبة الإنجاز</span><strong>97.8%</strong><small>المستهدف 100%</small></div>
-            <div><span>الطلبات المنجزة</span><strong>5,488</strong><small>مقابل 122 غير منجز</small></div>
-            <div><span>عدد الأشهر</span><strong>8</strong><small>يناير إلى أغسطس 2026</small></div>
+            <div><span>إجمالي الطلبات</span><strong>7,289</strong><small>خلال تسعة أشهر</small></div>
+            <div><span>نسبة الإنجاز للفترة</span><strong>98.2%</strong><small>المنجز ÷ إجمالي الطلبات</small></div>
+            <div><span>الطلبات المنجزة</span><strong>7,155</strong><small>مقابل 134 غير منجز</small></div>
+            <div><span>عدد الأشهر</span><strong>9</strong><small>يناير إلى سبتمبر 2026</small></div>
           </div>
           <div class="tajawob-flow" aria-label="مسار معالجة طلب المتعامل في منصة تجاوب">
             <article><i>1</i><b>استقبال الطلب</b><span>شكوى أو استفسار أو مقترح أو بلاغ</span></article>
@@ -266,14 +266,14 @@ tajawob_section = '''        <section class="section-block tajawob-updated" id="
             <article><i>4</i><b>قياس التجربة</b><span>قراءة الإنجاز والاتجاهات الزمنية</span></article>
           </div>
           <div class="tajawob-type-grid" aria-label="طلبات منصة تجاوب حسب النوع">
-            <article style="--rate:98"><span>المقترحات</span><strong>212</strong><b>208 منجزة · 98%</b><i><em></em></i></article>
-            <article style="--rate:96"><span>الشكاوى</span><strong>1,879</strong><b>1,811 منجزة · 96%</b><i><em></em></i></article>
-            <article style="--rate:65"><span>البلاغات</span><strong>20</strong><b>13 منجزة · 65%</b><i><em></em></i></article>
-            <article style="--rate:99"><span>الاستفسارات</span><strong>3,499</strong><b>3,456 منجزة · 99%</b><i><em></em></i></article>
+            <article style="--rate:98.4"><span>المقترحات</span><strong>256</strong><b>252 منجزة · 98.4%</b><i><em></em></i></article>
+            <article style="--rate:96.9"><span>الشكاوى</span><strong>2,161</strong><b>2,094 منجزة · 96.9%</b><i><em></em></i></article>
+            <article style="--rate:66.7"><span>البلاغات</span><strong>21</strong><b>14 منجزة · 66.7%</b><i><em></em></i></article>
+            <article style="--rate:98.8"><span>الاستفسارات</span><strong>4,851</strong><b>4,795 منجزة · 98.8%</b><i><em></em></i></article>
           </div>
           <div class="tajawob-compare" aria-label="مقارنة حجم الطلبات ونسبة الإنجاز بين 2025 و2026">
             <article class="tajawob-year-card year-2025" style="--year-rate:74" data-rate="74%"><div><span>عام 2025</span><strong>3,481 <small>طلبًا</small></strong></div><p>معدل الإنجاز وفق التقرير السابق</p></article>
-            <article class="tajawob-year-card year-2026" style="--year-rate:97.8" data-rate="97.8%"><div><span>يناير–أغسطس 2026</span><strong>5,610 <small>طلبات</small></strong></div><p data-growth="↑ 61.2%">متوسط الإنجاز مع نمو واضح في حجم الطلبات</p></article>
+            <article class="tajawob-year-card year-2026" style="--year-rate:98.2" data-rate="98.2%"><div><span>يناير–سبتمبر 2026</span><strong>7,289 <small>طلبات</small></strong></div><p data-growth="↑ 109.4%">نسبة الإنجاز مع نمو واضح في حجم الطلبات</p></article>
           </div>
           <div class="tajawob-peaks" aria-label="أوقات الذروة في منصة تجاوب">
             <article><span>أكثر يوم ازدحامًا</span><strong>الاثنين 27 أبريل</strong><small>97 طلبًا</small></article>
@@ -309,19 +309,19 @@ text, tajawob_replacements = re.subn(
 if tajawob_replacements != 1:
     raise SystemExit("Expected the Tajawob section once")
 
-replace_required('الفترة المرجعية: يناير–يونيو 2026', 'الفترة المرجعية: يناير–أغسطس 2026')
+replace_required('الفترة المرجعية: يناير–يونيو 2026', 'الفترة المرجعية: يناير–سبتمبر 2026')
 replace_required(
 '''            <article><img src="assets/channels/contact-center.png" alt=""><strong>184,197</strong><span>مكالمة مستلمة</span></article>
             <article><span class="board-line-icon">◷</span><strong>52</strong><span>ثانية انتظار</span></article>
             <article><span class="board-line-icon">♡</span><strong>86.7%</strong><span>رضا الخدمة الهاتفية</span></article>
             <article><img src="assets/channels/whatsapp.png" alt=""><strong>40,736</strong><span>خدمة ذكية وواتساب</span></article>
             <article><img src="assets/channels/x.png" alt=""><strong>2,067</strong><span>خدمة عبر X</span></article>''',
-'''            <article><img src="assets/channels/contact-center.png" alt=""><strong>184,197</strong><span>مكالمة مستلمة</span></article>
+'''            <article><img src="assets/channels/contact-center.png" alt=""><strong>271,763</strong><span>مكالمة مستلمة</span></article>
             <article><span class="board-line-icon">✓</span><strong>100%</strong><span>كفاءة الاستجابة</span></article>
-            <article><span class="board-line-icon">◷</span><strong>52</strong><span>ثانية انتظار</span></article>
-            <article><span class="board-line-icon">♡</span><strong>86.7%</strong><span>رضا الخدمة الهاتفية</span></article>
-            <article><img src="assets/channels/whatsapp.png" alt=""><strong>7,728</strong><span>طلب واتساب · يوليو–أغسطس</span></article>
-            <article><img src="assets/channels/x.png" alt=""><strong>2,067</strong><span>خدمات مقدمة عبر منصة X</span></article>''')
+            <article><span class="board-line-icon">◷</span><strong>39.7</strong><span>ثانية انتظار</span></article>
+            <article><span class="board-line-icon">♡</span><strong>86.6%</strong><span>رضا الخدمة الهاتفية</span></article>
+            <article><img src="assets/channels/whatsapp.png" alt=""><strong>28,907</strong><span>خدمات واتساب المحافظات</span></article>
+            <article><img src="assets/channels/x.png" alt=""><strong>3,424</strong><span>خدمات مقدمة عبر منصة X</span></article>''')
 
 replace_required(
 '''            <article class="method-application">
@@ -399,9 +399,6 @@ replace_required(
     '<link rel="stylesheet" href="assets/styles.css" />',
     '<link rel="stylesheet" href="assets/styles.css?v=20260927-5" />')
 
-# Final approved community-activity count across every presentation view.
-text = text.replace('<strong>316</strong>', '<strong>313</strong>')
-
 # Inject standalone community/media chapters before exhibition.js builds its chapter list.
 # Remove any stale/partial links first so both the navigation and section markup
 # are generated together in one deterministic build.
@@ -417,18 +414,18 @@ if 'href="#community-line"' not in text:
 community_media_sections = r'''        <section class="section-block community-v2" id="community-line">
           <div class="community-hero-v2">
             <div class="community-hero-copy">
-              <span class="community-eyebrow">خطة التواصل المجتمعي · يناير–أغسطس 2026</span>
+              <span class="community-eyebrow">خطة التواصل المجتمعي · يناير–سبتمبر 2026</span>
               <h2>نقترب من المجتمع، ونحوّل المعرفة إلى أثر</h2>
               <p>خطة سنوية متكاملة تعمل عبر ثلاثة مسارات: التمكين، التعريف والتوعية، والشراكة المجتمعية.</p>
               <div class="community-paths"><span>↗ التمكين</span><span>● التعريف والتوعية</span><span>◇ الشراكة المجتمعية</span></div>
             </div>
-            <div class="community-main-number"><span>إجمالي الأنشطة والفعاليات</span><strong>313</strong><small>العدد النهائي المعتمد</small></div>
+            <div class="community-main-number"><span>إجمالي الأنشطة والفعاليات</span><strong>316</strong><small>العدد النهائي المعتمد</small></div>
           </div>
           <div class="community-impact-grid">
-            <article class="impact-a"><i>◫</i><span>الأنشطة والفعاليات</span><strong>313</strong><small>يناير–أغسطس 2026</small></article>
-            <article class="impact-b"><i>◎</i><span>المستفيدون والمشاركون</span><strong>17,093</strong><small>نطاق أثر مجتمعي مباشر</small></article>
-            <article class="impact-c"><i>✓</i><span>الشركاء</span><strong>+255</strong><small>جهة وشريكًا في المحافظات</small></article>
-            <article class="impact-d"><i>⌂</i><span>التغطية الجغرافية</span><strong>11</strong><small>محافظة</small></article>
+            <article class="impact-a"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M8 14h3M8 17h7"/></svg></i><span>الأنشطة والفعاليات</span><strong>316</strong><small>نشاطًا وفعالية</small><em style="--impact-fill:88"></em></article>
+            <article class="impact-b"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 20v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></i><span>المستفيدون والمشاركون</span><strong>17,093</strong><small>نطاق أثر مجتمعي مباشر</small><em style="--impact-fill:96"></em></article>
+            <article class="impact-c"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></i><span>الشركاء</span><strong>+255</strong><small>جهة وشريكًا في المحافظات</small><em style="--impact-fill:78"></em></article>
+            <article class="impact-d"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-7 9 7M5 10v10h14V10M9 20v-6h6v6"/></svg></i><span>التغطية الجغرافية</span><strong>11</strong><small>محافظة</small><em style="--impact-fill:100"></em></article>
           </div>
           <div class="community-story-grid-v2">
             <article class="community-roadmap-card">
@@ -449,7 +446,7 @@ community_media_sections = r'''        <section class="section-block community-v
                 <div><time>أبريل</time><span></span><p><b>اليوم العالمي للتوحد والسلامة المهنية</b><small>الظاهرة · ظفار</small></p></div>
                 <div><time>مايو</time><span></span><p><b>اليوم العالمي للعمال وحوارات مجتمعية</b><small>عدة محافظات</small></p></div>
                 <div><time>يونيو</time><span></span><p><b>مبادرات توعوية ولقاءات تعريفية</b><small>عدة محافظات</small></p></div>
-                <div class="event-future"><time>يوليو–أغسطس</time><span></span><p><b>استكمال تنفيذ الخطة المجتمعية بالمحافظات</b><small>ضمن إجمالي 313 نشاطًا وفعالية</small></p></div>
+                <div class="event-future"><time>يوليو–أغسطس</time><span></span><p><b>استكمال تنفيذ الخطة المجتمعية بالمحافظات</b><small>ضمن إجمالي 316 نشاطًا وفعالية حتى سبتمبر</small></p></div>
               </div>
             </article>
           </div>

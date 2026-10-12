@@ -605,6 +605,33 @@ html{scroll-padding-top:150px}.governorate-grid span{display:flex;flex-direction
 .tajawob-compare .year-2026 p:after{content:attr(data-growth) " نمو الطلبات";display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;margin-top:9px;padding:5px 9px;border-radius:999px;background:#e4f1e9;color:#245b43;font-size:9px;font-weight:900}
 @media(max-width:700px){.component-score-layout .quarter-comparison>div{min-height:115px!important}.component-score-layout .quarter-comparison b{font-size:25px}.tajawob-compare .tajawob-year-card{min-height:174px;padding:20px 118px 20px 18px}.tajawob-compare .tajawob-year-card:before{right:18px;width:76px;height:76px;font-size:17px}.tajawob-compare .tajawob-year-card:after{right:13px;top:calc(50% + 43px)}.tajawob-compare .tajawob-year-card strong{font-size:30px}}
 
+/* Reporting periods sit once in each performance tier heading. */
+#performance .performance-tier-heading{direction:rtl;text-align:right;align-items:center}
+#performance .performance-tier-heading>div{min-width:0;margin-left:auto;text-align:right}
+#performance .performance-tier-heading>small{flex:none;margin-right:auto;white-space:nowrap;padding:7px 12px;border-radius:999px;background:#fff;color:#526b60;font-size:10px;font-weight:900;box-shadow:0 4px 12px rgba(39,78,62,.06)}
+#performance .performance-tier-heading h3,#performance .performance-tier-heading span{width:auto;text-align:right}
+#performance .workload-heading{padding:14px 17px;border:1px solid #e2e7e3;border-radius:15px;background:linear-gradient(100deg,#f7f3e9,#fff)}
+#performance .workload-overview .workload-total small{font-size:10px}
+
+/* Give the Tajawob comparison a balanced RTL layout with the ring opposite the text. */
+.tajawob-compare .tajawob-year-card{min-height:210px;padding:25px 25px 24px 138px;display:flex;flex-direction:column;justify-content:center}
+.tajawob-compare .tajawob-year-card:before{right:auto;left:25px;width:96px;height:96px;font-size:22px}
+.tajawob-compare .tajawob-year-card:after{right:auto;left:30px;top:calc(50% + 52px);width:86px;font-size:9px}
+.tajawob-compare .tajawob-year-card>div,.tajawob-compare .tajawob-year-card>p{position:relative;z-index:1}
+.tajawob-compare .tajawob-year-card strong{font-size:42px}
+.tajawob-compare .tajawob-year-card p{max-width:285px;font-size:11px}
+.tajawob-compare .year-2026{box-shadow:inset 0 0 0 1px rgba(190,145,67,.08),0 12px 30px rgba(94,68,27,.08)}
+
+/* Community metrics: keep icons clear of RTL titles and add visual magnitude bars. */
+.community-v2 .community-impact-grid article{justify-content:flex-start;min-height:175px;padding:21px 20px 18px;text-align:right}
+.community-v2 .community-impact-grid article>i{right:auto;left:18px;top:17px;width:43px;height:43px}
+.community-v2 .community-impact-grid article>i svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.community-v2 .community-impact-grid article>span{max-width:calc(100% - 54px);min-height:42px;padding-top:4px;font-weight:800;line-height:1.45}
+.community-v2 .community-impact-grid article>strong{margin-top:10px;font-size:39px!important}
+.community-v2 .community-impact-grid article>small{margin-top:4px;line-height:1.45}
+.community-v2 .community-impact-grid article>em{display:block;height:6px;margin-top:auto;border-radius:99px;background:linear-gradient(90deg,var(--green) calc(var(--impact-fill)*1%),rgba(58,86,76,.12) 0)}
+@media(max-width:700px){#performance .performance-tier-heading{align-items:flex-start}#performance .performance-tier-heading>small{margin:0}.tajawob-compare .tajawob-year-card{min-height:190px;padding:22px 20px 22px 116px}.tajawob-compare .tajawob-year-card:before{left:18px;width:78px;height:78px;font-size:18px}.tajawob-compare .tajawob-year-card:after{left:14px;top:calc(50% + 44px)}.tajawob-compare .tajawob-year-card strong{font-size:34px}}
+
 /* Quarterly score journey: one readable comparison instead of two text boxes. */
 .component-score-layout .quarter-comparison{position:relative;display:grid;grid-template-columns:minmax(88px,1fr) 72px minmax(88px,1fr);align-items:center;gap:0;margin-top:14px;padding:13px;border:1px solid rgba(42,84,67,.12);border-radius:18px;background:linear-gradient(145deg,#f7faf8,#fff);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 8px 20px rgba(31,72,55,.05)}
 .component-score-layout .quarter-comparison:before{content:"";position:absolute;right:19%;left:19%;top:50%;height:3px;border-radius:5px;background:#dbe6df;transform:translateY(-50%)}
@@ -627,3 +654,4 @@ html{scroll-padding-top:150px}.governorate-grid span{display:flex;flex-direction
 .kpi-components{grid-template-columns:1fr 1fr}
 @media(max-width:1050px){.kpi-components{grid-template-columns:1fr}}
 @media(max-width:700px){.component-score-layout{grid-template-columns:1fr}.component-score-layout .component-result{justify-items:center}.component-score-layout .quarter-comparison{grid-template-columns:minmax(78px,1fr) 60px minmax(78px,1fr);width:100%;padding:10px}.component-score-layout .quarter-period{max-height:96px;border-radius:14px!important}.component-score-layout .quarter-period b{font-size:27px}.component-score-layout .quarter-change{width:50px;height:50px;border-width:4px}.component-score-layout .quarter-change strong{font-size:15px}.component-score-layout .quarter-change i{top:-15px;font-size:18px}}
+

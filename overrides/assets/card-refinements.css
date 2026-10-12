@@ -124,3 +124,35 @@ html.presentation-fullscreen{background:#f3f4f0}html.presentation-fullscreen .to
 @media(max-width:1050px){.operational-budget-card{grid-template-columns:1fr 1fr}.budget-values{grid-column:1/-1}.governorate-profile-column{grid-column:1!important;grid-row:auto!important}#governorates-map .governorate-work{grid-column:1!important}}
 @media(max-width:700px){.operational-budget-card{grid-template-columns:minmax(0,1fr);gap:18px;padding:21px 18px 29px}.budget-values{grid-column:auto;grid-template-columns:minmax(0,1fr)}.budget-usage{padding:0}.budget-ring{width:96px;height:96px}.budget-values strong{font-size:25px}.budget-progress{right:18px;left:18px}#governorateInspector .governorate-work .work-total{grid-template-columns:minmax(0,1fr);text-align:center}#performance .performance-tier-heading:not(.workload-heading){align-items:flex-start}#performance .operational-priority-grid>article{grid-template-columns:57px minmax(0,1fr) 86px;gap:11px;padding:17px 14px;min-height:150px}#performance .operational-rank{width:53px;height:53px}#performance .target-ring{width:82px;height:82px;min-width:82px!important}#performance .operational-priority-grid>article>div:nth-child(2) span{font-size:11px}#performance .operational-priority-grid>article>div:nth-child(2) strong{font-size:36px}}
 @media(max-width:460px){#performance .operational-priority-grid>article{grid-template-columns:52px minmax(0,1fr)}#performance .target-ring{grid-column:1/-1!important;justify-self:center}.budget-heading{align-items:flex-start}.budget-icon{width:48px;height:48px}}
+
+
+/* October statistics presentation: align tier titles and prevent icon/title collisions. */
+#performance .performance-tier-heading{direction:rtl;text-align:right;align-items:center!important}
+#performance .performance-tier-heading>div{min-width:0;margin-left:auto;text-align:right}
+#performance .performance-tier-heading h3,#performance .performance-tier-heading span{text-align:right}
+#performance .performance-tier-heading>small{flex:none;margin-right:auto!important;white-space:nowrap;padding:7px 12px!important;border-radius:999px;background:#fff!important;color:#526b60!important;font-size:10px!important;font-weight:900!important;box-shadow:0 4px 12px rgba(39,78,62,.06)}
+#performance .workload-heading{padding:14px 17px;border:1px solid #e2e7e3;border-radius:15px;background:linear-gradient(100deg,#f7f3e9,#fff)}
+#performance .performance-tier-heading:not(.workload-heading){display:grid!important;grid-template-columns:auto minmax(0,1fr) 41px;grid-template-areas:"period title marker";direction:ltr}
+#performance .performance-tier-heading:not(.workload-heading):before{grid-area:marker;position:static}
+#performance .performance-tier-heading:not(.workload-heading)>div{grid-area:title;direction:rtl;margin:0;text-align:right}
+#performance .performance-tier-heading:not(.workload-heading)>small{grid-area:period;margin:0!important;justify-self:start}
+#performance .icon-title{display:grid;grid-template-columns:42px minmax(0,1fr);align-items:center;text-align:right}
+#performance .icon-title>svg{grid-column:1;grid-row:1;position:static!important}
+#performance .icon-title>div{grid-column:2;grid-row:1;min-width:0}
+#performance .icon-title h3,#performance .icon-title span{overflow-wrap:anywhere}
+
+.tajawob-compare .tajawob-year-card{min-height:210px;padding:25px 25px 24px 138px;display:flex;flex-direction:column;justify-content:center}
+.tajawob-compare .tajawob-year-card:before{right:auto;left:25px;width:96px;height:96px;font-size:22px}
+.tajawob-compare .tajawob-year-card:after{right:auto;left:30px;top:calc(50% + 52px);width:86px;font-size:9px}
+.tajawob-compare .tajawob-year-card>div,.tajawob-compare .tajawob-year-card>p{position:relative;z-index:1}
+.tajawob-compare .tajawob-year-card strong{font-size:42px}
+.tajawob-compare .tajawob-year-card p{max-width:285px;font-size:11px}
+
+.community-v2 .community-impact-grid article{justify-content:flex-start;min-height:175px;padding:21px 20px 18px;text-align:right}
+.community-v2 .community-impact-grid article>i{right:auto;left:18px;top:17px;width:43px;height:43px}
+.community-v2 .community-impact-grid article>i svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.community-v2 .community-impact-grid article>span{max-width:calc(100% - 54px);min-height:42px;padding-top:4px;font-weight:800;line-height:1.45}
+.community-v2 .community-impact-grid article>strong{margin-top:10px;font-size:39px!important}
+.community-v2 .community-impact-grid article>small{margin-top:4px;line-height:1.45}
+.community-v2 .community-impact-grid article>em{display:block;height:6px;margin-top:auto;border-radius:99px;background:linear-gradient(90deg,var(--green) calc(var(--impact-fill)*1%),rgba(58,86,76,.12) 0)}
+@media(max-width:700px){#performance .performance-tier-heading{align-items:flex-start!important}#performance .performance-tier-heading>small{margin:0!important}.tajawob-compare .tajawob-year-card{min-height:190px;padding:22px 20px 22px 116px}.tajawob-compare .tajawob-year-card:before{left:18px;width:78px;height:78px;font-size:18px}.tajawob-compare .tajawob-year-card:after{left:14px;top:calc(50% + 44px)}.tajawob-compare .tajawob-year-card strong{font-size:34px}}
