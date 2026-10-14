@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-10-14T08:50:29.070Z",
+  "updatedAt": "2026-10-14T10:15:59.838Z",
   "edits": {
     "div:1>main:1>header:1>div:1>span:1": "صندوق الحماية الاجتماعية · سلطنة عُمان",
     "div:1>main:1>header:1>div:1>h1:1": "بوصلة المتعامل",
@@ -51,8 +51,8 @@
     "#directorate>div:2>article:2>ul:1>li:3>b:1": "C3",
     "#directorate>div:3>article:1>div:1>h3:1": "الهيكل الإداري",
     "#directorate>div:3>article:1>div:1>span:1": "239 موظفًا",
-    "#directorate>div:3>article:1>div:2>div:2>div:1>small:1": "4 وحدات تخصصية",
-    "#directorate>div:3>article:1>div:2>div:2>div:2>small:1": "11 محافظة",
+    "#directorate>div:3>article:1>div:2>div:2>div:1>small:1": "4 اقسام إدارية",
+    "#directorate>div:3>article:1>div:2>div:2>div:2>small:1": "11 دائرة في المحافظات",
     "#directorate>div:3>article:1>div:2>div:3>span:1": "شؤون الدوائر والمنافذ",
     "#directorate>div:3>article:1>div:2>div:3>span:2": "علاقات المتعاملين",
     "#directorate>div:3>article:1>div:2>div:3>span:3": "إدارة وتطوير الخدمات",
@@ -1466,7 +1466,7 @@
     "#governorateProductivity>article:2>small:1": "",
     "#governoratePopulation>div:1>span:1": "العمانيون في المحافظة · أغسطس 2026",
     "#governoratePopulation>div:2>article:1>span:1": "عدد العمانيين",
-    "#govOmaniPopulation": "—",
+    "#govOmaniPopulation": "416,156",
     "#operationalPlanGrid>article:1>div:3>div:1>small:1": "يُحتسب الإنجاز من النتائج التي تم تسليمها فعليًا",
     "#operationalPlanGrid>article:1>div:3>div:2>div:1>span:1": "النتيجة 1",
     "#operationalPlanGrid>article:1>div:3>div:2>div:1>b:1": "تحديد المبادرات المقترحة النهائية القابلة للتطبيق وتحديث وثيقة المخرجات",
@@ -2444,7 +2444,13 @@
     "future-project.access.2.title": "المقابلات الافتراضية ومنصة التعلم الذكية",
     "future-project.access.2.description": "تفعيل المقابلات المرئية (Video Calls)، ومنصة التعلم الإلكتروني (E-learning)، وقاعدة معرفة لتعزيز مهارات مقدمي الخدمة.",
     "future-project.access.3.title": "ركن تجربة العميل",
-    "future-project.access.3.description": "تخصيص مساحة محددة تهدف إلى قياس وتطوير وتحسين تجربة المتعامل بشكل مباشر."
+    "future-project.access.3.description": "تخصيص مساحة محددة تهدف إلى قياس وتطوير وتحسين تجربة المتعامل بشكل مباشر.",
+    "#modalDetails>div:1>span:1": "المالك",
+    "project.I02.owner": "مشروع مركز الاتصال",
+    "#modalDetails>div:2>span:1": "الأفق الزمني",
+    "project.I02.horizon": "2026",
+    "#modalDetails>div:3>span:1": "الأثر المتوقع",
+    "project.I02.impact": "خدمة مرئية"
   },
   "planDelivery": {
     "O01": {
