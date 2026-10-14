@@ -599,5 +599,30 @@ text = text.replace('--year-rate:97.8', '--year-rate:98.2').replace('data-rate="
 text = text.replace('<aside class="tajawob-response-guide"', '<details class="tajawob-monthly"><summary>المؤشرات الشهرية · يناير–سبتمبر 2026</summary><div style="overflow-x:auto"><table style="width:100%;text-align:center"><thead><tr><th>الشهر</th><th>إجمالي الطلبات</th><th>المنجز</th><th>نسبة الإنجاز</th></tr></thead><tbody><tr><td>يناير</td><td>410</td><td>381</td><td>92.9%</td></tr><tr><td>فبراير</td><td>492</td><td>466</td><td>94.7%</td></tr><tr><td>مارس</td><td>371</td><td>362</td><td>97.6%</td></tr><tr><td>أبريل</td><td>721</td><td>715</td><td>99.2%</td></tr><tr><td>مايو</td><td>958</td><td>925</td><td>96.6%</td></tr><tr><td>يونيو</td><td>822</td><td>822</td><td>100.0%</td></tr><tr><td>يوليو</td><td>958</td><td>956</td><td>99.8%</td></tr><tr><td>أغسطس</td><td>864</td><td>861</td><td>99.7%</td></tr><tr><td>سبتمبر</td><td>1,693</td><td>1,667</td><td>98.5%</td></tr></tbody></table></div><p>تُحسب النسب من أعداد الطلبات والمنجز. يعرض مصدر سبتمبر نسبًا معدّلة يدويًا: الإجمالي 99.6%، الشكاوى 99.7%، والاستفسارات 98.6%. لم تُستخدم النسب المعدّلة لإعادة حساب الإجمالي التراكمي.</p><p>بيانات الذروة تعتمد على السجلات التفصيلية المتاحة في المصدر، دون يوليو وأغسطس.</p></details>' + '<aside class="tajawob-response-guide"', 1)
 
 text = text.replace('<div class="share-ring">', '<div class="share-ring" style="background:conic-gradient(#3A564C 57.5%,#e6ece8 0)">')
+# Compact smart contact center and source-backed future project overview.
+replace_required('<div class="smart-progress"><strong>95%</strong><small>نسبة إنجاز المشروع</small></div>', '')
+future_groups = [
+    ('digital', 'الحلول الذكية والتحول الرقمي', [
+        ('المساعد الافتراضي الذكي وإدارة علاقات المتعاملين', 'تدشين تجريبي للمساعد الافتراضي عبر واتساب والدردشة، مع نظام Smart CRM لإدارة علاقات المتعاملين.', 'M4 5h16v12H8l-4 4V5Z M8 9h8 M8 13h5'),
+        ('مشروع الروبوت الذكي (Smart Robot)', 'إدخال تقنيات الروبوتات الذكية لتعزيز كفاءة العمليات التشغيلية وخدمة المتعاملين.', 'M7 7h10v12H7V7Z M12 3v4 M4 10v6 M20 10v6 M9 11h1 M14 11h1 M9 15h6 M9 19v3 M15 19v3'),
+        ('الإطار العام للخدمات والتواصل الاستباقي', 'التواصل عبر الرسائل النصية أو واتساب لتعزيز الربط في مناسبات محددة بشكل استباقي.', 'M4 4h16v12H8l-4 4V4Z M8 8h8 M8 12h5'),
+    ]),
+    ('access', 'تعزيز تجربة الوصول والمعرفة', [
+        ('المترجم الذكي «تيسير التواصل» ولغة الإشارة', 'توفير تطبيق «نافذ» للغة الإشارة في كافة المنافذ، والمترجم الذكي لكل مقدم خدمة.', 'M3 5h12 M9 2v3 M5 5c0 6 6 10 6 10 M13 5c0 6-6 10-10 10 M14 21l4-10 4 10 M16 17h4'),
+        ('المقابلات الافتراضية ومنصة التعلم الذكية', 'تفعيل المقابلات المرئية (Video Calls)، ومنصة التعلم الإلكتروني (E-learning)، وقاعدة معرفة لتعزيز مهارات مقدمي الخدمة.', 'M3 6h12v12H3V6Z M15 10l6-4v12l-6-4'),
+        ('ركن تجربة العميل', 'تخصيص مساحة محددة تهدف إلى قياس وتطوير وتحسين تجربة المتعامل بشكل مباشر.', 'M4 3h16v14H4V3Z M8 21h8 M12 17v4 M8 8h8 M8 12h5'),
+    ]),
+]
+future_markup = '<article class="future-projects-card" aria-labelledby="futureProjectsTitle"><header><span class="future-projects-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/></svg></span><div><h3 id="futureProjectsTitle">المشاريع المستقبلية</h3><p>تطوير تجربة المتعامل وتعزيز تكامل الخدمات وسهولة الوصول إليها</p></div></header><div class="future-projects-grid">'
+for group, heading, projects in future_groups:
+    future_markup += f'<section class="future-project-group future-project-group--{group}" aria-labelledby="future-{group}"><h4 id="future-{group}">{heading}</h4><div class="future-project-list">'
+    for index, (title, description, icon) in enumerate(projects, 1):
+        key = f'future-project.{group}.{index}'
+        future_markup += f'<section class="future-project-item"><span class="future-project-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="{icon}"/></svg></span><div><h5 data-edit-key="{key}.title">{title}</h5><p data-edit-key="{key}.description">{description}</p></div></section>'
+    future_markup += '</div></section>'
+future_markup += '</div></article>'
+
+replace_required('<div class="projects-grid" id="projectsGrid"></div>', future_markup + '\n          <div class="projects-grid" id="projectsGrid"></div>')
+
 path.write_text(text, encoding="utf-8")
 
