@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-10-12T06:21:31.543Z",
+  "updatedAt": "2026-10-14T08:50:29.070Z",
   "edits": {
     "div:1>main:1>header:1>div:1>span:1": "صندوق الحماية الاجتماعية · سلطنة عُمان",
     "div:1>main:1>header:1>div:1>h1:1": "بوصلة المتعامل",
@@ -1016,7 +1016,7 @@
     "#committees>div:5>div:1>h3:1": "اللجان والفرق",
     "#committees>div:5>div:1>p:1": "أدخل رمز العرض لإزالة التشويش خلال هذه الجلسة.",
     "#projects>div:1>div:1>span:1": "11 · محفظة التطوير",
-    "#projects>div:1>div:1>h2:1": "المشاريع والممارسات وفق حصر 2026",
+    "#projects>div:1>div:1>h2:1": "المشاريع والممارسات",
     "project.I01.statusLabel": "مقترح للدمج",
     "project.I01.title": "آلية قياس التميز في الخدمات (Excellence Meter)",
     "project.I01.description": "لم يُنفذ المشروع، والمقترح دمجه ضمن مشروع SMART CRM.",
@@ -2430,7 +2430,21 @@
     "#tajawob>aside:1>div:2>div:1>small:3": "صياغة مهنية",
     "#tajawob>aside:1>a:1>span:1": "فتح الدليل الشامل",
     "#committees>div:1>h2:1": "هذا التبويب محمي",
-    "#committees>div:1>p:1": "يلزم إدخال كلمة المرور الثانية للاطلاع على محتواه."
+    "#committees>div:1>p:1": "يلزم إدخال كلمة المرور الثانية للاطلاع على محتواه.",
+    "#futureProjectsTitle": "المشاريع المستقبلية",
+    "#projects>article:1>header:1>div:1>p:1": "تطوير تجربة المتعامل وتعزيز تكامل الخدمات وسهولة الوصول إليها",
+    "future-project.digital.1.title": "المساعد الافتراضي الذكي وإدارة علاقات المتعاملين",
+    "future-project.digital.1.description": "تدشين تجريبي للمساعد الافتراضي عبر واتساب والدردشة، مع نظام Smart CRM لإدارة علاقات المتعاملين.",
+    "future-project.digital.2.title": "مشروع الروبوت الذكي (Smart Robot)",
+    "future-project.digital.2.description": "إدخال تقنيات الروبوتات الذكية لتعزيز كفاءة العمليات التشغيلية وخدمة المتعاملين.",
+    "future-project.digital.3.title": "الإطار العام للخدمات والتواصل الاستباقي",
+    "future-project.digital.3.description": "التواصل عبر الرسائل النصية أو واتساب لتعزيز الربط في مناسبات محددة بشكل استباقي.",
+    "future-project.access.1.title": "المترجم الذكي «تيسير التواصل» ولغة الإشارة",
+    "future-project.access.1.description": "توفير تطبيق «نافذ» للغة الإشارة في كافة المنافذ، والمترجم الذكي لكل مقدم خدمة.",
+    "future-project.access.2.title": "المقابلات الافتراضية ومنصة التعلم الذكية",
+    "future-project.access.2.description": "تفعيل المقابلات المرئية (Video Calls)، ومنصة التعلم الإلكتروني (E-learning)، وقاعدة معرفة لتعزيز مهارات مقدمي الخدمة.",
+    "future-project.access.3.title": "ركن تجربة العميل",
+    "future-project.access.3.description": "تخصيص مساحة محددة تهدف إلى قياس وتطوير وتحسين تجربة المتعامل بشكل مباشر."
   },
   "planDelivery": {
     "O01": {
