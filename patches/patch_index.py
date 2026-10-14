@@ -599,5 +599,21 @@ text = text.replace('--year-rate:97.8', '--year-rate:98.2').replace('data-rate="
 text = text.replace('<aside class="tajawob-response-guide"', '<details class="tajawob-monthly"><summary>المؤشرات الشهرية · يناير–سبتمبر 2026</summary><div style="overflow-x:auto"><table style="width:100%;text-align:center"><thead><tr><th>الشهر</th><th>إجمالي الطلبات</th><th>المنجز</th><th>نسبة الإنجاز</th></tr></thead><tbody><tr><td>يناير</td><td>410</td><td>381</td><td>92.9%</td></tr><tr><td>فبراير</td><td>492</td><td>466</td><td>94.7%</td></tr><tr><td>مارس</td><td>371</td><td>362</td><td>97.6%</td></tr><tr><td>أبريل</td><td>721</td><td>715</td><td>99.2%</td></tr><tr><td>مايو</td><td>958</td><td>925</td><td>96.6%</td></tr><tr><td>يونيو</td><td>822</td><td>822</td><td>100.0%</td></tr><tr><td>يوليو</td><td>958</td><td>956</td><td>99.8%</td></tr><tr><td>أغسطس</td><td>864</td><td>861</td><td>99.7%</td></tr><tr><td>سبتمبر</td><td>1,693</td><td>1,667</td><td>98.5%</td></tr></tbody></table></div><p>تُحسب النسب من أعداد الطلبات والمنجز. يعرض مصدر سبتمبر نسبًا معدّلة يدويًا: الإجمالي 99.6%، الشكاوى 99.7%، والاستفسارات 98.6%. لم تُستخدم النسب المعدّلة لإعادة حساب الإجمالي التراكمي.</p><p>بيانات الذروة تعتمد على السجلات التفصيلية المتاحة في المصدر، دون يوليو وأغسطس.</p></details>' + '<aside class="tajawob-response-guide"', 1)
 
 text = text.replace('<div class="share-ring">', '<div class="share-ring" style="background:conic-gradient(#3A564C 57.5%,#e6ece8 0)">')
+# Compact smart contact center and source-backed future project overview.
+replace_required('<div class="smart-progress"><strong>95%</strong><small>نسبة إنجاز المشروع</small></div>', '')
+future_projects = [
+    ('المساعد الافتراضي الذكي', 'إجابات لحظية وتوجيه المتعامل إلى الخدمة والمعلومة المناسبة عبر القنوات الرقمية.', 'M4 5h16v12H8l-4 4V5Z M8 9h8 M8 13h5'),
+    ('إدارة علاقات المتعاملين الذكية', 'منظومة موحدة لإدارة تفاعلات المتعامل ورحلته ومتابعة الطلبات والتواصل.', 'M8 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0 M4 21v-2a8 8 0 0 1 16 0v2'),
+    ('المترجم الذكي', 'ترجمة فورية للمحتوى والمحادثات لدعم المتعاملين بلغات مختلفة ضمن التحضير لخدمة الوافدين في نظام الادخار.', 'M3 5h12 M9 2v3 M5 5c0 6 6 10 6 10 M13 5c0 6-6 10-10 10 M14 21l4-10 4 10 M16 17h4'),
+    ('لغة الإشارة (تطبيق نافذ)', 'حل رقمي يسهّل التواصل مع الأشخاص ذوي الإعاقة السمعية ويعزز شمولية الوصول إلى خدمات الصندوق.', 'M6 11V7a1 1 0 0 1 2 0v5 M8 9V4a1 1 0 0 1 2 0v8 M10 9V3a1 1 0 0 1 2 0v9 M12 9V5a1 1 0 0 1 2 0v9l2-2a2 2 0 0 1 3 2l-4 6H8l-4-7a2 2 0 0 1 2-2Z'),
+    ('المقابلات الافتراضية', 'تقديم الخدمات عبر التواصل المرئي أو المسموع مع الموظفين لتقليل الحاجة إلى زيارة الدوائر والمنافذ.', 'M3 6h12v12H3V6Z M15 10l6-4v12l-6-4'),
+    ('ركن تجربة العميل', 'مساحة تفاعلية لتجربة الخدمات والحلول الجديدة وجمع ملاحظات المتعاملين قبل التوسع في التطبيق.', 'M4 3h16v14H4V3Z M8 21h8 M12 17v4 M8 8h8 M8 12h5')
+]
+future_markup = '<article class="future-projects-card" aria-labelledby="futureProjectsTitle"><header><span class="future-projects-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5h16v14H4Z M8 9h8 M8 13h5"/></svg></span><div><h3 id="futureProjectsTitle">المشاريع المستقبلية</h3><p>تطوير تجربة المتعامل وتعزيز تكامل الخدمات وسهولة الوصول إليها</p></div></header><div class="future-projects-grid">'
+for index, (title, description, icon) in enumerate(future_projects, 1):
+    future_markup += f'<section class="future-project-item"><span class="future-project-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="{icon}"/></svg></span><div><h4 data-edit-key="future-project.{index}.title">{title}</h4><p data-edit-key="future-project.{index}.description">{description}</p></div></section>'
+future_markup += '</div></article>'
+replace_required('<div class="projects-grid" id="projectsGrid"></div>', future_markup + '\n          <div class="projects-grid" id="projectsGrid"></div>')
+
 path.write_text(text, encoding="utf-8")
 
