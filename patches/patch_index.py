@@ -601,18 +601,27 @@ text = text.replace('<aside class="tajawob-response-guide"', '<details class="ta
 text = text.replace('<div class="share-ring">', '<div class="share-ring" style="background:conic-gradient(#3A564C 57.5%,#e6ece8 0)">')
 # Compact smart contact center and source-backed future project overview.
 replace_required('<div class="smart-progress"><strong>95%</strong><small>نسبة إنجاز المشروع</small></div>', '')
-future_projects = [
-    ('المساعد الافتراضي الذكي', 'إجابات لحظية وتوجيه المتعامل إلى الخدمة والمعلومة المناسبة عبر القنوات الرقمية.', 'M4 5h16v12H8l-4 4V5Z M8 9h8 M8 13h5'),
-    ('إدارة علاقات المتعاملين الذكية', 'منظومة موحدة لإدارة تفاعلات المتعامل ورحلته ومتابعة الطلبات والتواصل.', 'M8 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0 M4 21v-2a8 8 0 0 1 16 0v2'),
-    ('المترجم الذكي', 'ترجمة فورية للمحتوى والمحادثات لدعم المتعاملين بلغات مختلفة ضمن التحضير لخدمة الوافدين في نظام الادخار.', 'M3 5h12 M9 2v3 M5 5c0 6 6 10 6 10 M13 5c0 6-6 10-10 10 M14 21l4-10 4 10 M16 17h4'),
-    ('لغة الإشارة (تطبيق نافذ)', 'حل رقمي يسهّل التواصل مع الأشخاص ذوي الإعاقة السمعية ويعزز شمولية الوصول إلى خدمات الصندوق.', 'M6 11V7a1 1 0 0 1 2 0v5 M8 9V4a1 1 0 0 1 2 0v8 M10 9V3a1 1 0 0 1 2 0v9 M12 9V5a1 1 0 0 1 2 0v9l2-2a2 2 0 0 1 3 2l-4 6H8l-4-7a2 2 0 0 1 2-2Z'),
-    ('المقابلات الافتراضية', 'تقديم الخدمات عبر التواصل المرئي أو المسموع مع الموظفين لتقليل الحاجة إلى زيارة الدوائر والمنافذ.', 'M3 6h12v12H3V6Z M15 10l6-4v12l-6-4'),
-    ('ركن تجربة العميل', 'مساحة تفاعلية لتجربة الخدمات والحلول الجديدة وجمع ملاحظات المتعاملين قبل التوسع في التطبيق.', 'M4 3h16v14H4V3Z M8 21h8 M12 17v4 M8 8h8 M8 12h5')
+future_groups = [
+    ('digital', 'الحلول الذكية والتحول الرقمي', [
+        ('المساعد الافتراضي الذكي وإدارة علاقات المتعاملين', 'تدشين تجريبي للمساعد الافتراضي عبر واتساب والدردشة، مع نظام Smart CRM لإدارة علاقات المتعاملين.', 'M4 5h16v12H8l-4 4V5Z M8 9h8 M8 13h5'),
+        ('مشروع الروبوت الذكي (Smart Robot)', 'إدخال تقنيات الروبوتات الذكية لتعزيز كفاءة العمليات التشغيلية وخدمة المتعاملين.', 'M7 7h10v12H7V7Z M12 3v4 M4 10v6 M20 10v6 M9 11h1 M14 11h1 M9 15h6 M9 19v3 M15 19v3'),
+        ('الإطار العام للخدمات والتواصل الاستباقي', 'التواصل عبر الرسائل النصية أو واتساب لتعزيز الربط في مناسبات محددة بشكل استباقي.', 'M4 4h16v12H8l-4 4V4Z M8 8h8 M8 12h5'),
+    ]),
+    ('access', 'تعزيز تجربة الوصول والمعرفة', [
+        ('المترجم الذكي «تيسير التواصل» ولغة الإشارة', 'توفير تطبيق «نافذ» للغة الإشارة في كافة المنافذ، والمترجم الذكي لكل مقدم خدمة.', 'M3 5h12 M9 2v3 M5 5c0 6 6 10 6 10 M13 5c0 6-6 10-10 10 M14 21l4-10 4 10 M16 17h4'),
+        ('المقابلات الافتراضية ومنصة التعلم الذكية', 'تفعيل المقابلات المرئية (Video Calls)، ومنصة التعلم الإلكتروني (E-learning)، وقاعدة معرفة لتعزيز مهارات مقدمي الخدمة.', 'M3 6h12v12H3V6Z M15 10l6-4v12l-6-4'),
+        ('ركن تجربة العميل', 'تخصيص مساحة محددة تهدف إلى قياس وتطوير وتحسين تجربة المتعامل بشكل مباشر.', 'M4 3h16v14H4V3Z M8 21h8 M12 17v4 M8 8h8 M8 12h5'),
+    ]),
 ]
-future_markup = '<article class="future-projects-card" aria-labelledby="futureProjectsTitle"><header><span class="future-projects-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5h16v14H4Z M8 9h8 M8 13h5"/></svg></span><div><h3 id="futureProjectsTitle">المشاريع المستقبلية</h3><p>تطوير تجربة المتعامل وتعزيز تكامل الخدمات وسهولة الوصول إليها</p></div></header><div class="future-projects-grid">'
-for index, (title, description, icon) in enumerate(future_projects, 1):
-    future_markup += f'<section class="future-project-item"><span class="future-project-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="{icon}"/></svg></span><div><h4 data-edit-key="future-project.{index}.title">{title}</h4><p data-edit-key="future-project.{index}.description">{description}</p></div></section>'
+future_markup = '<article class="future-projects-card" aria-labelledby="futureProjectsTitle"><header><span class="future-projects-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/></svg></span><div><h3 id="futureProjectsTitle">المشاريع المستقبلية</h3><p>تطوير تجربة المتعامل وتعزيز تكامل الخدمات وسهولة الوصول إليها</p></div></header><div class="future-projects-grid">'
+for group, heading, projects in future_groups:
+    future_markup += f'<section class="future-project-group future-project-group--{group}" aria-labelledby="future-{group}"><h4 id="future-{group}">{heading}</h4><div class="future-project-list">'
+    for index, (title, description, icon) in enumerate(projects, 1):
+        key = f'future-project.{group}.{index}'
+        future_markup += f'<section class="future-project-item"><span class="future-project-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="{icon}"/></svg></span><div><h5 data-edit-key="{key}.title">{title}</h5><p data-edit-key="{key}.description">{description}</p></div></section>'
+    future_markup += '</div></section>'
 future_markup += '</div></article>'
+
 replace_required('<div class="projects-grid" id="projectsGrid"></div>', future_markup + '\n          <div class="projects-grid" id="projectsGrid"></div>')
 
 path.write_text(text, encoding="utf-8")
