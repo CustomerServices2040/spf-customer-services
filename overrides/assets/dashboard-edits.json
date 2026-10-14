@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-10-14T10:15:59.838Z",
+  "updatedAt": "2026-10-14T10:20:37.945Z",
   "edits": {
     "div:1>main:1>header:1>div:1>span:1": "صندوق الحماية الاجتماعية · سلطنة عُمان",
     "div:1>main:1>header:1>div:1>h1:1": "بوصلة المتعامل",
@@ -198,13 +198,13 @@
     "#channels>div:2>article:1>strong:1>small:1": "خدمة",
     "#channels>div:2>article:1>p:1": "خدمات منشورة ومقدمة عبر شبكة متكاملة من القنوات.",
     "#channels>div:2>article:1>div:1>div:1>b:1": "49%",
-    "#channels>div:2>article:1>div:1>div:1>span:1": "خدمات دوائر المحافظات للمشتركين",
+    "#channels>div:2>article:1>div:1>div:1>span:1": "خدمات المستحقات والاشتراكات",
     "#channels>div:2>article:1>div:1>div:2>b:1": "25%",
     "#channels>div:2>article:1>div:1>div:2>span:1": "خدمات إصابات العمل",
     "#channels>div:2>article:1>div:1>div:3>b:1": "16%",
     "#channels>div:2>article:1>div:1>div:3>span:1": "خدمات أخرى",
     "#channels>div:2>article:1>div:1>div:4>b:1": "10%",
-    "#channels>div:2>article:1>div:1>div:4>span:1": "خدمات المديرية العامة والمنح",
+    "#channels>div:2>article:1>div:1>div:4>span:1": "خدمات المتعاملين",
     "#channels>div:2>article:2>span:1": "متى يستطيع المتعامل الوصول إلينا؟",
     "#channels>div:2>article:2>div:1>b:1": "24/7",
     "#channels>div:2>article:2>div:1>span:1": "الخدمات الذاتية والمساعد الافتراضي عبر التطبيق والبوابة",
