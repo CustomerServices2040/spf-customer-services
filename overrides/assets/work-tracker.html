@@ -526,7 +526,7 @@ header{height:72px;padding:0 34px;background:rgba(20,56,47,.97);border:0;color:#
   <!-- TABLE -->
   <div class="tab-panel" id="panel-table">
     <div class="card table-card">
-      <div class="table-actions"><p>يمكن للجميع الاطلاع على البيانات. يدخل الحساب المخوّل مرة واحدة للتعديل المتكرر؛ تبقى الجلسة فعالة حتى الخروج أو إغلاق التبويب.</p><div class="owner-access"><span class="owner-status" id="owner-status">وضع العرض</span><button class="btn-secondary" id="owner-login-button" type="button" onclick="loginOwner()">دخول المالك</button><button class="btn-secondary" id="refresh-tasks-button" type="button" onclick="refreshTasksFromGithub()" hidden>تحديث السجل</button><button class="btn-primary" id="add-task-button" type="button" onclick="openNewTaskDrawer()" hidden>إضافة مهمة</button></div></div>
+      <div class="table-actions"><p>يمكن تعديل المهام وإضافتها ورفع ملفاتها مباشرة. عند الحفظ للجميع، يُطلب التحقق عبر GitHub مرة واحدة خلال الجلسة.</p><div class="owner-access"><span class="owner-status" id="owner-status">وضع العرض</span><button class="btn-secondary" id="owner-login-button" type="button" onclick="clearOwnerSession()" hidden>إنهاء جلسة النشر</button><button class="btn-secondary" id="refresh-tasks-button" type="button" onclick="refreshTasksFromGithub()" hidden>تحديث السجل</button><button class="btn-primary" id="add-task-button" type="button" onclick="openNewTaskDrawer()" hidden>إضافة مهمة</button></div></div>
       <p id="tracker-load-error" role="alert" style="padding:12px;color:#8e2948" hidden>تعذر تحميل ملف بيانات المهام. حدّث الصفحة قبل إجراء أي تعديل.</p>
       <div class="import-panel" id="import-panel" hidden>
         <h3>تحديث وإضافة المهام من ملف</h3>
@@ -596,7 +596,7 @@ const GITHUB_REPO='spf-customer-services';
 const TASKS_REPO_PATH='overrides/assets/tasks-data.json';
 const AUTH_PROXY='https://customer-compass-github-auth.spf2040.chatgpt.site';
 const FILTER_STORAGE_KEY='spf-work-tracker-filters-v1';
-let isOwner=false,ownerAccessToken='',loadedTasksUpdatedAt=null,loadedTasksSha=null,pendingTaskImport=null,taskMutationInFlight=false,importReadInFlight=false,importSheetLayouts=[];
+let ownerAccessToken='',loadedTasksUpdatedAt=null,loadedTasksSha=null,pendingTaskImport=null,taskMutationInFlight=false,importReadInFlight=false,importSheetLayouts=[];
 // Keep distinct people with the same first name (e.g. سعيد) separate, while
 // unifying harmless spelling differences and crediting shared work to everyone.
 const EMPLOYEE_ALIASES={
@@ -696,7 +696,7 @@ async function loadTasks(){
   return cloneDefaults();
 }
 let DATA=cloneDefaults();
-function githubHeaders(token){return {'Accept':'application/vnd.github+json','Authorization':`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28'};}
+function githubHeaders(token){return {'Accept':'application/vnd.github+json',...(token?{'Authorization':`Bearer ${token}`} : {}),'X-GitHub-Api-Version':'2022-11-28'};}
 function encodeBase64(value){const bytes=new TextEncoder().encode(value);let binary='';bytes.forEach(byte=>binary+=String.fromCharCode(byte));return btoa(binary);}
 async function githubError(response,fallback){
   const detail=await response.json().catch(()=>({}));
@@ -711,18 +711,18 @@ async function githubError(response,fallback){
 }
 function updateOwnerUI(){
   const login=document.getElementById('owner-login-button'),add=document.getElementById('add-task-button'),refresh=document.getElementById('refresh-tasks-button'),status=document.getElementById('owner-status'),importPanel=document.getElementById('import-panel');
-  if(login)login.textContent=isOwner?'خروج المالك':'دخول المالك';
-  if(add)add.hidden=!isOwner;
-  if(refresh)refresh.hidden=!isOwner;
-  if(importPanel)importPanel.hidden=!isOwner;
-  if(status)status.textContent=isOwner?'وضع الإدارة — التحديثات تُنشر للجميع':'وضع العرض';
+  if(login)login.hidden=!ownerAccessToken;
+  if(add)add.hidden=false;
+  if(refresh)refresh.hidden=false;
+  if(importPanel)importPanel.hidden=false;
+  if(status)status.textContent=ownerAccessToken?'جلسة النشر متصلة':'التعديل متاح مباشرة';
 }
 function clearOwnerSession(){
-  ownerAccessToken='';isOwner=false;
+  ownerAccessToken='';
   updateOwnerUI();
 }
 function rememberOwnerSession(token){
-  ownerAccessToken=token;isOwner=true;
+  ownerAccessToken=token;
   updateOwnerUI();
 }
 async function fetchCurrentTaskSnapshot(token){
@@ -743,7 +743,7 @@ async function syncTasksFromGithub(token){
   publishSummary();
 }
 async function refreshTasksFromGithub(){
-  if(!isOwner||taskMutationInFlight)return;
+  if(taskMutationInFlight)return;
   const button=document.getElementById('refresh-tasks-button');
   if(button){button.disabled=true;button.textContent='جارٍ تحديث السجل…'}
   try{await syncTasksFromGithub(ownerAccessToken);closeDrawer();}
@@ -765,16 +765,16 @@ async function verifyOwnerToken(token){
 }
 function ownerOauthPanel(code,url){
   const panel=document.createElement('div');panel.id='owner-oauth-panel';panel.style.cssText='position:fixed;inset:0;z-index:999;display:grid;place-items:center;padding:20px;background:rgba(20,42,35,.76);backdrop-filter:blur(6px)';
-  panel.innerHTML=`<div style="width:min(430px,100%);padding:30px;border-radius:22px;background:#fff;text-align:center"><span style="color:#b9934c;font-weight:800">دخول المالك</span><h3 style="color:#254e44">أدخل الرمز في GitHub</h3><strong style="display:block;margin:16px;padding:12px;border:1px dashed #b9934c;border-radius:13px;font:800 28px monospace;letter-spacing:4px">${code}</strong><a href="${url}" target="_blank" rel="noopener" style="display:inline-block;padding:10px 16px;border-radius:10px;background:#254e44;color:#fff;text-decoration:none">فتح GitHub</a><p style="color:#68746f;font-size:12px">بانتظار الموافقة…</p></div>`;document.body.appendChild(panel);return panel;
+  panel.innerHTML=`<div style="width:min(430px,100%);padding:30px;border-radius:22px;background:#fff;text-align:center"><span style="color:#b9934c;font-weight:800">التحقق لنشر التحديثات</span><h3 style="color:#254e44">أدخل الرمز في GitHub</h3><strong style="display:block;margin:16px;padding:12px;border:1px dashed #b9934c;border-radius:13px;font:800 28px monospace;letter-spacing:4px">${code}</strong><a href="${url}" target="_blank" rel="noopener" style="display:inline-block;padding:10px 16px;border-radius:10px;background:#254e44;color:#fff;text-decoration:none">فتح GitHub</a><p style="color:#68746f;font-size:12px">بانتظار الموافقة…</p></div>`;document.body.appendChild(panel);return panel;
 }
 function ownerLoginChoice(){
   return new Promise((resolve,reject)=>{
     const panel=document.createElement('div');panel.id='owner-login-choice';panel.style.cssText='position:fixed;inset:0;z-index:999;display:grid;place-items:center;padding:20px;background:rgba(20,42,35,.76);backdrop-filter:blur(6px)';
-    panel.innerHTML=`<div style="position:relative;width:min(460px,100%);padding:30px;border-radius:22px;background:#fff;text-align:right"><button data-close-login type="button" style="position:absolute;left:14px;top:14px;width:32px;height:32px;border:0;border-radius:50%;background:#eef1ee;color:#254e44;font-size:20px">×</button><span style="color:#b9934c;font-weight:800">دخول المالك</span><h3 style="margin:7px 0;color:#254e44">اختر طريقة الدخول</h3><p style="color:#68746f;font-size:12px;line-height:1.7">داخل شبكة العمل استخدم رمز وصول مؤقت. لا يُحفظ الرمز ويُحذف تلقائيًا عند الخروج أو إغلاق الصفحة.</p><label style="display:block;color:#68746f;font-size:11px;font-weight:700">رمز الوصول المؤقت<input type="password" autocomplete="off" placeholder="github_pat_… أو ghp_…" style="display:block;width:100%;min-height:44px;margin-top:6px;border:1px solid #dfe4df;border-radius:10px;padding:9px 11px;direction:ltr;text-align:left;font-family:monospace"></label><button data-token-login type="button" style="width:100%;margin-top:9px;border:0;border-radius:10px;padding:11px;background:#254e44;color:#fff;font-weight:800">تحقق وابدأ التعديل</button><small data-login-error role="status" style="display:block;min-height:20px;margin-top:7px;color:#8e2948;text-align:center"></small><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" style="display:block;color:#715a80;font-size:10px;line-height:1.6;text-align:center">إنشاء رمز: استخدمي حسابك المضاف متعاونًا في المستودع، واختاري صلاحية Contents: Read and write</a><i style="display:block;margin:12px;text-align:center;color:#68746f;font-size:10px;font-style:normal">أو</i><button data-oauth-login type="button" style="width:100%;border:0;border-radius:10px;padding:11px;background:#eef1ee;color:#254e44;font-weight:800">الدخول عبر GitHub خارج شبكة العمل</button></div>`;
+    panel.innerHTML=`<div style="position:relative;width:min(460px,100%);padding:30px;border-radius:22px;background:#fff;text-align:right"><button data-close-login type="button" style="position:absolute;left:14px;top:14px;width:32px;height:32px;border:0;border-radius:50%;background:#eef1ee;color:#254e44;font-size:20px">×</button><span style="color:#b9934c;font-weight:800">التحقق لنشر التحديثات</span><h3 style="margin:7px 0;color:#254e44">حفظ التحديثات للجميع</h3><p style="color:#68746f;font-size:12px;line-height:1.7">داخل شبكة العمل استخدم رمز وصول مؤقت. لا يُحفظ الرمز ويُحذف تلقائيًا عند الخروج أو إغلاق الصفحة.</p><label style="display:block;color:#68746f;font-size:11px;font-weight:700">رمز الوصول المؤقت<input type="password" autocomplete="off" placeholder="github_pat_… أو ghp_…" style="display:block;width:100%;min-height:44px;margin-top:6px;border:1px solid #dfe4df;border-radius:10px;padding:9px 11px;direction:ltr;text-align:left;font-family:monospace"></label><button data-token-login type="button" style="width:100%;margin-top:9px;border:0;border-radius:10px;padding:11px;background:#254e44;color:#fff;font-weight:800">تحقق واحفظ التحديثات</button><small data-login-error role="status" style="display:block;min-height:20px;margin-top:7px;color:#8e2948;text-align:center"></small><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" style="display:block;color:#715a80;font-size:10px;line-height:1.6;text-align:center">إنشاء رمز: استخدمي حسابك المضاف متعاونًا في المستودع، واختاري صلاحية Contents: Read and write</a><i style="display:block;margin:12px;text-align:center;color:#68746f;font-size:10px;font-style:normal">أو</i><button data-oauth-login type="button" style="width:100%;border:0;border-radius:10px;padding:11px;background:#eef1ee;color:#254e44;font-weight:800">الدخول عبر GitHub خارج شبكة العمل</button></div>`;
     document.body.appendChild(panel);const input=panel.querySelector('input'),submit=panel.querySelector('[data-token-login]'),error=panel.querySelector('[data-login-error]');
     panel.querySelector('[data-close-login]').onclick=()=>{panel.remove();reject(new Error('تم إلغاء تسجيل الدخول'));};
     panel.querySelector('[data-oauth-login]').onclick=()=>{panel.remove();resolve({mode:'oauth'});};
-    submit.onclick=async()=>{const token=input.value.trim();if(!token){error.textContent='أدخل رمز الوصول المؤقت';return;}submit.disabled=true;submit.textContent='جارٍ التحقق…';try{await verifyOwnerToken(token);panel.remove();resolve({mode:'token',token});}catch(err){error.textContent=err.message;submit.disabled=false;submit.textContent='تحقق وابدأ التعديل';}};
+    submit.onclick=async()=>{const token=input.value.trim();if(!token){error.textContent='أدخل رمز الوصول المؤقت';return;}submit.disabled=true;submit.textContent='جارٍ التحقق…';try{await verifyOwnerToken(token);panel.remove();resolve({mode:'token',token});}catch(err){error.textContent=err.message;submit.disabled=false;submit.textContent='تحقق واحفظ التحديثات';}};
   });
 }
 async function githubDeviceLogin(){
@@ -782,21 +782,13 @@ async function githubDeviceLogin(){
   const flow=await start.json();const panel=ownerOauthPanel(flow.user_code,flow.verification_uri),started=Date.now(),interval=Math.max(5,Number(flow.interval)||5)*1000;
   try{while(Date.now()-started<(Number(flow.expires_in)||900)*1000){await new Promise(r=>setTimeout(r,interval));const response=await fetch(`${AUTH_PROXY}/oauth/access-token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({device_code:flow.device_code})});const result=await response.json();if(result.access_token){await verifyOwnerToken(result.access_token);return result.access_token}if(result.error&&!["authorization_pending","slow_down"].includes(result.error))throw new Error('لم تكتمل موافقة GitHub')}throw new Error('انتهت مهلة تسجيل الدخول')}finally{panel.remove()}
 }
-async function loginOwner(){
-  if(isOwner){clearOwnerSession();closeDrawer();return;}
-  const button=document.getElementById('owner-login-button');if(button)button.textContent='جارٍ التحقق…';
-  try{
-    const cached=ownerAccessToken;
-    let token;
-    if(cached){await verifyOwnerToken(cached);token=cached;}
-    else{const choice=await ownerLoginChoice();token=choice.mode==='token'?choice.token:await githubDeviceLogin();}
-    await syncTasksFromGithub(token);
-    rememberOwnerSession(token);
-  }catch(error){
-    if(/غير صالح|انتهت صلاحيته|لا يملك صلاحية|لا يستطيع الوصول/.test(error.message||''))clearOwnerSession();
-    else updateOwnerUI();
-    if(error.message!=='تم إلغاء تسجيل الدخول')alert(error.message||'تعذر دخول المالك');
-  }
+async function authorizeTaskPublishing(){
+  if(ownerAccessToken)return ownerAccessToken;
+  const choice=await ownerLoginChoice();
+  const token=choice.mode==='token'?choice.token:await githubDeviceLogin();
+  // Do not reload DATA here: the pending edit must survive authentication.
+  rememberOwnerSession(token);
+  return token;
 }
 async function restoreOwnerSession(){
   // Keep credentials in memory only. A page refresh requires a new sign-in,
@@ -804,8 +796,7 @@ async function restoreOwnerSession(){
   updateOwnerUI();
 }
 async function saveTasks(){
-  if(!isOwner)throw new Error('يلزم دخول المالك قبل الحفظ');
-  const token=ownerAccessToken;if(!token)throw new Error('انتهت جلسة التحرير');
+  const token=await authorizeTaskPublishing();
   let snapshot=await fetchCurrentTaskSnapshot(token);
   // GitHub's read endpoint may briefly return the version preceding our last save.
   for(let attempt=0;attempt<2&&loadedTasksSha&&snapshot.metadata.sha!==loadedTasksSha&&Date.parse(snapshot.payload.updated_at)<Date.parse(loadedTasksUpdatedAt);attempt++){
@@ -1124,7 +1115,6 @@ async function previewTaskImport(selectedFiles){
   if(!files.length||importReadInFlight||taskMutationInFlight)return;
   const feedback=document.getElementById('import-feedback'),preview=document.getElementById('import-preview'),confirmButton=document.getElementById('confirm-task-import'),fileList=document.getElementById('import-file-list');
   pendingTaskImport=null;importSheetLayouts=[];confirmButton.hidden=true;preview.innerHTML='';document.getElementById('import-mappings').innerHTML='';
-  if(!isOwner){feedback.textContent='يلزم دخول المالك قبل قراءة ملفات المهام.';return;}
   importReadInFlight=true;
   fileList.innerHTML=`${files.length} ${files.length===1?'ملف محدد':'ملفات محددة'}: ${files.slice(0,10).map(file=>`<span>${esc(file.name)}</span>`).join('')}${files.length>10?'…':''}`;
   feedback.textContent='جارٍ قراءة الملفات وتجميع التغييرات…';
@@ -1174,7 +1164,7 @@ function renderTaskImportResults(errors=[]){
   }catch(error){feedback.textContent=error.message||'تعذر تحليل الأوراق.';}
 }
 async function confirmTaskImport(){
-  if(!isOwner||taskMutationInFlight||!pendingTaskImport||(!pendingTaskImport.additions.length&&!pendingTaskImport.updates.length))return;
+  if(taskMutationInFlight||!pendingTaskImport||(!pendingTaskImport.additions.length&&!pendingTaskImport.updates.length))return;
   const button=document.getElementById('confirm-task-import'),feedback=document.getElementById('import-feedback');
   taskMutationInFlight=true;
   button.disabled=true;feedback.textContent='جارٍ نشر تحديثات المهام وإضافاتها…';
@@ -1553,12 +1543,11 @@ function taskDetails(r){
 }
 function openTaskDrawer(idx){
   const r=DATA[idx];if(!r)return;
-  document.getElementById('drawer-title').textContent=isOwner?'تحديث تفاصيل المهمة':'تفاصيل المهمة';
-  document.getElementById('drawer-body').innerHTML=isOwner?taskForm(r,idx,false):taskDetails(r);
+  document.getElementById('drawer-title').textContent='تحديث تفاصيل المهمة';
+  document.getElementById('drawer-body').innerHTML=taskForm(r,idx,false);
   openDrawer();
 }
 function openNewTaskDrawer(){
-  if(!isOwner){alert('يلزم دخول المالك لإضافة مهمة.');return;}
   const r={title:'',dept:'',emp:'',tech:'',pct:0,received:'',due:'',status:'قيد الإجراء',overdue:false};
   document.getElementById('drawer-title').textContent='إضافة مهمة جديدة';
   document.getElementById('drawer-body').innerHTML=taskForm(r,-1,true);
@@ -1566,7 +1555,7 @@ function openNewTaskDrawer(){
 }
 async function saveTaskEdit(event,idx,isNew){
   event.preventDefault();
-  if(!isOwner||taskMutationInFlight)return;
+  if(taskMutationInFlight)return;
   taskMutationInFlight=true;
   const form=event.currentTarget,submit=form.querySelector('[type="submit"]');
   if(submit)submit.disabled=true;
@@ -1591,7 +1580,6 @@ async function saveTaskEdit(event,idx,isNew){
   finally{taskMutationInFlight=false;if(submit)submit.disabled=false;}
 }
 async function deleteTask(idx){
-  if(!isOwner){alert('يلزم دخول المالك للحذف.');return;}
   if(taskMutationInFlight)return;
   const r=DATA[idx];if(!r||!confirm(`حذف المهمة «${r.title}»؟`))return;
   taskMutationInFlight=true;
