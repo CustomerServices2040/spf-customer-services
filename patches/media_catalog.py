@@ -24,6 +24,10 @@ LOGOS = {
     "utas": ("جامعة التقنية والعلوم التطبيقية", "https://i0.wp.com/ksalogo.com/wp-content/uploads/2025/01/University-of-Technology-and-Applied-Sciences-01.png?fit=1000%2C1000&amp;ssl=1"),
     "dhofar": ("جامعة ظفار", "https://pbs.twimg.com/profile_images/1599460575788105729/Nx4owTPw.jpg"),
     "sharqiyah": ("جامعة الشرقية", "https://vectorseek.com/wp-content/uploads/2025/01/ASharqiyah-University-Logo-Vector.svg-.png"),
+    "nama": ("نماء لخدمات ظفار", "https://pbs.twimg.com/profile_images/1653667083610144768/5wHJcb05_400x400.jpg"),
+    "oq": ("مجموعة أوكيو", "https://assets.oq.com/dist/images/content/html5/our-journey/2019_OQ.png?v=dc422a58d97048a26915c1fae838868a"),
+    "mazoon": ("مزون للألبان", "https://omannews.gov.om/images/topics/pictures/topic65584.jpeg"),
+    "spf": ("صندوق الحماية الاجتماعية", "assets/spf-logo.png"),
 }
 
 
@@ -34,11 +38,13 @@ def issuer_identity(issuer):
         (r"صح|مستشفى|عمان للعلوم الصحية", "health"), (r"تربية|تعليم|مدرسة|كلية البريمي|معهد", "education"),
         (r"محافظ|والي|ولاية|الشورى", "interior"), (r"تجارة|صناعة|استثمار|منطقة حرة", "commerce"),
         (r"ثروة زراعية|سمكية|موارد الميا", "agriculture"), (r"بيئة", "environment"),
-        (r"ثقافة|رياضة|شباب|مجمع السلطان قابوس الشبابي", "culture"), (r"أوقاف|شؤون دينية", "awqaf"),
+        (r"ثقافة|رياضة|رياضية|شباب|مجمع السلطان قابوس الشبابي", "culture"), (r"أوقاف|شؤون دينية", "awqaf"),
         (r"تراث|سياحة", "heritage"), (r"حماية المستهلك", "consumer"), (r"غرفة", "chamber"),
         (r"طيران مدني|الطيران المدني", "caa"), (r"مؤسسات الصغيرة والمتوسطة|رواد الأعمال", "commerce"),
         (r"التقنية|التطبيقية", "utas"), (r"جامعة ظفار", "dhofar"),
-        (r"جامعة الشرقية", "sharqiyah"),
+        (r"جامعة الشرقية", "sharqiyah"), (r"نماء", "nama"), (r"OQ|أوكيو", "oq"),
+        (r"مزون", "mazoon"), (r"خدمات المتعاملين|الشراكة ومؤسسات المجتمع المدني", "spf"),
+        (r"بلدية", "interior"),
     ]
     for pattern, key in rules:
         if re.search(pattern, value):
