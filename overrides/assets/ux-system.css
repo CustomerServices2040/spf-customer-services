@@ -453,7 +453,56 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 @media(max-width:640px){#media-center .report-catalog,#media-center .recognition-grid{grid-template-columns:1fr}#media-center .recognition-heading{align-items:stretch;flex-direction:column}#media-center .recognition-total{flex-direction:row;gap:16px;justify-content:center}#media-center .recognition-filters{display:grid;grid-template-columns:1fr}#media-center .recognition-filters button{width:100%}}
 #media-center .recognition-heading .media-eyebrow{color:#806327;background:#f2e6cf;font-size:14px}
 
-/* Standalone recognitions chapter, inspired by the executive indicator layout. */
+/* Achievement chapter: prestigious, compact and visually distinct from certificates. */
+#service-achievements{background:linear-gradient(145deg,#fbfaf5 0%,#eef4f0 100%);border-radius:26px}
+#service-achievements .achievement-hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(190px,.55fr) minmax(220px,.7fr);align-items:stretch;gap:18px;padding:32px;border-radius:24px;background:linear-gradient(120deg,#183f37 0%,#245d50 66%,#2a6657 100%);color:#fff;overflow:hidden;position:relative}
+#service-achievements .achievement-hero::before{content:"";position:absolute;width:320px;height:320px;border:54px solid rgba(244,210,141,.08);border-radius:50%;inset-inline-end:-150px;top:-220px}
+#service-achievements .achievement-hero-copy,#service-achievements .achievement-total,#service-achievements .achievement-reach{position:relative;z-index:1}
+#service-achievements .achievement-eyebrow{display:inline-flex;align-items:center;gap:8px;color:#f4d28d;font-size:14px;font-weight:900;margin-bottom:8px}
+#service-achievements .achievement-eyebrow::before{content:"";width:26px;height:2px;background:#f4d28d;border-radius:2px}
+#service-achievements .achievement-hero h2{font-size:clamp(31px,4vw,50px);line-height:1.15;margin:0 0 10px;color:#fff}
+#service-achievements .achievement-hero-copy p{margin:0;max-width:700px;color:#dcebe5;line-height:1.9}
+#service-achievements .achievement-cycles{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:15px;color:#cfe0d9;font-size:13px}
+#service-achievements .achievement-cycles b{color:#f4d28d;letter-spacing:.5px}
+#service-achievements .achievement-total{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:rgba(255,255,255,.08);min-height:190px}
+#service-achievements .achievement-total span{font-size:13px;color:#e0ece7;font-weight:800}
+#service-achievements .achievement-total strong{font-size:72px;line-height:1;color:#f4d28d;margin:8px 0}
+#service-achievements .achievement-total small{font-size:11px;color:#bdd1c9}
+#service-achievements .achievement-reach{display:flex;flex-direction:column;justify-content:center;padding:22px;border-radius:20px;background:#fff;color:var(--ux-primary);box-shadow:0 12px 30px rgba(14,38,32,.16)}
+#service-achievements .achievement-reach span{font-size:13px;font-weight:800;color:#6d7d76}
+#service-achievements .achievement-reach strong{font-size:54px;line-height:1;margin:10px 0 6px;color:var(--ux-primary)}
+#service-achievements .achievement-reach small{font-size:12px;line-height:1.6;color:#6d7d76}
+#service-achievements .achievement-reach i{height:7px;background:#e8eeea;border-radius:999px;margin-top:18px;overflow:hidden}
+#service-achievements .achievement-reach em{display:block;height:100%;background:linear-gradient(90deg,#c49a48,#f1d38f);border-radius:inherit}
+#service-achievements .achievement-section-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:30px 4px 16px}
+#service-achievements .achievement-section-heading span{color:#8c6c2d;font-size:13px;font-weight:900}
+#service-achievements .achievement-section-heading h3{font-size:30px;color:var(--ux-primary);margin:5px 0 0}
+#service-achievements .achievement-section-heading p{margin:0;color:var(--ux-muted);font-size:14px}
+#service-achievements .service-achievement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+#service-achievements .service-achievement-card{min-width:0;background:#fff;border:1px solid #dbe5df;border-radius:20px;padding:21px;display:flex;flex-direction:column;box-shadow:0 8px 24px rgba(36,63,54,.065);position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+#service-achievements .service-achievement-card::after{content:"";position:absolute;width:95px;height:95px;border-radius:50%;border:18px solid rgba(196,154,72,.08);inset-inline-end:-52px;bottom:-56px}
+#service-achievements .service-achievement-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(36,63,54,.13)}
+#service-achievements .service-achievement-card header{display:flex;align-items:center;gap:9px;border-bottom:1px solid #edf1ee;padding-bottom:14px}
+#service-achievements .achievement-rank{font-size:12px;font-weight:900;color:#899890}
+#service-achievements .achievement-trophy{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#f6ead1;color:#9a742d;font-size:17px}
+#service-achievements .service-achievement-card time{margin-inline-start:auto;background:#eaf2ed;color:var(--ux-primary);border-radius:9px;padding:5px 11px;font-size:13px;font-weight:900}
+#service-achievements .achievement-branch{display:grid;grid-template-columns:68px 1fr;align-items:center;gap:14px;margin:18px 0 12px}
+#service-achievements .issuer-logo{width:66px;height:66px;border:1px solid #e3e9e5;background:#fff;border-radius:16px;display:grid;place-items:center;overflow:hidden;position:relative}
+#service-achievements .issuer-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7px;box-sizing:border-box;background:#fff}
+#service-achievements .issuer-monogram{display:grid;place-items:center;width:100%;height:100%;background:linear-gradient(145deg,#edf3ef,#f5ead2);color:var(--ux-primary);font-size:28px;font-weight:900}
+#service-achievements .achievement-branch small{color:#8a968f;font-size:12px}
+#service-achievements .achievement-branch h3{font-size:22px;color:var(--ux-primary);margin:3px 0 0}
+#service-achievements .achievement-title{color:#9a742d;font-size:16px;margin-bottom:7px}
+#service-achievements .service-achievement-card>p{font-size:13px;line-height:1.8;color:#4a5953;margin:0 0 18px;flex:1}
+#service-achievements .service-achievement-card footer{border-top:1px solid #edf1ee;padding-top:13px;display:flex;flex-direction:column;gap:4px;position:relative;z-index:1}
+#service-achievements .service-achievement-card footer span{font-size:11px;color:#8a968f}
+#service-achievements .service-achievement-card footer b{font-size:13px;color:var(--ux-primary)}
+#service-achievements .achievement-source{text-align:center;max-width:900px;margin:26px auto 2px;color:var(--ux-muted);font-size:12px;line-height:1.8}
+@media(max-width:1050px){#service-achievements .achievement-hero{grid-template-columns:1fr 200px}#service-achievements .achievement-reach{grid-column:1/-1;min-height:120px}#service-achievements .service-achievement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){#service-achievements{border-radius:18px}#service-achievements .achievement-hero{grid-template-columns:1fr;padding:24px;text-align:center}#service-achievements .achievement-total,#service-achievements .achievement-reach{min-height:auto;padding:22px}#service-achievements .achievement-cycles{justify-content:center}#service-achievements .achievement-section-heading{align-items:start;flex-direction:column}#service-achievements .service-achievement-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#service-achievements .service-achievement-card{transition:none}}
+
+/* Standalone certificates and shields chapter, inspired by the executive indicator layout. */
 #recognitions{background:linear-gradient(145deg,#fbfaf5 0%,#f3f6f3 100%);border-radius:26px}
 #recognitions .recognition-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(240px,.9fr) minmax(230px,.8fr);align-items:center;gap:18px;padding:30px 34px;border-radius:24px;background:#1f5045;color:#fff;overflow:hidden;position:relative}
 #recognitions .recognition-hero::before,#recognitions .recognition-hero::after{content:"";position:absolute;border-radius:50%;border:42px solid rgba(255,255,255,.045);width:210px;height:210px;inset-inline-end:-115px;bottom:-150px}

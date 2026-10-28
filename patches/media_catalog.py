@@ -24,6 +24,7 @@ LOGOS = {
     "utas": ("جامعة التقنية والعلوم التطبيقية", "https://i0.wp.com/ksalogo.com/wp-content/uploads/2025/01/University-of-Technology-and-Applied-Sciences-01.png?fit=1000%2C1000&amp;ssl=1"),
     "dhofar": ("جامعة ظفار", "https://pbs.twimg.com/profile_images/1599460575788105729/Nx4owTPw.jpg"),
     "sharqiyah": ("جامعة الشرقية", "https://vectorseek.com/wp-content/uploads/2025/01/ASharqiyah-University-Logo-Vector.svg-.png"),
+    "buraimi": ("جامعة البريمي", "https://commons.wikimedia.org/wiki/Special:FilePath/%D8%AC%D8%A7%D9%85%D8%B9%D8%A9%20%D8%A7%D9%84%D8%A8%D8%B1%D9%8A%D9%85%D9%8A.png"),
     "nama": ("نماء لخدمات ظفار", "https://pbs.twimg.com/profile_images/1653667083610144768/5wHJcb05_400x400.jpg"),
     "oq": ("مجموعة أوكيو", "https://assets.oq.com/dist/images/content/html5/our-journey/2019_OQ.png?v=dc422a58d97048a26915c1fae838868a"),
     "mazoon": ("مزون للألبان", "https://omannews.gov.om/images/topics/pictures/topic65584.jpeg"),
@@ -42,7 +43,8 @@ def issuer_identity(issuer):
         (r"تراث|سياحة", "heritage"), (r"حماية المستهلك", "consumer"), (r"غرفة", "chamber"),
         (r"طيران مدني|الطيران المدني", "caa"), (r"مؤسسات الصغيرة والمتوسطة|رواد الأعمال", "commerce"),
         (r"التقنية|التطبيقية", "utas"), (r"جامعة ظفار", "dhofar"),
-        (r"جامعة الشرقية", "sharqiyah"), (r"نماء", "nama"), (r"OQ|أوكيو", "oq"),
+        (r"جامعة الشرقية", "sharqiyah"), (r"جامعة البريمي", "buraimi"),
+        (r"نماء", "nama"), (r"OQ|أوكيو", "oq"),
         (r"مزون", "mazoon"), (r"خدمات المتعاملين|الشراكة ومؤسسات المجتمع المدني", "spf"),
         (r"بلدية", "interior"),
     ]
@@ -73,13 +75,33 @@ def update_media_catalog(text):
         cards.append(f'<article class="catalog-report"><a class="catalog-cover" href="{href}" target="_blank" rel="noopener">{img}<span>قراءة التقرير ↗</span></a><div class="catalog-report-body"><small>{period}</small><h3>{title}</h3><a class="catalog-open" href="{href}" target="_blank" rel="noopener">فتح التقرير الكامل PDF ↗</a>{ppt.group(0) if ppt else ""}{details.group(0) if details else ""}</div></article>')
 
     rows = json.loads((Path(__file__).resolve().parents[1] / 'overrides/assets/recognitions.json').read_text())['records']
-    govs = sorted({r['governorate'] for r in rows if r['governorate']})
-    years = sorted({r['year'] for r in rows}, reverse=True)
-    year_counts = Counter(r['year'] for r in rows)
-    gov_counts = Counter(r['governorate'] or 'غير محددة في المصدر' for r in rows)
+
+    def is_service_achievement(record):
+        return bool(re.search(r"ك?[أا]فضل\s+(?:منفذ|منافذ)", record['description']))
+
+    def award_cycle(record):
+        translated = record['description'].translate(str.maketrans('٠١٢٣٤٥٦٧٨٩', '0123456789'))
+        mentioned = re.findall(r'20\d{2}', translated)
+        return mentioned[-1] if mentioned else record['year']
+
+    raw_achievements = [r for r in rows if is_service_achievement(r)]
+    recognition_rows = [r for r in rows if not is_service_achievement(r)]
+    achievements = []
+    achievement_keys = set()
+    for record in sorted(raw_achievements, key=lambda item: (item['year'], item['sourceRow']), reverse=True):
+        key = (record['governorate'], award_cycle(record))
+        if key in achievement_keys:
+            continue
+        achievement_keys.add(key)
+        achievements.append(record)
+
+    govs = sorted({r['governorate'] for r in recognition_rows if r['governorate']})
+    years = sorted({r['year'] for r in recognition_rows}, reverse=True)
+    year_counts = Counter(r['year'] for r in recognition_rows)
+    gov_counts = Counter(r['governorate'] or 'غير محددة في المصدر' for r in recognition_rows)
     top_governorates = gov_counts.most_common(3)
     awards = []
-    for r in rows:
+    for r in recognition_rows:
         kind = 'درع وشهادة' if 'درع' in r['description'] and 'شهادة' in r['description'] else 'درع' if 'درع' in r['description'] else 'شهادة' if 'شهادة' in r['description'] else 'تكريم'
         gov = r['governorate'] or 'غير محددة في المصدر'
         parent, logo = issuer_identity(r['issuer'])
@@ -91,17 +113,44 @@ def update_media_catalog(text):
     def options(values):
         return ''.join(f'<option value="{e(v)}">{e(v)}</option>' for v in values)
 
+    achievement_cards = []
+    for index, r in enumerate(achievements, start=1):
+        gov = r['governorate'] or 'غير محددة في المصدر'
+        parent, logo = issuer_identity(r['issuer'])
+        issuer = r['issuer'] or 'غير مذكورة في المصدر'
+        fallback_letter = e(parent[:1] if parent != 'الجهة المانحة' else issuer[:1] if r['issuer'] else '—')
+        logo_markup = f'<span class="issuer-monogram" aria-hidden="true">{fallback_letter}</span><img src="{logo}" alt="شعار {e(parent)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true">' if logo else f'<span class="issuer-monogram" aria-hidden="true">{fallback_letter}</span>'
+        achievement_cards.append(f'''<article class="service-achievement-card" data-cycle="{award_cycle(r)}" data-source-row="{r['sourceRow']}">
+          <header><span class="achievement-rank">{index:02d}</span><span class="achievement-trophy" aria-hidden="true">★</span><time>{award_cycle(r)}</time></header>
+          <div class="achievement-branch"><div class="issuer-logo">{logo_markup}</div><div><small>فرع محافظة</small><h3>{e(gov)}</h3></div></div>
+          <strong class="achievement-title">أفضل منفذ لتقديم الخدمة</strong><p>{e(r['description'])}</p>
+          <footer><span>جهة التقييم والتكريم</span><b>{e(issuer)}</b></footer>
+        </article>''')
+
+    achievement_governorates = len({r['governorate'] for r in achievements if r['governorate']})
+    cycle_years = sorted({award_cycle(r) for r in achievements})
+    achievements_section = f'''<section class="section-block service-achievements-page" id="service-achievements" aria-labelledby="serviceAchievementTitle">
+      <div class="achievement-hero">
+        <div class="achievement-hero-copy"><span class="achievement-eyebrow">الإنجازات أولًا</span><h2 id="serviceAchievementTitle">منصات خدمة تتصدر محافظاتها</h2><p>سجل مستقل للدوائر والفروع التي نالت تقدير «أفضل منفذ لتقديم الخدمة»، بوصفه إنجازًا مؤسسيًا يتجاوز إطار الشهادة أو الدرع.</p><div class="achievement-cycles"><span>دورات التقييم</span><b>{' · '.join(cycle_years)}</b></div></div>
+        <div class="achievement-total"><span>إنجازًا موثقًا</span><strong>{len(achievements)}</strong><small>بعد دمج السجلات المتكررة</small></div>
+        <div class="achievement-reach"><span>حضور على مستوى المحافظات</span><strong>{achievement_governorates}</strong><small>محافظات حققت مراكز متقدمة</small><i><em style="width:{achievement_governorates / 11 * 100:.0f}%"></em></i></div>
+      </div>
+      <div class="achievement-section-heading"><div><span>سجل التميز</span><h3>أفضل منافذ تقديم الخدمة</h3></div><p>مرتبة من الأحدث، ويظهر كل استحقاق مرة واحدة.</p></div>
+      <div class="service-achievement-grid">{''.join(achievement_cards)}</div>
+      <p class="achievement-source">المصدر: سجل الشهادات والإنجازات في المحافظات. جرى فصل استحقاقات «أفضل منفذ لتقديم الخدمة» ودمج السجلات المكررة للاعتماد البصري.</p>
+    </section>'''
+
     top_markup = ''.join(f'<li><span>{e(gov)}</span><strong>{count}</strong></li>' for gov, count in top_governorates)
     recognition = f'''<section class="section-block recognition-page" id="recognitions" aria-labelledby="recognitionTitle">
       <div class="recognition-hero">
-        <div class="recognition-intro"><span class="recognition-kicker">سجل التقدير المؤسسي</span><h2 id="recognitionTitle">إنجازاتٌ تصنع الأثر</h2><p>محطات تقدير توثّق حضور دوائر الحماية الاجتماعية وشراكاتها في مختلف محافظات سلطنة عُمان.</p><div class="recognition-years"><span><b>{year_counts['2026']}</b> في 2026</span><span><b>{year_counts['2025']}</b> في 2025</span><span><b>{year_counts['2024']}</b> في 2024</span></div></div>
-        <div class="recognition-donut" style="--y26:{year_counts['2026'] / len(rows) * 100:.1f};--y25:{(year_counts['2026'] + year_counts['2025']) / len(rows) * 100:.1f}"><div><strong>{len(rows)}</strong><span>إجمالي الأنشطة والتكريمات</span></div></div>
+        <div class="recognition-intro"><span class="recognition-kicker">سجل الشهادات والدروع</span><h2 id="recognitionTitle">تقديرٌ يوثّق الشراكة والأثر</h2><p>الشهادات والدروع والتكريمات الناتجة عن المشاركات والبرامج والشراكات المجتمعية، في سجل مستقل عن الإنجازات المؤسسية.</p><div class="recognition-years"><span><b>{year_counts['2026']}</b> في 2026</span><span><b>{year_counts['2025']}</b> في 2025</span><span><b>{year_counts['2024']}</b> في 2024</span></div></div>
+        <div class="recognition-donut" style="--y26:{year_counts['2026'] / len(recognition_rows) * 100:.1f};--y25:{(year_counts['2026'] + year_counts['2025']) / len(recognition_rows) * 100:.1f}"><div><strong>{len(recognition_rows)}</strong><span>شهادة ودرع وتكريم</span></div></div>
         <div class="recognition-leaders"><span>الأكثر توثيقًا</span><ol>{top_markup}</ol></div>
       </div>
       <div class="recognition-filters"><label>البحث<input id="recognitionSearch" type="search" placeholder="ابحث في الإنجاز أو الجهة المانحة…"></label><label>المحافظة<select id="recognitionGovernorate"><option value="">جميع المحافظات</option>{options(govs)}<option>غير محددة في المصدر</option></select></label><label>السنة<select id="recognitionYear"><option value="">جميع السنوات</option>{options(years)}</select></label><button id="recognitionReset" type="button">مسح التصفية</button></div>
-      <div class="recognition-results-head"><p id="recognitionCount" role="status" aria-live="polite">عرض {len(rows)} من {len(rows)} سجلًا</p><span>يمكن البحث باسم الجهة أو نص الإنجاز</span></div>
+      <div class="recognition-results-head"><p id="recognitionCount" role="status" aria-live="polite">عرض {len(recognition_rows)} من {len(recognition_rows)} سجلًا</p><span>يمكن البحث باسم الجهة أو نص التكريم</span></div>
       <div class="recognition-grid">{''.join(awards)}</div><p id="recognitionEmpty" hidden>لا توجد نتائج مطابقة. جرّب كلمة أخرى أو غيّر التصفية.</p><p class="recognition-source">المصدر: سجل الشهادات والإنجازات في المحافظات · 2024–2026. يظهر الشعار المؤسسي المناسب عند توفره، وتُعرض السجلات كما وردت في المصدر.</p>
     </section>'''
 
     reports = '<div class="catalog-heading"><h3>التقارير والإصدارات</h3><p>جميع الإصدارات في مكتبة واحدة</p></div><div class="report-catalog">' + ''.join(cards) + '</div>' + flow + '</section>'
-    return text[:start] + reports + recognition + text[media_close:]
+    return text[:start] + reports + achievements_section + recognition + text[media_close:]
