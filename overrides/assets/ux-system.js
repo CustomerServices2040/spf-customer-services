@@ -290,3 +290,31 @@
   else boot();
   window.addEventListener("pageshow", loadTaskData);
 })();
+
+// Filter the complete source-backed catalog; keep source text unchanged.
+(() => {
+  const initRecognitions = () => {
+    const search = document.getElementById('recognitionSearch');
+    if (!search) return;
+    const governorate = document.getElementById('recognitionGovernorate');
+    const year = document.getElementById('recognitionYear');
+    const cards = [...document.querySelectorAll('.recognition-card')];
+    const normalize = value => value.normalize('NFKC').replace(/[\u064B-\u065F\u0670\u0640]/g, '').replace(/[أإآ]/g, 'ا').toLowerCase();
+    const apply = () => {
+      const query = normalize(search.value.trim());
+      let count = 0;
+      cards.forEach(card => {
+        card.hidden = !(normalize(card.textContent).includes(query) && (!governorate.value || card.dataset.governorate === governorate.value) && (!year.value || card.dataset.year === year.value));
+        if (!card.hidden) count++;
+      });
+      document.getElementById('recognitionCount').textContent = `عرض ${count} من ${cards.length} سجلًا`;
+      document.getElementById('recognitionEmpty').hidden = count !== 0;
+    };
+    search.addEventListener('input', apply);
+    governorate.addEventListener('change', apply);
+    year.addEventListener('change', apply);
+    document.getElementById('recognitionReset').addEventListener('click', () => { search.value = ''; governorate.value = ''; year.value = ''; apply(); });
+    apply();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initRecognitions); else initRecognitions();
+})();

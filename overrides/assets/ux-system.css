@@ -414,3 +414,41 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 @media(max-width:1050px){#projects .future-projects-grid{gap:12px}#channels .smart-capabilities{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){#projects .future-projects-grid{grid-template-columns:1fr}}
 @media(max-width:650px){#channels .smart-center{padding:18px}#channels .smart-center-intro{grid-template-columns:1fr!important}#channels .smart-flow{grid-column:1;grid-row:auto;justify-content:flex-start}#channels .smart-capabilities{grid-template-columns:1fr}#channels .smart-capabilities article:last-child{grid-column:auto}#projects .future-projects-card{padding:18px}#projects .future-projects-grid{grid-template-columns:1fr}#projects .future-projects-card h3{font-size:21px}}
+
+/* Equal-weight report library and governorate recognitions. */
+#media-center .report-catalog,#media-center .recognition-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:24px 0}
+#media-center .catalog-report,#media-center .recognition-card{min-width:0;background:var(--ux-surface);border:1px solid var(--ux-border);border-radius:18px;overflow:hidden;box-shadow:0 5px 18px #243f3608}
+#media-center .catalog-cover{display:block;position:relative;background:#edf1ed;aspect-ratio:16/10;overflow:hidden}
+#media-center .catalog-cover img{width:100%;height:100%;object-fit:contain;display:block;padding:12px;box-sizing:border-box}
+#media-center .catalog-cover>span{position:absolute;bottom:10px;left:12px;background:var(--ux-primary);color:white;padding:5px 12px;border-radius:8px;font-size:13px}
+#media-center .catalog-report-body{padding:22px;display:flex;flex-direction:column;gap:12px}
+#media-center .catalog-report-body h3{font-size:20px;margin:0;color:var(--ux-primary)}
+#media-center .catalog-report-body small{color:var(--ux-muted);font-size:14px}
+#media-center .catalog-report-body a{color:var(--ux-primary);font-size:14px;text-decoration:none}
+#media-center .catalog-report-body .catalog-open{border-top:1px solid var(--ux-border);padding-top:14px;font-weight:700}
+#media-center .catalog-report-body details{font-size:14px;color:var(--ux-muted)}
+#media-center .catalog-report-body summary{cursor:pointer}
+#media-center .recognition-catalog{margin-top:48px;padding-top:32px;border-top:1px solid var(--ux-border)}
+#media-center .recognition-heading{display:flex;justify-content:space-between;align-items:center;gap:24px}
+#media-center .recognition-heading h3{font-size:30px;color:var(--ux-primary);margin:8px 0}
+#media-center .recognition-heading p,#media-center .catalog-heading p{color:var(--ux-muted)}
+#media-center .recognition-total{display:flex;flex-direction:column;align-items:center;min-width:150px;padding:20px;border-radius:18px;background:var(--ux-primary);color:#fff}
+#media-center .recognition-total strong{font-size:38px;color:var(--ux-gold)}
+#media-center .recognition-filters{display:flex;gap:14px;align-items:end;padding:20px;background:#edf1ed;border-radius:18px;margin-top:24px;flex-wrap:wrap}
+#media-center .recognition-filters label{display:flex;flex-direction:column;gap:8px;font-size:14px;flex:1;min-width:150px}
+#media-center .recognition-filters label:first-child{flex:2}
+#media-center .recognition-filters input,#media-center .recognition-filters select,#media-center .recognition-filters button{box-sizing:border-box;width:100%;min-height:46px;border:1px solid #c8d4cd;border-radius:10px;padding:8px 12px;background:white;color:var(--ux-text);font:inherit}
+#media-center .recognition-filters button{width:auto;cursor:pointer;background:var(--ux-primary);color:white}
+#media-center .recognition-card{padding:22px;display:flex;flex-direction:column;border-top:3px solid var(--ux-gold)}
+#media-center .recognition-card[hidden],#media-center [hidden]{display:none!important}
+#media-center .recognition-card header{display:flex;align-items:center;gap:10px;color:var(--ux-muted);font-size:14px}
+#media-center .recognition-card time{margin-inline-start:auto;color:var(--ux-primary);background:#edf1ed;border-radius:8px;padding:3px 9px}
+#media-center .recognition-icon{font-size:26px;color:#987431}
+#media-center .recognition-card h4{font-size:20px;color:var(--ux-primary);margin:16px 0 10px}
+#media-center .recognition-card p{font-size:15px;line-height:1.9;margin:0 0 22px;white-space:pre-line}
+#media-center .recognition-card footer{margin-top:auto;border-top:1px solid var(--ux-border);padding-top:14px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+#media-center .recognition-card footer span,#media-center .recognition-source,#recognitionCount{color:var(--ux-muted);font-size:14px}
+#media-center :is(input,select,button,a,summary):focus-visible{outline:3px solid var(--ux-gold);outline-offset:3px}
+@media(max-width:1050px){#media-center .report-catalog,#media-center .recognition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){#media-center .report-catalog,#media-center .recognition-grid{grid-template-columns:1fr}#media-center .recognition-heading{align-items:stretch;flex-direction:column}#media-center .recognition-total{flex-direction:row;gap:16px;justify-content:center}#media-center .recognition-filters{display:grid;grid-template-columns:1fr}#media-center .recognition-filters button{width:100%}}
+#media-center .recognition-heading .media-eyebrow{color:#806327;background:#f2e6cf;font-size:14px}

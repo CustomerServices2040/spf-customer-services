@@ -624,5 +624,8 @@ future_markup += '</div></article>'
 
 replace_required('<div class="projects-grid" id="projectsGrid"></div>', future_markup + '\n          <div class="projects-grid" id="projectsGrid"></div>')
 
+from media_catalog import update_media_catalog
+text = update_media_catalog(text)
+
 path.write_text(text, encoding="utf-8")
 
