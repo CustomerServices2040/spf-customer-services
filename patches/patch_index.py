@@ -408,7 +408,7 @@ text = text.replace('        <a href="#media-center">المركز الإعلام
 if 'href="#community-line"' not in text:
     text = text.replace(
         '        <a href="#projects">المشاريع</a>\n        <a href="#achievements">الريادة والمجتمع</a>',
-        '        <a href="#projects">المشاريع</a>\n        <a href="#community-line">خطة التواصل المجتمعي</a>\n        <a href="#media-center">المركز الإعلامي</a>\n        <a href="#achievements">الريادة والمجتمع</a>',
+        '        <a href="#projects">المشاريع</a>\n        <a href="#community-line">خطة التواصل المجتمعي</a>\n        <a href="#media-center">التقارير والإصدارات</a>\n        <a href="#recognitions">الإنجازات والشهادات</a>\n        <a href="#achievements">الريادة والمجتمع</a>',
         1,
     )
 

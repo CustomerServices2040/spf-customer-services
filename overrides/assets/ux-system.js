@@ -7,7 +7,7 @@
     ["المتعامل والقنوات", ["methodology", "coverage", "channels", "tajawob"]],
     ["التنفيذ", ["operational-plan", "work-tracker", "risk-register"]],
     ["الحوكمة والمبادرات", ["directorate", "committees", "projects", "community-line"]],
-    ["المعرفة والتقارير", ["media-center"]]
+    ["المركز الإعلامي", ["media-center", "recognitions"]]
   ];
 
   const $ = (selector, context = document) => context.querySelector(selector);

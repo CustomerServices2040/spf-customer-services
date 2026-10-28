@@ -452,3 +452,55 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 @media(max-width:1050px){#media-center .report-catalog,#media-center .recognition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){#media-center .report-catalog,#media-center .recognition-grid{grid-template-columns:1fr}#media-center .recognition-heading{align-items:stretch;flex-direction:column}#media-center .recognition-total{flex-direction:row;gap:16px;justify-content:center}#media-center .recognition-filters{display:grid;grid-template-columns:1fr}#media-center .recognition-filters button{width:100%}}
 #media-center .recognition-heading .media-eyebrow{color:#806327;background:#f2e6cf;font-size:14px}
+
+/* Standalone recognitions chapter, inspired by the executive indicator layout. */
+#recognitions{background:linear-gradient(145deg,#fbfaf5 0%,#f3f6f3 100%);border-radius:26px}
+#recognitions .recognition-hero{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(210px,.7fr) minmax(230px,.8fr);align-items:center;gap:28px;padding:34px;border-radius:24px;background:#1f5045;color:#fff;overflow:hidden;position:relative}
+#recognitions .recognition-hero::before,#recognitions .recognition-hero::after{content:"";position:absolute;border-radius:50%;border:42px solid rgba(255,255,255,.045);width:210px;height:210px;inset-inline-end:-115px;bottom:-150px}
+#recognitions .recognition-hero::after{width:120px;height:120px;inset-inline-start:-80px;inset-inline-end:auto;top:-85px;bottom:auto;border-width:28px}
+#recognitions .recognition-intro,#recognitions .recognition-donut,#recognitions .recognition-leaders{position:relative;z-index:1}
+#recognitions .recognition-kicker{display:inline-block;color:#f3d38c;font-weight:800;font-size:14px;margin-bottom:8px}
+#recognitions .recognition-intro h2{font-size:clamp(30px,4vw,48px);line-height:1.15;margin:0 0 14px;color:#fff}
+#recognitions .recognition-intro p{margin:0;color:#dce9e4;line-height:1.9;max-width:650px}
+#recognitions .recognition-years{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+#recognitions .recognition-years span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:8px 13px;color:#dce9e4;font-size:13px}
+#recognitions .recognition-years b{color:#f3d38c;font-size:18px;margin-inline-end:3px}
+#recognitions .recognition-donut{width:170px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;margin:auto;background:conic-gradient(#f2cf87 0 calc(var(--y26)*1%),#a989cd calc(var(--y26)*1%) calc(var(--y25)*1%),#8fb8a9 calc(var(--y25)*1%) 100%);box-shadow:0 0 0 10px rgba(255,255,255,.08)}
+#recognitions .recognition-donut::before{content:"";position:absolute;width:120px;aspect-ratio:1;border-radius:50%;background:#1f5045}
+#recognitions .recognition-donut div{position:relative;text-align:center;display:flex;flex-direction:column}
+#recognitions .recognition-donut strong{font-size:40px;color:#fff;line-height:1}
+#recognitions .recognition-donut span{font-size:13px;color:#f3d38c;margin-top:7px}
+#recognitions .recognition-leaders{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:20px;border-radius:18px}
+#recognitions .recognition-leaders>span{font-size:13px;color:#f3d38c;font-weight:800}
+#recognitions .recognition-leaders ol{list-style:none;padding:0;margin:13px 0 0;display:grid;gap:10px}
+#recognitions .recognition-leaders li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:9px;font-size:14px}
+#recognitions .recognition-leaders li:last-child{border:0;padding:0}
+#recognitions .recognition-leaders strong{color:#f3d38c}
+#recognitions .recognition-filters{display:flex;gap:14px;align-items:end;padding:20px;background:#fff;border:1px solid var(--ux-border);box-shadow:var(--ux-shadow);border-radius:18px;margin:24px 0 0;flex-wrap:wrap;position:sticky;top:10px;z-index:5}
+#recognitions .recognition-filters label{display:flex;flex-direction:column;gap:8px;font-size:14px;flex:1;min-width:150px;color:var(--ux-primary);font-weight:700}
+#recognitions .recognition-filters label:first-child{flex:2}
+#recognitions .recognition-filters input,#recognitions .recognition-filters select,#recognitions .recognition-filters button{box-sizing:border-box;width:100%;min-height:46px;border:1px solid #c8d4cd;border-radius:10px;padding:8px 12px;background:white;color:var(--ux-text);font:inherit}
+#recognitions .recognition-filters button{width:auto;cursor:pointer;background:var(--ux-primary);color:white;border-color:var(--ux-primary);font-weight:800}
+#recognitions .recognition-results-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:22px 0 8px;color:var(--ux-muted);font-size:14px}
+#recognitions .recognition-results-head p{margin:0;color:var(--ux-primary);font-weight:800}
+#recognitions .recognition-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:18px 0 26px}
+#recognitions .recognition-card{min-width:0;background:#fff;border:1px solid var(--ux-border);border-radius:18px;padding:20px;display:grid;grid-template-columns:76px 1fr;grid-template-areas:"head head" "logo title" "body body" "foot foot";column-gap:16px;align-items:center;box-shadow:0 8px 24px rgba(36,63,54,.065);border-top:3px solid var(--ux-gold);transition:transform .2s ease,box-shadow .2s ease}
+#recognitions .recognition-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(36,63,54,.12)}
+#recognitions .recognition-card[hidden],#recognitions [hidden]{display:none!important}
+#recognitions .recognition-card header{grid-area:head;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+#recognitions .recognition-kind{background:#f2e6cf;color:#765b29;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:800}
+#recognitions .recognition-card time{color:var(--ux-primary);background:#edf1ed;border-radius:8px;padding:4px 10px;font-size:13px;font-weight:800}
+#recognitions .issuer-logo{grid-area:logo;width:72px;height:72px;border:1px solid #e3e9e5;background:#fff;border-radius:16px;display:grid;place-items:center;overflow:hidden;position:relative}
+#recognitions .issuer-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7px;box-sizing:border-box;background:#fff}
+#recognitions .issuer-monogram{display:grid;place-items:center;width:100%;height:100%;background:linear-gradient(145deg,#edf3ef,#f5ead2);color:var(--ux-primary);font-size:30px;font-weight:900}
+#recognitions .recognition-card h4{grid-area:title;font-size:19px;color:var(--ux-primary);margin:0}
+#recognitions .recognition-card>p{grid-area:body;font-size:14px;line-height:1.85;margin:17px 0 20px;white-space:pre-line;color:#35443e}
+#recognitions .recognition-card footer{grid-area:foot;margin-top:auto;border-top:1px solid var(--ux-border);padding-top:14px;display:flex;flex-direction:column;gap:5px;font-size:13px}
+#recognitions .recognition-card footer span,#recognitions .recognition-card footer small,#recognitions .recognition-source{color:var(--ux-muted);font-size:12px}
+#recognitions .recognition-card footer strong{color:var(--ux-primary);font-size:14px}
+#recognitions .recognition-source{text-align:center;margin:28px auto 4px;max-width:900px;line-height:1.8}
+#recognitions #recognitionEmpty{text-align:center;padding:40px;background:#fff;border-radius:18px;color:var(--ux-muted)}
+#recognitions :is(input,select,button):focus-visible{outline:3px solid var(--ux-gold);outline-offset:3px}
+@media(max-width:1050px){#recognitions .recognition-hero{grid-template-columns:1fr 190px}#recognitions .recognition-leaders{grid-column:1/-1}#recognitions .recognition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){#recognitions{border-radius:18px}#recognitions .recognition-hero{grid-template-columns:1fr;padding:25px;text-align:center}#recognitions .recognition-years{justify-content:center}#recognitions .recognition-leaders{text-align:start}#recognitions .recognition-filters{display:grid;grid-template-columns:1fr;position:static}#recognitions .recognition-filters button{width:100%}#recognitions .recognition-results-head{align-items:start;flex-direction:column}#recognitions .recognition-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#recognitions .recognition-card{transition:none}}
