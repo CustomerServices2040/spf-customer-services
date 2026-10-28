@@ -84,10 +84,9 @@ def update_media_catalog(text):
         gov = r['governorate'] or 'غير محددة في المصدر'
         parent, logo = issuer_identity(r['issuer'])
         issuer = r['issuer'] or 'غير مذكورة في المصدر'
-        parent_note = f'<small>الجهة الأم: {e(parent)}</small>' if issuer != parent and parent != 'الجهة المانحة' else ''
         fallback_letter = e(parent[:1] if parent != 'الجهة المانحة' else issuer[:1] if r['issuer'] else '—')
         logo_markup = f'<span class="issuer-monogram" aria-hidden="true">{fallback_letter}</span><img src="{logo}" alt="شعار {e(parent)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true">' if logo else f'<span class="issuer-monogram" aria-hidden="true">{fallback_letter}</span>'
-        awards.append(f'<article class="recognition-card" data-governorate="{e(gov)}" data-year="{e(r["year"])}" data-source-row="{r["sourceRow"]}"><header><span class="recognition-kind">{kind}</span><time>{e(r["year"])}</time></header><div class="issuer-logo">{logo_markup}</div><h4>{e(gov)}</h4><p>{e(r["description"])}</p><footer><span>الجهة المانحة</span><strong>{e(issuer)}</strong>{parent_note}</footer></article>')
+        awards.append(f'<article class="recognition-card" data-governorate="{e(gov)}" data-year="{e(r["year"])}" data-source-row="{r["sourceRow"]}"><header><span class="recognition-kind">{kind}</span><time>{e(r["year"])}</time></header><div class="issuer-logo">{logo_markup}</div><h4>{e(gov)}</h4><p>{e(r["description"])}</p><footer><span>الجهة المانحة</span><strong>{e(issuer)}</strong></footer></article>')
 
     def options(values):
         return ''.join(f'<option value="{e(v)}">{e(v)}</option>' for v in values)
@@ -96,12 +95,12 @@ def update_media_catalog(text):
     recognition = f'''<section class="section-block recognition-page" id="recognitions" aria-labelledby="recognitionTitle">
       <div class="recognition-hero">
         <div class="recognition-intro"><span class="recognition-kicker">سجل التقدير المؤسسي</span><h2 id="recognitionTitle">إنجازاتٌ تصنع الأثر</h2><p>محطات تقدير توثّق حضور دوائر الحماية الاجتماعية وشراكاتها في مختلف محافظات سلطنة عُمان.</p><div class="recognition-years"><span><b>{year_counts['2026']}</b> في 2026</span><span><b>{year_counts['2025']}</b> في 2025</span><span><b>{year_counts['2024']}</b> في 2024</span></div></div>
-        <div class="recognition-donut" style="--y26:{year_counts['2026'] / len(rows) * 100:.1f};--y25:{(year_counts['2026'] + year_counts['2025']) / len(rows) * 100:.1f}"><div><strong>{len(rows)}</strong><span>تكريمًا وشهادة</span></div></div>
+        <div class="recognition-donut" style="--y26:{year_counts['2026'] / len(rows) * 100:.1f};--y25:{(year_counts['2026'] + year_counts['2025']) / len(rows) * 100:.1f}"><div><strong>{len(rows)}</strong><span>إجمالي الأنشطة والتكريمات</span></div></div>
         <div class="recognition-leaders"><span>الأكثر توثيقًا</span><ol>{top_markup}</ol></div>
       </div>
       <div class="recognition-filters"><label>البحث<input id="recognitionSearch" type="search" placeholder="ابحث في الإنجاز أو الجهة المانحة…"></label><label>المحافظة<select id="recognitionGovernorate"><option value="">جميع المحافظات</option>{options(govs)}<option>غير محددة في المصدر</option></select></label><label>السنة<select id="recognitionYear"><option value="">جميع السنوات</option>{options(years)}</select></label><button id="recognitionReset" type="button">مسح التصفية</button></div>
       <div class="recognition-results-head"><p id="recognitionCount" role="status" aria-live="polite">عرض {len(rows)} من {len(rows)} سجلًا</p><span>يمكن البحث باسم الجهة أو نص الإنجاز</span></div>
-      <div class="recognition-grid">{''.join(awards)}</div><p id="recognitionEmpty" hidden>لا توجد نتائج مطابقة. جرّب كلمة أخرى أو غيّر التصفية.</p><p class="recognition-source">المصدر: سجل الشهادات والإنجازات في المحافظات · 2024–2026. يظهر شعار الجهة المانحة أو الجهة الحكومية الأم عند توفره، وتُعرض السجلات كما وردت في المصدر.</p>
+      <div class="recognition-grid">{''.join(awards)}</div><p id="recognitionEmpty" hidden>لا توجد نتائج مطابقة. جرّب كلمة أخرى أو غيّر التصفية.</p><p class="recognition-source">المصدر: سجل الشهادات والإنجازات في المحافظات · 2024–2026. يظهر الشعار المؤسسي المناسب عند توفره، وتُعرض السجلات كما وردت في المصدر.</p>
     </section>'''
 
     reports = '<div class="catalog-heading"><h3>التقارير والإصدارات</h3><p>جميع الإصدارات في مكتبة واحدة</p></div><div class="report-catalog">' + ''.join(cards) + '</div>' + flow + '</section>'
