@@ -103,7 +103,7 @@ jobs:
           required_tabs = [
               "overview","directorate","methodology","coverage","channels",
               "operational-plan","work-tracker","risk-register","performance",
-              "tajawob","committees","projects","community-line","media-center","recognitions","achievements"
+              "tajawob","committees","projects","community-line","media-center","service-achievements","recognitions","achievements"
           ]
 
           class Audit(HTMLParser):
