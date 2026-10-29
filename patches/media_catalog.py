@@ -84,12 +84,16 @@ def update_media_catalog(text):
         mentioned = re.findall(r'20\d{2}', translated)
         return mentioned[-1] if mentioned else record['year']
 
+    def achievement_key(record):
+        governorate = re.sub(r'\s+', ' ', record['governorate'] or '').strip()
+        return governorate, award_cycle(record)
+
     raw_achievements = [r for r in rows if is_service_achievement(r)]
     recognition_rows = [r for r in rows if not is_service_achievement(r)]
     achievements = []
     achievement_keys = set()
     for record in sorted(raw_achievements, key=lambda item: (item['year'], item['sourceRow']), reverse=True):
-        key = (record['governorate'], award_cycle(record))
+        key = achievement_key(record)
         if key in achievement_keys:
             continue
         achievement_keys.add(key)
@@ -117,7 +121,7 @@ def update_media_catalog(text):
         gov = r['governorate'] or 'غير محددة في المصدر'
         issuer = r['issuer'] or 'غير مذكورة في المصدر'
         logo_markup = '<img src="assets/spf-logo.png" alt="شعار صندوق الحماية الاجتماعية" loading="lazy">'
-        achievement_cards.append(f'''<article class="service-achievement-card" data-cycle="{award_cycle(r)}" data-source-row="{r['sourceRow']}">
+        achievement_cards.append(f'''<article class="service-achievement-card" data-governorate="{e(gov)}" data-cycle="{award_cycle(r)}" data-source-row="{r['sourceRow']}">
           <header><span class="achievement-rank">{index:02d}</span><span class="achievement-trophy" aria-hidden="true">★</span><time>{award_cycle(r)}</time></header>
           <div class="achievement-branch"><div class="issuer-logo">{logo_markup}</div><div><small>فرع محافظة</small><h3>{e(gov)}</h3></div></div>
           <strong class="achievement-title">أفضل منفذ لتقديم الخدمة</strong><p>{e(r['description'])}</p>

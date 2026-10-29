@@ -96,6 +96,7 @@ jobs:
           from html.parser import HTMLParser
           from pathlib import Path
           from urllib.parse import urlparse
+          import re
 
           html_path = Path("_site/legacy/index.html")
           text = html_path.read_text(encoding="utf-8")
@@ -198,6 +199,18 @@ jobs:
 
           if text.count('id="community-line"') != 1 or text.count('id="media-center"') != 1:
               raise SystemExit("Community/media chapters must appear exactly once")
+
+          achievement_cards = re.findall(
+              r'<article class="service-achievement-card" data-governorate="([^"]+)" data-cycle="([^"]+)"',
+              text,
+          )
+          if len(achievement_cards) != len(set(achievement_cards)):
+              raise SystemExit("Duplicate achievement card found for the same governorate and year")
+          if achievement_cards.count(("ظفار", "2024")) != 1:
+              raise SystemExit("Dhofar 2024 achievement must appear exactly once")
+          for required_achievement in (("ظفار", "2025"), ("مسقط", "2024"), ("مسقط", "2025")):
+              if achievement_cards.count(required_achievement) != 1:
+                  raise SystemExit(f"Required achievement missing or duplicated: {required_achievement}")
 
           print("Platform audit passed")
           print("Tabs:", len(required_tabs))
