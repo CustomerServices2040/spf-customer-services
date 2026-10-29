@@ -462,7 +462,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 #service-achievements .achievement-eyebrow::before{content:"";width:26px;height:2px;background:#f4d28d;border-radius:2px}
 #service-achievements .achievement-hero h2{font-size:clamp(31px,4vw,50px);line-height:1.15;margin:0 0 10px;color:#fff}
 #service-achievements .achievement-total{display:grid;grid-template-columns:92px 1fr;align-items:center;gap:20px;text-align:center;border:1px solid rgba(255,255,255,.18);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.07));padding:25px;box-shadow:0 18px 38px rgba(11,34,28,.2)}
-#service-achievements .achievement-total-icon{width:86px;height:86px;border-radius:24px;display:grid;place-items:center;background:#f4d28d;color:#204f44;box-shadow:0 10px 24px rgba(15,38,32,.24);transform:rotate(-3deg)}
+#service-achievements .achievement-total-icon{width:86px;height:86px;border-radius:24px;display:grid;place-items:center;background:#f4d28d;color:#204f44;box-shadow:0 10px 24px rgba(15,38,32,.24);transform:none}
 #service-achievements .achievement-total-icon svg{width:52px;height:52px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 #service-achievements .achievement-total>div{display:flex;flex-direction:column;align-items:center}
 #service-achievements .achievement-total>div>span{font-size:14px;color:#e0ece7;font-weight:900}
@@ -510,9 +510,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 #recognitions .recognition-years b{color:#f3d38c;font-size:18px;margin-inline-end:3px}
 #recognitions .recognition-total-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:190px;padding:18px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
 #recognitions .recognition-emblems{display:flex;align-items:center;justify-content:center;margin-bottom:9px}
-#recognitions .recognition-emblems span{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#f3d38c;color:#1f5045;font-size:17px;font-weight:900;border:3px solid #1f5045;box-shadow:0 6px 16px rgba(0,0,0,.13)}
+#recognitions .recognition-emblems span{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#f3d38c;color:#1f5045;border:3px solid #1f5045;box-shadow:0 6px 16px rgba(0,0,0,.13)}
 #recognitions .recognition-emblems span+span{margin-inline-start:-8px;background:#fff;color:#8b6a2d;transform:translateY(3px)}
 #recognitions .recognition-emblems span:last-child{background:#dcebe5;color:#1f5045;transform:none}
+#recognitions .recognition-emblems svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 #recognitions .recognition-total-visual>strong{font-size:64px;color:#fff;line-height:.95;text-shadow:0 5px 18px rgba(0,0,0,.16)}
 #recognitions .recognition-total-visual>span{font-size:12px;line-height:1.45;color:#f3d38c;margin-top:9px;max-width:145px;font-weight:900}
 #recognitions .recognition-leaders{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:20px;border-radius:18px}
