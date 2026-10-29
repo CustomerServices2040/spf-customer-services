@@ -19,6 +19,9 @@
     ));
   }
   function isCalculatedKey(key){
+    // Catalog records and totals are generated from recognitions.json. Positional
+    // edits from older layouts would overwrite different records after sorting.
+    if (/^#(?:service-achievements|recognitions)(?:>|$)/.test(key)) return true;
     return ["#governorateName","#governorateStaff","#governorateShare","#governorateComparison","#governoratePhone","#governorateTotalWork","#govTransactions","#govAppointments","#govWhatsapp","#govField","#govProactive","#govSelfService","#govCommunity","#govQr","#govWorkPerEmployee","#govDailyPerEmployee"].includes(key) ||
       ["#trackerRate","#trackerRateSummary","#trackerTotalCount","#trackerCountSummary","#trackerDoneCount","#trackerProgressCount","#boardRate","#boardDone","#boardProgressCount","#boardTotalItems>strong:1"].includes(key) ||
       key.startsWith("#boardModePanel>main:1>section:5>") ||
@@ -119,6 +122,7 @@
       !el.querySelector("h1,h2,h3,p,li,th,td,time,span,strong,b,small,em") &&
       !el.closest(".editor-toolbar,.top-navigation,button,.document-editor,.modal-close") &&
       !el.hasAttribute("data-calculated") &&
+      !el.closest("#service-achievements,#recognitions") &&
       !el.classList.contains("project-id") && !isCalculatedKey(stablePath(el)) && (el.dataset.editKey||el.textContent.trim())
     );
   }
@@ -133,6 +137,7 @@
   function applyValues(values){
     $$("[data-edit-key]").forEach(el=>{
       const key=el.dataset.editKey;
+      if(el.closest("#service-achievements,#recognitions")) return;
       if(Object.prototype.hasOwnProperty.call(values,key))el.textContent=values[key];
       else if(defaultValues.has(key))el.textContent=defaultValues.get(key);
     });

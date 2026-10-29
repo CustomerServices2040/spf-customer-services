@@ -96,6 +96,7 @@ jobs:
         run: |
           set -euo pipefail
           node --check _site/legacy/assets/app.js
+          node scripts/test_catalog_overrides.mjs
           node --check _site/legacy/assets/exhibition.js
           node --check _site/legacy/assets/platform-enhancements.js
           node --check _site/legacy/assets/ux-system.js
