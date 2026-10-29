@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-10-29T04:10:50.314Z",
+  "updatedAt": "2026-10-29T04:11:59.145Z",
   "edits": {
     "div:1>main:1>header:1>div:1>span:1": "صندوق الحماية الاجتماعية · سلطنة عُمان",
     "div:1>main:1>header:1>div:1>h1:1": "بوصلة المتعامل",
@@ -2508,7 +2508,7 @@
     "#recognitions>div:1>div:3>ol:1>li:3>span:1": "شمال الشرقية",
     "#recognitions>div:1>div:3>ol:1>li:3>strong:1": "21",
     "#recognitionCount": "عرض 195 من 195 سجلًا",
-    "#recognitions>div:3>span:1": "يمكن البحث باسم الجهة أو نص الإنجاز",
+    "#recognitions>div:3>span:1": "",
     "#recognitions>div:4>article:1>header:1>span:1": "درع",
     "#recognitions>div:4>article:1>header:1>time:1": "2024",
     "#recognitions>div:4>article:1>div:1>span:1": "و",
@@ -3701,9 +3701,9 @@
     "#service-achievements>div:2>div:1>span:1": "سجل الإنجازات",
     "#serviceAchievementTitle": "إنجازات دوائر الحماية الاجتماعية بالمحافظات",
     "#service-achievements>div:1>div:1>span:1": "الإنجازات",
-    "#service-achievements>div:1>div:2>div:1>span:1": "إجمالي الإنجازات",
+    "#service-achievements>div:1>div:2>div:1>span:1": "",
     "#service-achievements>div:1>div:2>div:1>strong:1": "15",
-    "#service-achievements>div:1>div:2>div:1>small:1": "إنجازًا",
+    "#service-achievements>div:1>div:2>div:1>small:1": "إجمالي الإنجازات",
     "#service-achievements>div:2>div:1>h3:1": "أفضل منافذ تقديم الخدمة",
     "#service-achievements>div:3>article:1>header:1>span:1": "01",
     "#service-achievements>div:3>article:1>header:1>span:2": "★",
@@ -3828,7 +3828,8 @@
     "#recognitions>div:1>div:2>div:1>span:2": "◆",
     "#recognitions>div:1>div:2>div:1>span:3": "✓",
     "#recognitions>div:1>div:2>strong:1": "195",
-    "#recognitions>div:1>div:2>span:1": "إجمالي الإنجازات والشهادات"
+    "#recognitions>div:1>div:2>span:1": "إجمالي الإنجازات والشهادات",
+    "#service-achievements>div:3>article:2>div:1>div:2>small:1>span:1": "محافظة"
   },
   "planDelivery": {
     "O01": {
