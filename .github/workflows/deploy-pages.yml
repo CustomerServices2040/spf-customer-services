@@ -78,6 +78,18 @@ jobs:
         run: |
           cp -R overrides/. _site/legacy/
           python patches/patch_index.py _site/legacy/index.html
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          revision = os.environ["GITHUB_SHA"][:12]
+          manifest = {"revision": revision}
+          Path("_site/legacy/assets/release.json").write_text(
+              json.dumps(manifest, ensure_ascii=False),
+              encoding="utf-8",
+          )
+          PY
 
       - name: Validate deployed platform
         shell: bash
@@ -206,11 +218,25 @@ jobs:
           )
           if len(achievement_cards) != len(set(achievement_cards)):
               raise SystemExit("Duplicate achievement card found for the same governorate and year")
+          if len(achievement_cards) != 17:
+              raise SystemExit(f"Expected 17 achievement cards, found {len(achievement_cards)}")
           if achievement_cards.count(("ظفار", "2024")) != 1:
               raise SystemExit("Dhofar 2024 achievement must appear exactly once")
           for required_achievement in (("ظفار", "2025"), ("مسقط", "2024"), ("مسقط", "2025")):
               if achievement_cards.count(required_achievement) != 1:
                   raise SystemExit(f"Required achievement missing or duplicated: {required_achievement}")
+
+          expected_recognition_total = '<strong>178</strong><span>إجمالي الشهادات والدروع والتكريمات</span>'
+          if expected_recognition_total not in text:
+              raise SystemExit("Recognition total or certificates-only label is incorrect")
+          if "إجمالي الإنجازات والشهادات" in text:
+              raise SystemExit("Achievements must not be included in the certificates and shields total")
+
+          release_manifest = __import__("json").loads(
+              (html_path.parent / "assets/release.json").read_text(encoding="utf-8")
+          )
+          if release_manifest.get("revision") != revision:
+              raise SystemExit("Release manifest does not match the deployed commit")
 
           print("Platform audit passed")
           print("Tabs:", len(required_tabs))

@@ -2,6 +2,14 @@
   "use strict";
 
   const TASKS_URL = "assets/tasks-data.json";
+  const RELEASE_URL = "assets/release.json";
+  const CURRENT_RELEASE = (() => {
+    try {
+      return new URL(document.currentScript?.src || "", location.href).searchParams.get("v") || "";
+    } catch (_) {
+      return "";
+    }
+  })();
   const NAV_GROUPS = [
     ["الملخص التنفيذي", ["overview", "performance", "achievements"]],
     ["المتعامل والقنوات", ["methodology", "coverage", "channels", "tajawob"]],
@@ -12,6 +20,21 @@
 
   const $ = (selector, context = document) => context.querySelector(selector);
   const $$ = (selector, context = document) => Array.from(context.querySelectorAll(selector));
+
+  async function ensureCurrentRelease() {
+    if (!CURRENT_RELEASE) return;
+    try {
+      const response = await fetch(`${RELEASE_URL}?t=${Date.now()}`, { cache: "no-store" });
+      if (!response.ok) return;
+      const manifest = await response.json();
+      if (!manifest.revision || manifest.revision === CURRENT_RELEASE) return;
+      const target = new URL(location.href);
+      target.searchParams.set("release", manifest.revision);
+      location.replace(target.href);
+    } catch (_) {
+      // Keep the current view available if the release check is temporarily unreachable.
+    }
+  }
 
   function escapeHtml(value) {
     return String(value).replace(/[&<>'"]/g, character => ({
@@ -280,6 +303,7 @@
   document.addEventListener("spf:content-applied", syncHeadlineIndicators);
 
   function boot() {
+    ensureCurrentRelease();
     buildGroupedNavigation();
     addAccessibilityAids();
     syncHeadlineIndicators();
@@ -289,6 +313,11 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot, { once: true });
   else boot();
   window.addEventListener("pageshow", loadTaskData);
+  window.addEventListener("pageshow", ensureCurrentRelease);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") ensureCurrentRelease();
+  });
+  window.setInterval(ensureCurrentRelease, 60_000);
 })();
 
 // Filter the complete source-backed catalog; keep source text unchanged.
