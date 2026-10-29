@@ -97,7 +97,6 @@ def update_media_catalog(text):
 
     govs = sorted({r['governorate'] for r in recognition_rows if r['governorate']})
     years = sorted({r['year'] for r in recognition_rows}, reverse=True)
-    year_counts = Counter(r['year'] for r in recognition_rows)
     gov_counts = Counter(r['governorate'] or 'غير محددة في المصدر' for r in recognition_rows)
     top_governorates = gov_counts.most_common(3)
     awards = []
@@ -116,10 +115,8 @@ def update_media_catalog(text):
     achievement_cards = []
     for index, r in enumerate(achievements, start=1):
         gov = r['governorate'] or 'غير محددة في المصدر'
-        parent, logo = issuer_identity(r['issuer'])
         issuer = r['issuer'] or 'غير مذكورة في المصدر'
-        fallback_letter = e(parent[:1] if parent != 'الجهة المانحة' else issuer[:1] if r['issuer'] else '—')
-        logo_markup = f'<span class="issuer-monogram" aria-hidden="true">{fallback_letter}</span><img src="{logo}" alt="شعار {e(parent)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true">' if logo else f'<span class="issuer-monogram" aria-hidden="true">{fallback_letter}</span>'
+        logo_markup = '<img src="assets/spf-logo.png" alt="شعار صندوق الحماية الاجتماعية" loading="lazy">'
         achievement_cards.append(f'''<article class="service-achievement-card" data-cycle="{award_cycle(r)}" data-source-row="{r['sourceRow']}">
           <header><span class="achievement-rank">{index:02d}</span><span class="achievement-trophy" aria-hidden="true">★</span><time>{award_cycle(r)}</time></header>
           <div class="achievement-branch"><div class="issuer-logo">{logo_markup}</div><div><small>فرع محافظة</small><h3>{e(gov)}</h3></div></div>
@@ -127,24 +124,21 @@ def update_media_catalog(text):
           <footer><span>جهة التقييم والتكريم</span><b>{e(issuer)}</b></footer>
         </article>''')
 
-    achievement_governorates = len({r['governorate'] for r in achievements if r['governorate']})
-    cycle_years = sorted({award_cycle(r) for r in achievements})
     achievements_section = f'''<section class="section-block service-achievements-page" id="service-achievements" aria-labelledby="serviceAchievementTitle">
       <div class="achievement-hero">
-        <div class="achievement-hero-copy"><span class="achievement-eyebrow">الإنجازات أولًا</span><h2 id="serviceAchievementTitle">منصات خدمة تتصدر محافظاتها</h2><p>سجل مستقل للدوائر والفروع التي نالت تقدير «أفضل منفذ لتقديم الخدمة»، بوصفه إنجازًا مؤسسيًا يتجاوز إطار الشهادة أو الدرع.</p><div class="achievement-cycles"><span>دورات التقييم</span><b>{' · '.join(cycle_years)}</b></div></div>
-        <div class="achievement-total"><span>إنجازًا موثقًا</span><strong>{len(achievements)}</strong><small>بعد دمج السجلات المتكررة</small></div>
-        <div class="achievement-reach"><span>حضور على مستوى المحافظات</span><strong>{achievement_governorates}</strong><small>محافظات حققت مراكز متقدمة</small><i><em style="width:{achievement_governorates / 11 * 100:.0f}%"></em></i></div>
+        <div class="achievement-hero-copy"><span class="achievement-eyebrow">الإنجازات</span><h2 id="serviceAchievementTitle">أفضل منافذ تقديم الخدمة</h2></div>
+        <div class="achievement-total"><span class="achievement-total-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 4h8v3a4 4 0 0 1-8 0V4Zm-3 1h3v2a5 5 0 0 0 1 3C6.8 9.7 5 7.7 5 5Zm11 0h3c0 2.7-1.8 4.7-4 5a5 5 0 0 0 1-3V5ZM12 12v4m-4 4h8m-6-4h4v4h-4v-4Z"/></svg></span><div><span>إجمالي الإنجازات</span><strong>{len(achievements)}</strong><small>إنجازًا</small></div></div>
       </div>
       <div class="achievement-section-heading"><div><span>سجل التميز</span><h3>أفضل منافذ تقديم الخدمة</h3></div><p>مرتبة من الأحدث، ويظهر كل استحقاق مرة واحدة.</p></div>
       <div class="service-achievement-grid">{''.join(achievement_cards)}</div>
-      <p class="achievement-source">المصدر: سجل الشهادات والإنجازات في المحافظات. جرى فصل استحقاقات «أفضل منفذ لتقديم الخدمة» ودمج السجلات المكررة للاعتماد البصري.</p>
+      <p class="achievement-source">المصدر: سجل الشهادات والإنجازات في المحافظات.</p>
     </section>'''
 
     top_markup = ''.join(f'<li><span>{e(gov)}</span><strong>{count}</strong></li>' for gov, count in top_governorates)
     recognition = f'''<section class="section-block recognition-page" id="recognitions" aria-labelledby="recognitionTitle">
       <div class="recognition-hero">
-        <div class="recognition-intro"><span class="recognition-kicker">سجل الشهادات والدروع</span><h2 id="recognitionTitle">تقديرٌ يوثّق الشراكة والأثر</h2><p>الشهادات والدروع والتكريمات الناتجة عن المشاركات والبرامج والشراكات المجتمعية، في سجل مستقل عن الإنجازات المؤسسية.</p><div class="recognition-years"><span><b>{year_counts['2026']}</b> في 2026</span><span><b>{year_counts['2025']}</b> في 2025</span><span><b>{year_counts['2024']}</b> في 2024</span></div></div>
-        <div class="recognition-donut" style="--y26:{year_counts['2026'] / len(recognition_rows) * 100:.1f};--y25:{(year_counts['2026'] + year_counts['2025']) / len(recognition_rows) * 100:.1f}"><div><strong>{len(recognition_rows)}</strong><span>شهادة ودرع وتكريم</span></div></div>
+        <div class="recognition-intro"><span class="recognition-kicker">سجل الشهادات والدروع</span><h2 id="recognitionTitle">تقديرٌ يوثّق الشراكة والأثر</h2><p>شهادات ودروع وتكريمات توثّق المشاركات والبرامج والشراكات المجتمعية.</p></div>
+        <div class="recognition-total-visual"><div class="recognition-emblems" aria-hidden="true"><span>★</span><span>◆</span><span>✓</span></div><strong>{len(rows)}</strong><span>إجمالي الإنجازات والشهادات</span></div>
         <div class="recognition-leaders"><span>الأكثر توثيقًا</span><ol>{top_markup}</ol></div>
       </div>
       <div class="recognition-filters"><label>البحث<input id="recognitionSearch" type="search" placeholder="ابحث في الإنجاز أو الجهة المانحة…"></label><label>المحافظة<select id="recognitionGovernorate"><option value="">جميع المحافظات</option>{options(govs)}<option>غير محددة في المصدر</option></select></label><label>السنة<select id="recognitionYear"><option value="">جميع السنوات</option>{options(years)}</select></label><button id="recognitionReset" type="button">مسح التصفية</button></div>

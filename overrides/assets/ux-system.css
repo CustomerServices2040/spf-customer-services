@@ -455,25 +455,19 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 
 /* Achievement chapter: prestigious, compact and visually distinct from certificates. */
 #service-achievements{background:linear-gradient(145deg,#fbfaf5 0%,#eef4f0 100%);border-radius:26px}
-#service-achievements .achievement-hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(190px,.55fr) minmax(220px,.7fr);align-items:stretch;gap:18px;padding:32px;border-radius:24px;background:linear-gradient(120deg,#183f37 0%,#245d50 66%,#2a6657 100%);color:#fff;overflow:hidden;position:relative}
+#service-achievements .achievement-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,.42fr);align-items:center;gap:26px;padding:36px;border-radius:24px;background:linear-gradient(120deg,#183f37 0%,#245d50 66%,#2a6657 100%);color:#fff;overflow:hidden;position:relative;min-height:230px}
 #service-achievements .achievement-hero::before{content:"";position:absolute;width:320px;height:320px;border:54px solid rgba(244,210,141,.08);border-radius:50%;inset-inline-end:-150px;top:-220px}
-#service-achievements .achievement-hero-copy,#service-achievements .achievement-total,#service-achievements .achievement-reach{position:relative;z-index:1}
+#service-achievements .achievement-hero-copy,#service-achievements .achievement-total{position:relative;z-index:1}
 #service-achievements .achievement-eyebrow{display:inline-flex;align-items:center;gap:8px;color:#f4d28d;font-size:14px;font-weight:900;margin-bottom:8px}
 #service-achievements .achievement-eyebrow::before{content:"";width:26px;height:2px;background:#f4d28d;border-radius:2px}
 #service-achievements .achievement-hero h2{font-size:clamp(31px,4vw,50px);line-height:1.15;margin:0 0 10px;color:#fff}
-#service-achievements .achievement-hero-copy p{margin:0;max-width:700px;color:#dcebe5;line-height:1.9}
-#service-achievements .achievement-cycles{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:15px;color:#cfe0d9;font-size:13px}
-#service-achievements .achievement-cycles b{color:#f4d28d;letter-spacing:.5px}
-#service-achievements .achievement-total{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:rgba(255,255,255,.08);min-height:190px}
-#service-achievements .achievement-total span{font-size:13px;color:#e0ece7;font-weight:800}
-#service-achievements .achievement-total strong{font-size:72px;line-height:1;color:#f4d28d;margin:8px 0}
-#service-achievements .achievement-total small{font-size:11px;color:#bdd1c9}
-#service-achievements .achievement-reach{display:flex;flex-direction:column;justify-content:center;padding:22px;border-radius:20px;background:#fff;color:var(--ux-primary);box-shadow:0 12px 30px rgba(14,38,32,.16)}
-#service-achievements .achievement-reach span{font-size:13px;font-weight:800;color:#6d7d76}
-#service-achievements .achievement-reach strong{font-size:54px;line-height:1;margin:10px 0 6px;color:var(--ux-primary)}
-#service-achievements .achievement-reach small{font-size:12px;line-height:1.6;color:#6d7d76}
-#service-achievements .achievement-reach i{height:7px;background:#e8eeea;border-radius:999px;margin-top:18px;overflow:hidden}
-#service-achievements .achievement-reach em{display:block;height:100%;background:linear-gradient(90deg,#c49a48,#f1d38f);border-radius:inherit}
+#service-achievements .achievement-total{display:grid;grid-template-columns:92px 1fr;align-items:center;gap:20px;text-align:center;border:1px solid rgba(255,255,255,.18);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.07));padding:25px;box-shadow:0 18px 38px rgba(11,34,28,.2)}
+#service-achievements .achievement-total-icon{width:86px;height:86px;border-radius:24px;display:grid;place-items:center;background:#f4d28d;color:#204f44;box-shadow:0 10px 24px rgba(15,38,32,.24);transform:rotate(-3deg)}
+#service-achievements .achievement-total-icon svg{width:52px;height:52px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#service-achievements .achievement-total>div{display:flex;flex-direction:column;align-items:center}
+#service-achievements .achievement-total>div>span{font-size:14px;color:#e0ece7;font-weight:900}
+#service-achievements .achievement-total strong{font-size:76px;line-height:.9;color:#fff;margin:8px 0 4px;text-shadow:0 5px 18px rgba(0,0,0,.14)}
+#service-achievements .achievement-total small{font-size:15px;color:#f4d28d;font-weight:900}
 #service-achievements .achievement-section-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:30px 4px 16px}
 #service-achievements .achievement-section-heading span{color:#8c6c2d;font-size:13px;font-weight:900}
 #service-achievements .achievement-section-heading h3{font-size:30px;color:var(--ux-primary);margin:5px 0 0}
@@ -498,8 +492,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 #service-achievements .service-achievement-card footer span{font-size:11px;color:#8a968f}
 #service-achievements .service-achievement-card footer b{font-size:13px;color:var(--ux-primary)}
 #service-achievements .achievement-source{text-align:center;max-width:900px;margin:26px auto 2px;color:var(--ux-muted);font-size:12px;line-height:1.8}
-@media(max-width:1050px){#service-achievements .achievement-hero{grid-template-columns:1fr 200px}#service-achievements .achievement-reach{grid-column:1/-1;min-height:120px}#service-achievements .service-achievement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:680px){#service-achievements{border-radius:18px}#service-achievements .achievement-hero{grid-template-columns:1fr;padding:24px;text-align:center}#service-achievements .achievement-total,#service-achievements .achievement-reach{min-height:auto;padding:22px}#service-achievements .achievement-cycles{justify-content:center}#service-achievements .achievement-section-heading{align-items:start;flex-direction:column}#service-achievements .service-achievement-grid{grid-template-columns:1fr}}
+@media(max-width:1050px){#service-achievements .achievement-hero{grid-template-columns:1fr 280px}#service-achievements .service-achievement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){#service-achievements{border-radius:18px}#service-achievements .achievement-hero{grid-template-columns:1fr;padding:25px;text-align:center;min-height:0}#service-achievements .achievement-total{grid-template-columns:76px 1fr;padding:20px}#service-achievements .achievement-total-icon{width:72px;height:72px}#service-achievements .achievement-total strong{font-size:62px}#service-achievements .achievement-section-heading{align-items:start;flex-direction:column}#service-achievements .service-achievement-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#service-achievements .service-achievement-card{transition:none}}
 
 /* Standalone certificates and shields chapter, inspired by the executive indicator layout. */
@@ -514,11 +508,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 #recognitions .recognition-years{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 #recognitions .recognition-years span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:8px 13px;color:#dce9e4;font-size:13px}
 #recognitions .recognition-years b{color:#f3d38c;font-size:18px;margin-inline-end:3px}
-#recognitions .recognition-donut{width:205px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;margin:auto;background:conic-gradient(#f2cf87 0 calc(var(--y26)*1%),#a989cd calc(var(--y26)*1%) calc(var(--y25)*1%),#8fb8a9 calc(var(--y25)*1%) 100%);box-shadow:0 0 0 12px rgba(255,255,255,.08)}
-#recognitions .recognition-donut::before{content:"";position:absolute;width:148px;aspect-ratio:1;border-radius:50%;background:#1f5045}
-#recognitions .recognition-donut div{position:relative;text-align:center;display:flex;flex-direction:column}
-#recognitions .recognition-donut strong{font-size:56px;color:#fff;line-height:.95}
-#recognitions .recognition-donut span{font-size:12px;line-height:1.45;color:#f3d38c;margin:8px auto 0;max-width:105px;font-weight:800}
+#recognitions .recognition-total-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:190px;padding:18px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+#recognitions .recognition-emblems{display:flex;align-items:center;justify-content:center;margin-bottom:9px}
+#recognitions .recognition-emblems span{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#f3d38c;color:#1f5045;font-size:17px;font-weight:900;border:3px solid #1f5045;box-shadow:0 6px 16px rgba(0,0,0,.13)}
+#recognitions .recognition-emblems span+span{margin-inline-start:-8px;background:#fff;color:#8b6a2d;transform:translateY(3px)}
+#recognitions .recognition-emblems span:last-child{background:#dcebe5;color:#1f5045;transform:none}
+#recognitions .recognition-total-visual>strong{font-size:64px;color:#fff;line-height:.95;text-shadow:0 5px 18px rgba(0,0,0,.16)}
+#recognitions .recognition-total-visual>span{font-size:12px;line-height:1.45;color:#f3d38c;margin-top:9px;max-width:145px;font-weight:900}
 #recognitions .recognition-leaders{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:20px;border-radius:18px}
 #recognitions .recognition-leaders>span{font-size:13px;color:#f3d38c;font-weight:800}
 #recognitions .recognition-leaders ol{list-style:none;padding:0;margin:13px 0 0;display:grid;gap:10px}
