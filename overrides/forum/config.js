@@ -1,8 +1,8 @@
 // Keep the visual system consistent on the audience, participant and facilitator pages.
-if (!document.querySelector('link[href="vivid.css"]')) {
+if (!document.querySelector('link[href^="vivid.css"]')) {
   const visualStyles = document.createElement('link');
   visualStyles.rel = 'stylesheet';
-  visualStyles.href = 'vivid.css';
+  visualStyles.href = 'vivid.css?v=20261031-5';
   document.head.appendChild(visualStyles);
 }
 // The audience UI is served by GitHub Pages; live rooms use the public service.
