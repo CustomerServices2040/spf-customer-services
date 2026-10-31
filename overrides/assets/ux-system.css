@@ -124,6 +124,70 @@ h1, h2, h3, h4, strong, .metric-value { font-family: inherit; }
 .tracker-summary strong,
 #performance .component-score-layout strong { font-variant-numeric: tabular-nums; }
 
+.top-actions { overflow: visible; }
+.toolbar-icon {
+  width: 42px;
+  height: 42px;
+  display: inline-grid !important;
+  place-items: center;
+  flex: 0 0 42px;
+  padding: 0 !important;
+  border: 1px solid rgba(58, 86, 76, .13) !important;
+  border-radius: 12px !important;
+  background: #edf0ec !important;
+  color: var(--ux-primary) !important;
+}
+.toolbar-icon:hover,
+.toolbar-icon.active { background: var(--ux-primary) !important; color: #fff !important; }
+.toolbar-icon svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar-edit-tools { position: relative; display: inline-flex; }
+.toolbar-edit-menu {
+  position: absolute;
+  z-index: 90;
+  top: calc(100% + 10px);
+  left: 0;
+  width: min(310px, calc(100vw - 28px));
+  padding: 13px;
+  border: 1px solid var(--ux-border);
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 20px 48px rgba(33, 62, 52, .18);
+}
+.toolbar-edit-menu > span { display: block; padding: 2px 5px 9px; color: var(--ux-muted); font-size: 11px; font-weight: 800; }
+.toolbar-tool-card {
+  position: relative;
+  width: 100%;
+  min-height: 58px;
+  display: flex !important;
+  align-items: center;
+  margin: 0 0 8px;
+  padding: 12px 52px 12px 13px !important;
+  border: 1px solid #dfe7e2 !important;
+  border-radius: 13px !important;
+  background: #f5f8f6 !important;
+  color: var(--ux-primary) !important;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 850;
+}
+.toolbar-tool-card:last-child { margin-bottom: 0; }
+.toolbar-tool-card::before {
+  content: "?";
+  position: absolute;
+  right: 13px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: #e4ece7;
+  color: var(--ux-primary);
+  font-size: 15px;
+}
+.toolbar-tool-card[data-tool="edit"]::before { content: "✎"; background: rgba(204, 168, 98, .2); color: #8b6828; }
+.toolbar-tool-card:hover { transform: translateY(-1px); border-color: rgba(58, 86, 76, .28) !important; }
+.toolbar-tool-card:disabled { opacity: .6; transform: none; }
+
 .ux-data-status {
   display: inline-flex;
   align-items: center;
@@ -171,6 +235,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
   .ux-nav-menu { position: static; width: 100%; min-width: 0; max-width: none; margin-top: 7px; }
   .ux-nav-groups summary { font-size: 12px; padding-inline: 8px; }
   .section-heading h2 { font-size: clamp(24px, 8vw, 34px) !important; }
+  .toolbar-icon { width: 38px; height: 38px; flex-basis: 38px; }
+  .toolbar-edit-menu { position: fixed; top: 82px; left: 14px; }
 }
 @media (max-width: 430px) {
   .ux-nav-groups { grid-template-columns: minmax(0, 1fr); }

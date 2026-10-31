@@ -80,6 +80,12 @@ replace_required(
 replace_required(
     '<button class="btn primary edit-entry" id="editContent">تحرير المحتوى</button>',
     '<button class="btn primary edit-entry" id="editContent">تعديل المحتوى</button>')
+replace_required(
+    '<span class="reporting-period"><i></i> عام 2026</span>',
+    '')
+replace_required(
+    '<button class="btn secondary print-action" onclick="window.print()">طباعة التقرير</button>',
+    '')
 replace_required('الأهداف التشغيلية السبعة', 'الأهداف التشغيلية التسعة')
 replace_required('سبعة أهداف رئيسية تقود التنفيذ', 'تسعة أهداف رئيسية تقود التنفيذ')
 

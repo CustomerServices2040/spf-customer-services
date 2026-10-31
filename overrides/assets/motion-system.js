@@ -7,7 +7,7 @@ const numberSelector=[
   '.branch-stat strong','.reach>strong','.overview-kpis .kpi>strong','.future-total>b',
   '.future-orbit>strong','.map-badge>b','.budget-values strong','.premises-metrics strong',
   '.tajawob-hero strong','.tajawob-type-grid strong','.tajawob-peaks strong',
-  '.component-ring strong','.target-ring strong','.half-year-details>b',
+  '.score-ring strong','.component-ring strong','.target-ring strong','.half-year-details>b',
   '.recognition-total-visual>strong','.recognition-years b','.achievement-total strong',
   '.operational-priority-grid strong','[data-animate-number]'
 ].join(',');
@@ -16,7 +16,7 @@ const barSelector=[
   '.tracker-kanban-progress i','.tracker-kanban-progress em','.progress-bar i','.bar-fill',
   '#trackerRateBar','#boardRateBar','.pillar-progress i'
 ].join(',');
-const ringSelector='.component-ring,.target-ring,.budget-ring,.recognition-donut,.donut,.ring';
+const ringSelector='.score-ring,.component-ring,.target-ring,.budget-ring,.recognition-donut,.donut,.ring';
 const revealSelector=[
   '.metric-card','.kpi','.plan-hero-kpis>article','.tracker-summary>article','.branch-stat',
   '.future-card','.solution-card','.agreement-rules>article','.scenario-story>article',
@@ -37,7 +37,7 @@ function parseNumeric(raw){
 function animateNumber(element){
   const node=numericNode(element);if(!node||activeNodes.has(node))return;const original=node.nodeValue,parsed=parseNumeric(original);if(!parsed||parsed.value<0)return;
   if(signatures.get(node)===original)return;signatures.set(node,original);element.classList.add('motion-number');if(reduce){node.nodeValue=original;return}
-  activeNodes.add(node);const started=performance.now(),duration=Math.min(1250,650+Math.log10(Math.abs(parsed.value)+1)*120);
+  activeNodes.add(node);const started=performance.now(),duration=Math.min(2200,1250+Math.log10(Math.abs(parsed.value)+1)*180);
   const format=value=>new Intl.NumberFormat('en-US',{useGrouping:parsed.grouped,minimumFractionDigits:parsed.decimal,maximumFractionDigits:parsed.decimal}).format(value);
   const frame=now=>{const progress=Math.min(1,(now-started)/duration),eased=1-Math.pow(1-progress,3),value=parsed.value*eased;node.nodeValue=parsed.before+format(value)+parsed.suffix+parsed.after;if(progress<1)requestAnimationFrame(frame);else{node.nodeValue=original;signatures.set(node,original);setTimeout(()=>activeNodes.delete(node),0)}};requestAnimationFrame(frame);
 }
@@ -47,8 +47,8 @@ function prepare(root=document){
   scope.querySelectorAll(numberSelector).forEach(element=>visibility.observe(element));
   scope.querySelectorAll(barSelector).forEach(element=>{if(element.dataset.motionReady)return;element.dataset.motionReady='1';element.classList.add('motion-bar');visibility.observe(element)});
   scope.querySelectorAll(ringSelector).forEach(element=>{if(element.dataset.motionReady)return;element.dataset.motionReady='1';element.classList.add('motion-ring');visibility.observe(element)});
-  scope.querySelectorAll(revealSelector).forEach((element,index)=>{if(element.dataset.motionReveal)return;element.dataset.motionReveal='1';element.style.transitionDelay=Math.min(index%8,5)*45+'ms';element.classList.add('motion-reveal');visibility.observe(element)});
-  scope.querySelectorAll('.map-pin').forEach((element,index)=>{if(element.dataset.motionReady)return;element.dataset.motionReady='1';element.style.transitionDelay=(index%12)*45+'ms';element.classList.add('motion-map-pin');visibility.observe(element)});
+  scope.querySelectorAll(revealSelector).forEach((element,index)=>{if(element.dataset.motionReveal)return;element.dataset.motionReveal='1';element.style.transitionDelay=Math.min(index%8,5)*75+'ms';element.classList.add('motion-reveal');visibility.observe(element)});
+  scope.querySelectorAll('.map-pin').forEach((element,index)=>{if(element.dataset.motionReady)return;element.dataset.motionReady='1';element.style.transitionDelay=(index%12)*70+'ms';element.classList.add('motion-map-pin');visibility.observe(element)});
   scope.querySelectorAll('svg path[data-animate],svg circle[data-animate]').forEach(element=>{if(element.dataset.motionReady)return;element.dataset.motionReady='1';element.classList.add('motion-chart-stroke');visibility.observe(element)});
 }
 let queued=false;const schedule=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;prepare()})};

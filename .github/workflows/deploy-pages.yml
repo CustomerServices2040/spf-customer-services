@@ -99,12 +99,16 @@ jobs:
           node scripts/test_catalog_overrides.mjs
           node --check _site/legacy/assets/exhibition.js
           node --check _site/legacy/assets/platform-enhancements.js
+          node --check _site/legacy/assets/motion-system.js
           node --check _site/legacy/assets/ux-system.js
           node --check _site/legacy/assets/privacy-lock.js
           node scripts/validate_data_integrity.mjs _site/legacy/assets/tasks-data.json
           node --check _site/legacy/assets/plan-data-2026.js
           node --check _site/legacy/assets/excel-import.js
           node --check _site/legacy/assets/executive-mode.js
+          node --check _site/legacy/forum/forum.js
+          node --check _site/legacy/forum/future.js
+          node --check _site/legacy/forum/editor.js
           python - <<'PY'
           from html.parser import HTMLParser
           from pathlib import Path

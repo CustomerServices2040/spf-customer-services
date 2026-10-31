@@ -213,18 +213,6 @@
     note.textContent = `الأرقام محسوبة مباشرة من السجل المركزي · ${summary.total} بندًا · ${arabicDate(updatedAt)}`;
   }
 
-  function addGlobalFreshness(updatedAt) {
-    const actions = $(".top-actions");
-    if (!actions) return;
-    let status = $(".ux-data-status", actions);
-    if (!status) {
-      status = document.createElement("span");
-      status.className = "ux-data-status";
-      actions.prepend(status);
-    }
-    status.textContent = `تحديث المهام: ${arabicDate(updatedAt)}`;
-  }
-
   function applyTaskData(payload) {
     const tasks = Array.isArray(payload?.tasks) ? payload.tasks : [];
     if (!tasks.length) return;
@@ -256,7 +244,6 @@
     updateDepartmentCards(departments);
     updateKanban(summary);
     addIntegrityNote(summary, payload.updated_at);
-    addGlobalFreshness(payload.updated_at);
   }
 
   async function loadTaskData() {

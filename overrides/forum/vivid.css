@@ -44,7 +44,7 @@ h1,h2,h3,.brand b,.kpi>strong,.reach strong,.map-badge b,.timer-block strong{fon
 .nav-symbol,.card-symbol,.section-symbol,.mini-symbol{display:inline-grid;place-items:center;flex:0 0 auto}.mini-symbol{width:30px;height:30px;border-radius:10px;background:var(--green-3);color:var(--green)}.mini-symbol svg{width:17px;height:17px}.nav-symbol{width:30px;height:30px;border-radius:10px;background:#edf3ef;color:var(--green)}
 .main-nav .active .nav-symbol{background:rgba(255,255,255,.18);color:#fff}.nav-symbol svg{width:17px;height:17px}
 
-main{max-width:1640px;padding:30px 34px 24px}.page.active{animation:pageRise .5s cubic-bezier(.2,.8,.2,1)}
+main{max-width:1640px;padding:30px 34px 24px}.page.active{animation:pageRise .8s cubic-bezier(.2,.8,.2,1)}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(214,168,79,.14);color:#89611e;border:1px solid rgba(214,168,79,.3);border-radius:30px;padding:6px 12px;font-size:12px;font-weight:600}
 .eyebrow span{margin:0;box-shadow:0 0 0 5px rgba(214,168,79,.14)}
 

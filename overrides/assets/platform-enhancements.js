@@ -163,6 +163,28 @@
     });
   }
 
+  function enhanceTopActions(){
+    const actions=$(".top-actions");if(!actions)return;
+    $(".reporting-period",actions)?.remove();
+    $(".print-action",actions)?.remove();
+    $(".ux-data-status",actions)?.remove();
+    if($("#editTools",actions))return;
+    const guide=$("#updateGuide",actions),edit=$("#editContent",actions);
+    if(!guide||!edit)return;
+    const tools=document.createElement("div");
+    tools.id="editTools";tools.className="toolbar-edit-tools";
+    tools.innerHTML='<button id="editToolsToggle" class="btn toolbar-icon toolbar-pencil" type="button" aria-label="أدوات التحديث" title="أدوات التحديث" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 20 4.4-1 10.8-10.8a2.1 2.1 0 0 0-3-3L5.4 16 4 20Z M14.8 6.6l3 3"/></svg></button><div class="toolbar-edit-menu" hidden><span>أدوات المنصة</span></div>';
+    const menu=$(".toolbar-edit-menu",tools),toggle=$("#editToolsToggle",tools);
+    guide.className="toolbar-tool-card";edit.className="toolbar-tool-card toolbar-tool-primary edit-entry";
+    guide.setAttribute("data-tool","guide");edit.setAttribute("data-tool","edit");
+    menu.append(guide,edit);actions.append(tools);
+    const close=()=>{menu.hidden=true;toggle.setAttribute("aria-expanded","false")};
+    toggle.addEventListener("click",event=>{event.stopPropagation();menu.hidden=!menu.hidden;toggle.setAttribute("aria-expanded",String(!menu.hidden))});
+    menu.addEventListener("click",event=>{event.stopPropagation();if(event.target.closest("button"))close()});
+    document.addEventListener("click",close);
+    document.addEventListener("keydown",event=>{if(event.key==="Escape")close()});
+  }
+
   function enhanceFullscreenToggle(){
     const actions=$(".top-actions"); if(!actions)return;
     let button=$("#fullscreenViewButton",actions);
@@ -170,8 +192,8 @@
       button=document.createElement("button");
       button.id="fullscreenViewButton";
       button.type="button";
-      button.className="btn secondary fullscreen-action";
-      button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg><span>شاشة كاملة</span>';
+      button.className="btn toolbar-icon fullscreen-action";
+      button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>';
       const printAction=$(".print-action",actions)||[...actions.querySelectorAll("button")].find(item=>item.textContent.includes("طباعة"));
       if(printAction)printAction.before(button);else actions.appendChild(button);
     }
@@ -182,7 +204,7 @@
       const active=Boolean(document.fullscreenElement||document.webkitFullscreenElement||document.documentElement.classList.contains("presentation-fullscreen"));
       button.setAttribute("aria-pressed",String(active));
       button.setAttribute("aria-label",active?"الخروج من الشاشة الكاملة":"شاشة كاملة");
-      const label=$("span",button);if(label)label.textContent=active?"الخروج من الشاشة الكاملة":"شاشة كاملة";
+      button.title=active?"الخروج من الشاشة الكاملة":"شاشة كاملة";
       button.classList.toggle("active",active);
     };
     button.addEventListener("click",async()=>{
@@ -221,7 +243,7 @@
   }
 
   function boot(){
-    enhanceGovernorateInspector(); decorateGovernorateCards(); correctDirectorateEmployeeCount(); enhanceFullscreenToggle();
+    enhanceGovernorateInspector(); decorateGovernorateCards(); correctDirectorateEmployeeCount(); enhanceTopActions(); enhanceFullscreenToggle();
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",()=>setTimeout(boot,0)); else setTimeout(boot,0);
 })();
