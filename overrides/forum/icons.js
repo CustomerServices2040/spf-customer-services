@@ -14,16 +14,21 @@ const paths={
  timer:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6M12 2v3"/>',
  route:'<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h3a3 3 0 0 0 3-3V9a3 3 0 0 1 3-3"/>',
  trophy:'<path d="M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 6H3v1a4 4 0 0 0 5 4M17 6h4v1a4 4 0 0 1-5 4M12 13v4M8 21h8M9 17h6"/>'
+ ,calendar:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18M8 14h3M13 14h3M8 17h3"/>'
+ ,compass:'<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/>'
 };
 function icon(name,cls='nav-symbol'){return `<span class="${cls}" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths[name]||paths.spark}</svg></span>`}
-const nav=['home','spark','map','people'];document.querySelectorAll('.main-nav button').forEach((el,i)=>el.insertAdjacentHTML('afterbegin',icon(nav[i])));
+const nav=['home','compass','spark','map','people'];document.querySelectorAll('.main-nav button').forEach((el,i)=>el.insertAdjacentHTML('afterbegin',icon(nav[i])));
 const kpis=['services','daily','heart','network'];document.querySelectorAll('.kpi').forEach((el,i)=>el.insertAdjacentHTML('afterbegin',icon(kpis[i],'card-symbol')));
-const sections={pride:'spark',map:'map',activity:'consensus'};Object.entries(sections).forEach(([id,name])=>{const target=document.querySelector(`#${id} .page-intro>div:first-child`);if(target)target.insertAdjacentHTML('afterbegin',icon(name,'section-symbol'))});
+const sections={future:'compass',pride:'spark',map:'map',activity:'consensus'};Object.entries(sections).forEach(([id,name])=>{const target=document.querySelector(`#${id} .page-intro>div:first-child`);if(target)target.insertAdjacentHTML('afterbegin',icon(name,'section-symbol'))});
 function decorate(root=document){
  root.querySelectorAll('.rule:not([data-decorated])').forEach((el,i)=>{el.dataset.decorated='1';el.insertAdjacentHTML('afterbegin',icon(['limit','consensus','people'][i%3],'card-symbol'))});
  root.querySelectorAll('.path-card:not(.summary-card):not([data-decorated])').forEach((el,i)=>{el.dataset.decorated='1';const h=el.querySelector('header');if(h)h.insertAdjacentHTML('afterbegin',icon(['route','spark','network','services'][i%4],'mini-symbol'))});
  root.querySelectorAll('.work-row:not([data-decorated])').forEach((el,i)=>{el.dataset.decorated='1';const d=el.querySelector('div');if(d)d.insertAdjacentHTML('afterbegin',icon(['services','people','map','spark','network','consensus'][i%6],'mini-symbol'))});
+ root.querySelectorAll('.branch-stat:not([data-decorated])').forEach(el=>{el.dataset.decorated='1';el.insertAdjacentHTML('afterbegin',icon(el.dataset.statIcon||'services','stat-symbol'))});
+ root.querySelectorAll('.future-axis:not([data-decorated])').forEach((el,i)=>{el.dataset.decorated='1';el.insertAdjacentHTML('afterbegin',icon(['map','network','people','services','spark'][i%5],'axis-symbol'))});
+ root.querySelectorAll('.future-card:not([data-decorated])').forEach((el,i)=>{el.dataset.decorated='1';el.insertAdjacentHTML('afterbegin',icon(['route','network','people','services','spark'][i%5],'future-symbol'))});
  root.querySelectorAll('.achievement:not([data-decorated])').forEach(el=>{el.dataset.decorated='1';el.insertAdjacentHTML('afterbegin',icon('trophy','mini-symbol'))});
 }
-decorate();new MutationObserver(m=>{for(const x of m)for(const n of x.addedNodes)if(n.nodeType===1)decorate(n.matches?.('.rule,.path-card,.work-row,.achievement')?n.parentElement:n)}).observe(document.querySelector('main')||document.body,{subtree:true,childList:true});
+decorate();new MutationObserver(m=>{for(const x of m)for(const n of x.addedNodes)if(n.nodeType===1)decorate(n.matches?.('.rule,.path-card,.work-row,.achievement,.branch-stat,.future-axis,.future-card')?n.parentElement:n)}).observe(document.querySelector('main')||document.body,{subtree:true,childList:true});
 })();
