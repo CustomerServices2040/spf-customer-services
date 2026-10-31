@@ -1,13 +1,36 @@
 (async()=>{'use strict';await window.ForumEditor.ready;const D=window.FORUM_DATA,$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],fmt=n=>Number(n).toLocaleString('en-US');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const storage={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v)}catch{}}};
+const storage={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v)}catch{}},remove(k){try{localStorage.removeItem(k)}catch{}}};
 const params=new URLSearchParams(location.search);let room=params.get('room')||storage.get('spf-forum-room')||'',page='overview',gov='all',govTab='work',certPage=0,lastWall='',lastActivity='',clockSkew=0,localActivityView=null,localPath=0,reflectionIndex=0,hostSignature='',previousStage=-1,previousView='',suggestedView='scenario';
 let live={state:{stage:0,view:'scenario',reveal:false,timerRemaining:300,timerRunning:false},answers:[],accepting:false};
-const API=window.FORUM_API_BASE||'',controls=window.FORUM_CONTROL_BASE||'';$('.facilitator-entry').href=controls+'facilitator.html';
-const setupRoom=$('#setup-live-room');if(setupRoom)setupRoom.href=controls?API+'/signin-with-chatgpt?return_to='+encodeURIComponent('/forum/facilitator.html'):'facilitator.html';
-if(room){storage.set('spf-forum-room',room);const a=$('.facilitator-entry');a.href=controls+'facilitator.html?room='+encodeURIComponent(room)}
-if(controls){const a=$('.facilitator-entry');a.href=API+'/signin-with-chatgpt?return_to='+encodeURIComponent('/forum/facilitator.html'+(room?'?room='+room:''))}
+const API=window.FORUM_API_BASE||'';let hostToken=room?sessionStorage.getItem('spf-host-'+room)||'':'';
+if(room)storage.set('spf-forum-room',room);
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),3500)}
+function setRoom(id,token=''){
+ room=id;hostToken=token;storage.set('spf-forum-room',id);if(token)sessionStorage.setItem('spf-host-'+id,token);
+ const url=new URL(location.href);url.searchParams.set('room',id);history.replaceState(null,'',url.pathname+url.search+location.hash);qr();drawSessionControls();
+}
+async function createSession(){
+ const buttons=[$('#create-session'),$('#setup-live-room')].filter(Boolean);buttons.forEach(button=>button.disabled=true);$('#session-error').textContent='';
+ try{const response=await fetch(API+'/api/rooms',{method:'POST'}),data=await response.json();if(!response.ok||!data.id||!data.token)throw Error(data.error||'تعذر بدء الجلسة');setRoom(data.id,data.token);await poll();toast('بدأت جلسة جديدة وظهر رمز المشاركة');}
+ catch(error){$('#session-error').textContent=error.message||'تعذر بدء الجلسة';}
+ finally{buttons.forEach(button=>button.disabled=false)}
+}
+async function hostSend(body){
+ if(!room||!hostToken){$('#session-error').textContent='ابدأ جلسة جديدة أولًا';return}
+ $('#session-error').textContent='';
+ try{const response=await fetch(API+'/api/rooms/'+encodeURIComponent(room),{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+hostToken},body:JSON.stringify(body)}),data=await response.json();if(!response.ok)throw Error(data.error||'تعذر تنفيذ الأمر');await poll();}
+ catch(error){$('#session-error').textContent=error.message||'تعذر تنفيذ الأمر'}
+}
+function activityCommand(command,value){return hostSend({action:'activity',command,...(value===undefined?{}:{value})})}
+function drawSessionControls(){
+ const ready=Boolean(room&&hostToken),state=live.state||{};$('#session-setup').hidden=ready;$('#session-controls').hidden=!ready;if(!ready)return;
+ $('#session-id').textContent=room.slice(0,8);$('#session-connection').textContent=live.accepting?'استقبال الإجابات مفتوح':'استقبال الإجابات متوقف';
+ $('#accept-answers').disabled=Boolean(live.accepting);$('#stop-answers').disabled=!live.accepting;
+ $('#session-stages').innerHTML=stages.map((name,index)=>`<button class="${Number(state.stage)===index?'active':''}" data-session-stage="${index}">${index+1} · ${name}</button>`).join('');
+ $$('[data-session-stage]').forEach(button=>button.onclick=()=>activityCommand('stage',Number(button.dataset.sessionStage)));
+ $('#session-stage-name').textContent=stages[Number(state.stage)||0];$('#reveal-update').disabled=Boolean(state.reveal);$('#reveal-update').textContent=state.reveal?'تم إظهار التحديث':'إظهار التحديث على الشاشة';
+}
 function navigate(id){if(!$('#'+id)?.classList.contains('page'))return;page=id;$$('.page').forEach(el=>el.classList.toggle('active',el.id===id));$$('[data-page]').forEach(b=>{b.classList.toggle('active',b.dataset.page===id);b.setAttribute('aria-current',b.dataset.page===id?'page':'false')});history.replaceState(null,'',location.pathname+location.search+'#'+id);window.scrollTo(0,0);if(id==='pride')poll();}
 $$('[data-page]').forEach(b=>b.onclick=()=>navigate(b.dataset.page));$$('[data-go]').forEach(b=>b.onclick=()=>navigate(b.dataset.go));
 async function full(wall=false){try{if(document.fullscreenElement){await document.exitFullscreen();document.body.classList.remove('wall-focus','presenting')}else{document.body.classList.toggle('wall-focus',wall);document.body.classList.add('presenting');await document.documentElement.requestFullscreen()}}catch{document.body.classList.toggle('wall-focus',wall);document.body.classList.add('presenting');toast('تم توسيع مساحة العرض. استخدم ملء الشاشة من المتصفح إذا لم يدعمه الجهاز.')}}
@@ -29,13 +52,13 @@ function drawGov(){const g=D.governorates[gov],a=D.achievements.filter(x=>gov===
 }
 function pager(n,size){return n<=size?'':`<div class="pagination"><button class="outline" data-pager="-1" ${certPage===0?'disabled':''}>→ السابق</button><span>${certPage+1} / ${Math.ceil(n/size)}</span><button class="outline" data-pager="1" ${(certPage+1)*size>=n?'disabled':''}>التالي ←</button></div>`}
 function changeGov(delta){const at=ids.indexOf(gov);gov=ids[(at+delta+ids.length)%ids.length];certPage=0;govTab='work';drawGov()}drawGov();
-const stages=['التوجيه','التفاوض المتبادل','المرحلة الثالثة','الفرز','الاستخلاص'],minutes=[5,5,7,3,10];
+const stages=['الاستعداد','التفاوض الأول','التكيف مع المستجد','تثبيت القرار','الاستخلاص'],minutes=[5,5,7,3,10];
 const missions=[
- ['افهموا الموقف واستعدّوا للنقاش','اقرؤوا السيناريو ومسارات الحلول. افتحوا المغلفات، وليقرأ كل مشارك تفويضه بصمت.'],
- ['اختاروا حلولًا يتفق عليها الجميع','ناقشوا المسارات ووازنوا بين الأولويات. سجّلوا الحلول المتفق عليها على جهاز الطاولة، ضمن سقف 100 نقطة.'],
- ['واصلوا العمل ضمن وقت المرحلة','راجعوا اختياراتكم والتزموا بالتعليمات المعروضة.'],
- ['ثبّتوا القرار النهائي لطاولتكم','دوّنوا مسارات الحلول النهائية ونقاطها على جهاز الطاولة، وتحققوا من إجماع الأعضاء السبعة والالتزام بسقف الجهد والشرط الطارئ إن فُعّل.'],
- ['شاركوا ما تعلّمتموه','ناقشوا أثر التنسيق الداخلي وتكامل الأدوار، وما يمكن نقله من المحاكاة إلى العمل.']
+ ['افهموا الموقف وتفويضاتكم','اقرؤوا السيناريو والحلول المتاحة، ثم افتحوا المغلفات وليقرأ كل مشارك تفويضه بصمت.','لا تسجّلوا قرارًا بعد؛ افهموا الصورة كاملة أولًا.'],
+ ['تفاوضوا واختاروا حزمة أولية','وازنوا بين الحلول وتكلفتها التشغيلية، وتوصلوا إلى اختيار يوافق عليه جميع أعضاء الطاولة.','سجّلوا على الجهاز الحلول المختارة ونقاط كل حل، على ألا يتجاوز المجموع 100 نقطة.'],
+ ['أعيدوا التوافق بعد المستجد','راجعوا اختياراتكم في ضوء التحديث العاجل، وعدّلوا الحزمة بالاتفاق الكامل.','حدّثوا الاختيارات والنقاط على الجهاز، واكتبوا كيف استجبتم للمستجد.'],
+ ['ثبّتوا القرار النهائي','راجعوا المجموع وتأكدوا من موافقة الأعضاء السبعة قبل اعتماد إجابة الطاولة.','أرسلوا القرار النهائي من جهاز الطاولة: الحلول، مجموع النقاط، ومبرر الاختيار.'],
+ ['استخلصوا الدروس وشاركوها','ناقشوا أثر التنسيق الداخلي وتكامل الأدوار، وما يمكن نقله من المحاكاة إلى العمل.','دوّنوا أهم درس أو ممارسة قابلة للتطبيق في العمل.']
 ];
 function editable(key,text,tag='span',attrs=''){return `<${tag} data-forum-edit="${key}" ${attrs}>${esc(window.ForumEditor.value(key,text))}</${tag}>`}
 function drawActivity(force=false){
@@ -43,10 +66,10 @@ function drawActivity(force=false){
  if(nextHost!==hostSignature){if(stage!==previousStage)suggestedView=['scenario','paths','paths','rules','reflection'][stage];else if(s.view!==previousView)suggestedView=s.view;previousStage=stage;previousView=s.view;localActivityView=null;localPath=0;hostSignature=nextHost}
  const view=localActivityView||suggestedView,focus=localActivityView?localPath:(s.focusPath||0);
  const sig=JSON.stringify([nextHost,view,focus,reflectionIndex]);if(!force&&sig===lastActivity)return;lastActivity=sig;
- const mission=stage===2&&s.reveal?['أعيدوا التوافق بعد التحديث','راجعوا الحلول المعتمدة في ضوء التحديث العاجل، وعدّلوا اختياركم على جهاز الطاولة بالإجماع.']:missions[stage];
- $('#stage-label').textContent=stage===2&&s.reveal?'إدارة المتغير المفاجئ':stages[stage];
- $('#stage-track').innerHTML=stages.map((t,i)=>`<div class="stage ${i===stage?'active':i<stage?'complete':''}" ${i===stage?'aria-current="step"':''}><b>${i+1}</b><span>${i===2&&s.reveal?'إدارة المتغير المفاجئ':t}</span><small><bdi>${minutes[i]}</bdi> دقائق</small></div>`).join('');
- $('#current-mission').innerHTML=`<div class="mission-number" aria-hidden="true">0${stage+1}</div><div><span class="mission-kicker">المطلوب الآن من كل طاولة</span>${editable('activity.mission.'+stage+(s.reveal?'.revealed':'')+'.title',mission[0],'h2')}${editable('activity.mission.'+stage+(s.reveal?'.revealed':'')+'.body',mission[1],'p')}</div><div class="mission-limit"><strong dir="ltr">100</strong><span>نقطة جهد كحد أقصى</span></div>`;
+ const mission=missions[stage];
+ $('#stage-label').textContent=stages[stage];
+ $('#stage-track').innerHTML=stages.map((t,i)=>`<div class="stage ${i===stage?'active':i<stage?'complete':''}" ${i===stage?'aria-current="step"':''}><b>${i+1}</b><span>${t}</span><small><bdi>${minutes[i]}</bdi> دقائق</small></div>`).join('');
+ $('#current-mission').innerHTML=`<div class="mission-number" aria-hidden="true">0${stage+1}</div><div class="mission-copy"><span class="mission-kicker">المطلوب الآن من كل طاولة</span>${editable('activity.mission.'+stage+'.title',mission[0],'h2')}${editable('activity.mission.'+stage+'.body',mission[1],'p')}</div><div class="mission-record"><span>ما يُسجّل على الجهاز</span>${editable('activity.mission.'+stage+'.record',mission[2],'strong')}</div>`;
  $$('[data-activity-view]').forEach(b=>{b.classList.toggle('active',b.dataset.activityView===view);b.setAttribute('aria-pressed',String(b.dataset.activityView===view))});$('#follow-host').hidden=!localActivityView;
  $('#emergency').hidden=!s.reveal;if(s.reveal)$('#emergency').innerHTML='<h2>تحديث عاجل من الإدارة العليا</h2><p>'+esc(s.emergency||'')+'</p>';
  let html='';
@@ -65,9 +88,16 @@ function drawActivity(force=false){
 }
 $$('[data-activity-view]').forEach(b=>b.onclick=()=>{localActivityView=b.dataset.activityView;localPath=0;drawActivity()});
 $('#follow-host').onclick=()=>{localActivityView=null;localPath=0;drawActivity()};
-function clock(){const s=live.state;const sec=s.timerRunning?Math.max(0,Math.ceil((s.timerEnd-Date.now()-clockSkew)/1000)):s.timerRemaining;$('#public-timer').textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');$('#public-timer').classList.toggle('countdown-ended',sec===0);$('#timer-state').textContent=sec===0?'انتهى وقت المرحلة':s.timerRunning?'المؤقت يعمل':room?'المؤقت متوقف':'بانتظار الميسّر'}
+function clock(){const s=live.state;const sec=s.timerRunning?Math.max(0,Math.ceil((s.timerEnd-Date.now()-clockSkew)/1000)):s.timerRemaining;const value=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');$('#public-timer').textContent=value;$('#public-timer').classList.toggle('countdown-ended',sec===0);$('#timer-state').textContent=sec===0?'انتهى وقت المرحلة':s.timerRunning?'الوقت يعمل الآن':'المؤقت متوقف';if($('#session-timer'))$('#session-timer').textContent=value}
 function qr(){if(!room)return;const url=new URL('join.html',location.href);url.search='?room='+encodeURIComponent(room);$('#qr-wrap').innerHTML='';if(window.QRCode)new QRCode($('#qr-wrap'),{text:url.href,width:204,height:204,colorDark:'#213e34',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});else $('#qr-wrap').textContent='استخدم رابط المشاركة أدناه';$('#join-link').href=url.href;$('#join-link').hidden=false;$('#join-short').textContent=url.host+'/forum/join.html';}
-function drawWall(){const answers=live.answers.filter(a=>!a.hidden);const signature=JSON.stringify(answers);$('#answer-count').textContent=answers.length;if(signature===lastWall)return;lastWall=signature;const wall=$('#answer-wall'),atBottom=wall.scrollHeight-wall.scrollTop-wall.clientHeight<80;wall.className='answer-wall phrase-cloud';if(!answers.length){wall.innerHTML='<div class="wall-empty"><span>“</span><h3>لكلٍّ منّا ما يعتزّ به</h3><p>تظهر إجابات المشاركين كاملة هنا فور إرسالها.</p></div>';return}wall.innerHTML=answers.map((a,i)=>`<article class="answer cloud-tone-${i%4+1}">${esc(a.text)}</article>`).join('');if(atBottom)wall.scrollTop=wall.scrollHeight;}
-let polling=false;async function poll(){if(!room||polling)return;polling=true;try{const r=await fetch(API+'/api/rooms/'+encodeURIComponent(room),{cache:'no-store'});if(!r.ok)throw Error();const data=await r.json();live=data;clockSkew=data.serverTime-Date.now();drawWall();drawActivity();clock();$('#connection').textContent='متصل · تتحدث الإجابات تلقائيًا';}catch{$('#connection').textContent='تعذر الاتصال · تبقى آخر نتائج معروضة، ونعيد المحاولة تلقائيًا';}finally{polling=false}}
-document.addEventListener('forum:content-applied',()=>{drawGov();drawActivity(true)});qr();drawWall();drawActivity();clock();window.ForumEditor.prepare();navigate($$('.page').map(el=>el.id).includes(location.hash.slice(1))?location.hash.slice(1):'overview');poll();setInterval(()=>{if(!document.hidden)poll()},2500);setInterval(clock,250);document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});
+function cloudStyle(text,index){let hash=2166136261;for(const char of text)hash=Math.imul(hash^char.codePointAt(0),16777619);hash>>>=0;const size=18+(hash%15),shift=((hash>>>5)%29)-14,tilt=(((hash>>>10)%13)-6)/10,tone=hash%4+1,delay=(index%12)*35;return `--cloud-size:${size}px;--cloud-shift:${shift}px;--cloud-tilt:${tilt}deg;--cloud-delay:${delay}ms;--cloud-span:${text.length>75?2:1}`}
+function drawWall(){const answers=live.answers.filter(a=>!a.hidden);const signature=JSON.stringify(answers);$('#answer-count').textContent=answers.length;if(signature===lastWall)return;lastWall=signature;const wall=$('#answer-wall'),atBottom=wall.scrollHeight-wall.scrollTop-wall.clientHeight<80;wall.className='answer-wall phrase-cloud cloud-free';if(!answers.length){wall.innerHTML='<div class="wall-empty"><span>“</span><h3>لكلٍّ منّا ما يعتزّ به</h3><p>تظهر إجابات المشاركين كاملة هنا فور إرسالها.</p></div>';return}wall.innerHTML=answers.map((a,i)=>`<span class="answer cloud-phrase cloud-tone-${i%4+1}" style="${cloudStyle(String(a.text||''),i)}">${esc(a.text)}</span>`).join('');if(atBottom)wall.scrollTop=wall.scrollHeight;}
+let polling=false;async function poll(){if(!room||polling)return;polling=true;try{const r=await fetch(API+'/api/rooms/'+encodeURIComponent(room),{cache:'no-store'});if(!r.ok)throw Error();const data=await r.json();live=data;clockSkew=data.serverTime-Date.now();drawWall();drawActivity();clock();drawSessionControls();$('#connection').textContent='متصل · تظهر الإجابات فور إرسالها';}catch{$('#connection').textContent='تعذر الاتصال · تبقى آخر نتائج معروضة، ونعيد المحاولة تلقائيًا';}finally{polling=false}}
+
+$('#manage-session').onclick=()=>{drawSessionControls();const panel=$('#session-panel');if(panel.showModal)panel.showModal();else panel.setAttribute('open','')};
+$('#setup-live-room').onclick=createSession;$('#create-session').onclick=createSession;$('#new-session').onclick=createSession;
+$('#accept-answers').onclick=()=>hostSend({action:'accepting',value:true});$('#stop-answers').onclick=()=>hostSend({action:'accepting',value:false});
+$('#timer-start').onclick=()=>activityCommand('start');$('#timer-pause').onclick=()=>activityCommand('pause');$('#timer-restart').onclick=()=>activityCommand('restart');
+$('#reveal-update').onclick=()=>activityCommand('reveal');$('#reset-activity').onclick=()=>activityCommand('reset');
+document.addEventListener('forum:content-applied',()=>{drawGov();drawActivity(true)});qr();drawWall();drawActivity();clock();drawSessionControls();window.ForumEditor.prepare();navigate($$('.page').map(el=>el.id).includes(location.hash.slice(1))?location.hash.slice(1):'overview');poll();setInterval(()=>{if(!document.hidden)poll()},2500);setInterval(clock,250);document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});
 })();
