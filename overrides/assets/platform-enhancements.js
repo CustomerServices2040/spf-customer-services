@@ -226,3 +226,13 @@
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",()=>setTimeout(boot,0)); else setTimeout(boot,0);
 })();
 
+
+// Isolated forum entry; the main platform navigation, contents and functions stay intact.
+(()=>{
+  const actions=document.querySelector('.top-actions');
+  if(!actions || document.getElementById('governoratesForumEntry'))return;
+  const link=document.createElement('a');
+  link.id='governoratesForumEntry';link.className='btn secondary';
+  link.href='forum/index.html';link.textContent='ملتقى دوائر المحافظات';
+  actions.prepend(link);
+})();
