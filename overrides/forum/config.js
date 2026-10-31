@@ -2,7 +2,7 @@
 if (!document.querySelector('link[href^="vivid.css"]')) {
   const visualStyles = document.createElement('link');
   visualStyles.rel = 'stylesheet';
-  visualStyles.href = 'vivid.css?v=20261031-5';
+  visualStyles.href = 'vivid.css?v=20261031-6';
   document.head.appendChild(visualStyles);
 }
 // The audience UI is served by GitHub Pages; live rooms use the public service.
