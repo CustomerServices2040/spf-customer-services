@@ -22,6 +22,12 @@ replace_required(
     '<title>خدمات المتعاملين | العرض المؤسسي</title>',
     '<title>بوصلة المتعامل | المنصة التنفيذية لخدمات المتعاملين</title>')
 replace_required(
+    '        <a class="active" href="#overview">نظرة عامة</a>',
+    '        <a href="#about">من نحن</a>\n        <a class="active" href="#overview">نظرة عامة</a>')
+replace_required(
+    '        <a href="#channels">قنوات الخدمة</a>\n        <a href="#operational-plan">الخطة التشغيلية</a>',
+    '        <a href="#channels">قنوات الخدمة</a>\n        <a href="#practices">الممارسات</a>\n        <a href="#operational-plan">الخطة التشغيلية</a>')
+replace_required(
     '        <a href="#work-tracker">متابعة الأعمال</a>\n        <a href="#performance">الأداء والمؤشرات</a>',
     '        <a href="#work-tracker">متابعة الأعمال</a>\n        <a href="#risk-register">سجل المخاطر</a>\n        <a href="#performance">الأداء والمؤشرات</a>')
 replace_required(
@@ -88,6 +94,37 @@ replace_required(
     '')
 replace_required('الأهداف التشغيلية السبعة', 'الأهداف التشغيلية التسعة')
 replace_required('سبعة أهداف رئيسية تقود التنفيذ', 'تسعة أهداف رئيسية تقود التنفيذ')
+
+about_slides = ''
+for page in range(1, 21):
+    image_attributes = 'loading="eager" fetchpriority="high"' if page == 1 else 'loading="lazy"'
+    about_slides += f'            <figure class="about-slide"><img src="assets/about-slides/slide-{page:02d}.jpg" alt="شريحة {page} من العرض التعريفي للمديرية العامة لخدمات المتعاملين" {image_attributes}><figcaption>الشريحة {page} من 20</figcaption></figure>\n'
+about_section = f'''        <section class="section-block about-section" id="about">
+          <div class="about-heading">
+            <div><span class="section-kicker">من نحن</span><h2>المديرية العامة لخدمات المتعاملين</h2><p>العرض التعريفي الكامل للمديرية، مع جميع الشرائح مرتبة للقراءة المتتابعة.</p></div>
+            <div class="about-heading-count"><strong>20</strong><span>شريحة</span></div>
+          </div>
+          <div class="about-slide-stack" aria-label="شرائح العرض التعريفي كاملة">
+{about_slides}          </div>
+        </section>
+
+'''
+replace_required(
+    '        <section class="executive-hero" id="overview">',
+    about_section + '        <section class="executive-hero" id="overview">')
+
+practices_section = '''        <section class="section-block practices-section" id="practices">
+          <div class="practices-intro">
+            <div class="practices-intro-copy"><span class="section-kicker">المتعامل والقنوات</span><h2>الممارسات المؤسسية والمجتمعية بالمحافظات</h2><p>ممارسات تنقل المعرفة إلى العمل، وتوسّع الوصول المجتمعي، وتعزز التكامل بين دوائر المحافظات وشركائها.</p></div>
+            <div class="practices-summary" aria-label="ملخص الممارسات"><article><strong>5</strong><span>محاور</span></article><article><strong>40</strong><span>ممارسة</span></article></div>
+          </div>
+          <div class="practices-grid" data-practices-grid aria-live="polite"></div>
+        </section>
+
+'''
+replace_required(
+    '        <section class="section-block" id="operational-plan">',
+    practices_section + '        <section class="section-block" id="operational-plan">')
 
 risk_section = '''        <section class="section-block risk-register-section" id="risk-register">
           <div class="section-heading">
@@ -262,7 +299,7 @@ tajawob_section = '''        <section class="section-block tajawob-updated" id="
           <div class="tajawob-hero updated">
             <div><span>إجمالي الطلبات</span><strong>7,289</strong><small>خلال تسعة أشهر</small></div>
             <div><span>نسبة الإنجاز للفترة</span><strong>98.2%</strong><small>المنجز ÷ إجمالي الطلبات</small></div>
-            <div><span>الطلبات المنجزة</span><strong>7,155</strong><small>مقابل 134 غير منجز</small></div>
+            <div><span>الطلبات المنجزة</span><strong>7,161</strong><small>مقابل 128 غير منجز</small></div>
             <div><span>عدد الأشهر</span><strong>9</strong><small>يناير إلى سبتمبر 2026</small></div>
           </div>
           <div class="tajawob-flow" aria-label="مسار معالجة طلب المتعامل في منصة تجاوب">
@@ -273,7 +310,7 @@ tajawob_section = '''        <section class="section-block tajawob-updated" id="
           </div>
           <div class="tajawob-type-grid" aria-label="طلبات منصة تجاوب حسب النوع">
             <article style="--rate:98.4"><span>المقترحات</span><strong>256</strong><b>252 منجزة · 98.4%</b><i><em></em></i></article>
-            <article style="--rate:96.9"><span>الشكاوى</span><strong>2,161</strong><b>2,094 منجزة · 96.9%</b><i><em></em></i></article>
+            <article style="--rate:97.2"><span>الشكاوى</span><strong>2,161</strong><b>2,100 منجزة · 97.2%</b><i><em></em></i></article>
             <article style="--rate:66.7"><span>البلاغات</span><strong>21</strong><b>14 منجزة · 66.7%</b><i><em></em></i></article>
             <article style="--rate:98.8"><span>الاستفسارات</span><strong>4,851</strong><b>4,795 منجزة · 98.8%</b><i><em></em></i></article>
           </div>
@@ -282,11 +319,18 @@ tajawob_section = '''        <section class="section-block tajawob-updated" id="
             <div class="tajawob-growth-bridge" aria-label="نمو حجم الطلبات بنسبة 109.4 بالمئة"><span>نمو الطلبات</span><strong>+109.4%</strong><small>مقارنة بعام 2025</small></div>
             <article class="tajawob-year-card year-2026" style="--year-rate:98.2"><header><span>يناير–سبتمبر 2026</span><small>9 أشهر</small></header><div class="tajawob-year-main"><div class="tajawob-volume"><small>حجم الطلبات</small><strong>7,289 <em>طلبًا</em></strong></div><div class="tajawob-rate-ring"><b>98.2%</b><small>معدل الإنجاز</small></div></div><footer><div><small>المتوسط الشهري</small><b>810</b><span>طلبات</span></div><div class="tajawob-status-up"><small>مستوى الإنجاز</small><b>مرتفع</b></div></footer></article>
           </div>
-          <div class="tajawob-peaks" aria-label="أوقات الذروة في منصة تجاوب">
-            <article><span>أكثر يوم ازدحامًا</span><strong>الاثنين 27 أبريل</strong><small>97 طلبًا</small></article>
-            <article><span>أكثر أيام الأسبوع</span><strong>الأحد</strong><small>811 طلبًا إجمالًا</small></article>
-            <article><span>أكثر ساعة ازدحامًا</span><strong>11:00 صباحًا</strong><small>362 طلبًا</small></article>
-          </div>
+          <section class="tajawob-challenges" aria-labelledby="tajawob-challenges-title">
+            <div class="tajawob-challenges-heading"><div><span>التحديات والموقف التنفيذي</span><h3 id="tajawob-challenges-title">تحديات منصة تجاوب</h3></div><small>وفق تقرير يناير–سبتمبر 2026</small></div>
+            <div class="tajawob-challenge-grid">
+              <article><i>01</i><h4>الطلبات المصعّدة</h4><ul><li>لا يوجد تقرير لحصر الطلبات المصعّدة.</li><li>تُصعّد بعض الطلبات قبل استلامها.</li></ul><p><b>الإجراء:</b> مناقشة التحديات مع مسؤول حساب الصندوق في الأمانة العامة لمجلس الوزراء.</p></article>
+              <article><i>02</i><h4>قائمة الخدمات</h4><ul><li>بعض الخدمات لا تتضمن رمزًا.</li><li>الحاجة إلى فصل الخدمة عن مخرج الخدمة.</li><li>التأخر في تحديث فهرس الخدمات.</li></ul><p><b>الإجراء:</b> مناقشة المعالجات بحضور الفرق المعنية بالتحول الرقمي والتميز المؤسسي.</p></article>
+              <article><i>03</i><h4>قصص نجاح المقترحات</h4><ul><li>حُصرت المقترحات المنفذة وأُرسلت للأمانة العامة، ولم تُنشر حتى الآن.</li></ul><p><b>الإجراء:</b> متابعة نشر المقترحات المنفذة بعد اعتمادها.</p></article>
+              <article><i>04</i><h4>المقترحات غير القابلة للتنفيذ</h4><ul><li>بلغت نسبة المقترحات التي تم الأخذ بها 18%.</li><li>166 مقترحًا يرتبط بالتشريعات والقوانين والسياسات.</li></ul><p><b>الإجراء:</b> توضيح أسباب التعذر وتصنيف المقترحات وفق نطاق الصلاحية.</p></article>
+              <article><i>05</i><h4>تقييم الخدمات</h4><ul><li>بلغت نسبة تقييم الخدمات 30% بنهاية سبتمبر 2026.</li><li>تم تعميم توجيه داخلي على مقدمي الخدمة في المحافظات.</li></ul><p><b>الإجراء:</b> تفعيل التوعية الداخلية ووضع ملصقات في صالات تقديم الخدمة.</p></article>
+              <article><i>06</i><h4>الاستجابة من بعض الدوائر</h4><ul><li>تأخر الإفادات في طلبات دعم دخل الأسرة.</li><li>التأخر في الرد على طلبات الدعم الفني.</li></ul><p><b>الإجراء:</b> إفادة استباقية عند نقص البيانات وتعيين ضابط اتصال من القسم.</p></article>
+              <article class="technical"><i>07</i><h4>تحديات تقنية</h4><ul><li>لا يتوفر تنبيه مسبق قبل تصعيد الطلب.</li><li>لا يمكن تنزيل تقرير للطلبات المصعّدة أو البحث برقم الهاتف أو الرقم المدني.</li><li>لا يمكن تغيير مسار الطلب المستلم من جهة أخرى.</li><li>نقل الصلاحيات قد يصنّف الطلبات «لا ينطبق».</li><li>الطلبات المعاد فتحها لا تظهر ضمن الطلبات الجديدة.</li><li>خاصية تعديل بيانات الطلب قبل الإرسال تحتاج إلى استكمال.</li></ul><p><b>الإجراء:</b> إرسال المقترحات التطويرية إلى مسؤول حساب الصندوق في الأمانة العامة لمجلس الوزراء.</p></article>
+            </div>
+          </section>
           <aside class="tajawob-response-guide" aria-labelledby="tajawob-response-guide-title">
             <div class="response-guide-icon" aria-hidden="true">
               <svg viewBox="0 0 48 48"><path d="M10 8h20a6 6 0 0 1 6 6v22H16a6 6 0 0 0-6 6V8Z"/><path d="M16 14h14M16 20h14M16 26h9M36 36H16a6 6 0 0 0-6 6M34 8h4v24"/></svg>
@@ -584,6 +628,7 @@ text = re.sub(r'src="assets/work-tracker.html(?:\?v=[^"]*)?"', f'src="assets/wor
 
 # Load this last: the upstream exhibition stylesheet centers an overflowing
 # tab row, placing its first tabs beyond the right edge on some screens.
+text = text.replace('</head>', f'  <link rel="stylesheet" href="assets/practices.css?v={asset_revision}" />\n</head>', 1)
 text = text.replace('</head>', f'  <link rel="stylesheet" href="assets/card-refinements.css?v={asset_revision}" />\n</head>', 1)
 motion_css = f'  <link rel="stylesheet" href="assets/motion-system.css?v={asset_revision}" />'
 text = text.replace('</head>', motion_css + '\n</head>', 1)
@@ -591,6 +636,8 @@ navigation_css = f'  <link rel="stylesheet" href="assets/navigation-reliability.
 text = text.replace('</head>', navigation_css + '\n</head>', 1)
 ux_css = f'  <link rel="stylesheet" href="assets/ux-system.css?v={asset_revision}" />'
 text = text.replace('</head>', ux_css + '\n</head>', 1)
+practices_script = f'  <script src="assets/practices.js?v={asset_revision}"></script>'
+text = text.replace('</body>', practices_script + '\n</body>', 1)
 motion_script = f'  <script src="assets/motion-system.js?v={asset_revision}"></script>'
 text = text.replace('</body>', motion_script + '\n</body>', 1)
 ux_script = f'  <script src="assets/ux-system.js?v={asset_revision}"></script>'

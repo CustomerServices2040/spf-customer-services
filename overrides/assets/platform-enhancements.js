@@ -178,11 +178,23 @@
     guide.className="toolbar-tool-card";edit.className="toolbar-tool-card toolbar-tool-primary edit-entry";
     guide.setAttribute("data-tool","guide");edit.setAttribute("data-tool","edit");
     menu.append(guide,edit);actions.append(tools);
+    const positionMenu=()=>{
+      if(menu.hidden)return;
+      const nav=$(".ux-nav-groups"),toggleRect=toggle.getBoundingClientRect(),navRect=nav?.getBoundingClientRect();
+      const width=Math.min(310,window.innerWidth-28),top=Math.max(toggleRect.bottom+10,(navRect?.bottom||0)+10);
+      const left=Math.max(14,Math.min(window.innerWidth-width-14,toggleRect.right-width));
+      menu.style.width=`${width}px`;menu.style.top=`${top}px`;menu.style.left=`${left}px`;
+    };
     const close=()=>{menu.hidden=true;toggle.setAttribute("aria-expanded","false")};
-    toggle.addEventListener("click",event=>{event.stopPropagation();menu.hidden=!menu.hidden;toggle.setAttribute("aria-expanded",String(!menu.hidden))});
+    toggle.addEventListener("click",event=>{
+      event.stopPropagation();menu.hidden=!menu.hidden;toggle.setAttribute("aria-expanded",String(!menu.hidden));
+      if(!menu.hidden)requestAnimationFrame(positionMenu);
+    });
     menu.addEventListener("click",event=>{event.stopPropagation();if(event.target.closest("button"))close()});
     document.addEventListener("click",close);
     document.addEventListener("keydown",event=>{if(event.key==="Escape")close()});
+    window.addEventListener("resize",positionMenu);
+    window.addEventListener("scroll",positionMenu,{passive:true});
   }
 
   function enhanceFullscreenToggle(){

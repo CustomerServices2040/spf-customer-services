@@ -100,6 +100,7 @@ jobs:
           node --check _site/legacy/assets/exhibition.js
           node --check _site/legacy/assets/platform-enhancements.js
           node --check _site/legacy/assets/motion-system.js
+          node --check _site/legacy/assets/practices.js
           node --check _site/legacy/assets/ux-system.js
           node --check _site/legacy/assets/privacy-lock.js
           node scripts/validate_data_integrity.mjs _site/legacy/assets/tasks-data.json
@@ -119,7 +120,7 @@ jobs:
           text = html_path.read_text(encoding="utf-8")
 
           required_tabs = [
-              "overview","directorate","methodology","coverage","channels",
+              "about","overview","directorate","methodology","coverage","channels","practices",
               "operational-plan","work-tracker","risk-register","performance",
               "tajawob","committees","projects","community-line","media-center","service-achievements","recognitions","achievements"
           ]
@@ -193,6 +194,26 @@ jobs:
               target=html_path.parent / rel
               if not target.exists():
                   raise SystemExit(f"Referenced asset does not exist: {asset}")
+
+          about_slides = sorted((html_path.parent / "assets" / "about-slides").glob("slide-*.jpg"))
+          if len(about_slides) != 20:
+              raise SystemExit(f"Expected 20 about slides, found {len(about_slides)}")
+          for slide in about_slides:
+              if slide.stat().st_size < 50_000:
+                  raise SystemExit(f"About slide is incomplete: {slide.name}")
+
+          forum_html = (html_path.parent / "forum" / "index.html").read_text(encoding="utf-8")
+          forum_js = (html_path.parent / "forum" / "forum.js").read_text(encoding="utf-8")
+          if 'data-page="practices"' not in forum_html or 'id="practices"' not in forum_html:
+              raise SystemExit("Forum practices tab or section is missing")
+          for removed_phrase in ("مؤشرات تشغيلية مساندة", "قراءة الشبكة", "لا تدخل في مجموع حجم الأعمال أعلاه"):
+              if removed_phrase in forum_html or removed_phrase in forum_js:
+                  raise SystemExit(f"Removed forum phrase is still present: {removed_phrase}")
+
+          tracker_text = (html_path.parent / "assets" / "work-tracker.html").read_text(encoding="utf-8")
+          for tracker_marker in ('id="task-text-mode-button"', 'id="task-text-lines"', "async function saveTextTasks()"):
+              if tracker_marker not in tracker_text:
+                  raise SystemExit(f"Text task entry is incomplete: {tracker_marker}")
 
           for report in ("reports/q1-2026.pdf", "reports/q2-2026.pdf"):
               target=html_path.parent / report

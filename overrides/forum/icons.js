@@ -18,9 +18,9 @@ const paths={
  ,compass:'<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/>'
 };
 function icon(name,cls='nav-symbol'){return `<span class="${cls}" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths[name]||paths.spark}</svg></span>`}
-const nav=['home','compass','spark','map','people'];document.querySelectorAll('.main-nav button').forEach((el,i)=>el.insertAdjacentHTML('afterbegin',icon(nav[i])));
+const nav=['home','compass','spark','map','network','consensus'];document.querySelectorAll('.main-nav button').forEach((el,i)=>el.insertAdjacentHTML('afterbegin',icon(nav[i])));
 const kpis=['services','daily','heart','network'];document.querySelectorAll('.kpi').forEach((el,i)=>el.insertAdjacentHTML('afterbegin',icon(kpis[i],'card-symbol')));
-const sections={future:'compass',pride:'spark',map:'map',activity:'consensus'};Object.entries(sections).forEach(([id,name])=>{const target=document.querySelector(`#${id} .page-intro>div:first-child`);if(target)target.insertAdjacentHTML('afterbegin',icon(name,'section-symbol'))});
+const sections={future:'compass',pride:'spark',map:'map',practices:'network',activity:'consensus'};Object.entries(sections).forEach(([id,name])=>{const target=document.querySelector(`#${id} .page-intro>div:first-child`);if(target)target.insertAdjacentHTML('afterbegin',icon(name,'section-symbol'))});
 function decorate(root=document){
  root.querySelectorAll('.rule:not([data-decorated])').forEach((el,i)=>{el.dataset.decorated='1';el.insertAdjacentHTML('afterbegin',icon(['limit','consensus','people'][i%3],'card-symbol'))});
  root.querySelectorAll('.path-card:not(.summary-card):not([data-decorated])').forEach((el,i)=>{el.dataset.decorated='1';const h=el.querySelector('header');if(h)h.insertAdjacentHTML('afterbegin',icon(['route','spark','network','services'][i%4],'mini-symbol'))});
