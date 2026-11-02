@@ -102,7 +102,6 @@ for page in range(1, 21):
 about_section = f'''        <section class="section-block about-section" id="about">
           <div class="about-heading">
             <div><span class="section-kicker">من نحن</span><h2>المديرية العامة لخدمات المتعاملين</h2><p>العرض التعريفي الكامل للمديرية، مع جميع الشرائح مرتبة للقراءة المتتابعة.</p></div>
-            <div class="about-heading-count"><strong>20</strong><span>شريحة</span></div>
           </div>
           <div class="about-slide-stack" aria-label="شرائح العرض التعريفي كاملة">
 {about_slides}          </div>

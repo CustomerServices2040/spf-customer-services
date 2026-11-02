@@ -313,7 +313,7 @@ tbody tr:hover{background:var(--surface-alt);}
 .import-panel details.import-skipped{margin-top:10px;padding:9px 12px;border:1px solid #e8d6ca;border-radius:9px;background:#fffaf7}.import-panel .import-skipped summary{cursor:pointer;font-weight:700}.import-panel .import-skipped ol{padding-right:20px;margin:9px 0 0}.import-panel .import-skipped li{padding:3px 0;line-height:1.6}
 .import-panel thead th{position:sticky;top:0;z-index:1}
 .import-mappings{display:grid;gap:10px;margin-top:12px}.import-mapping{padding:12px;border:1px solid #bfd4c8;border-radius:12px;background:#fff}.import-mapping h4{margin:0 0 7px;font-size:13px;color:var(--navy)}.import-mapping p{margin:0 0 9px}.import-mapping-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px}.import-mapping label{display:grid;gap:5px;font-size:11px;font-weight:700}.import-mapping select,.import-mapping input{font:inherit;min-width:0;padding:7px;border:1px solid #b6c8bd;border-radius:7px;background:white}.import-mapping .btn-secondary{margin-top:10px}
-.task-entry-modes{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:13px 0;padding:5px;border:1px solid #dce5df;border-radius:13px;background:#eef3ef}.task-entry-modes button{min-height:43px;border:0;border-radius:9px;background:transparent;color:var(--ink-soft);font:inherit;font-size:12px;font-weight:800;cursor:pointer}.task-entry-modes button.active{background:#fff;color:var(--navy);box-shadow:0 5px 14px rgba(31,66,52,.09)}.task-text-entry{display:grid;gap:11px;padding:16px;border:1px solid #c9d9cf;border-radius:15px;background:#fff}.task-text-entry>label{display:grid;gap:6px;color:var(--navy);font-size:11px;font-weight:800}.task-text-entry textarea,.task-text-entry input,.task-text-entry select{width:100%;min-width:0;border:1px solid #b8c9bf;border-radius:9px;padding:10px 11px;background:#fbfcfb;color:var(--ink);font:inherit}.task-text-entry textarea{min-height:132px;resize:vertical;line-height:1.8}.task-text-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.task-text-entry-note{font-size:11px;color:var(--ink-soft);line-height:1.7}.task-text-feedback{min-height:22px;color:var(--ink-soft);font-size:12px;line-height:1.7}@media(max-width:650px){.task-text-entry-grid{grid-template-columns:1fr}}
+.task-entry-modes{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:13px 0;padding:5px;border:1px solid #dce5df;border-radius:13px;background:#eef3ef}.task-entry-modes button{min-height:43px;border:0;border-radius:9px;background:transparent;color:var(--ink-soft);font:inherit;font-size:12px;font-weight:800;cursor:pointer}.task-entry-modes button.active{background:#fff;color:var(--navy);box-shadow:0 5px 14px rgba(31,66,52,.09)}.task-text-entry{display:grid;gap:11px;padding:16px;border:1px solid #c9d9cf;border-radius:15px;background:#fff}.task-text-entry>label{display:grid;gap:6px;color:var(--navy);font-size:11px;font-weight:800}.task-text-entry textarea{width:100%;min-height:240px;resize:vertical;border:1px solid #b8c9bf;border-radius:12px;padding:14px;background:#fbfcfb;color:var(--ink);font:inherit;line-height:1.9}.task-text-entry-note{font-size:11px;color:var(--ink-soft);line-height:1.7}.task-text-actions{display:flex;gap:8px;flex-wrap:wrap}.task-text-feedback{min-height:22px;color:var(--ink-soft);font-size:12px;line-height:1.7}.task-distribution-preview{overflow:auto;border-radius:12px}.task-distribution-preview table{min-width:760px}.task-distribution-preview td:first-child{min-width:210px}.task-distribution-preview td:nth-child(2){min-width:260px;white-space:pre-line}.task-distribution-preview .auto-tag{display:inline-block;padding:3px 7px;border-radius:999px;background:#e8f1eb;color:var(--navy);font-size:10px;font-weight:800}
 [hidden]{display:none!important}
 .btn-primary,.btn-danger,.btn-secondary{font-family:inherit;font-size:12px;font-weight:700;border-radius:10px 4px 10px 4px;padding:8px 14px;cursor:pointer;transition:all .15s}
 .btn-primary{color:#fff;background:var(--navy);border:1px solid var(--navy)}
@@ -542,13 +542,11 @@ header{height:72px;padding:0 34px;background:rgba(20,56,47,.97);border:0;color:#
           <div class="import-feedback" id="import-feedback" role="status"></div><div class="import-mappings" id="import-mappings"></div><div class="import-preview" id="import-preview"></div>
         </div>
         <div class="task-text-entry" id="task-text-mode" role="tabpanel" aria-labelledby="task-text-mode-button" hidden>
-          <label>المهام الجديدة<textarea id="task-text-lines" placeholder="اكتب كل مهمة في سطر مستقل"></textarea></label>
-          <div class="task-text-entry-grid"><label>القسم<input id="task-text-dept" list="task-text-dept-options" placeholder="اختر أو اكتب اسم القسم"><datalist id="task-text-dept-options"></datalist></label><label>الموظف أو الفريق<input id="task-text-employee" placeholder="اختياري"></label></div>
-          <div class="task-text-entry-grid"><label>الحالة<select id="task-text-status" onchange="syncTextTaskStatus()"><option>قيد الإجراء</option><option>منجز</option><option>متأخر</option></select></label><label>نسبة الإنجاز<input id="task-text-progress" type="number" min="0" max="100" step="1" value="0"></label></div>
-          <label>تفاصيل مشتركة للمهام<textarea id="task-text-details" placeholder="اختياري"></textarea></label>
-          <span class="task-text-entry-note">ستُضاف كل سطر كمهمة مستقلة في السجل التفصيلي، مع تطبيق القسم والموظف والحالة نفسها على جميع الأسطر.</span>
-          <button type="button" class="btn-primary" id="save-text-tasks" onclick="saveTextTasks()">إضافة المهام ونشرها</button>
+          <label>النص الحر للمهام والتفاصيل<textarea id="task-text-lines" oninput="resetTextTaskAnalysis()" placeholder="مثال:&#10;المهمة: إعداد التقرير الشهري لخدمات المتعاملين&#10;التفاصيل: استكمال تحليل البيانات ومراجعة المؤشرات، قيد الإجراء بنسبة 60%&#10;&#10;المهمة: متابعة تجهيز صالة الدائرة&#10;التفاصيل: التنسيق مع الدعم المؤسسي ومتابعة أعمال الصيانة"></textarea></label>
+          <span class="task-text-entry-note">اكتب المهمة وتفاصيلها بحرية، وافصل بين المهام بسطر فارغ. ستتولى المنصة تحديد القسم والموظف والحالة ونسبة الإنجاز بالاستناد إلى بيانات السجل التفصيلي الحالية.</span>
+          <div class="task-text-actions"><button type="button" class="btn-secondary" id="analyze-text-tasks" onclick="analyzeTextTasks()">تحليل المهام وتوزيعها</button><button type="button" class="btn-primary" id="save-text-tasks" onclick="saveTextTasks()" hidden>اعتماد التوزيع ونشر المهام</button></div>
           <div class="task-text-feedback" id="task-text-feedback" role="status"></div>
+          <div class="task-distribution-preview" id="task-distribution-preview" aria-live="polite"></div>
         </div>
       </div>
       <div class="tbl-scroll">
@@ -610,7 +608,7 @@ const GITHUB_REPO='spf-customer-services';
 const TASKS_REPO_PATH='overrides/assets/tasks-data.json';
 const AUTH_PROXY='https://customer-compass-github-auth.spf2040.chatgpt.site';
 const FILTER_STORAGE_KEY='spf-work-tracker-filters-v1';
-let ownerAccessToken='',loadedTasksUpdatedAt=null,loadedTasksSha=null,pendingTaskImport=null,taskMutationInFlight=false,importReadInFlight=false,importSheetLayouts=[];
+let ownerAccessToken='',loadedTasksUpdatedAt=null,loadedTasksSha=null,pendingTaskImport=null,pendingTextTasks=null,taskMutationInFlight=false,importReadInFlight=false,importSheetLayouts=[];
 // Keep distinct people with the same first name (e.g. سعيد) separate, while
 // unifying harmless spelling differences and crediting shared work to everyone.
 const EMPLOYEE_ALIASES={
@@ -1075,35 +1073,72 @@ function setTaskEntryMode(mode){
   document.getElementById('task-text-mode-button').classList.toggle('active',textMode);
   document.getElementById('task-file-mode-button').setAttribute('aria-selected',String(!textMode));
   document.getElementById('task-text-mode-button').setAttribute('aria-selected',String(textMode));
-  if(textMode){
-    document.getElementById('task-text-dept-options').innerHTML=[...new Set(DATA.map(task=>task.dept).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ar')).map(dept=>`<option value="${esc(dept)}">`).join('');
-    document.getElementById('task-text-lines').focus();
-  }
+  if(textMode)document.getElementById('task-text-lines').focus();
 }
-function syncTextTaskStatus(){
-  const status=document.getElementById('task-text-status').value,progress=document.getElementById('task-text-progress');
-  if(status==='منجز'){progress.value=100;progress.disabled=true}else{progress.disabled=false;if(Number(progress.value)===100)progress.value=0}
+function resetTextTaskAnalysis(){
+  pendingTextTasks=null;
+  document.getElementById('save-text-tasks').hidden=true;
+  document.getElementById('task-distribution-preview').innerHTML='';
+  document.getElementById('task-text-feedback').textContent='';
+}
+const TEXT_TASK_STOP_WORDS=new Set('في من على إلى الى عن مع تم يتم جاري جارى العمل المطلوب الموقف التنفيذي ملف مهمة المهام تفاصيل التفصيل تحديث إعداد اعداد متابعة استكمال خلال لدى هذا هذه ذلك التي الذي بعد قبل'.split(' '));
+const TEXT_DEPT_KEYWORDS={
+  'مركز الاتصال':['مركز الاتصال','المكالمات','مكالمة','الرد الآلي','المساعد الصوتي','زكية','زهرة','أنوار'],
+  'إدارة علاقات المتعاملين':['تجاوب','crm','شكوى','شكاوى','استفسار','استفسارات','الردود النموذجية','رضا المتعاملين','ملتقى المتعاملين','صوت المتعامل'],
+  'شؤون الدوائر والمنافذ':['الدائرة','الدوائر','المحافظة','المحافظات','الفرع','الفروع','المنفذ','المنافذ','المبنى','الصالة','صيانة','الإيجار','عقد','تجهيز','أثاث','مسندم','ظفار'],
+  'التنسيق والمتابعة':['التقويم','موعد التسليم','مواعيد التسليم','التنسيق والمتابعة','بطاقات الموظفين','الموقف التنفيذي'],
+  'إدارة وتطوير الخدمات':['تطوير الخدمات','منهجية','مؤشر','مؤشرات','تقرير','تقارير','لوحة','منصة','تحليل','مشروع','مبادرة','خطة','مصفوفة الخدمات','مركزية العميل']
+};
+function normalizeTaskMatch(value){return String(value||'').toLowerCase().normalize('NFKD').replace(/[\u064B-\u065F\u0670]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[^\p{L}\p{N}%]+/gu,' ').replace(/\s+/g,' ').trim()}
+function textTaskTokens(value){return new Set(normalizeTaskMatch(value).split(' ').filter(token=>token.length>2&&!TEXT_TASK_STOP_WORDS.has(token)))}
+function parseFreeTextTasks(raw){
+  const clean=raw.replace(/\r/g,'').trim();if(!clean)return [];
+  const labelled=clean.split(/(?=^\s*(?:[-•●▪]\s*)?(?:المهمة|مهمة|عنوان المهمة)\s*[:：-])/m).map(x=>x.trim()).filter(Boolean);
+  let blocks=labelled.length>1?labelled:clean.split(/\n\s*\n+/).map(x=>x.trim()).filter(Boolean);
+  if(blocks.length===1){const lines=blocks[0].split('\n').map(x=>x.trim()).filter(Boolean);if(lines.length>1&&lines.every(line=>/^(?:[-•●▪]|\d+[.)-])\s*/.test(line)))blocks=lines}
+  return blocks.map(block=>{
+    const lines=block.split('\n').map(x=>x.trim()).filter(Boolean),titleLine=lines.find(line=>/^(?:[-•●▪]\s*)?(?:المهمة|مهمة|عنوان المهمة)\s*[:：-]/.test(line))||lines[0]||'';
+    const title=titleLine.replace(/^(?:[-•●▪]|\d+[.)-])\s*/,'').replace(/^(?:المهمة|مهمة|عنوان المهمة)\s*[:：-]\s*/,'').trim();
+    const details=lines.filter(line=>line!==titleLine).join('\n').replace(/^(?:التفاصيل|تفاصيل المهمة)\s*[:：-]\s*/m,'').trim();
+    return {title,details,raw:[title,details].filter(Boolean).join(' ')};
+  }).filter(entry=>entry.title);
+}
+function inferTextTaskStatus(text){
+  const normalized=normalizeTaskMatch(text),percentage=normalized.match(/(?:^|\s)(100|[1-9]?\d)\s*%/),explicit=percentage?Number(percentage[1]):null;
+  if(/(?:متاخر|متعثر|متوقف|تجاوز الموعد)/.test(normalized))return {status:'متأخر',pct:explicit??0};
+  if(/(?:منجز|مكتمل|اكتمل|تم الانتهاء|تم الانجاز|تم التسليم)/.test(normalized))return {status:'منجز',pct:100};
+  return {status:'قيد الإجراء',pct:explicit??0};
+}
+function inferTextTaskDistribution(entry){
+  const normalized=normalizeTaskMatch(entry.raw),tokens=textTaskTokens(entry.raw),departments=[...new Set(DATA.map(task=>task.dept).filter(Boolean))];
+  const people=[...new Set(DATA.flatMap(task=>String(task.emp||'').split('/').map(name=>name.trim())).filter(name=>name.length>1))].sort((a,b)=>b.length-a.length);
+  const namedPeople=people.filter(name=>normalized.includes(normalizeTaskMatch(name))),explicitDept=departments.find(dept=>normalized.includes(normalizeTaskMatch(dept)));
+  const frequencies=new Map();DATA.forEach(task=>[...textTaskTokens(`${task.title} ${task.tech||''}`)].forEach(token=>frequencies.set(token,(frequencies.get(token)||0)+1)));
+  const ranked=DATA.map(task=>{const taskTokens=textTaskTokens(`${task.title} ${task.tech||''}`);let score=0;tokens.forEach(token=>{if(taskTokens.has(token))score+=Math.max(1,Math.log((DATA.length+1)/((frequencies.get(token)||0)+1)))});return {task,score}}).sort((a,b)=>b.score-a.score);
+  const keywordScores=new Map();for(const [dept,keywords] of Object.entries(TEXT_DEPT_KEYWORDS))keywords.forEach(keyword=>{if(normalized.includes(normalizeTaskMatch(keyword)))keywordScores.set(dept,(keywordScores.get(dept)||0)+1)});
+  const peopleDept=namedPeople.length?[...departments].map(dept=>[dept,DATA.filter(task=>task.dept===dept&&namedPeople.some(name=>String(task.emp||'').split('/').map(x=>x.trim()).includes(name))).length]).sort((a,b)=>b[1]-a[1])[0]?.[0]:'';
+  const keywordDept=[...keywordScores.entries()].sort((a,b)=>b[1]-a[1])[0]?.[0],inferredDept=explicitDept||peopleDept||keywordDept||ranked[0]?.task.dept||'إدارة وتطوير الخدمات';
+  const bestForDept=ranked.find(item=>item.task.dept===inferredDept),inferredEmp=namedPeople.length?normalizeEmployees(namedPeople.join(' / ')):(bestForDept?.score>=4?normalizeEmployees(bestForDept.task.emp):'');
+  return {dept:inferredDept,emp:inferredEmp,...inferTextTaskStatus(entry.raw)};
+}
+function analyzeTextTasks(){
+  const feedback=document.getElementById('task-text-feedback'),preview=document.getElementById('task-distribution-preview'),entries=parseFreeTextTasks(document.getElementById('task-text-lines').value);
+  if(!entries.length){feedback.textContent='اكتب مهمة واحدة على الأقل مع تفاصيلها.';return}
+  pendingTextTasks=entries.map(entry=>({...entry,...inferTextTaskDistribution(entry)}));
+  preview.innerHTML=`<table><thead><tr><th>المهمة</th><th>التفاصيل</th><th>التوزيع التلقائي</th><th>الموظف</th><th>الحالة</th><th>الإنجاز</th></tr></thead><tbody>${pendingTextTasks.map(task=>`<tr><td>${esc(task.title)}</td><td>${esc(task.details||'—')}</td><td><span class="auto-tag">${esc(task.dept)}</span></td><td>${esc(task.emp||'يُحدد من القسم')}</td><td>${esc(task.status)}</td><td>${task.pct}%</td></tr>`).join('')}</tbody></table>`;
+  feedback.textContent=`تم تحليل ${pendingTextTasks.length} مهمة وتوزيعها بالاستناد إلى السجل الحالي. راجع النتيجة ثم اعتمد النشر.`;
+  document.getElementById('save-text-tasks').hidden=false;
 }
 async function saveTextTasks(){
   if(taskMutationInFlight)return;
   const feedback=document.getElementById('task-text-feedback'),button=document.getElementById('save-text-tasks');
-  const titles=document.getElementById('task-text-lines').value.split(/\r?\n/).map(value=>value.replace(/^[•●▪]\s*/, '').trim()).filter(Boolean);
-  const dept=document.getElementById('task-text-dept').value.trim(),emp=normalizeEmployees(document.getElementById('task-text-employee').value),status=document.getElementById('task-text-status').value;
-  const details=document.getElementById('task-text-details').value.trim(),rawProgress=document.getElementById('task-text-progress').value.trim();
-  if(!titles.length){feedback.textContent='اكتب مهمة واحدة على الأقل، وكل مهمة في سطر مستقل.';return}
-  if(!dept){feedback.textContent='حدد القسم المسؤول قبل النشر.';return}
-  const pct=status==='منجز'?100:Math.max(0,Math.min(100,Number(rawProgress)||0)),existing=new Set(DATA.map(importKey));
-  const additions=[];let duplicates=0;
-  titles.forEach((title,index)=>{
-    const candidate={title,dept};
-    if(existing.has(importKey(candidate))){duplicates++;return}
-    const task={id:`text-${globalThis.crypto?.randomUUID?.()||`${Date.now()}-${index}`}`,title,dept,emp,tech:details,status,pct,received:null,due:null,date:null,overdue:status==='متأخر',source_file:'إدخال نصي',imported_at:new Date().toISOString()};
-    existing.add(importKey(task));additions.push(task);
-  });
+  if(!pendingTextTasks?.length){analyzeTextTasks();return}
+  const existing=new Set(DATA.map(importKey)),additions=[];let duplicates=0;
+  pendingTextTasks.forEach((entry,index)=>{const candidate={title:entry.title,dept:entry.dept};if(existing.has(importKey(candidate))){duplicates++;return}const task={id:`text-${globalThis.crypto?.randomUUID?.()||`${Date.now()}-${index}`}`,title:entry.title,dept:entry.dept,emp:entry.emp,tech:entry.details,status:entry.status,pct:entry.pct,received:null,due:null,date:null,overdue:entry.status==='متأخر',source_file:'إدخال نصي موزع تلقائيًا',imported_at:new Date().toISOString()};existing.add(importKey(task));additions.push(task)});
   if(!additions.length){feedback.textContent='جميع المهام المكتوبة موجودة في السجل مسبقًا.';return}
-  const previous=DATA.map(task=>({...task}));DATA=[...DATA,...additions];taskMutationInFlight=true;button.disabled=true;feedback.textContent=`جارٍ نشر ${additions.length} مهمة جديدة…`;
+  const previous=DATA.map(task=>({...task}));DATA=[...DATA,...additions];taskMutationInFlight=true;button.disabled=true;feedback.textContent=`جارٍ نشر ${additions.length} مهمة موزعة تلقائيًا…`;
   try{
-    await saveTasks();refreshFiltersAfterDataChange();document.getElementById('task-text-lines').value='';document.getElementById('task-text-details').value='';
+    await saveTasks();refreshFiltersAfterDataChange();document.getElementById('task-text-lines').value='';resetTextTaskAnalysis();
     feedback.textContent=`تم نشر ${additions.length} مهمة جديدة${duplicates?`، وتجاوز ${duplicates} مهمة مكررة`:''}.`;
   }catch(error){DATA=previous;refreshFiltersAfterDataChange();feedback.textContent=error.message||'تعذر نشر المهام. لم تتغير البيانات المنشورة.'}
   finally{taskMutationInFlight=false;button.disabled=false}

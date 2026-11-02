@@ -206,12 +206,14 @@ jobs:
           forum_js = (html_path.parent / "forum" / "forum.js").read_text(encoding="utf-8")
           if 'data-page="practices"' not in forum_html or 'id="practices"' not in forum_html:
               raise SystemExit("Forum practices tab or section is missing")
+          if 'src="assets/oman.png"' not in forum_html or not (html_path.parent / "forum" / "assets" / "oman.png").is_file():
+              raise SystemExit("Forum governorates map image is missing or points to an invalid path")
           for removed_phrase in ("مؤشرات تشغيلية مساندة", "قراءة الشبكة", "لا تدخل في مجموع حجم الأعمال أعلاه"):
               if removed_phrase in forum_html or removed_phrase in forum_js:
                   raise SystemExit(f"Removed forum phrase is still present: {removed_phrase}")
 
           tracker_text = (html_path.parent / "assets" / "work-tracker.html").read_text(encoding="utf-8")
-          for tracker_marker in ('id="task-text-mode-button"', 'id="task-text-lines"', "async function saveTextTasks()"):
+          for tracker_marker in ('id="task-text-mode-button"', 'id="task-text-lines"', "function analyzeTextTasks()", "async function saveTextTasks()"):
               if tracker_marker not in tracker_text:
                   raise SystemExit(f"Text task entry is incomplete: {tracker_marker}")
 
