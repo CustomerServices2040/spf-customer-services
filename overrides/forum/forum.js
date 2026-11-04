@@ -101,3 +101,6 @@ $('#timer-start').onclick=()=>activityCommand('start');$('#timer-pause').onclick
 $('#reveal-update').onclick=()=>activityCommand('reveal');$('#reset-activity').onclick=()=>activityCommand('reset');
 document.addEventListener('forum:content-applied',()=>{drawGov();drawActivity(true)});qr();drawWall();drawActivity();clock();drawSessionControls();window.ForumEditor.prepare();navigate($$('.page').map(el=>el.id).includes(location.hash.slice(1))?location.hash.slice(1):'overview');poll();setInterval(()=>{if(!document.hidden)poll()},2500);setInterval(clock,250);document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});
 })();
+
+// Keep sticky navigation below the measured brand bar on every viewport.
+(()=>{const header=document.querySelector('.site-header');if(!header)return;const sync=()=>document.documentElement.style.setProperty('--forum-header-height',Math.ceil(header.getBoundingClientRect().height+8)+'px');new ResizeObserver(sync).observe(header);sync()})();

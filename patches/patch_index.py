@@ -96,14 +96,14 @@ replace_required('الأهداف التشغيلية السبعة', 'الأهدا
 replace_required('سبعة أهداف رئيسية تقود التنفيذ', 'تسعة أهداف رئيسية تقود التنفيذ')
 
 about_slides = ''
-for page in range(1, 21):
+for page in (1, 2, 4, 6, 7, 8, 9, 10, 12, 13, 14, 17, 18, 19, 20):
     image_attributes = 'loading="eager" fetchpriority="high"' if page == 1 else 'loading="lazy"'
-    about_slides += f'            <figure class="about-slide"><img src="assets/about-slides/slide-{page:02d}.jpg" alt="شريحة {page} من العرض التعريفي للمديرية العامة لخدمات المتعاملين" {image_attributes}><figcaption>الشريحة {page} من 20</figcaption></figure>\n'
+    about_slides += f'            <figure class="about-slide"><img src="assets/about-slides/slide-{page:02d}.jpg" alt="العرض التعريفي للمديرية العامة لخدمات المتعاملين" {image_attributes}></figure>\n'
 about_section = f'''        <section class="section-block about-section" id="about">
           <div class="about-heading">
-            <div><span class="section-kicker">من نحن</span><h2>المديرية العامة لخدمات المتعاملين</h2><p>العرض التعريفي الكامل للمديرية، مع جميع الشرائح مرتبة للقراءة المتتابعة.</p></div>
+            <div><span class="section-kicker">من نحن</span><h2>المديرية العامة لخدمات المتعاملين</h2><p>تعرّف على المديرية وأدوارها وخدماتها للمتعاملين.</p></div>
           </div>
-          <div class="about-slide-stack" aria-label="شرائح العرض التعريفي كاملة">
+          <div class="about-slide-stack" aria-label="العرض التعريفي للمديرية">
 {about_slides}          </div>
         </section>
 
@@ -469,7 +469,7 @@ community_media_sections = r'''        <section class="section-block community-v
               <p>خطة سنوية متكاملة تعمل عبر ثلاثة مسارات: التمكين، التعريف والتوعية، والشراكة المجتمعية.</p>
               <div class="community-paths"><span>↗ التمكين</span><span>● التعريف والتوعية</span><span>◇ الشراكة المجتمعية</span></div>
             </div>
-            <div class="community-main-number"><span>إجمالي الأنشطة والفعاليات</span><strong>316</strong><small>العدد النهائي المعتمد</small></div>
+            <div class="community-hero-kpis" aria-label="مؤشرات خطة التواصل المجتمعي"><div class="community-main-number"><span>إجمالي الأنشطة والفعاليات</span><strong>316</strong><small>العدد النهائي المعتمد</small></div><div class="community-main-number community-completion"><span>نسبة الإنجاز في خطة التواصل المجتمعي</span><strong dir="ltr">55.7%</strong><small>نسبة الإنجاز</small></div></div>
           </div>
           <div class="community-impact-grid">
             <article class="impact-a"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M8 14h3M8 17h7"/></svg></i><span>الأنشطة والفعاليات</span><strong>316</strong><small>نشاطًا وفعالية</small><em style="--impact-fill:88"></em></article>
@@ -682,6 +682,10 @@ replace_required('<div class="projects-grid" id="projectsGrid"></div>', future_m
 
 from media_catalog import update_media_catalog
 text = update_media_catalog(text)
+
+# Stable anchors keep saved figures valid when introductory sections are added.
+text = text.replace('<section class="metric-grid hero-metrics"', '<section id="heroMetrics" class="metric-grid hero-metrics"', 1)
+text = text.replace('<section class="operational-budget-card"', '<section id="operationalBudget" class="operational-budget-card"', 1)
 
 path.write_text(text, encoding="utf-8")
 

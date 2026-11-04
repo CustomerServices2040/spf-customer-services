@@ -10,6 +10,17 @@
       return "";
     }
   })();
+  function syncPresentationHeader() {
+    const header = document.querySelector('.topbar');
+    if (header) document.documentElement.style.setProperty('--presentation-header-height', `${Math.ceil(header.getBoundingClientRect().height)}px`);
+  }
+  window.addEventListener('resize', syncPresentationHeader);
+  document.addEventListener('fullscreenchange', syncPresentationHeader);
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.topbar');
+    if (header) new ResizeObserver(syncPresentationHeader).observe(header);
+    syncPresentationHeader();
+  });
   const NAV_GROUPS = [
     ["من نحن", ["about"]],
     ["الملخص التنفيذي", ["overview", "performance", "achievements"]],

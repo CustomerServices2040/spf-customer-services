@@ -31,3 +31,16 @@ for (const [key,value] of Object.entries(oldEdits)) {
 }
 assert.equal(execFileSync('git',['diff','--','overrides/assets/recognitions.json'],{encoding:'utf8'}),'');
 console.log('PASS: stale total, Muscat card, certificate label, unrelated edits and source records.');
+
+// Introductory sections must not detach approved headline values from their cards.
+const migrated = sandbox.sanitizeGlobalEdits({
+  'div:1>main:1>div:2>section:2>article:1>strong:1': '681,015',
+  'div:1>main:1>div:2>section:2>article:2>strong:1': '3,439',
+  'div:1>main:1>div:2>section:3>div:3>article:1>strong:1': '1,243,351.62',
+  '#community-line>div:2>article:1>strong:1': '316'
+});
+assert.equal(migrated['#heroMetrics>article:1>strong:1'], '681,015');
+assert.equal(migrated['#heroMetrics>article:2>strong:1'], '3,439');
+assert.equal(migrated['#operationalBudget>div:3>article:1>strong:1'], '1,243,351.62');
+assert.equal(migrated['#community-line>div:2>article:1>strong:1'], '316');
+console.log('PASS: headline and budget edits survive introductory layout changes.');

@@ -16,7 +16,10 @@
     // Labels and figures in the other sections are authored content and must load for everyone.
     return Object.fromEntries(Object.entries(edits||{}).filter(([key])=>
       !isCalculatedKey(key)
-    ));
+    ).map(([key, value]) => [
+      key.replace(/^div:1>main:1>div:2>section:2>(?=article:)/, "#heroMetrics>")
+         .replace(/^div:1>main:1>div:2>section:3>(?=div:)/, "#operationalBudget>"), value
+    ]));
   }
   function isCalculatedKey(key){
     // Catalog records and totals are generated from recognitions.json. Positional

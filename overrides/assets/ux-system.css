@@ -250,7 +250,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 @media print {
   .ux-nav-groups, .ux-skip-link, .ux-data-status { display: none !important; }
 }
-.presentation-fullscreen .ux-nav-groups,
 .presentation-fullscreen .ux-skip-link { display: none !important; }
 
 /* Full presentation keeps the institutional identity bar visible. */
@@ -639,3 +638,29 @@ html.presentation-fullscreen .content-wrap{padding-top:18px}
 @media(max-width:1050px){#recognitions .recognition-hero{grid-template-columns:1fr 190px}#recognitions .recognition-leaders{grid-column:1/-1}#recognitions .recognition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){#recognitions{border-radius:18px}#recognitions .recognition-hero{grid-template-columns:1fr;padding:25px;text-align:center}#recognitions .recognition-years{justify-content:center}#recognitions .recognition-leaders{text-align:start}#recognitions .recognition-filters{display:grid;grid-template-columns:1fr;position:static}#recognitions .recognition-filters button{width:100%}#recognitions .recognition-results-head{align-items:start;flex-direction:column}#recognitions .recognition-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#recognitions .recognition-card{transition:none}}
+
+/* Keep the section titles available throughout fullscreen presentation. */
+html.presentation-fullscreen .ux-nav-groups{display:grid!important;position:sticky;top:var(--presentation-header-height,88px);z-index:129}
+html.presentation-fullscreen:not(.ux-enhanced) .top-navigation{display:flex!important;position:sticky;top:var(--presentation-header-height,88px);z-index:129}
+html.presentation-fullscreen .topbar{position:sticky!important}
+.community-hero-v2{grid-template-columns:minmax(0,1fr) minmax(440px,1fr)}
+.community-hero-kpis{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;padding:12px}
+.community-hero-kpis .community-main-number{width:clamp(174px,16vw,230px);height:auto;aspect-ratio:1;max-width:100%}
+.community-hero-kpis .community-main-number span{max-width:85%;line-height:1.7;font-size:12px!important}
+.community-hero-kpis .community-main-number strong{font-size:clamp(40px,4.2vw,64px)!important}
+.community-completion{background:radial-gradient(circle at 35% 30%,#6e2444,#43152d 68%)}
+@media(max-width:1100px){.community-hero-v2{grid-template-columns:1fr}.community-hero-kpis{max-width:600px;width:100%;justify-self:center}}
+@media(max-width:480px){.community-hero-kpis{gap:24px 16px;padding:8px 0}.community-hero-kpis .community-main-number{width:100%}.community-hero-kpis .community-main-number strong{font-size:34px!important}.community-hero-kpis .community-main-number span{font-size:10px!important}.community-main-number:before{inset:-7px}}
+
+/* The identity and section bar share their measured height in both display modes. */
+.topbar{position:sticky!important;top:0!important;z-index:130}
+.topbar small{color:rgba(255,255,255,.8)!important}
+.ux-nav-groups{top:var(--presentation-header-height,88px)}
+.topbar{background:linear-gradient(110deg,#244b40,#3a564c 68%,#4d7766)!important;box-shadow:0 5px 18px #173d3420}
+@media(max-width:700px){
+  .ux-nav-groups,html.presentation-fullscreen .ux-nav-groups{display:flex!important;gap:8px;overflow-x:auto;overflow-y:visible;overscroll-behavior-inline:contain;padding:8px 12px}
+  .ux-nav-groups details{flex:0 0 auto;min-width:145px}
+  .ux-nav-groups details[open]{grid-column:auto}
+  .ux-nav-groups .ux-nav-menu{position:fixed;top:calc(var(--presentation-header-height,160px) + 64px);left:16px;right:16px;width:auto;max-width:none;max-height:55vh;overflow-y:auto;margin:0;z-index:140}
+  .topbar .page-heading h1{font-size:21px;white-space:normal;overflow:visible;text-overflow:clip}
+}

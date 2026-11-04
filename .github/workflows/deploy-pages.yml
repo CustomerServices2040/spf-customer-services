@@ -198,6 +198,13 @@ jobs:
           about_slides = sorted((html_path.parent / "assets" / "about-slides").glob("slide-*.jpg"))
           if len(about_slides) != 20:
               raise SystemExit(f"Expected 20 about slides, found {len(about_slides)}")
+          rendered_slides = re.findall(r'<figure class="about-slide"><img src="assets/about-slides/slide-(\d+)\.jpg"', text)
+          if rendered_slides != [f"{n:02d}" for n in (1, 2, 4, 6, 7, 8, 9, 10, 12, 13, 14, 17, 18, 19, 20)]:
+              raise SystemExit(f"About slide selection is incorrect: {rendered_slides}")
+          if re.search(r"الشريحة \d+ من \d+", text):
+              raise SystemExit("Slide-number captions must not be displayed")
+          if 'community-completion' not in text or '55.7%' not in text:
+              raise SystemExit("Community plan completion KPI is missing")
           for slide in about_slides:
               if slide.stat().st_size < 50_000:
                   raise SystemExit(f"About slide is incomplete: {slide.name}")
@@ -208,6 +215,12 @@ jobs:
               raise SystemExit("Forum practices tab or section is missing")
           if 'src="assets/oman.png"' not in forum_html or not (html_path.parent / "forum" / "assets" / "oman.png").is_file():
               raise SystemExit("Forum governorates map image is missing or points to an invalid path")
+          future_js = (html_path.parent / "forum" / "future.js").read_text(encoding="utf-8")
+          future_axes = __import__("json").loads(re.search(r"const axes=(\[.*?\]);", future_js, re.S).group(1))
+          if len(future_axes) != 6 or sum(len(axis["items"]) for axis in future_axes) != 27:
+              raise SystemExit("Forum future directions must contain 27 directions across 6 axes")
+          if any(not title or not description for axis in future_axes for title, description in axis["items"]):
+              raise SystemExit("A future direction is missing its title or explanation")
           for removed_phrase in ("مؤشرات تشغيلية مساندة", "قراءة الشبكة", "لا تدخل في مجموع حجم الأعمال أعلاه"):
               if removed_phrase in forum_html or removed_phrase in forum_js:
                   raise SystemExit(f"Removed forum phrase is still present: {removed_phrase}")

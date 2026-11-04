@@ -89,17 +89,19 @@
   })[character]);
 
   function render(target) {
-    target.innerHTML = axes.map(axis => `
+    const ordered = [axes[0], axes[1], axes[4], axes[2], axes[3]];
+    const cards = ordered.map((axis, index) => `
       <article class="practice-axis practice-axis--${axis.tone}">
         <header class="practice-axis-head">
-          <span class="practice-axis-number" aria-hidden="true">${axis.number}</span>
+          <span class="practice-axis-number" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
           <div><h3>${escapeHtml(axis.title)}</h3><p>${escapeHtml(axis.summary)}</p></div>
           <strong>${axis.items.length}<small>ممارسات</small></strong>
         </header>
         <div class="practice-items">
           ${axis.items.map(([title, place]) => `<div class="practice-item"><b>${escapeHtml(title)}</b><span>${escapeHtml(place)}</span></div>`).join("")}
         </div>
-      </article>`).join("");
+      </article>`);
+    target.innerHTML = `<div class="practice-grid-top">${cards[0]}<div class="practice-side-stack">${cards[1]}${cards[2]}</div></div>${cards[3]}${cards[4]}`;
   }
 
   function boot() {
