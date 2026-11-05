@@ -104,6 +104,7 @@ jobs:
           node --check _site/legacy/assets/ux-system.js
           node --check _site/legacy/assets/privacy-lock.js
           node scripts/validate_data_integrity.mjs _site/legacy/assets/tasks-data.json
+          node scripts/test_text_tasks.cjs
           node --check _site/legacy/assets/plan-data-2026.js
           node --check _site/legacy/assets/excel-import.js
           node --check _site/legacy/assets/executive-mode.js
@@ -309,3 +310,4 @@ jobs:
       - name: Deploy dashboards
         id: deployment
         uses: actions/deploy-pages@v4
+

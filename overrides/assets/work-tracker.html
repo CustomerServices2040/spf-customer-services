@@ -542,8 +542,8 @@ header{height:72px;padding:0 34px;background:rgba(20,56,47,.97);border:0;color:#
           <div class="import-feedback" id="import-feedback" role="status"></div><div class="import-mappings" id="import-mappings"></div><div class="import-preview" id="import-preview"></div>
         </div>
         <div class="task-text-entry" id="task-text-mode" role="tabpanel" aria-labelledby="task-text-mode-button" hidden>
-          <label>النص الحر للمهام والتفاصيل<textarea id="task-text-lines" oninput="resetTextTaskAnalysis()" placeholder="مثال:&#10;المهمة: إعداد التقرير الشهري لخدمات المتعاملين&#10;التفاصيل: استكمال تحليل البيانات ومراجعة المؤشرات، قيد الإجراء بنسبة 60%&#10;&#10;المهمة: متابعة تجهيز صالة الدائرة&#10;التفاصيل: التنسيق مع الدعم المؤسسي ومتابعة أعمال الصيانة"></textarea></label>
-          <span class="task-text-entry-note">اكتب المهمة وتفاصيلها بحرية، وافصل بين المهام بسطر فارغ. ستتولى المنصة تحديد القسم والموظف والحالة ونسبة الإنجاز بالاستناد إلى بيانات السجل التفصيلي الحالية.</span>
+          <label>النص الحر للمهام والتفاصيل<textarea id="task-text-lines" oninput="scheduleTextTaskAnalysis()" placeholder="مثال:&#10;المهمة: إعداد التقرير الشهري لخدمات المتعاملين&#10;التفاصيل: استكمال تحليل البيانات ومراجعة المؤشرات، قيد الإجراء بنسبة 60%&#10;&#10;المهمة: متابعة تجهيز صالة الدائرة&#10;التفاصيل: التنسيق مع الدعم المؤسسي ومتابعة أعمال الصيانة"></textarea></label>
+          <span class="task-text-entry-note">ألصق المهام كقائمة مرقمة أو نقطية، أو جدول نصي، أو باستخدام «المهمة:». يبدأ الفصل والتوزيع تلقائياً؛ تُحفظ تفاصيل كل مهمة معها. اذكر عنوان القسم والموظف والحالة إن توفرت، وراجع الحقول غير المحددة قبل النشر.</span>
           <div class="task-text-actions"><button type="button" class="btn-secondary" id="analyze-text-tasks" onclick="analyzeTextTasks()">تحليل المهام وتوزيعها</button><button type="button" class="btn-primary" id="save-text-tasks" onclick="saveTextTasks()" hidden>اعتماد التوزيع ونشر المهام</button></div>
           <div class="task-text-feedback" id="task-text-feedback" role="status"></div>
           <div class="task-distribution-preview" id="task-distribution-preview" aria-live="polite"></div>
@@ -819,7 +819,7 @@ async function saveTasks(){
   if(!loadedTasksUpdatedAt||remote.updated_at!==loadedTasksUpdatedAt||loadedTasksSha&&metadata.sha!==loadedTasksSha)
     throw new Error('تغيّرت البيانات في جلسة أخرى. اضغط «تحديث السجل» لمراجعة أحدث المهام، ثم أعد التعديل. جلسة الدخول ما زالت فعالة.');
   const updatedAt=new Date(Math.max(Date.now(),Date.parse(remote.updated_at||'')+1||0)).toISOString();
-  const document={version:(Number(remote.version)||0)+1,updated_at:updatedAt,tasks:DATA};
+  const document={...remote,version:(Number(remote.version)||0)+1,updated_at:updatedAt,tasks:DATA};
   const response=await fetch(endpoint,{method:'PUT',headers:{...githubHeaders(token),'Content-Type':'application/json'},body:JSON.stringify({message:`Update work tracker (${DATA.length} tasks)`,content:encodeBase64(JSON.stringify(document,null,2)+'\n'),sha:metadata.sha,branch:'main'})});
   if(!response.ok)throw await githubError(response,'تعذر نشر التحديث إلى GitHub');
   const saved=await response.json();
@@ -1091,57 +1091,147 @@ const TEXT_DEPT_KEYWORDS={
 };
 function normalizeTaskMatch(value){return String(value||'').toLowerCase().normalize('NFKD').replace(/[\u064B-\u065F\u0670]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[^\p{L}\p{N}%]+/gu,' ').replace(/\s+/g,' ').trim()}
 function textTaskTokens(value){return new Set(normalizeTaskMatch(value).split(' ').filter(token=>token.length>2&&!TEXT_TASK_STOP_WORDS.has(token)))}
+function textDigits(value){return String(value??'').replace(/[٠-٩۰-۹]/g,c=>String(c.charCodeAt(0)-(c<='٩'?1632:1776))).replace(/٪/g,'%').replace(/٫/g,'.')}
+function textStatus(value){
+ const v=normalizeTaskMatch(value);
+ if(/^(?:غير منجز|غير مكتمل|لم يكتمل|قيد الاجراء|قيد التنفيذ|جاري العمل|مستمر|pending|in progress)$/.test(v))return 'قيد الإجراء';
+ if(/^(?:منجز|مكتمل|منتهي|تم الانجاز|تم الانتهاء|مغلق|done|completed|closed)$/.test(v))return 'منجز';
+ if(/^(?:متاخر|متعثر|متوقف|overdue|delayed)$/.test(v))return 'متأخر';
+ return null;
+}
+function textPercent(value){const s=textDigits(value).trim();if(!/^\d+(?:\.\d+)?\s*%?$/.test(s))return null;const n=Number(s.replace('%',''));return n<=100?(n<=1&&!s.includes('%')?Math.round(n*10000)/100:n):null}
+function textDepartment(value){
+ const n=normalizeTaskMatch(value).replace(/\s/g,'');
+ const depts=['إدارة وتطوير الخدمات','إدارة علاقات المتعاملين','شؤون الدوائر والمنافذ','مركز الاتصال','التنسيق والمتابعة'];
+ if(n.includes('ادارهعلاقاتمتعاملين'))return depts[1];
+ return depts.find(d=>n.includes(normalizeTaskMatch(d).replace(/\s/g,'')))||'';
+}
 function parseFreeTextTasks(raw){
-  const clean=raw.replace(/\r/g,'').trim();if(!clean)return [];
-  const labelled=clean.split(/(?=^\s*(?:[-•●▪]\s*)?(?:المهمة|مهمة|عنوان المهمة)\s*[:：-])/m).map(x=>x.trim()).filter(Boolean);
-  let blocks=labelled.length>1?labelled:clean.split(/\n\s*\n+/).map(x=>x.trim()).filter(Boolean);
-  if(blocks.length===1){const lines=blocks[0].split('\n').map(x=>x.trim()).filter(Boolean);if(lines.length>1&&lines.every(line=>/^(?:[-•●▪]|\d+[.)-])\s*/.test(line)))blocks=lines}
-  return blocks.map(block=>{
-    const lines=block.split('\n').map(x=>x.trim()).filter(Boolean),titleLine=lines.find(line=>/^(?:[-•●▪]\s*)?(?:المهمة|مهمة|عنوان المهمة)\s*[:：-]/.test(line))||lines[0]||'';
-    const title=titleLine.replace(/^(?:[-•●▪]|\d+[.)-])\s*/,'').replace(/^(?:المهمة|مهمة|عنوان المهمة)\s*[:：-]\s*/,'').trim();
-    const details=lines.filter(line=>line!==titleLine).join('\n').replace(/^(?:التفاصيل|تفاصيل المهمة)\s*[:：-]\s*/m,'').trim();
-    return {title,details,raw:[title,details].filter(Boolean).join(' ')};
-  }).filter(entry=>entry.title);
+ const entries=[],notes=[];let context='',mode='',header=[],current=null;
+ const clean=String(raw||'').replace(/\r/g,'').replace(/\s*\/\s*•\s*/g,'\n• ').trim();
+ const strip=s=>s.replace(/^\s*(?:[-•●▪*]|[\d٠-٩۰-۹]+[.)、-])\s*/,'').replace(/^(?:المهمة|مهمة|عنوان المهمة)\s*[:：-]\s*/,'').trim();
+ const add=(title,details,fields={},source='')=>{const e={title:strip(title),details:details||'',raw:[title,details].join('\n'),dept:context,...fields,source_text:source||[title,details].join('\n')};entries.push(e);current=e;return e};
+ const fieldName=s=>{const n=normalizeTaskMatch(s);return ({'المسؤول':'emp','الموظف':'emp','الموظف المسؤول':'emp','القسم':'dept','القسم المسؤول':'dept','الحاله':'status','الانجاز':'pct','نسبه الانجاز':'pct','الاستلام':'received','تاريخ الاستلام':'received','التسليم':'due','موعد التسليم':'due','المطلوب':'action','الاجراء المطلوب':'action','الموقف':'tech','الموقف التنفيذي':'tech','التفاصيل':'tech','تفاصيل المهمه':'tech'})[n]||({'المسوول':'emp','الموظف المسوول':'emp','القسم المسوول':'dept'})[n]};
+ const assign=(e,key,value)=>{if(key==='emp')e.emp=normalizeEmployees(value);else if(key==='dept')e.dept=textDepartment(value)||value;else if(key==='status'){e.status=textStatus(value);if(value&&!e.status)e.review_reason='حالة غير معروفة: '+value}else if(key==='pct')e.pct=textPercent(value);else if(key==='action'||key==='tech')e.details=[e.details,(key==='action'?'الإجراء المطلوب: ':'الموقف التنفيذي: ')+value].filter(Boolean).join('\n');else e[key]=value||null};
+ const inputLines=clean.split('\n');
+ for(let lineIndex=0;lineIndex<inputLines.length;lineIndex++){
+  let line=inputLines[lineIndex].trim();
+  if(mode==='task'&&line.split('|').length>=4&&!line.includes('المسؤول:')&&!line.split('|').slice(2).some(v=>textStatus(v))){
+   for(let offset=1;offset<=6&&lineIndex+offset<inputLines.length;offset++){
+    const next=inputLines[lineIndex+offset];
+    if(next.split('|').length>=6)break;
+    if(next.split('|').slice(1).some(v=>textStatus(v))){line=inputLines.slice(lineIndex,lineIndex+offset+1).join(' / ');lineIndex+=offset;break}
+   }
+  }if(!line){current=null;continue}
+  const parts=line.split(/\s*[|\t]\s*/).map(s=>s.trim()),dep=textDepartment(line);
+  const section=/^(?:ملحق من ملف|تحديث أسبوعي|الموقف التنفيذي (?:الاسبوعي|الأسبوعي|لأعمال)|إدارة وتطوير الخدمات\s*[–—-]|شؤون الدوائر والمنافذ\s*[–—-])/.test(line)||(/^(?:القسم|الإدارة|الادارة)\s*[:：]/.test(line));
+  if(section){context=dep||context;mode='';current=null;notes.push(line);continue}
+  if(parts.length===1&&dep&&normalizeTaskMatch(line)===normalizeTaskMatch(dep)){context=dep;mode='';current=null;notes.push(line);continue}
+  if(/^(?:تجميع نصي|ملخص الطلبات الواردة|الفترة المرجعية:|ملاحظة معالجة:|إجمالي السجلات:|Contact center Activities|Suha Mohammed)/i.test(line)){notes.push(line);if(/^Suha Mohammed/i.test(line))context='إدارة وتطوير الخدمات';continue}
+  if(parts.length>1&&/(?:عنوان المقترح|المشروع \/ التاريخ|الموظف المسؤول|الحقول:|الحقول أدناه:)/.test(line)){
+   header=parts;mode=/عنوان المقترح/.test(line)?'proposal':/المشروع \/ التاريخ/.test(line)?'project':/رقم الطلب/.test(line)?'request':/المبادرات/.test(line)?'relations':'task';current=null;notes.push(line);continue;
+  }
+  if(/^(?:المقترحات التطويريه|\d+$|[٠-٩]+$|[-|\s:]+$)/.test(line)){notes.push(line);continue}
+  if(parts.length>1&&parts.slice(1).some(p=>/^(?:المسؤول|المطلوب|الموقف|الحالة|الإنجاز|الاستلام|التسليم)\s*:/.test(p))){
+   const title=strip(parts[0]),e=title?add(title,'',{},line):current;
+   if(!e){notes.push(line);continue}
+   for(const p of parts.slice(1)){const m=p.match(/^([^:：]+)[:：]\s*(.*)$/);if(m&&fieldName(m[1]))assign(e,fieldName(m[1]),m[2]);else if(p)e.details+='\n'+p}
+   if(!title)e.source_text+='\n'+line;
+   continue;
+  }
+  if(parts.length>1){
+   const cells=[...parts];const serial=/^[\d٠-٩۰-۹]+$/.test(cells[0])?cells.shift():'';
+   if(mode==='request'){
+    add(`طلب ${serial} – ${cells[0]} – ${cells[4]}`,`المديرية: ${cells[1]}\nالدائرة: ${cells[2]}\nالقسم: ${cells[3]}\nالموقف التنفيذي: ${cells[5]}`,{dept:'إدارة علاقات المتعاملين',emp:'',status:'قيد الإجراء',pct:null,received:cells[6]||null,request_id:serial},line);continue;
+   }
+   if(mode==='proposal'){
+    const type=cells.findIndex(v=>/^مقترح (تحسيني|تطويري)$/.test(v));if(type<0){notes.push(line);continue}
+    const person=cells.findIndex(v=>/^(?:موظف داخلي|متعامل|خارجي)/.test(v));
+    const title=person>type+2?cells.slice(type+2,person).join(' | '):`مقترح ${serial||entries.length+1} — عنوان غير مذكور`;
+    const state=cells.find(v=>textStatus(v));
+    add(title,line,{dept:context||'إدارة وتطوير الخدمات',emp:'',status:textStatus(state),pct:null,review_reason:person<=type+2?'عنوان المقترح غير مذكور؛ احتُفظ بالنص الأصلي':'',record_type:'proposal'},line);continue;
+   }
+   if(mode==='project'){
+    const title=cells.shift();add(title,cells.map((v,i)=>`${header[i+1]||'ملاحظة إضافية'}: ${v}`).join('\n'),{emp:'',status:textStatus(cells.at(-1)),pct:null,record_type:'project'},line);continue;
+   }
+   const title=strip(cells.shift());if(!title){notes.push(line);continue}
+   const related=mode==='relations'?cells.shift():'';
+   const emp=cells.shift()||'',stateAt=cells.findIndex((v,i)=>i>=1&&textStatus(v)&&(!/^(?:جاري العمل|مستمر)$/.test(v)||!cells.slice(i+1).some(x=>textStatus(x))));
+   const before=stateAt<0?cells:cells.slice(0,stateAt),after=stateAt<0?[]:cells.slice(stateAt+1);
+   const dates=after.filter(v=>/^\d{1,4}[\/\\.-]\d{1,2}[\/\\.-]\d{1,4}$/.test(textDigits(v)));
+   const pctValue=after.find(v=>textPercent(v)!==null);
+   const details=[related?'الجهة المعنية: '+related:'',before[0]?'الإجراء المطلوب: '+before[0]:'',before.length>1?'الموقف التنفيذي: '+before.slice(1).join(' | '):'',...after.filter(v=>v&&!dates.includes(v)&&v!==pctValue&&!textStatus(v)).map(v=>'ملاحظة: '+v)].filter(Boolean).join('\n');
+   add(title,details,{emp:normalizeEmployees(emp),status:stateAt<0?null:textStatus(cells[stateAt]),pct:pctValue===undefined?null:textPercent(pctValue),received:dates[0]||null,due:dates[1]||null,review_reason:stateAt<0?'لم تُذكر حالة واضحة؛ راجع الحقول المستخرجة':''},line);continue;
+  }
+  const field=line.match(/^([^:：]+)[:：]\s*(.*)$/);
+  if(current&&field&&fieldName(field[1])){assign(current,fieldName(field[1]),field[2]);current.source_text+='\n'+line;continue}
+  const start=/^(?:[-•●▪*]\s+|[\d٠-٩۰-۹]+[.)、-]\s*|(?:المهمة|مهمة|عنوان المهمة)\s*[:：-])/.test(line);
+  if(start||!current)add(line,'',{},line);else{current.details+='\n'+line;current.source_text+='\n'+line}
+ }
+ for(const e of entries){
+  e.details=e.details.trim();e.raw=e.source_text;
+  if(e.status==='منجز')e.pct=100;
+  if(e.status&&e.status!=='منجز'&&e.pct===100)e.review_reason=[e.review_reason,'الحالة غير منجزة رغم أن النسبة 100%'].filter(Boolean).join('؛ ');
+ }
+ entries.notes=notes;return entries;
 }
 function inferTextTaskStatus(text){
-  const normalized=normalizeTaskMatch(text),percentage=normalized.match(/(?:^|\s)(100|[1-9]?\d)\s*%/),explicit=percentage?Number(percentage[1]):null;
-  if(/(?:متاخر|متعثر|متوقف|تجاوز الموعد)/.test(normalized))return {status:'متأخر',pct:explicit??0};
-  if(/(?:منجز|مكتمل|اكتمل|تم الانتهاء|تم الانجاز|تم التسليم)/.test(normalized))return {status:'منجز',pct:100};
-  return {status:'قيد الإجراء',pct:explicit??0};
+ const normalized=normalizeTaskMatch(textDigits(text)),percentage=normalized.match(/(?:^|\s)(100|[1-9]?\d)\s*%/),pct=percentage?Number(percentage[1]):null;
+ if(/(?:غير منجز|غير مكتمل|لم يتم الانتهاء|لم يتم الانجاز|لن يتم التنفيذ|قيد الاجراء|جاري العمل)/.test(normalized))return {status:'قيد الإجراء',pct};
+ if(/(?:متاخر|متعثر|متوقف)/.test(normalized))return {status:'متأخر',pct};
+ if(/(?:^|\s)(?:منجز|مكتمل|منتهي|تم الانتهاء|تم الانجاز|done|completed)(?:$|\s)/.test(normalized))return {status:'منجز',pct:100};
+ return {status:'قيد الإجراء',pct};
 }
 function inferTextTaskDistribution(entry){
-  const normalized=normalizeTaskMatch(entry.raw),tokens=textTaskTokens(entry.raw),departments=[...new Set(DATA.map(task=>task.dept).filter(Boolean))];
-  const people=[...new Set(DATA.flatMap(task=>String(task.emp||'').split('/').map(name=>name.trim())).filter(name=>name.length>1))].sort((a,b)=>b.length-a.length);
-  const namedPeople=people.filter(name=>normalized.includes(normalizeTaskMatch(name))),explicitDept=departments.find(dept=>normalized.includes(normalizeTaskMatch(dept)));
-  const frequencies=new Map();DATA.forEach(task=>[...textTaskTokens(`${task.title} ${task.tech||''}`)].forEach(token=>frequencies.set(token,(frequencies.get(token)||0)+1)));
-  const ranked=DATA.map(task=>{const taskTokens=textTaskTokens(`${task.title} ${task.tech||''}`);let score=0;tokens.forEach(token=>{if(taskTokens.has(token))score+=Math.max(1,Math.log((DATA.length+1)/((frequencies.get(token)||0)+1)))});return {task,score}}).sort((a,b)=>b.score-a.score);
-  const keywordScores=new Map();for(const [dept,keywords] of Object.entries(TEXT_DEPT_KEYWORDS))keywords.forEach(keyword=>{if(normalized.includes(normalizeTaskMatch(keyword)))keywordScores.set(dept,(keywordScores.get(dept)||0)+1)});
-  const peopleDept=namedPeople.length?[...departments].map(dept=>[dept,DATA.filter(task=>task.dept===dept&&namedPeople.some(name=>String(task.emp||'').split('/').map(x=>x.trim()).includes(name))).length]).sort((a,b)=>b[1]-a[1])[0]?.[0]:'';
-  const keywordDept=[...keywordScores.entries()].sort((a,b)=>b[1]-a[1])[0]?.[0],inferredDept=explicitDept||peopleDept||keywordDept||ranked[0]?.task.dept||'إدارة وتطوير الخدمات';
-  const bestForDept=ranked.find(item=>item.task.dept===inferredDept),inferredEmp=namedPeople.length?normalizeEmployees(namedPeople.join(' / ')):(bestForDept?.score>=4?normalizeEmployees(bestForDept.task.emp):'');
-  return {dept:inferredDept,emp:inferredEmp,...inferTextTaskStatus(entry.raw)};
+ const normalized=normalizeTaskMatch(entry.title),scores=Object.entries(TEXT_DEPT_KEYWORDS).map(([dept,words])=>({dept,score:words.filter(w=>normalized.includes(normalizeTaskMatch(w))).length})).sort((a,b)=>b.score-a.score);
+ const exact=DATA.filter(t=>normalizeTaskMatch(t.title)===normalizeTaskMatch(entry.title)&&(!entry.dept||t.dept===entry.dept));
+ const dept=entry.dept||(exact.length===1?exact[0].dept:'')||(scores[0]?.score>0&&scores[0].score>(scores[1]?.score||0)?scores[0].dept:'');
+ const state=entry.status?{status:entry.status,pct:entry.pct}:entry.record_type==='project'?{status:'قيد الإجراء',pct:null}:inferTextTaskStatus(entry.title+' '+entry.details);
+ const emp=entry.emp!==undefined?entry.emp:(exact.length===1?normalizeEmployees(exact[0].emp):'');
+ return {dept,emp,...state,pct:state.status==='منجز'?100:(entry.pct??state.pct),review_reason:[entry.review_reason,!dept?'لم يتضح القسم المسؤول':'',!entry.status?'الحالة تحتاج تأكيداً من النص':''].filter(Boolean).join('؛ ')};
 }
+let textTaskAnalysisTimer;
+function scheduleTextTaskAnalysis(){resetTextTaskAnalysis();clearTimeout(textTaskAnalysisTimer);textTaskAnalysisTimer=setTimeout(analyzeTextTasks,450)}
 function analyzeTextTasks(){
   const feedback=document.getElementById('task-text-feedback'),preview=document.getElementById('task-distribution-preview'),entries=parseFreeTextTasks(document.getElementById('task-text-lines').value);
   if(!entries.length){feedback.textContent='اكتب مهمة واحدة على الأقل مع تفاصيلها.';return}
   pendingTextTasks=entries.map(entry=>({...entry,...inferTextTaskDistribution(entry)}));
-  preview.innerHTML=`<table><thead><tr><th>المهمة</th><th>التفاصيل</th><th>التوزيع التلقائي</th><th>الموظف</th><th>الحالة</th><th>الإنجاز</th></tr></thead><tbody>${pendingTextTasks.map(task=>`<tr><td>${esc(task.title)}</td><td>${esc(task.details||'—')}</td><td><span class="auto-tag">${esc(task.dept)}</span></td><td>${esc(task.emp||'يُحدد من القسم')}</td><td>${esc(task.status)}</td><td>${task.pct}%</td></tr>`).join('')}</tbody></table>`;
-  feedback.textContent=`تم تحليل ${pendingTextTasks.length} مهمة وتوزيعها بالاستناد إلى السجل الحالي. راجع النتيجة ثم اعتمد النشر.`;
+  preview.innerHTML=`<table><thead><tr><th>المهمة</th><th>التفاصيل</th><th>التوزيع التلقائي</th><th>الموظف</th><th>الحالة</th><th>الإنجاز</th></tr></thead><tbody>${pendingTextTasks.map(task=>`<tr><td>${esc(task.title)}</td><td>${esc(task.details||'—')}</td><td><span class="auto-tag">${esc(task.dept||'غير محدد — يلزم تحديد القسم')}</span>${task.review_reason?`<small style="display:block;color:#8e2948">${esc(task.review_reason)}</small>`:''}</td><td>${esc(task.emp||'يُحدد من القسم')}</td><td>${esc(task.status)}</td><td>${task.pct==null?'غير محدد':task.pct+'%'}</td></tr>`).join('')}</tbody></table>`;
+  feedback.textContent=`تم فصل ${pendingTextTasks.length} مهمة. استُبعد ${entries.notes.length} سطر عنوان أو ملاحظة من العدّاد. التوزيع المقترح قابل للمراجعة؛ المهام المطابقة تُحدّث دون تكرار. راجع النتيجة ثم اعتمد النشر.`;
   document.getElementById('save-text-tasks').hidden=false;
 }
+function mergeTextTaskEntries(tasks,entries,source='إدخال نصي موزع تلقائيًا'){
+ const result=tasks.map(t=>({...t}));let added=0,updated=0,unchanged=0;
+ for(let entry of entries){
+  const key=importKey(entry);let matches=result.map((t,i)=>importKey(t)===key?i:-1).filter(i=>i>=0);
+  const identical=matches.filter(i=>entry.source_text&&result[i].source_text===entry.source_text);
+  if(identical.length===1)matches=identical;
+  if(matches.length>1){entry={...entry,review_reason:[entry.review_reason,'يوجد أكثر من سجل سابق بالعنوان نفسه؛ أُضيف البند مستقلاً للمراجعة دون تغيير السجلات السابقة'].filter(Boolean).join('؛ ')};matches=[];}
+  if(entry.received&&matches.length===1&&result[matches[0]].received&&result[matches[0]].received!==entry.received)matches=[];
+  const fields={title:entry.title,dept:entry.dept,emp:entry.emp||'',tech:[entry.details,entry.review_reason?'مراجعة البيانات: '+entry.review_reason:''].filter(Boolean).join('\n'),status:entry.status||'قيد الإجراء',pct:entry.status==='منجز'?100:(entry.pct??null),overdue:entry.status==='متأخر',source_file:source,source_text:entry.source_text,review_reason:entry.review_reason||''};
+  for(const k of ['received','due'])if(entry[k])fields[k]=entry[k];if(fields.due)fields.date=fields.due;
+  if(matches.length){
+   const i=matches[0],old=result[i];if(!fields.emp)fields.emp=old.emp||'';
+   if(fields.pct==null)fields.pct=old.pct??null;
+   if(!fields.tech)fields.tech=old.tech||'';
+   const changed=['emp','tech','status','pct','received','due'].some(k=>k in fields&&String(fields[k]??'')!==String(old[k]??''));
+   if(changed){result[i]={...old,...fields,imported_at:new Date().toISOString(),text_history:[...(old.text_history||[]),{source_file:old.source_file||'السجل السابق',tech:old.tech,status:old.status,pct:old.pct,emp:old.emp,received:old.received,due:old.due}]};updated++}else unchanged++;
+  }else{result.push({id:`text-${globalThis.crypto?.randomUUID?.()||`${Date.now()}-${result.length}`}`,received:null,due:null,date:null,...fields,imported_at:new Date().toISOString()});added++}
+ }
+ return {tasks:result,added,updated,unchanged};
+}
 async function saveTextTasks(){
-  if(taskMutationInFlight)return;
-  const feedback=document.getElementById('task-text-feedback'),button=document.getElementById('save-text-tasks');
-  if(!pendingTextTasks?.length){analyzeTextTasks();return}
-  const existing=new Set(DATA.map(importKey)),additions=[];let duplicates=0;
-  pendingTextTasks.forEach((entry,index)=>{const candidate={title:entry.title,dept:entry.dept};if(existing.has(importKey(candidate))){duplicates++;return}const task={id:`text-${globalThis.crypto?.randomUUID?.()||`${Date.now()}-${index}`}`,title:entry.title,dept:entry.dept,emp:entry.emp,tech:entry.details,status:entry.status,pct:entry.pct,received:null,due:null,date:null,overdue:entry.status==='متأخر',source_file:'إدخال نصي موزع تلقائيًا',imported_at:new Date().toISOString()};existing.add(importKey(task));additions.push(task)});
-  if(!additions.length){feedback.textContent='جميع المهام المكتوبة موجودة في السجل مسبقًا.';return}
-  const previous=DATA.map(task=>({...task}));DATA=[...DATA,...additions];taskMutationInFlight=true;button.disabled=true;feedback.textContent=`جارٍ نشر ${additions.length} مهمة موزعة تلقائيًا…`;
-  try{
-    await saveTasks();refreshFiltersAfterDataChange();document.getElementById('task-text-lines').value='';resetTextTaskAnalysis();
-    feedback.textContent=`تم نشر ${additions.length} مهمة جديدة${duplicates?`، وتجاوز ${duplicates} مهمة مكررة`:''}.`;
-  }catch(error){DATA=previous;refreshFiltersAfterDataChange();feedback.textContent=error.message||'تعذر نشر المهام. لم تتغير البيانات المنشورة.'}
-  finally{taskMutationInFlight=false;button.disabled=false}
+ if(taskMutationInFlight)return;
+ clearTimeout(textTaskAnalysisTimer);analyzeTextTasks();
+ const feedback=document.getElementById('task-text-feedback'),button=document.getElementById('save-text-tasks');
+ if(!pendingTextTasks?.length)return;
+ if(pendingTextTasks.some(t=>!t.dept)){feedback.textContent='أضف عنوان القسم قبل المهام غير المحددة في النص، ثم راجع التوزيع.';return}
+ let plan;try{plan=mergeTextTaskEntries(DATA,pendingTextTasks)}catch(error){feedback.textContent=error.message;return}
+ if(!plan.added&&!plan.updated){feedback.textContent='جميع المهام مطابقة للسجل؛ لم تُضف نسخ مكررة.';return}
+ const previous=DATA;DATA=plan.tasks;taskMutationInFlight=true;button.disabled=true;feedback.textContent=`جارٍ نشر ${plan.added} مهمة جديدة وتحديث ${plan.updated} مهمة…`;
+ try{await saveTasks();refreshFiltersAfterDataChange();document.getElementById('task-text-lines').value='';resetTextTaskAnalysis();feedback.textContent=`تم نشر ${plan.added} مهمة جديدة وتحديث ${plan.updated} مهمة، وتجاوز ${plan.unchanged} بند مطابق.`}
+ catch(error){DATA=previous;refreshFiltersAfterDataChange();feedback.textContent=error.message||'تعذر النشر؛ لم تتغير البيانات.'}
+ finally{taskMutationInFlight=false;button.disabled=false}
 }
 async function readTaskImportSheets(file){
   if(/\.(csv|tsv)$/i.test(file.name))return [[file.name,parseDelimited(await file.text())]];
@@ -1695,3 +1785,4 @@ init();
 </script>
 </body>
 </html>
+
