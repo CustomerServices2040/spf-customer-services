@@ -1112,10 +1112,12 @@ function parseFreeTextTasks(raw){
  const strip=s=>s.replace(/^\s*(?:[-•●▪*]|[\d٠-٩۰-۹]+[.)、-])\s*/,'').replace(/^(?:المهمة|مهمة|عنوان المهمة)\s*[:：-]\s*/,'').trim();
  const add=(title,details,fields={},source='')=>{const e={title:strip(title),details:details||'',raw:[title,details].join('\n'),dept:context,...fields,source_text:source||[title,details].join('\n')};entries.push(e);current=e;return e};
  const fieldName=s=>{const n=normalizeTaskMatch(s);return ({'المسؤول':'emp','الموظف':'emp','الموظف المسؤول':'emp','القسم':'dept','القسم المسؤول':'dept','الحاله':'status','الانجاز':'pct','نسبه الانجاز':'pct','الاستلام':'received','تاريخ الاستلام':'received','التسليم':'due','موعد التسليم':'due','المطلوب':'action','الاجراء المطلوب':'action','الموقف':'tech','الموقف التنفيذي':'tech','التفاصيل':'tech','تفاصيل المهمه':'tech'})[n]||({'المسوول':'emp','الموظف المسوول':'emp','القسم المسوول':'dept'})[n]};
- const assign=(e,key,value)=>{if(key==='emp')e.emp=normalizeEmployees(value);else if(key==='dept')e.dept=textDepartment(value)||value;else if(key==='status'){e.status=textStatus(value);if(value&&!e.status)e.review_reason='حالة غير معروفة: '+value}else if(key==='pct')e.pct=textPercent(value);else if(key==='action'||key==='tech')e.details=[e.details,(key==='action'?'الإجراء المطلوب: ':'الموقف التنفيذي: ')+value].filter(Boolean).join('\n');else e[key]=value||null};
+ const assign=(e,key,value)=>{if(!String(value||'').trim())return;if(key==='emp')e.emp=normalizeEmployees(value);else if(key==='dept')e.dept=textDepartment(value)||value;else if(key==='status'){e.status=textStatus(value);if(value&&!e.status)e.review_reason='حالة غير معروفة: '+value}else if(key==='pct')e.pct=textPercent(value);else if(key==='action'||key==='tech')e.details=[e.details,(key==='action'?'الإجراء المطلوب: ':'الموقف التنفيذي: ')+value].filter(Boolean).join('\n');else e[key]=value||null};
  const inputLines=clean.split('\n');
  for(let lineIndex=0;lineIndex<inputLines.length;lineIndex++){
   let line=inputLines[lineIndex].trim();
+  const sectionText=line.replace(/^[\d٠-٩۰-۹]+[.)、-]\s*/, '');
+  if(/^(?:إدارة وتطوير الخدمات|إدارة علاقات المتعاملين|شؤون الدوائر والمنافذ|مركز الاتصال|ملحق من ملف|تحديث أسبوعي|ملخص الطلبات الواردة)/.test(sectionText))line=sectionText;
   if(mode==='task'&&line.split('|').length>=4&&!line.includes('المسؤول:')&&!line.split('|').slice(2).some(v=>textStatus(v))){
    for(let offset=1;offset<=6&&lineIndex+offset<inputLines.length;offset++){
     const next=inputLines[lineIndex+offset];
@@ -1204,6 +1206,8 @@ function mergeTextTaskEntries(tasks,entries,source='إدخال نصي موزع �
  const result=tasks.map(t=>({...t}));let added=0,updated=0,unchanged=0;
  for(let entry of entries){
   const key=importKey(entry);let matches=result.map((t,i)=>importKey(t)===key?i:-1).filter(i=>i>=0);
+  const prior=matches.filter(i=>entry.source_text&&(result[i].text_history||[]).some(h=>h.source_text===entry.source_text));
+  if(prior.length===1){unchanged++;continue}
   const identical=matches.filter(i=>entry.source_text&&result[i].source_text===entry.source_text);
   if(identical.length===1)matches=identical;
   if(matches.length>1){entry={...entry,review_reason:[entry.review_reason,'يوجد أكثر من سجل سابق بالعنوان نفسه؛ أُضيف البند مستقلاً للمراجعة دون تغيير السجلات السابقة'].filter(Boolean).join('؛ ')};matches=[];}
@@ -1215,7 +1219,7 @@ function mergeTextTaskEntries(tasks,entries,source='إدخال نصي موزع �
    if(fields.pct==null)fields.pct=old.pct??null;
    if(!fields.tech)fields.tech=old.tech||'';
    const changed=['emp','tech','status','pct','received','due'].some(k=>k in fields&&String(fields[k]??'')!==String(old[k]??''));
-   if(changed){result[i]={...old,...fields,imported_at:new Date().toISOString(),text_history:[...(old.text_history||[]),{source_file:old.source_file||'السجل السابق',tech:old.tech,status:old.status,pct:old.pct,emp:old.emp,received:old.received,due:old.due}]};updated++}else unchanged++;
+   if(changed){result[i]={...old,...fields,imported_at:new Date().toISOString(),text_history:[...(old.text_history||[]),{source_file:old.source_file||'السجل السابق',source_text:old.source_text,tech:old.tech,status:old.status,pct:old.pct,emp:old.emp,received:old.received,due:old.due}]};updated++}else unchanged++;
   }else{result.push({id:`text-${globalThis.crypto?.randomUUID?.()||`${Date.now()}-${result.length}`}`,received:null,due:null,date:null,...fields,imported_at:new Date().toISOString()});added++}
  }
  return {tasks:result,added,updated,unchanged};

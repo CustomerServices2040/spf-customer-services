@@ -16,6 +16,17 @@ if(data.text_import_audit){
  const counts=[0,155,5,0,17,15,15,6,4,19,8,19,62];
  data.text_import_audit.source_records.forEach((source,i)=>{const entries=parse(source.title+'\n'+source.tech);assert.equal(entries.length,counts[i],source.title);if(i===9)assert.match(entries[9].details,/أنظمة.*UPS/);if(i===1){assert.equal(entries[0].emp,'حسناء / سعيد الشبلي / سعادة الصارخية');assert.match(entries[13].details,/اللقاء الرمضاني/);}});
  assert.equal(data.text_import_audit.parsed_entries,325);
+ const full=data.text_import_audit.source_records.map((s,i)=>(i===1?'1) ':'')+s.title+'\n'+s.tech).join('\n\n');
+ const parsed=parse(full);assert.equal(parsed.length,325);assert(parsed.every(e=>e.dept));
+ const training=parsed.find(e=>e.title==='تدريب الموظفين على برنامج ثقة');assert.equal(training.emp,'فاطمة');assert.equal(training.due,'2026-03-03');
+ if(data.text_import_audit.attachment_verification){
+  const replay=ctx.mergeTextTaskEntries(data.tasks,parsed.map(e=>({...e,...ctx.inferTextTaskDistribution(e)})));
+  assert.equal(replay.added,0);assert.equal(replay.updated,0);assert.equal(replay.unchanged,325);
+  const verification=data.text_import_audit.attachment_verification;
+  assert.equal(verification.mapping.length,325);assert.equal(new Set(verification.mapping.map(m=>m.task_id)).size,308);
+  assert(verification.mapping.every(m=>data.tasks.some(t=>t.id===m.task_id)));
+ }
+
  assert(!data.tasks.some(t=>/^تجميع نصي|^ملحق من ملف|^تحديث أسبوعي:|^ملخص الطلبات الواردة/.test(t.title)));
  assert.equal(data.tasks.filter(t=>/^طلب \d+ –/.test(t.title)).length,62);
  const ids=data.tasks.map(t=>t.id);assert.equal(new Set(ids).size,ids.length);
