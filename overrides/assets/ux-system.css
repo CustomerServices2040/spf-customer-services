@@ -43,7 +43,7 @@ h1, h2, h3, h4, strong, .metric-value { font-family: inherit; }
   top: 88px;
   z-index: 29;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
   padding: 10px clamp(18px, 4vw, 56px);
   direction: rtl;
@@ -666,3 +666,9 @@ html.presentation-fullscreen .topbar{position:sticky!important}
   .ux-nav-groups .ux-nav-menu{position:fixed;top:calc(var(--presentation-header-height,160px) + 64px);left:16px;right:16px;width:auto;max-width:none;max-height:55vh;overflow-y:auto;margin:0;z-index:140}
   .topbar .page-heading h1{font-size:21px;white-space:normal;overflow:visible;text-overflow:clip}
 }
+
+/* Final primary tab: communications and media. */
+.ux-nav-groups details[data-sections="communications"] summary{background:#6C2947;border-color:#9d6a7f;color:#fff}
+.ux-nav-groups details[data-sections="communications"] summary:hover,.ux-nav-groups details[data-sections="communications"].active summary,.ux-nav-groups details[data-sections="communications"][open] summary{background:#CCA862;border-color:#CCA862;color:#1c3830}
+.ux-nav-groups details[data-sections="communications"] .ux-nav-menu{min-width:255px}
+@media(min-width:1001px) and (max-width:1320px){.ux-nav-groups summary{font-size:12px;padding-inline:6px}}

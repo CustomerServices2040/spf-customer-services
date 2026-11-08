@@ -27,7 +27,8 @@
     ["المتعامل والقنوات", ["methodology", "coverage", "channels", "practices", "tajawob"]],
     ["التنفيذ", ["operational-plan", "work-tracker", "risk-register"]],
     ["الحوكمة والمبادرات", ["directorate", "committees", "projects", "community-line"]],
-    ["المركز الإعلامي", ["media-center", "service-achievements", "recognitions"]]
+    ["المركز الإعلامي", ["media-center", "service-achievements", "recognitions"]],
+    ["التواصل والإعلام", ["communications"]]
   ];
 
   const $ = (selector, context = document) => context.querySelector(selector);
@@ -72,6 +73,32 @@
       details.dataset.sections = available.join(" ");
       details.innerHTML = `<summary>${escapeHtml(label)}<span aria-hidden="true">⌄</span></summary><div class="ux-nav-menu"></div>`;
       const menu = $(".ux-nav-menu", details);
+      if (label === "التواصل والإعلام") {
+        const original = originalLinks.get("communications");
+        const subTabs = [
+          ["intro", "نبذة عامة"],
+          ["strategy", "التوجه الاستراتيجي"],
+          ["channels", "المنصات والوصول"],
+          ["community", "التواصل المجتمعي"],
+          ["performance", "الأداء والمؤشرات"],
+          ["coordination", "التحديات والتكامل"]
+        ];
+        subTabs.forEach(([id, name]) => {
+          const link = document.createElement("a");
+          link.href = "#communications";
+          link.dataset.commTab = id;
+          link.textContent = name;
+          link.addEventListener("click", event => {
+            event.preventDefault();
+            original.click();
+            window.dispatchEvent(new CustomEvent("spf:communications-tab", { detail: { tab: id } }));
+            details.open = false;
+          });
+          menu.appendChild(link);
+        });
+        navigation.appendChild(details);
+        return;
+      }
       available.forEach(id => {
         const original = originalLinks.get(id);
         const link = document.createElement("a");
@@ -105,7 +132,7 @@
         const active = group.dataset.sections.split(" ").includes(activeId);
         group.classList.toggle("active", active);
         $$("a", group).forEach(link => {
-          const current = link.getAttribute("href") === `#${activeId}`;
+          const current = link.dataset.commTab ? activeId === "communications" && link.dataset.commTab === (window.__SPF_COMM_TAB__ || "intro") : link.getAttribute("href") === `#${activeId}`;
           link.classList.toggle("active", current);
           if (current) link.setAttribute("aria-current", "page"); else link.removeAttribute("aria-current");
         });
@@ -113,6 +140,7 @@
       const skip = $(".ux-skip-link");
       if (skip) skip.href = `#${activeId}`;
     };
+    window.addEventListener("spf:communications-changed", sync);
     window.addEventListener("hashchange", sync);
     window.addEventListener("popstate", sync);
     source.addEventListener("click", () => setTimeout(sync, 0));
