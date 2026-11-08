@@ -39,6 +39,7 @@
 
   function applyChapter(index,{historyMode="replace",scroll=true}={}){
     current=normalizeIndex(index);
+    document.documentElement.classList.toggle("communications-active", entries[current].id === "communications");
     entries.forEach((item,i)=>{
       const active=i===current;
       item.section.classList.toggle("chapter-hidden",!active);

@@ -672,3 +672,11 @@ html.presentation-fullscreen .topbar{position:sticky!important}
 .ux-nav-groups details[data-sections="communications"] summary:hover,.ux-nav-groups details[data-sections="communications"].active summary,.ux-nav-groups details[data-sections="communications"][open] summary{background:#CCA862;border-color:#CCA862;color:#1c3830}
 .ux-nav-groups details[data-sections="communications"] .ux-nav-menu{min-width:255px}
 @media(min-width:1001px) and (max-width:1320px){.ux-nav-groups summary{font-size:12px;padding-inline:6px}}
+
+/* The communications chapter has its own previous/next control below its content. */
+html.communications-active .chapter-footer{display:none!important}
+@media(max-width:640px){#communications{overflow:visible!important;padding-inline:12px!important}#communications-app{min-width:0;width:100%}}
+
+/* Match the communications canvas to the main platform on every sub-tab. */
+#communications.section-block{background:linear-gradient(155deg,#e9f1eb,#f4f7f2 58%,#e7efea)!important;border-color:#d8e5db!important}
+#communications-app{min-width:0;width:100%}
