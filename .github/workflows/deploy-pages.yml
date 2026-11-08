@@ -111,6 +111,7 @@ jobs:
           node --check _site/legacy/forum/forum.js
           node --check _site/legacy/forum/future.js
           node --check _site/legacy/forum/editor.js
+          node --check scripts/encrypt_two_layer.mjs
           python - <<'PY'
           from html.parser import HTMLParser
           from pathlib import Path
@@ -210,6 +211,10 @@ jobs:
               if slide.stat().st_size < 50_000:
                   raise SystemExit(f"About slide is incomplete: {slide.name}")
 
+          communications_html = (html_path.parent / "communications" / "index.html").read_text(encoding="utf-8")
+          if 'id="intro"' not in communications_html or 'id="coordination"' not in communications_html:
+              raise SystemExit("Communications presentation is incomplete")
+
           forum_html = (html_path.parent / "forum" / "index.html").read_text(encoding="utf-8")
           forum_js = (html_path.parent / "forum" / "forum.js").read_text(encoding="utf-8")
           if 'data-page="practices"' not in forum_html or 'id="practices"' not in forum_html:
@@ -248,6 +253,8 @@ jobs:
           if "الهيكل الإداري للدائرة" in report_text or 'class="org-section"' in report_text:
               raise SystemExit("Dakhiliyah organisation/employee slide was not removed")
           enhancement_js = (html_path.parent / "assets/platform-enhancements.js").read_text(encoding="utf-8")
+          if "communications/index.html" not in enhancement_js:
+              raise SystemExit("Communications presentation entry is missing")
           if "reports/dakhiliyah-june-2026.html" not in enhancement_js or expected_report_title not in enhancement_js:
               raise SystemExit("Dakhiliyah report link is missing from the governorate panel")
 
@@ -294,6 +301,10 @@ jobs:
         run: |
           set -euo pipefail
           node scripts/encrypt_two_layer.mjs _site
+          if grep -q 'تواصلٌ يصنع' _site/legacy/communications/index.html; then
+            echo "Plaintext communications content remained after encryption" >&2
+            exit 1
+          fi
           if grep -q 'صوت المتعامل في مسار قابل للقياس' _site/legacy/index.html; then
             echo "Plaintext dashboard content remained after encryption" >&2
             exit 1
