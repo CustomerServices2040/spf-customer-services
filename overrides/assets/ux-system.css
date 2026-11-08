@@ -646,7 +646,9 @@ html.presentation-fullscreen .topbar{position:sticky!important}
 .community-hero-v2{grid-template-columns:minmax(0,1fr) minmax(440px,1fr)}
 .community-hero-kpis{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;padding:12px}
 .community-hero-kpis .community-main-number{width:clamp(174px,16vw,230px);height:auto;aspect-ratio:1;max-width:100%}
-.community-hero-kpis .community-main-number span{max-width:85%;line-height:1.7;font-size:12px!important}
+.community-hero-kpis .community-main-number span{max-width:85%;margin-top:12px;line-height:1.7;font-size:12px!important}
+.community-hero-kpis .community-main-number:before{pointer-events:none}
+.community-hero-kpis [data-edit-key]{position:relative;z-index:1}
 .community-hero-kpis .community-main-number strong{font-size:clamp(40px,4.2vw,64px)!important}
 .community-completion{background:radial-gradient(circle at 35% 30%,#6e2444,#43152d 68%)}
 @media(max-width:1100px){.community-hero-v2{grid-template-columns:1fr}.community-hero-kpis{max-width:600px;width:100%;justify-self:center}}

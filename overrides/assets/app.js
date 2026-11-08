@@ -14,7 +14,21 @@
   function sanitizeGlobalEdits(edits){
     // These values come from the task register or a calculated governorate total.
     // Labels and figures in the other sections are authored content and must load for everyone.
-    return Object.fromEntries(Object.entries(edits||{}).filter(([key])=>
+    const communityAliases={
+      "#community-line>div:1>div:2>span:1":"community.activities.label",
+      "#community-line>div:1>div:2>strong:1":"community.activities.value",
+      "#community-line>div:1>div:2>div:1>span:1":"community.activities.label",
+      "#community-line>div:1>div:2>div:1>strong:1":"community.activities.value",
+      "#community-line>div:1>div:2>div:2>span:1":"community.completion.label",
+      "#community-line>div:1>div:2>div:2>strong:1":"community.completion.value"
+    };
+    const normalized={...edits};
+    Object.entries(communityAliases).forEach(([oldKey,key])=>{
+      if(Object.prototype.hasOwnProperty.call(normalized,oldKey)&&!Object.prototype.hasOwnProperty.call(normalized,key))normalized[key]=normalized[oldKey];
+      delete normalized[oldKey];
+    });
+    ["#community-line>div:1>div:2>small:1","#community-line>div:1>div:2>div:1>small:1","#community-line>div:1>div:2>div:2>small:1"].forEach(key=>delete normalized[key]);
+    return Object.fromEntries(Object.entries(normalized).filter(([key])=>
       !isCalculatedKey(key)
     ).map(([key, value]) => [
       key.replace(/^div:1>main:1>div:2>section:2>(?=article:)/, "#heroMetrics>")

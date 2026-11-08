@@ -469,7 +469,7 @@ community_media_sections = r'''        <section class="section-block community-v
               <p>خطة سنوية متكاملة تعمل عبر ثلاثة مسارات: التمكين، التعريف والتوعية، والشراكة المجتمعية.</p>
               <div class="community-paths"><span>↗ التمكين</span><span>● التعريف والتوعية</span><span>◇ الشراكة المجتمعية</span></div>
             </div>
-            <div class="community-hero-kpis" aria-label="مؤشرات خطة التواصل المجتمعي"><div class="community-main-number"><span>إجمالي الأنشطة والفعاليات</span><strong>316</strong><small>العدد النهائي المعتمد</small></div><div class="community-main-number community-completion"><span>نسبة الإنجاز في خطة التواصل المجتمعي</span><strong dir="ltr">55.7%</strong><small>نسبة الإنجاز</small></div></div>
+            <div class="community-hero-kpis" aria-label="مؤشرات خطة التواصل المجتمعي"><div class="community-main-number"><strong dir="ltr" data-edit-key="community.activities.value">316</strong><span data-edit-key="community.activities.label">إجمالي الأنشطة والفعاليات</span></div><div class="community-main-number community-completion"><strong dir="ltr" data-edit-key="community.completion.value">55.7%</strong><span data-edit-key="community.completion.label">نسبة الإنجاز في خطة التواصل المجتمعي</span></div></div>
           </div>
           <div class="community-impact-grid">
             <article class="impact-a"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M8 14h3M8 17h7"/></svg></i><span>الأنشطة والفعاليات</span><strong>316</strong><small>نشاطًا وفعالية</small><em style="--impact-fill:88"></em></article>
