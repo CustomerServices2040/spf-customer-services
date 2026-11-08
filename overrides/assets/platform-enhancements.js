@@ -269,8 +269,4 @@
   link.id='governoratesForumEntry';link.className='btn secondary';
   link.href='forum/index.html';link.textContent='ملتقى دوائر المحافظات';
   actions.prepend(link);
-  const communications=document.createElement('a');
-  communications.id='communicationsEntry';communications.className='btn secondary';
-  communications.href='communications/index.html';communications.textContent='دائرة التواصل والإعلام';
-  link.after(communications);
 })();
