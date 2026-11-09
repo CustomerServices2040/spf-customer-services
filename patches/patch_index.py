@@ -692,12 +692,42 @@ overview_end = text.index('</section>', overview_start)
 overview_markup = text[overview_start:overview_end]
 overview_markup, overview_count = re.subn(
     r'(<strong>)3\.24(?=\s*<small>مليون</small>)',
-    r'\g<1>3.4',
+    r'\g<1>3.26',
     overview_markup,
 )
 if overview_count != 1:
     raise SystemExit("Expected exactly one Overview headline figure of 3.24 million")
 text = text[:overview_start] + overview_markup + text[overview_end:]
+
+
+# September 2026 SPF bulletin, pp. 4-5: update coverage case counts.
+coverage_updates = {
+  "3,242,491": "3,263,592",
+  "1,685,580": "1,699,080",
+  "1,556,911": "1,564,512",
+  "إجمالي نطاق الحماية": "إجمالي حالات التغطية",
+  "المجموع الدقيق للمؤمّن عليهم النشطين وحالات المنتفعين الواردة في المصدر": "مجموع المؤمن عليهم النشطين وحالات المنتفعين؛ قد تتداخل الفئات ولا يمثل عدد أشخاص فريدين.",
+  "المنتفعون بمنافع الحماية": "حالات المنتفعين النشطين بمنافع الحماية",
+  "كم شخصًا تمتد إليه منظومة الصندوق؟": "كم يبلغ إجمالي حالات التغطية؟",
+  "مليون ضمن نطاق الحماية": "مليون حالة تغطية",
+  "مقدم خدمة في المديرية؛ أي نحو 15,500 شخص ضمن نطاق الحماية لكل مقدم خدمة.": "مقدم خدمة في المديرية؛ بمتوسط حسابي يبلغ 15,322 حالة تغطية لكل مقدم خدمة.",
+  "نحو 5,500 شخص ضمن نطاق الحماية لكل موظف": "متوسط حسابي يبلغ 5,541 حالة تغطية لكل موظف",
+  "مقدمي خدمة لكل<br>100 ألف شخص": "مقدم خدمة لكل<br>100 ألف حالة تغطية"
+}
+for old, new in coverage_updates.items():
+    text = text.replace(old, new)
+coverage_start = text.index('<section class="section-block" id="coverage">')
+coverage_end = text.index('</section>', coverage_start)
+coverage_markup = text[coverage_start:coverage_end]
+coverage_markup = coverage_markup.replace("يناير–يوليو 2026", "سبتمبر 2026")
+coverage_markup = coverage_markup.replace('<div class="reach-ring"><b>7</b>', '<div class="reach-ring"><b>6.5</b>')
+coverage_markup = coverage_markup.replace(
+    '<span class="section-note">سبتمبر 2026</span>',
+    '<a class="section-note" href="https://www.spf.gov.om/wp-content/uploads/2026/10/Statistical-Bulletin-Sep2026.pdf" target="_blank" rel="noopener">المصدر: النشرة الإحصائية · سبتمبر 2026 · ص 4–5</a>',
+)
+text = text[:coverage_start] + coverage_markup + text[coverage_end:]
+text = text.replace('<strong>3.26 <small>مليون</small>', '<strong>3.26 <small>مليون حالة تغطية</small>')
+text = text.replace('<div class="board-coverage-total"><strong>3.24</strong>', '<div class="board-coverage-total"><strong>3.26</strong>')
 
 path.write_text(text, encoding="utf-8")
 
