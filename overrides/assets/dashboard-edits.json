@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-11-09T09:50:08.623Z",
+  "updatedAt": "2026-11-09T09:53:29.628Z",
   "edits": {
     "div:1>main:1>header:1>div:1>span:1": "صندوق الحماية الاجتماعية · سلطنة عُمان",
     "div:1>main:1>header:1>div:1>h1:1": "بوصلة المتعامل",
@@ -2482,7 +2482,7 @@
     "#serviceAchievementTitle": "إنجازات دوائر الحماية الاجتماعية بالمحافظات",
     "community.activities.label": "إجمالي الأنشطة والفعاليات",
     "community.activities.value": "316",
-    "communications.div:1>section:3>div:1>div:1>h2:1": "المنصات الرقمية",
+    "communications.div:1>section:3>div:1>div:1>h2:1": "منصاتنا",
     "communications.div:1>section:3>div:1>div:1>p:1": "",
     "communications.div:1>section:3>div:2>div:3>div:1>span:1": "إنستقرام",
     "communications.div:1>section:3>div:2>div:2>div:1>span:1": "X · حساب العناية بالمتعاملين",
