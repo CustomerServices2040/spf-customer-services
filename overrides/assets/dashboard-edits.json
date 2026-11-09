@@ -227,8 +227,6 @@
     "#channels>div:3>article:1>div:2>article:5>small:1": "800 77 600",
     "#channels>div:3>article:1>div:2>article:6>b:1": "منصة X",
     "#channels>div:3>article:1>div:2>article:6>small:1": "@spf_oman",
-    "#channels>div:3>article:1>div:2>article:7>b:1": "Instagram",
-    "#channels>div:3>article:1>div:2>article:7>small:1": "@spf_customerCare",
     "#channels>div:3>article:1>div:2>article:8>b:1": "Facebook",
     "#channels>div:3>article:1>div:2>article:8>small:1": "@spf_oman",
     "#governorates-map>div:1>div:1>span:1": "الوصول الجغرافي لخدمات المتعاملين",
@@ -2807,7 +2805,11 @@
     "communications.div:1>section:6>div:2>article:6>div:1>strong:1": "المسار المقترح:",
     "communications.div:1>section:6>div:2>article:6>div:1>span:1": "معالجة المسبب لدى الجهة المختصة وربط الحل بالتواصل الواضح.",
     "communications.div:1>section:6>div:3>h3:1": "أهدافنا المشتركة",
-    "communications.div:1>section:6>div:3>p:1": "تعزيز مسؤولية الشركاء عن التوعية، وتوحيد الرسائل الحكومية، وتصحيح المفاهيم، وتطوير مؤشرات واقعية، ومعالجة القضايا من مصادرها؛ لرفع الثقة وكفاءة التواصل وأثره."
+    "communications.div:1>section:6>div:3>p:1": "تعزيز مسؤولية الشركاء عن التوعية، وتوحيد الرسائل الحكومية، وتصحيح المفاهيم، وتطوير مؤشرات واقعية، ومعالجة القضايا من مصادرها؛ لرفع الثقة وكفاءة التواصل وأثره.",
+    "channels.x-care.title": "حساب عناية المتعاملين في منصة X",
+    "channels.x-care.handle": "@spf_customerCare",
+    "channels.instagram.title": "Instagram",
+    "channels.instagram.handle": "@spf_oman"
   },
   "planDelivery": {
     "O01": {
