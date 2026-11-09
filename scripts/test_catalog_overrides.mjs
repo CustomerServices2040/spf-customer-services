@@ -15,8 +15,9 @@ const elements = [
   {key:'#service-achievements>div:3>article:8>div:1>div:2>h3:1', text:'مسقط'},
   {key:'#recognitions>div:1>div:2>div:1>span:1', text:'إجمالي الشهادات والدروع والتكريمات'},
 ].map(({key,text})=>({dataset:{editKey:key},textContent:text,closest:()=>true}));
-const sandbox = {Object, document:{dispatchEvent(){}}, Event:class {}, defaultValues:new Map(), $$:()=>elements};
+const sandbox = {Object, document:{dispatchEvent(){},getElementById(){return null},querySelectorAll(){return elements}}, Event:class {}, defaultValues:new Map(), $$:()=>elements};
 vm.createContext(sandbox);
+vm.runInContext(source.slice(source.indexOf("  function editorNodes"),source.indexOf("  function stablePath")), sandbox);
 // Run the production functions against actual stale saved data.
 vm.runInContext(source.slice(source.indexOf('  function sanitizeGlobalEdits'),source.indexOf('  async function loadGlobalEdits')), sandbox);
 vm.runInContext(source.slice(source.indexOf('  function applyValues'),source.indexOf('  function setEditing')), sandbox);
