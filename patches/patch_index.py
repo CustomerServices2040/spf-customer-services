@@ -729,6 +729,11 @@ text = text[:coverage_start] + coverage_markup + text[coverage_end:]
 # Preserve the approved Overview headline at 3.4 million.
 text = text.replace('<div class="board-coverage-total"><strong>3.24</strong>', '<div class="board-coverage-total"><strong>3.26</strong>')
 
+
+# Correct the customer-care platform and add the separate Instagram account.
+replace_required("<article><span class=\"channel-logo social-asset\"><img src=\"assets/channels/instagram.png\" alt=\"\" aria-hidden=\"true\"></span><b>Instagram</b><small>@spf_customerCare</small></article>", "<article><span class=\"channel-logo social-asset\"><img src=\"assets/channels/x.png\" alt=\"\" aria-hidden=\"true\"></span><b data-edit-key=\"channels.x-care.title\">حساب عناية المتعاملين في منصة X</b><small dir=\"ltr\" data-edit-key=\"channels.x-care.handle\">@spf_customerCare</small></article>")
+replace_required("<article><span class=\"channel-logo social-asset\"><img src=\"assets/channels/facebook.png\" alt=\"\" aria-hidden=\"true\"></span><b>Facebook</b><small>@spf_oman</small></article>", "<article><span class=\"channel-logo social-asset\"><img src=\"assets/channels/facebook.png\" alt=\"\" aria-hidden=\"true\"></span><b>Facebook</b><small>@spf_oman</small></article>\n                <article><span class=\"channel-logo social-asset\"><img src=\"assets/channels/instagram.png\" alt=\"\" aria-hidden=\"true\"></span><b data-edit-key=\"channels.instagram.title\">Instagram</b><small dir=\"ltr\" data-edit-key=\"channels.instagram.handle\">@spf_oman</small></article>")
+
 path.write_text(text, encoding="utf-8")
 
 
