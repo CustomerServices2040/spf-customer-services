@@ -692,7 +692,7 @@ overview_end = text.index('</section>', overview_start)
 overview_markup = text[overview_start:overview_end]
 overview_markup, overview_count = re.subn(
     r'(<strong>)3\.24(?=\s*<small>مليون</small>)',
-    r'\g<1>3.26',
+    r'\g<1>3.4',
     overview_markup,
 )
 if overview_count != 1:
@@ -726,7 +726,7 @@ coverage_markup = coverage_markup.replace(
     '<a class="section-note" href="https://www.spf.gov.om/wp-content/uploads/2026/10/Statistical-Bulletin-Sep2026.pdf" target="_blank" rel="noopener">المصدر: النشرة الإحصائية · سبتمبر 2026 · ص 4–5</a>',
 )
 text = text[:coverage_start] + coverage_markup + text[coverage_end:]
-text = text.replace('<strong>3.26 <small>مليون</small>', '<strong>3.26 <small>مليون حالة تغطية</small>')
+# Preserve the approved Overview headline at 3.4 million.
 text = text.replace('<div class="board-coverage-total"><strong>3.24</strong>', '<div class="board-coverage-total"><strong>3.26</strong>')
 
 path.write_text(text, encoding="utf-8")
