@@ -120,8 +120,19 @@
     const key=`plan.${item.id}.${field}.${index}`;
     return Object.prototype.hasOwnProperty.call(workingEdits,key)?workingEdits[key]:item[field][index];
   }
+  function editorNodes(selector,root=document){
+    const nodes=$(selector,root);
+    if(root===document){const shadow=document.getElementById("communications-app")?.shadowRoot;if(shadow)nodes.push(...$(selector,shadow))}
+    return nodes;
+  }
   function stablePath(el){
     if(el.dataset.editKey)return el.dataset.editKey;
+    const commRoot=document.getElementById("communications-app")?.shadowRoot;
+    if(commRoot&&el.getRootNode()===commRoot){
+      const parts=[];let node=el;
+      while(node&&node.parentElement){const siblings=[...node.parentElement.children].filter(x=>x.tagName===node.tagName);parts.unshift(`${node.tagName.toLowerCase()}:${siblings.indexOf(node)+1}`);node=node.parentElement}
+      return "communications."+parts.join(">");
+    }
     const parts=[]; let node=el;
     while(node&&node!==document.body){
       if(node.id){parts.unshift(`#${node.id}`);break}
@@ -135,8 +146,8 @@
     return parts.join(">");
   }
   function editableLeaves(root=document){
-    return $$("h1,h2,h3,p,li,th,td,time,span,strong,b,small,em",root).filter(el=>
-      !el.querySelector("h1,h2,h3,p,li,th,td,time,span,strong,b,small,em") &&
+    return editorNodes("h1,h2,h3,h4,h5,h6,p,li,th,td,time,span,strong,b,small,em",root).filter(el=>
+      !el.querySelector("h1,h2,h3,h4,h5,h6,p,li,th,td,time,span,strong,b,small,em") &&
       !el.closest(".editor-toolbar,.top-navigation,button,.document-editor,.modal-close") &&
       !el.hasAttribute("data-calculated") &&
       !el.closest("#service-achievements,#recognitions") &&
@@ -151,8 +162,9 @@
       if(editing){el.contentEditable="true";el.spellcheck=true;el.setAttribute("role","textbox");el.setAttribute("aria-label","حقل قابل للتحرير")}
     });
   }
+  window.addEventListener("spf:communications-ready",()=>prepareEditable());
   function applyValues(values){
-    $$("[data-edit-key]").forEach(el=>{
+    editorNodes("[data-edit-key]").forEach(el=>{
       const key=el.dataset.editKey;
       if(el.closest("#service-achievements,#recognitions")) return;
       if(Object.prototype.hasOwnProperty.call(values,key))el.textContent=values[key];
@@ -165,7 +177,7 @@
     editorToolbar.classList.toggle("open",active);editorToolbar.setAttribute("aria-hidden",String(!active));
     editButton.textContent=active?"جارٍ التعديل…":"تعديل المحتوى";editButton.disabled=active;
     prepareEditable();
-    if(!active)$$('[contenteditable="true"]').forEach(el=>{el.removeAttribute("contenteditable");el.removeAttribute("role");el.removeAttribute("aria-label")});
+    if(!active)editorNodes('[contenteditable="true"]').forEach(el=>{el.removeAttribute("contenteditable");el.removeAttribute("role");el.removeAttribute("aria-label")});
   }
   function toast(message){
     saveNotice.textContent=message;saveNotice.classList.add("show");
@@ -173,7 +185,7 @@
   }
   function collectEdits(){
     const values={...workingEdits};
-    $$("[data-edit-key]").forEach(el=>values[el.dataset.editKey]=el.textContent.trim());
+    editorNodes("[data-edit-key]").forEach(el=>values[el.dataset.editKey]=el.textContent.trim());
     return sanitizeGlobalEdits(values);
   }
   // The displayed total is the six categories performed by governorate staff.
@@ -449,8 +461,8 @@
   $("#updateGuide")?.addEventListener("click",()=>{if(!updateModal)return;updateModal.classList.add("open");updateModal.setAttribute("aria-hidden","false")});
   $$("[data-close-update]").forEach(x=>x.addEventListener("click",()=>{updateModal.classList.remove("open");updateModal.setAttribute("aria-hidden","true")}));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")$$(".modal.open").forEach(m=>{m.classList.remove("open");m.setAttribute("aria-hidden","true")})});
-  document.addEventListener("input",e=>{const el=e.target.closest("[data-edit-key]");if(editing&&el)workingEdits[el.dataset.editKey]=el.textContent});
-  document.addEventListener("keydown",e=>{const el=e.target.closest('[contenteditable="true"]');if(el&&e.key==="Enter"&&!["P","LI","TD"].includes(el.tagName)){e.preventDefault();el.blur()}});
+  document.addEventListener("input",e=>{const el=e.composedPath().find(node=>node?.matches?.("[data-edit-key]"));if(editing&&el)workingEdits[el.dataset.editKey]=el.textContent});
+  document.addEventListener("keydown",e=>{const el=e.composedPath().find(node=>node?.matches?.('[contenteditable="true"]'));if(el&&e.key==="Enter"&&!["P","LI","TD"].includes(el.tagName)){e.preventDefault();el.blur()}});
   $("#documentUrlField").addEventListener("input",e=>{
     if(!editing||!currentProjectId)return;
     const value=e.target.value.trim(),safeValue=safeDocumentUrl(value),doc=$("#modalDocument");workingEdits[`project.${currentProjectId}.document`]=value;
