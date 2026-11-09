@@ -5,13 +5,14 @@ import { resolve } from "node:path";
 const siteRoot = resolve(process.argv[2] || "_site");
 const platformPassword = process.env.PLATFORM_PASSWORD || "";
 const privateTabsPassword = process.env.PRIVATE_TABS_PASSWORD || "";
+const platformGateEnabled = process.env.PLATFORM_GATE_ENABLED !== "false";
 const iterations = 310_000;
 const protectedTabs = ["operational-plan", "work-tracker", "committees"];
 
-if (platformPassword.length < 12 || privateTabsPassword.length < 12) {
+if ((platformGateEnabled && platformPassword.length < 12) || privateTabsPassword.length < 12) {
   throw new Error("Both deployment passwords must contain at least 12 characters.");
 }
-if (platformPassword === privateTabsPassword) {
+if (platformGateEnabled && platformPassword === privateTabsPassword) {
   throw new Error("The platform and private-tabs passwords must be different.");
 }
 
@@ -44,6 +45,7 @@ function privateTabsBootstrap(config) {
   const json = JSON.stringify(config).replace(/</g, "\\u003c");
   return `<script data-spf-secure-tabs>(function(){
     if(window.__SPF_TABS_UNLOCKED__)return;
+    if(!window.__SPF_SECURE_SOURCE__)window.__SPF_SECURE_SOURCE__="<!doctype html>"+document.documentElement.outerHTML;
     const config=${json};
     const encoder=new TextEncoder();
     const from64=value=>{const normalized=value.replace(/-/g,"+").replace(/_/g,"/");const binary=atob(normalized);return Uint8Array.from(binary,char=>char.charCodeAt(0))};
@@ -90,10 +92,11 @@ const legacyPath = resolve(siteRoot, "legacy/index.html");
 const rootPath = resolve(siteRoot, "index.html");
 const legacyPlain = secureTabs(readFileSync(legacyPath, "utf8"));
 const rootPlain = readFileSync(rootPath, "utf8");
-writeFileSync(legacyPath, loaderPage(legacyPlain, "legacy"));
-writeFileSync(rootPath, loaderPage(rootPlain, "root"));
+writeFileSync(legacyPath, platformGateEnabled ? loaderPage(legacyPlain, "legacy") : legacyPlain);
+writeFileSync(rootPath, platformGateEnabled ? loaderPage(rootPlain, "root") : rootPlain);
 
 for (const [path, forbidden] of [[legacyPath, "صوت المتعامل في مسار قابل للقياس"], [rootPath, "المنصة التنفيذية"]]) {
-  if (readFileSync(path, "utf8").includes(forbidden)) throw new Error(`Plaintext remained in ${path}`);
+  if (platformGateEnabled && readFileSync(path, "utf8").includes(forbidden)) throw new Error(`Plaintext remained in ${path}`);
 }
-console.log(`Encrypted ${rootPath} and ${legacyPath}; protected tabs: ${protectedTabs.join(", ")}`);
+console.log(`Platform gate: ${platformGateEnabled ? "enabled" : "temporarily disabled"}; protected tabs: ${protectedTabs.join(", ")}`);
+
