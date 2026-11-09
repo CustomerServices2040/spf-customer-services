@@ -121,8 +121,8 @@
     return Object.prototype.hasOwnProperty.call(workingEdits,key)?workingEdits[key]:item[field][index];
   }
   function editorNodes(selector,root=document){
-    const nodes=$(selector,root);
-    if(root===document){const shadow=document.getElementById("communications-app")?.shadowRoot;if(shadow)nodes.push(...$(selector,shadow))}
+    const nodes=[...root.querySelectorAll(selector)];
+    if(root===document){const shadow=document.getElementById("communications-app")?.shadowRoot;if(shadow)nodes.push(...shadow.querySelectorAll(selector))}
     return nodes;
   }
   function stablePath(el){
