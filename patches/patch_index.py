@@ -686,6 +686,19 @@ text = update_media_catalog(text)
 text = text.replace('<section class="metric-grid hero-metrics"', '<section id="heroMetrics" class="metric-grid hero-metrics"', 1)
 text = text.replace('<section class="operational-budget-card"', '<section id="operationalBudget" class="operational-budget-card"', 1)
 
+# Update only the headline figure in the Overview page.
+overview_start = text.index('<section class="executive-hero" id="overview">')
+overview_end = text.index('</section>', overview_start)
+overview_markup = text[overview_start:overview_end]
+overview_markup, overview_count = re.subn(
+    r'(<strong>)3\.24(?=\s*<small>مليون</small>)',
+    r'\g<1>3.4',
+    overview_markup,
+)
+if overview_count != 1:
+    raise SystemExit("Expected exactly one Overview headline figure of 3.24 million")
+text = text[:overview_start] + overview_markup + text[overview_end:]
+
 path.write_text(text, encoding="utf-8")
 
 
