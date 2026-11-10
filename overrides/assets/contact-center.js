@@ -83,7 +83,7 @@
             '<article class="cc-chart-card cc-x">',
               '<header><span class="cc-brand-mark">X</span><div><small>الردود في منصة X</small><strong dir="ltr">3,424</strong><span>إجمالي الردود</span></div></header>',
               '<div class="cc-line-chart" aria-label="الردود الشهرية في منصة X من يناير إلى سبتمبر 2026">',
-                '<svg viewBox="0 0 800 220" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ccArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC20D" stop-opacity=".42"/><stop offset="1" stop-color="#FFC20D" stop-opacity=".03"/></linearGradient></defs><path d="M20 176 L115 116 L210 98 L305 121 L400 103 L495 99 L590 83 L685 82 L780 43 L780 205 L20 205 Z" fill="url(#ccArea)"/><polyline points="20,176 115,116 210,98 305,121 400,103 495,99 590,83 685,82 780,43"/><g><circle cx="20" cy="176" r="6"/><circle cx="115" cy="116" r="6"/><circle cx="210" cy="98" r="6"/><circle cx="305" cy="121" r="6"/><circle cx="400" cy="103" r="6"/><circle cx="495" cy="99" r="6"/><circle cx="590" cy="83" r="6"/><circle cx="685" cy="82" r="6"/><circle cx="780" cy="43" r="6"/></g></svg>',
+                '<svg viewBox="0 0 800 220" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ccArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CCA862" stop-opacity=".42"/><stop offset="1" stop-color="#CCA862" stop-opacity=".03"/></linearGradient></defs><path d="M20 176 L115 116 L210 98 L305 121 L400 103 L495 99 L590 83 L685 82 L780 43 L780 205 L20 205 Z" fill="url(#ccArea)"/><polyline points="20,176 115,116 210,98 305,121 400,103 495,99 590,83 685,82 780,43"/><g><circle cx="20" cy="176" r="6"/><circle cx="115" cy="116" r="6"/><circle cx="210" cy="98" r="6"/><circle cx="305" cy="121" r="6"/><circle cx="400" cy="103" r="6"/><circle cx="495" cy="99" r="6"/><circle cx="590" cy="83" r="6"/><circle cx="685" cy="82" r="6"/><circle cx="780" cy="43" r="6"/></g></svg>',
                 '<div class="cc-line-values"><span><b>183</b><small>يناير</small></span><span><b>356</b><small>فبراير</small></span><span><b>397</b><small>مارس</small></span><span><b>348</b><small>أبريل</small></span><span><b>387</b><small>مايو</small></span><span><b>396</b><small>يونيو</small></span><span><b>425</b><small>يوليو</small></span><span><b>426</b><small>أغسطس</small></span><span><b>506</b><small>سبتمبر</small></span></div>',
               '</div>',
             '</article>',
@@ -110,54 +110,38 @@
     const layout=document.querySelector("#governorates-map .interactive-map-layout");
     const map=document.querySelector("#governorates-map .oman-map-scroll");
     const inspector=document.getElementById("governorateInspector");
-    if(!layout||!map||!inspector||layout.querySelector(".map-navigation-zone")) return;
+    if(!layout||!map||!inspector) return;
 
-    const zone=document.createElement("div");
-    zone.className="map-navigation-zone";
-    const quick=document.createElement("div");
-    quick.className="governorate-quick-panel";
-    quick.innerHTML='<div class="governorate-quick-heading"><span>التنقل بين المحافظات</span><strong>اختر محافظة لمتابعة بياناتها</strong></div><div class="governorate-quick-grid"></div>';
-    const grid=quick.querySelector(".governorate-quick-grid");
-    const select=document.getElementById("governorateSelect");
-
-    const all=document.createElement("button");
-    all.type="button";
-    all.className="governorate-quick-card active";
-    all.dataset.governorate="all";
-    all.innerHTML='<span><b>جميع المحافظات</b><small>عرض المؤشرات الإجمالية</small></span><i aria-hidden="true">11</i>';
-    grid.appendChild(all);
-
-    document.querySelectorAll("#governorates-map .map-label[data-governorate]").forEach(label=>{
-      const button=document.createElement("button");
-      button.type="button";
-      button.className="governorate-quick-card";
-      button.dataset.governorate=label.dataset.governorate;
-      button.innerHTML='<span><b>'+label.querySelector("b").textContent+'</b><small dir="ltr">'+label.querySelector("small").textContent+'</small></span><i aria-hidden="true">›</i>';
-      button.addEventListener("click",()=>{ label.click(); setTimeout(sync,0); });
-      grid.appendChild(button);
-    });
-
-    function sync(){
-      const value=(select&&select.value)||"all";
-      grid.querySelectorAll("button").forEach(button=>{
-        const active=button.dataset.governorate===value;
-        button.classList.toggle("active",active);
-        button.setAttribute("aria-pressed",String(active));
-      });
+    layout.classList.remove("map-card-layout");
+    layout.classList.add("map-inspector-layout");
+    const oldZone=layout.querySelector(".map-navigation-zone");
+    if(oldZone){
+      oldZone.insertAdjacentElement("beforebegin",map);
+      oldZone.remove();
     }
-    all.addEventListener("click",()=>{
-      if(select){
-        select.value="all";
-        select.dispatchEvent(new Event("change",{bubbles:true}));
-      }
-      sync();
-    });
-    if(select) select.addEventListener("change",sync);
+    layout.querySelectorAll(".governorate-quick-panel").forEach(item=>item.remove());
 
-    zone.append(map,quick);
-    layout.insertBefore(zone,inspector);
-    layout.classList.add("map-card-layout");
-    sync();
+    map.classList.add("forum-map-surface");
+    const image=map.querySelector(".oman-map-source");
+    if(image){
+      image.src="forum/assets/oman.png";
+      image.alt="خريطة سلطنة عُمان المستخدمة في ملتقى دوائر المحافظات";
+    }
+
+    const select=document.getElementById("governorateSelect");
+    const syncSelection=()=>{
+      const selected=(select&&select.value)||"all";
+      map.querySelectorAll(".map-label[data-governorate]").forEach(label=>{
+        const active=selected!=="all"&&label.dataset.governorate===selected;
+        label.classList.toggle("highlighted",active);
+        label.setAttribute("aria-pressed",String(active));
+      });
+    };
+    if(select) select.addEventListener("change",syncSelection);
+    map.querySelectorAll(".map-label[data-governorate]").forEach(label=>{
+      label.addEventListener("click",()=>setTimeout(syncSelection,0));
+    });
+    syncSelection();
   }
 
   insertContactCenter();
