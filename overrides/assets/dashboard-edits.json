@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-11-09T09:53:29.628Z",
+  "updatedAt": "2026-11-10T05:37:35.284Z",
   "edits": {
     "div:1>main:1>header:1>div:1>span:1": "صندوق الحماية الاجتماعية · سلطنة عُمان",
     "div:1>main:1>header:1>div:1>h1:1": "بوصلة المتعامل",
@@ -2758,13 +2758,13 @@
     "communications.div:1>section:5>div:2>div:2>div:1>div:2>h3:1": "مخرجات الإجادة المؤسسية",
     "communications.div:1>section:5>div:2>div:2>div:1>div:2>p:1": "أربع نتائج عملية تدعم التطوير والابتكار والاستدامة.",
     "communications.div:1>section:5>div:2>div:2>div:2>div:1>strong:1": "10",
-    "communications.div:1>section:5>div:2>div:2>div:2>div:1>span:1": "إجراءات عمل محسّنة",
+    "communications.div:1>section:5>div:2>div:2>div:2>div:1>span:1": "إجراءات عمل محسنة",
     "communications.div:1>section:5>div:2>div:2>div:2>div:2>strong:1": "3",
-    "communications.div:1>section:5>div:2>div:2>div:2>div:2>span:1": "مبادرات وشراكاتلدعم الابتكار المؤسسي",
+    "communications.div:1>section:5>div:2>div:2>div:2>div:2>span:1": "مبادرات وشراكات لدعم الابتكار المؤسسي",
     "communications.div:1>section:5>div:2>div:2>div:2>div:3>strong:1": "3",
-    "communications.div:1>section:5>div:2>div:2>div:2>div:3>span:1": "بحوث ودراساتاستفادت منها الدائرة",
+    "communications.div:1>section:5>div:2>div:2>div:2>div:3>span:1": "بحوث ودراسات استفادت منها الدائرة",
     "communications.div:1>section:5>div:2>div:2>div:2>div:4>strong:1": "3",
-    "communications.div:1>section:5>div:2>div:2>div:2>div:4>span:1": "مبادرات منفّذةلحماية البيئة",
+    "communications.div:1>section:5>div:2>div:2>div:2>div:4>span:1": "مبادرات منفذة لحماية البيئة",
     "communications.div:1>section:5>div:3>div:1>h2:1": "مؤشرات تستدعي المتابعة",
     "communications.div:1>section:5>div:4>div:1>b:1": "اللغة المستخدمة",
     "communications.div:1>section:5>div:4>div:1>span:1": "متوسط",
@@ -2809,7 +2809,20 @@
     "channels.x-care.title": "حساب عناية المتعاملين في منصة X",
     "channels.x-care.handle": "@spf_customerCare",
     "channels.instagram.title": "Instagram",
-    "channels.instagram.handle": "@spf_oman"
+    "channels.instagram.handle": "@spf_oman",
+    "communications.div:1>section:3>div:2>div:7>div:1>span:1": "قناة واتساب",
+    "communications.div:1>section:3>div:2>div:7>div:1>strong:1": "1300+",
+    "communications.div:1>section:3>div:2>div:7>div:1>em:1": "متابع",
+    "communications.div:1>section:3>div:3>div:1>span:1": "حضور إعلامي موثق",
+    "communications.div:1>section:3>div:3>div:1>h3:1": "مخرجات العمل الإعلامي",
+    "communications.div:1>section:3>div:3>div:2>article:1>div:2>strong:1": "23",
+    "communications.div:1>section:3>div:3>div:2>article:1>div:2>span:1": "مستندًا إعلاميًا",
+    "communications.div:1>section:3>div:3>div:2>article:1>p:1": "ويستند العمل الإعلامي إلى دليل الظهور الإعلامي للمتحدث الرسمي ودليل إدارة الأزمات.",
+    "communications.div:1>section:3>div:3>div:2>article:2>div:2>strong:1": "66",
+    "communications.div:1>section:3>div:3>div:2>article:2>div:2>span:1": "تغطية إعلامية",
+    "communications.div:1>section:3>div:3>div:2>article:3>div:2>strong:1": "32",
+    "communications.div:1>section:3>div:3>div:2>article:3>div:2>span:1": "ظهورًا إعلاميًا",
+    "communications.div:1>section:3>div:4>p:1>bdi:1>span:1": "Hootsuite"
   },
   "planDelivery": {
     "O01": {
