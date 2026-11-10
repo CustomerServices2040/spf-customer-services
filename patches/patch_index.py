@@ -623,6 +623,11 @@ for asset in [
 text = re.sub(r'href="assets/styles.css(?:\?v=[^"]*)?"', f'href="assets/styles.css?v={asset_revision}"', text)
 text = re.sub(r'href="assets/exhibition.css(?:\?v=[^"]*)?"', f'href="assets/exhibition.css?v={asset_revision}"', text)
 text = re.sub(r'src="assets/work-tracker.html(?:\?v=[^"]*)?"', f'src="assets/work-tracker.html?v={asset_revision}"', text)
+contact_center_script = f'  <script src="assets/contact-center.js?v={asset_revision}"></script>'
+exhibition_script = f'  <script src="assets/exhibition.js?v={asset_revision}"></script>'
+if exhibition_script not in text:
+    raise SystemExit("Expected exhibition script not found for contact-center insertion")
+text = text.replace(exhibition_script, contact_center_script + '\n' + exhibition_script, 1)
 
 # Load this last: the upstream exhibition stylesheet centers an overflowing
 # tab row, placing its first tabs beyond the right edge on some screens.
@@ -630,6 +635,8 @@ text = text.replace('</head>', f'  <link rel="stylesheet" href="assets/practices
 text = text.replace('</head>', f'  <link rel="stylesheet" href="assets/card-refinements.css?v={asset_revision}" />\n</head>', 1)
 motion_css = f'  <link rel="stylesheet" href="assets/motion-system.css?v={asset_revision}" />'
 text = text.replace('</head>', motion_css + '\n</head>', 1)
+contact_center_css = f'  <link rel="stylesheet" href="assets/contact-center.css?v={asset_revision}" />'
+text = text.replace('</head>', contact_center_css + '\n</head>', 1)
 navigation_css = f'  <link rel="stylesheet" href="assets/navigation-reliability.css?v={asset_revision}" />'
 text = text.replace('</head>', navigation_css + '\n</head>', 1)
 ux_css = f'  <link rel="stylesheet" href="assets/ux-system.css?v={asset_revision}" />'

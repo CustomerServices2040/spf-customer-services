@@ -17,11 +17,11 @@ body{
     radial-gradient(circle at 10% 4%,rgba(214,168,79,.18),transparent 24rem),
     radial-gradient(circle at 88% 18%,rgba(79,128,108,.16),transparent 30rem),
     linear-gradient(160deg,#fbfaf6 0%,#f3f0e6 52%,#f7f5ef 100%);
-  font-family:PlexArabic,'Neo Sans Arabic','Noto Sans Arabic',NotoArabic,Tahoma,sans-serif;
+  font-family:'DIN Next LT Arabic','DIN NEXT LT ARABIC',PlexArabic,'Noto Sans Arabic',NotoArabic,Tahoma,sans-serif;
   color:var(--deep);font-weight:400
 }
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.28;background-image:radial-gradient(var(--green) 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(to bottom,black,transparent 38%);z-index:-1}
-h1,h2,h3,.brand b,.kpi>strong,.reach strong,.map-badge b,.timer-block strong{font-family:PlexArabic,'Neo Sans Arabic',sans-serif}
+h1,h2,h3,.brand b,.kpi>strong,.reach strong,.map-badge b,.timer-block strong{font-family:'DIN Next LT Arabic','DIN NEXT LT ARABIC',PlexArabic,'Noto Sans Arabic',sans-serif}
 
 .site-header{
   max-width:1640px;margin:14px auto 0;padding:15px 22px;border:1px solid rgba(255,255,255,.9);

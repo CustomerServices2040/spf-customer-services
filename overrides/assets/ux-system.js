@@ -24,7 +24,7 @@
   const NAV_GROUPS = [
     ["من نحن", ["about"]],
     ["الملخص التنفيذي", ["overview", "performance", "achievements"]],
-    ["المتعامل والقنوات", ["methodology", "coverage", "channels", "practices", "tajawob"]],
+    ["المتعامل والقنوات", ["methodology", "coverage", "channels", "contact-center", "practices", "tajawob"]],
     ["التنفيذ", ["operational-plan", "work-tracker", "risk-register"]],
     ["الحوكمة والمبادرات", ["directorate", "committees", "projects", "community-line"]],
     ["المركز الإعلامي", ["media-center", "service-achievements", "recognitions"]],
