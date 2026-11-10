@@ -126,6 +126,7 @@
     layout.querySelectorAll(".governorate-quick-panel").forEach(item=>item.remove());
 
     map.classList.add("forum-map-surface");
+    map.querySelector('.map-legend')?.remove();
     const image=map.querySelector(".oman-map-source");
     if(image){
       image.src="forum/assets/oman.png";

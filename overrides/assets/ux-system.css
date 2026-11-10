@@ -1438,3 +1438,45 @@ html.communications-active .chapter-footer{display:none!important}
   #performance .operational-priority-grid>article{grid-template-columns:minmax(0,1fr) 88px}
   #performance .operational-rank{display:none}
 }
+
+/* Governorate hierarchy: primary totals, supporting service volumes and an unboxed population reading. */
+#channels #governorates-map .oman-map-scroll>.governorate-population{display:flex!important;flex-direction:column!important;align-items:center;justify-content:center;flex:none;gap:8px!important;margin:0!important;padding:20px 16px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;text-align:center}
+#channels #governorates-map .population-reading{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 16px;width:100%;min-width:0}
+#channels #governorates-map .population-reading b{color:#8b6528;font-size:clamp(42px,4vw,64px);line-height:1.15;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.035em}
+#channels #governorates-map .population-reading span{color:#415e4b;font-size:17px;line-height:1.6;text-wrap:balance}
+#channels #governorates-map .population-source{font-size:11px;line-height:1.7;color:#667564;text-decoration:none}
+#channels #governorates-map .population-source:hover{text-decoration:underline}
+#channels #governorates-map .work-total{background:linear-gradient(125deg,#702b4b,#4e1933)!important;border-color:#85435e!important;box-shadow:0 8px 20px #54193222!important}
+#channels #governorates-map .work-total strong{color:#fff!important;font-weight:800!important}
+#channels #governorates-map .work-total span{color:#eed4a0!important}
+#channels #governorates-map .work-metrics article :is(b,strong){font-size:clamp(30px,2.5vw,40px)!important;font-weight:500!important;letter-spacing:-.02em!important}
+#channels #governorates-map .context-symbol{display:grid!important;place-items:center!important;flex-shrink:0;line-height:0!important;text-indent:0!important;padding:0!important;border-radius:50%!important;overflow:hidden}
+#channels #governorates-map .context-symbol svg{display:block!important;width:20px!important;height:20px!important;margin:0!important;position:static!important;transform:none!important;flex:none}
+#channels #governorates-map .comparison-meter>.context-symbol{padding:0!important;border-radius:50%!important}
+#contact-center .cc-x .cc-brand-mark{width:53px;height:53px;flex:0 0 53px;border-radius:16px}
+#contact-center .cc-x .cc-brand-mark svg{width:29px;height:29px}
+#channels #governorates-map .inspector-title{display:flex!important;flex-direction:column;align-items:center!important;justify-content:center!important;text-align:center!important;gap:6px;min-height:92px}
+#channels #governorates-map .inspector-title h3{width:100%;text-align:center!important;margin:0!important;line-height:1.4}
+#channels #governorates-map .inspector-title small{width:100%;text-align:center;line-height:1.5}
+#channels #governorates-map .inspector-kpis article{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:7px!important;padding:14px 12px!important;position:relative;background:linear-gradient(145deg,#edf5ee,#fff)!important;border-color:#ccddcf!important;min-height:146px!important}
+#channels #governorates-map .inspector-kpis article:nth-child(2){background:linear-gradient(145deg,#fcf7e9,#f2e6c9)!important;border-color:#dfc996!important}
+#channels #governorates-map .inspector-kpis article .governorate-card-icon{order:0!important;width:32px!important;height:32px!important;flex:0 0 32px!important;padding:5px!important;background:#dce9dc!important}
+#channels #governorates-map .inspector-kpis article:nth-child(2) .governorate-card-icon{color:#8b6528!important;background:#efe0ba!important}
+#channels #governorates-map .inspector-kpis article :is(b,strong){order:1!important;font-size:clamp(38px,3.2vw,52px)!important;font-weight:800!important;line-height:1.1!important}
+#channels #governorates-map .inspector-kpis article>span{order:2!important;text-align:center!important;font-size:13px!important}
+#channels #governorates-map .inspector-kpis article>small{order:4!important;text-align:center;line-height:1.6!important}
+#channels #governorates-map .staff-share-track{order:3;width:100%;max-width:180px;height:8px;margin-top:2px;flex:none;overflow:hidden;border-radius:6px;background:#e0d6bd;direction:ltr}
+#channels #governorates-map .staff-share-track>i{display:block;height:100%;width:var(--staff-share,0%);background:linear-gradient(90deg,#b48b40,#6f2948);border-radius:6px;min-width:2px}
+@media(min-width:1151px){
+  #channels #governorates-map .governorate-profile-column{grid-template-rows:36px minmax(0,1fr)!important;align-items:stretch}
+  #channels #governorates-map .inspector-heading{align-self:start}
+  #channels #governorates-map .inspector-title{align-self:stretch}
+}
+@media(max-width:700px){
+  #channels #governorates-map .work-metrics article :is(b,strong){font-size:clamp(25px,7vw,32px)!important;font-weight:500!important}
+  #channels #governorates-map .inspector-kpis article :is(b,strong){font-size:clamp(30px,8.5vw,40px)!important}
+  #channels #governorates-map .population-reading b{font-size:48px}
+  #channels #governorates-map .population-reading span{font-size:16px}
+  #channels #governorates-map .inspector-title{min-height:96px}
+}
+@media(max-width:360px){#channels #governorates-map .work-metrics article :is(b,strong){font-size:34px!important}}
