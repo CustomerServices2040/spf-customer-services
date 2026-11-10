@@ -110,7 +110,8 @@ html,body,button,input,select,textarea{font-family:var(--spf-font)!important}
 }
 @media(max-width:620px){
   .cc-section{padding:12px!important}.cc-hero{padding:28px 22px;border-radius:22px}.cc-hero h2{font-size:36px}.cc-panel{padding:19px}.cc-primary{min-height:150px}
-  .cc-performance-grid,.cc-smart-layout{display:grid;grid-template-columns:1fr;grid-template-areas:"core" "one" "two" "three" "four" "five"}.cc-satisfaction{grid-column:auto}.cc-chart-card{padding:18px}.cc-bars{height:180px}
+  .cc-performance-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:none}
+  .cc-smart-layout{display:grid;grid-template-columns:1fr;grid-template-areas:"core" "one" "two" "three" "four" "five"}.cc-satisfaction{grid-column:auto}.cc-chart-card{padding:18px}.cc-bars{height:180px}
   .cc-line-values b{display:none}.cc-line-values small{writing-mode:vertical-rl}
   #channels .governorate-quick-panel{overflow:hidden}#channels .governorate-quick-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:5px}
   #channels .governorate-quick-card{min-width:160px;scroll-snap-align:start}
