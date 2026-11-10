@@ -54,15 +54,15 @@
         '<div class="cc-primary-grid" aria-label="المؤشرات الرئيسية لمركز الاتصال">',
           metric(svg.phone,'إجمالي المكالمات الواردة','271,763','مكالمة خلال الفترة','cc-primary'),
           metric(svg.check,'المكالمات المستلمة','111,740','مكالمة تمت خدمتها','cc-primary'),
-          '<article class="cc-rate-card"><div class="cc-rate-ring" style="--cc-rate:97.6"><strong dir="ltr">97.60%</strong><span>نسبة الاستجابة</span></div><p>مؤشر يوضح كفاءة الوصول إلى المتعامل والاستجابة للمكالمات.</p></article>',
+          '<article class="cc-rate-card cc-response-card"><span class="cc-response-label">نسبة الاستجابة</span><strong dir="ltr">97.6%</strong><div class="cc-response-meter" role="meter" aria-label="نسبة الاستجابة" aria-valuemin="0" aria-valuemax="100" aria-valuenow="97.6"><i></i></div></article>',
         '</div>',
 
         '<section class="cc-panel cc-performance">',
           '<div class="cc-panel-heading"><div><span>كفاءة الأداء</span><h3>السرعة والجاهزية التشغيلية</h3></div><span class="cc-section-icon">'+svg.chart+'</span></div>',
           '<div class="cc-performance-grid">',
             '<article class="cc-level"><div class="cc-mini-ring" style="--cc-rate:93"><strong dir="ltr">93.0%</strong></div><div><b>مستوى الخدمة</b><small>النتيجة الإجمالية للفترة</small></div></article>',
-            metric(svg.clock,'متوسط وقت الانتظار','00:00:40','ساعة : دقيقة : ثانية','cc-compact'),
-            metric(svg.clock,'متوسط مدة المكالمة','00:03:22','ساعة : دقيقة : ثانية','cc-compact'),
+            metric(svg.clock,'متوسط وقت الانتظار','أربعون ثانية','','cc-compact cc-duration'),
+            metric(svg.clock,'متوسط مدة المكالمة','ثلاث دقائق واثنتان وعشرون ثانية','','cc-compact cc-duration'),
             metric(svg.phone,'خدمة «اتصل بي»','2,336','طلب اتصال عكسي','cc-compact'),
             '<article class="cc-satisfaction"><span class="cc-icon">'+svg.smile+'</span><div><span>نسبة رضا المتعاملين</span><strong dir="ltr">86.64%</strong><div class="cc-progress"><i style="width:86.64%"></i></div></div></article>',
           '</div>',
@@ -105,6 +105,7 @@
         '</section>',
       '</div>'
     ].join("");
+    section.querySelector('.cc-performance').before(section.querySelector('.cc-smart'));
     channels.insertAdjacentElement("afterend",section);
   }
 
@@ -159,6 +160,10 @@
         context.className='governorate-context';
         [...profile.children].filter(item=>!item.matches('.inspector-heading,.inspector-title,.inspector-kpis')).forEach(item=>context.appendChild(item));
         inspector.appendChild(context);
+        const hours=context.querySelector('.inspector-hours');
+        if(hours)hours.insertAdjacentHTML('afterbegin','<i class="context-symbol" aria-hidden="true">'+svg.clock+'</i>');
+        const comparison=context.querySelector('.comparison-meter');
+        if(comparison)comparison.insertAdjacentHTML('afterbegin','<i class="context-symbol" aria-hidden="true">'+svg.chart+'</i>');
       }
       const heading=geographic.querySelector('.map-heading>div');
       if(heading&&!heading.querySelector('.experience-symbol')){

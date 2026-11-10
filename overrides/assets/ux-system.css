@@ -1066,6 +1066,71 @@ html.communications-active .chapter-footer{display:none!important}
 #tajawob .tajawob-trend-bars :is(b,span){left:0}
 #tajawob .tajawob-trend{margin:0 0 22px}
 #tajawob .tajawob-flow article:after{display:none!important}
+/* Review corrections: contained map labels and centred executive figures. */
+#channels #governorates-map .map-label{display:grid!important;grid-template-columns:minmax(0,1fr)!important;place-items:center!important;width:max-content!important;min-width:82px!important;max-width:43%!important;padding:10px 14px!important;gap:0!important;text-align:center!important;box-sizing:border-box!important}
+#channels #governorates-map .map-label>i{display:none!important}
+#channels #governorates-map .map-label>span{position:static!important;display:block!important;width:100%!important;min-width:0!important;margin:0!important;padding:0!important;transform:none!important;text-align:center!important}
+#channels #governorates-map .map-label b{position:static!important;display:block!important;width:100%!important;min-width:0!important;white-space:normal!important;overflow-wrap:normal!important;word-break:normal!important;text-align:center!important;transform:none!important;margin:0!important;padding:0!important;line-height:1.6!important}
+#channels #governorates-map .work-total{align-items:center!important;text-align:center!important}
+#channels #governorates-map :is(.inspector-kpis,.work-metrics,.governorate-productivity) article{align-items:center!important;text-align:center!important}
+#channels #governorates-map :is(.inspector-kpis,.work-metrics,.governorate-productivity) article>span{ text-align:center!important}
+#channels #governorates-map .governorate-context{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:20px;background:linear-gradient(135deg,#edf3e9,#f7f3e7)}
+#channels #governorates-map .governorate-context .comparison-meter{display:grid!important;grid-template-columns:42px minmax(0,1fr);gap:8px 12px;align-items:center;padding:18px!important;background:#fff;border:1px solid #dde4d5!important;border-radius:16px}
+#channels #governorates-map .comparison-meter .context-symbol{grid-row:1/4}
+#channels #governorates-map .comparison-meter>div{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+#channels #governorates-map .comparison-meter>i:not(.context-symbol){display:block!important;grid-column:2;width:100%;height:7px;margin:0;background:#ebe6d5;overflow:hidden;border-radius:8px}
+#channels #governorates-map .comparison-meter>small{grid-column:2}
+#channels #governorates-map .comparison-meter :is(span,b,small){font-size:13px!important;line-height:1.7;color:#43634e!important}
+#channels #governorates-map .governorate-context :is(.inspector-contact,.inspector-hours){display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:21px 16px!important;background:#fff!important;border:1px solid #dce5d6!important;border-radius:16px!important;text-align:center;min-height:156px;grid-column:auto!important}
+#channels #governorates-map .inspector-hours span{font-size:14px!important;color:#5e725f}
+#channels #governorates-map .inspector-hours b{font-size:17px!important;line-height:1.7;color:#294d3a}
+#channels #governorates-map .inspector-contact img{width:34px;height:34px}
+#channels #governorates-map .inspector-contact span{display:grid;gap:7px}
+#channels #governorates-map .inspector-contact small{font-size:13px}
+#channels #governorates-map .inspector-contact b{font-size:21px}
+#channels #governorates-map .context-symbol{display:grid;place-items:center;width:42px;height:42px;padding:9px;background:#e6eddf;border-radius:13px;color:#3a6757}
+#channels #governorates-map .context-symbol svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#channels #governorates-map .inspector-contact[hidden],#channels #governorates-map .governorate-context>[hidden]{display:none!important}
+#contact-center .cc-response-card{display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:26px;text-align:center;background:linear-gradient(140deg,#f9fbf6,#eaf0e3);border-color:#cadac5}
+#contact-center .cc-response-label{color:#315b45;font-size:16px;font-weight:800}
+#contact-center .cc-response-card>strong{font-size:clamp(46px,4.3vw,76px);line-height:1.1;color:#203e35;font-weight:800;letter-spacing:-.025em}
+#contact-center .cc-response-meter{display:block;width:80%;max-width:265px;height:18px;background:#dae3d3;border-radius:5px;overflow:hidden;direction:ltr;mask-image:repeating-linear-gradient(to right,#000 0 calc(5% - 3px),transparent calc(5% - 3px) 5%)}
+#contact-center .cc-response-meter>i{display:block;height:100%;width:97.6%;background:linear-gradient(90deg,#cca862,#3a6757 32%)}
+#contact-center .cc-duration strong{font-size:clamp(24px,2.1vw,34px)!important;white-space:normal!important;direction:rtl;line-height:1.65!important;text-align:center}
+#contact-center .cc-duration{flex-direction:column;text-align:center}
+#contact-center .cc-duration small:empty{display:none}
+#contact-center .cc-primary{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+#contact-center .cc-primary>div{justify-items:center}
+#contact-center .cc-satisfaction{text-align:center;justify-content:center}
+#contact-center .cc-satisfaction>div{justify-items:center}
+#contact-center .cc-progress{width:100%}
+#tajawob .tajawob-compare{grid-template-columns:minmax(0,1fr) 132px minmax(0,1fr);align-items:stretch}
+#tajawob .tajawob-compare .tajawob-year-card{padding:24px!important;min-height:290px;gap:14px;grid-template-rows:auto 1fr auto}
+#tajawob .tajawob-year-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:18px;padding:12px 0}
+#tajawob .tajawob-volume{text-align:center}
+#tajawob .tajawob-volume>strong{font-size:46px;line-height:1.2;white-space:nowrap}
+#tajawob .tajawob-volume>strong em{display:block;font-size:13px;line-height:1.8}
+#tajawob .tajawob-rate-ring{position:relative;width:100%!important;height:auto!important;min-height:110px;display:flex;flex-direction:column;justify-content:center;gap:8px;background:none!important;box-shadow:none!important;border-radius:0;border-inline-start:1px solid #dbe1cf;padding:8px 12px 20px}
+#tajawob .tajawob-rate-ring b{font-size:34px;line-height:1.2}
+#tajawob .tajawob-rate-ring small{font-size:12px;margin:0}
+#tajawob .tajawob-rate-ring:after{content:"";position:absolute;bottom:0;left:12%;width:76%;height:7px;border-radius:7px;background:linear-gradient(to right,#3a6757 calc(var(--year-rate)*1%),#dce4d4 0)}
+#tajawob .year-2026 .tajawob-rate-ring:after{background:linear-gradient(to right,#ad863d calc(var(--year-rate)*1%),#e7dec8 0)}
+#tajawob .tajawob-year-card footer>div{text-align:center;min-width:0;padding:12px 8px}
+#tajawob .tajawob-year-card header{gap:12px;flex-wrap:wrap}
+#tajawob .response-guide-content h3{color:#fff!important;font-size:30px;line-height:1.5}
+#tajawob .response-guide-content>span{color:#e8cb8c!important;font-size:13px}
+#tajawob .response-guide-content p{color:#edf2e7!important}
+/* Consistent executive KPI alignment across the presentation chapters. */
+#channels #governorates-map .governorate-context{width:100%!important;align-self:stretch!important;min-width:0!important}
+#channels #governorates-map .governorate-context>*{grid-row:auto!important;min-width:0!important}
+#channels #governorates-map .governorate-context :is(.inspector-contact,.inspector-hours){grid-column:auto!important;width:100%!important;justify-self:stretch!important}
+#channels #governorates-map .comparison-meter>.context-symbol{display:grid!important;grid-column:1!important;grid-row:1/4!important;width:42px!important;height:42px!important;margin:0!important;overflow:visible!important;background:#e6eddf!important;border-radius:13px!important}
+#channels #governorates-map .comparison-meter>.context-symbol:before,#channels #governorates-map .comparison-meter>.context-symbol:after{display:none!important}
+:is(.hero-metrics,.metric-grid,.ops-grid,.kpi-board,.plan-hero-kpis,.tracker-summary,.media-stat-strip,.risk-summary)>article{text-align:center;align-items:center}
+:is(.hero-metrics,.metric-grid,.ops-grid,.kpi-board,.plan-hero-kpis,.tracker-summary,.media-stat-strip,.risk-summary)>article>strong{display:block;margin-inline:auto;font-variant-numeric:tabular-nums;line-height:1.25}
+@media(min-width:1800px){#contact-center .cc-response-card>strong{font-size:80px}#tajawob .tajawob-volume>strong{font-size:58px}}
+@media(max-width:1080px){#tajawob .tajawob-compare{grid-template-columns:1fr}#tajawob .tajawob-growth-bridge{min-height:94px}}
+@media(max-width:620px){#channels #governorates-map .governorate-context{grid-template-columns:1fr}#channels #governorates-map .governorate-context :is(.inspector-contact,.inspector-hours){grid-column:1/-1!important}#channels #governorates-map .map-label{min-width:60px!important;padding:7px 9px!important}#tajawob .tajawob-volume>strong{font-size:38px}#tajawob .tajawob-rate-ring b{font-size:30px}}
 @media(max-width:480px){
   #channels.section-block{padding:12px!important}
   #channels #governorates-map :is(.inspector-kpis,.work-metrics,.governorate-productivity){grid-template-columns:1fr!important}
