@@ -2,6 +2,8 @@
   "use strict";
 
   const svg = {
+    pin:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13Z"/><circle cx="12" cy="9" r="3"/></svg>',
+    whatsapp:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.4 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21a9.7 9.7 0 0 1-4.9-1.3l-.4-.2-3.5.9.9-3.4-.3-.5A9.7 9.7 0 1 1 12 21Zm5.4-7.3c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.2l-.9 1c-.2.2-.3.2-.6.1a8 8 0 0 1-3.9-3.4c-.2-.3 0-.4.1-.6l.6-.7c.1-.2.1-.4 0-.6l-.9-2c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.6-1 2.5 0 1.5 1.1 2.9 1.3 3.1.2.2 2.2 3.4 5.3 4.6 2.2.9 3 .8 3.6.7 1-.2 1.8-1.1 2-1.8.1-.6.1-1.1 0-1.2-.1-.2-.3-.2-.6-.4Z"/></svg>',
     phone:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.8 3.5 3.1 4.8 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1.3.4 2.7.7 4.1.7.7 0 1.3.6 1.3 1.3v3.6c0 .7-.6 1.3-1.3 1.3C10.4 22 2 13.6 2 3.3 2 2.6 2.6 2 3.3 2h3.6c.7 0 1.3.6 1.3 1.3 0 1.4.2 2.8.7 4.1.1.4 0 .9-.3 1.2l-2 2.2Z"/></svg>',
     check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/><circle cx="12" cy="12" r="9"/></svg>',
     chart:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10m6 10V4m6 16v-7m4 7H2"/></svg>',
@@ -70,7 +72,7 @@
           '<div class="cc-panel-heading"><div><span>القنوات الرقمية</span><h3>حجم التفاعل واتجاه النمو</h3></div><span class="cc-section-icon">'+svg.share+'</span></div>',
           '<div class="cc-chart-grid">',
             '<article class="cc-chart-card cc-whatsapp">',
-              '<header><span class="cc-brand-mark">WA</span><div><small>المساعد الذكي · واتساب</small><strong dir="ltr">112,238</strong><span>إجمالي المحادثات</span></div></header>',
+              '<header><span class="cc-brand-mark">'+svg.whatsapp+'</span><div><small>المساعد الذكي · واتساب</small><strong dir="ltr">112,238</strong><span>إجمالي المحادثات</span></div></header>',
               '<div class="cc-bars" aria-label="محادثات واتساب من أبريل إلى سبتمبر 2026">',
                 '<div style="--h:39%"><i></i><b>14,980</b><span>أبريل</span></div>',
                 '<div style="--h:31%"><i></i><b>11,640</b><span>مايو</span></div>',
@@ -144,6 +146,59 @@
     syncSelection();
   }
 
+  function refineServiceExperience(){
+    const contact=document.getElementById('contact-center');
+    const geographic=document.getElementById('governorates-map');
+    const tajawob=document.getElementById('tajawob');
+    [contact,geographic,tajawob].forEach(section=>section&&section.classList.add('service-refined'));
+    if(geographic){
+      const inspector=geographic.querySelector('.governorate-inspector');
+      const profile=geographic.querySelector('.governorate-profile-column');
+      if(inspector&&profile&&!inspector.querySelector('.governorate-context')){
+        const context=document.createElement('div');
+        context.className='governorate-context';
+        [...profile.children].filter(item=>!item.matches('.inspector-heading,.inspector-title,.inspector-kpis')).forEach(item=>context.appendChild(item));
+        inspector.appendChild(context);
+      }
+      const heading=geographic.querySelector('.map-heading>div');
+      if(heading&&!heading.querySelector('.experience-symbol')){
+        heading.insertAdjacentHTML('afterbegin','<i class="experience-symbol" aria-hidden="true">'+svg.pin+'</i>');
+      }
+      const map=geographic.querySelector('.oman-vector-map');
+      if(map&&!map.querySelector('.map-surface-heading')){
+        map.insertAdjacentHTML('afterbegin','<div class="map-surface-heading"><b>سلطنة عُمان</b><small>اختر محافظة لاستعراض مؤشراتها</small></div>');
+      }
+    }
+    if(!tajawob)return;
+    const title=tajawob.querySelector('.section-heading');
+    if(title&&!title.querySelector('.experience-symbol')){
+      title.insertAdjacentHTML('beforeend','<i class="experience-symbol" aria-hidden="true">'+svg.message+'</i>');
+    }
+    const flowIcons=[svg.message,svg.share,svg.check,svg.chart];
+    tajawob.querySelectorAll('.tajawob-flow article>i').forEach((item,index)=>{item.innerHTML=flowIcons[index];});
+    const typeIcons=[svg.heart,svg.message,svg.pin,svg.book];
+    tajawob.querySelectorAll('.tajawob-type-grid article').forEach((item,index)=>{
+      if(!item.querySelector('.experience-type-icon'))item.insertAdjacentHTML('afterbegin','<i class="experience-type-icon" aria-hidden="true">'+typeIcons[index]+'</i>');
+    });
+    // Read the existing monthly table so the chart always follows its authored values.
+    const monthly=tajawob.querySelector('.tajawob-monthly');
+    const rows=monthly?[...monthly.querySelectorAll('tbody tr')]:[];
+    if(rows.length&&!tajawob.querySelector('.tajawob-trend')){
+      const months=rows.map(row=>[...row.cells].map(cell=>cell.textContent.trim()));
+      const maximum=Math.max(...months.map(month=>Number(month[1].replace(/,/g,''))));
+      const trend=document.createElement('section');
+      trend.className='tajawob-trend';
+      trend.setAttribute('aria-label','الاتجاه الشهري لإجمالي طلبات منصة تجاوب');
+      trend.innerHTML='<header><div><span>اتجاه الطلبات</span><h3>حجم التفاعل عبر الأشهر</h3></div><small>يناير–سبتمبر 2026</small></header><div class="tajawob-trend-bars">'+months.map(month=>'<div style="--month-height:'+(Number(month[1].replace(/,/g,''))/maximum*100).toFixed(2)+'%"><b dir="ltr">'+month[1]+'</b><i></i><span>'+month[0]+'</span></div>').join('')+'</div>';
+      tajawob.querySelector('.tajawob-compare').insertAdjacentElement('beforebegin',trend);
+    }
+  }
+
   insertContactCenter();
   enhanceGovernorateMap();
+  refineServiceExperience();
+  // The shared governorate profile is assembled after DOMContentLoaded.
+  // Run the idempotent decoration again once that profile exists.
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(refineServiceExperience,0));
+  else setTimeout(refineServiceExperience,0);
 })();
