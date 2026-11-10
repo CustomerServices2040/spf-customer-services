@@ -259,3 +259,43 @@ html,body,button,input,select,textarea{font-family:var(--spf-font)!important}
   #channels .map-inspector-layout .oman-map-scroll{height:560px;overflow:auto}
   #channels .map-inspector-layout .map-label{transform:translate(-50%,-50%) scale(.78)}
 }
+
+/* 2026-11-10: final spacing QA */
+.cc-rate-ring{width:135px!important;height:135px!important;flex:0 0 135px!important}
+.cc-rate-ring strong{font-size:26px!important}
+.cc-rate-card p{max-width:150px}
+#channels .interactive-map-layout.map-inspector-layout{
+  grid-template-columns:minmax(380px,.68fr) minmax(0,1.32fr)!important;
+}
+#channels .map-inspector-layout .governorate-inspector{
+  display:grid!important;
+  grid-template-columns:minmax(280px,.9fr) minmax(0,1.35fr)!important;
+  gap:18px!important;
+}
+#channels .map-inspector-layout .governorate-profile-column,
+#channels .map-inspector-layout .governorate-work{min-width:0!important}
+#channels .map-inspector-layout .population-head{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:5px!important;
+  align-items:start!important;
+}
+#channels .map-inspector-layout .population-head span,
+#channels .map-inspector-layout .population-head a{
+  white-space:normal!important;
+  overflow-wrap:anywhere;
+  line-height:1.55!important;
+}
+@media(min-width:1800px){
+  #channels .interactive-map-layout.map-inspector-layout{
+    grid-template-columns:minmax(520px,.68fr) minmax(0,1.32fr)!important;
+  }
+}
+@media(max-width:1250px){
+  #channels .interactive-map-layout.map-inspector-layout{grid-template-columns:1fr!important}
+  #channels .map-inspector-layout .governorate-inspector{grid-template-columns:minmax(280px,.9fr) minmax(0,1.35fr)!important}
+}
+@media(max-width:780px){
+  #channels .map-inspector-layout .governorate-inspector{grid-template-columns:1fr!important}
+  .cc-rate-card p{max-width:190px}
+}
