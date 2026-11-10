@@ -299,3 +299,20 @@ html,body,button,input,select,textarea{font-family:var(--spf-font)!important}
   #channels .map-inspector-layout .governorate-inspector{grid-template-columns:1fr!important}
   .cc-rate-card p{max-width:190px}
 }
+
+/* Population card must stack inside the narrower inspector column. */
+#channels .map-inspector-layout .governorate-population{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:12px!important;
+  width:100%!important;
+}
+#channels .map-inspector-layout .governorate-population .population-head,
+#channels .map-inspector-layout .governorate-population .population-grid{
+  width:100%!important;
+  min-width:0!important;
+  grid-column:1!important;
+}
+#channels .map-inspector-layout .governorate-population .population-grid{
+  grid-template-columns:1fr!important;
+}
