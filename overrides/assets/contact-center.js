@@ -186,7 +186,7 @@
     if(rows.length&&!tajawob.querySelector('.tajawob-trend')){
       const months=rows.map(row=>[...row.cells].map(cell=>cell.textContent.trim()));
       const maximum=Math.max(...months.map(month=>Number(month[1].replace(/,/g,''))));
-      const trend=document.createElement('section');
+      const trend=document.createElement('figure');
       trend.className='tajawob-trend';
       trend.setAttribute('aria-label','الاتجاه الشهري لإجمالي طلبات منصة تجاوب');
       trend.innerHTML='<header><div><span>اتجاه الطلبات</span><h3>حجم التفاعل عبر الأشهر</h3></div><small>يناير–سبتمبر 2026</small></header><div class="tajawob-trend-bars">'+months.map(month=>'<div style="--month-height:'+(Number(month[1].replace(/,/g,''))/maximum*100).toFixed(2)+'%"><b dir="ltr">'+month[1]+'</b><i></i><span>'+month[0]+'</span></div>').join('')+'</div>';

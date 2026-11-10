@@ -1064,6 +1064,7 @@ html.communications-active .chapter-footer{display:none!important}
 #tajawob .tajawob-hero.updated>div{overflow:hidden}
 #tajawob .tajawob-hero.updated>div:before,#tajawob .tajawob-hero.updated>div:after,#tajawob .tajawob-flow article:before{display:none!important}
 #tajawob .tajawob-trend-bars :is(b,span){left:0}
+#tajawob .tajawob-trend{margin:0 0 22px}
 #tajawob .tajawob-flow article:after{display:none!important}
 @media(max-width:480px){
   #channels.section-block{padding:12px!important}
