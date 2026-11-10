@@ -15,7 +15,8 @@
     book:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a3 3 0 0 1 3-2h5v17H7a3 3 0 0 0-3 2V5Zm16 0a3 3 0 0 0-3-2h-5v17h5a3 3 0 0 1 3 2V5Z"/></svg>',
     bot:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M8 16h8"/></svg>',
     mic:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg>',
-    heart:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>'
+    heart:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>',
+    x:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.6 5.5 22H2.3l8.2-9.5L.8 2h6.5l4.5 6.8L18.9 2Zm-1.1 18h1.7L6.4 3.9H4.6L17.8 20Z"/></svg>'
   };
 
   function metric(icon,label,value,detail,extra){
@@ -83,7 +84,7 @@
               '</div>',
             '</article>',
             '<article class="cc-chart-card cc-x">',
-              '<header><span class="cc-brand-mark">X</span><div><small>الردود في منصة X</small><strong dir="ltr">3,424</strong><span>إجمالي الردود</span></div></header>',
+              '<header><span class="cc-brand-mark">'+svg.x+'</span><div><small>الردود في منصة X</small><strong dir="ltr">3,424</strong><span>إجمالي الردود</span></div></header>',
               '<div class="cc-line-chart" aria-label="الردود الشهرية في منصة X من يناير إلى سبتمبر 2026">',
                 '<svg viewBox="0 0 800 220" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ccArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CCA862" stop-opacity=".42"/><stop offset="1" stop-color="#CCA862" stop-opacity=".03"/></linearGradient></defs><path d="M20 176 L115 116 L210 98 L305 121 L400 103 L495 99 L590 83 L685 82 L780 43 L780 205 L20 205 Z" fill="url(#ccArea)"/><polyline points="20,176 115,116 210,98 305,121 400,103 495,99 590,83 685,82 780,43"/><g><circle cx="20" cy="176" r="6"/><circle cx="115" cy="116" r="6"/><circle cx="210" cy="98" r="6"/><circle cx="305" cy="121" r="6"/><circle cx="400" cy="103" r="6"/><circle cx="495" cy="99" r="6"/><circle cx="590" cy="83" r="6"/><circle cx="685" cy="82" r="6"/><circle cx="780" cy="43" r="6"/></g></svg>',
                 '<div class="cc-line-values"><span><b>183</b><small>يناير</small></span><span><b>356</b><small>فبراير</small></span><span><b>397</b><small>مارس</small></span><span><b>348</b><small>أبريل</small></span><span><b>387</b><small>مايو</small></span><span><b>396</b><small>يونيو</small></span><span><b>425</b><small>يوليو</small></span><span><b>426</b><small>أغسطس</small></span><span><b>506</b><small>سبتمبر</small></span></div>',
@@ -169,6 +170,13 @@
       if(heading&&!heading.querySelector('.experience-symbol')){
         heading.insertAdjacentHTML('afterbegin','<i class="experience-symbol" aria-hidden="true">'+svg.pin+'</i>');
       }
+      // Keep the existing nodes (and editor keys) when changing their placement.
+      const population=geographic.querySelector('.governorate-population');
+      const mapSurface=geographic.querySelector('.oman-map-scroll');
+      if(population&&mapSurface&&population.parentElement!==mapSurface)mapSurface.appendChild(population);
+      const modelBranch=document.querySelector('#channels>.model-branch');
+      const geographicGroup=geographic.closest('.access-ecosystem');
+      if(modelBranch&&geographicGroup&&geographicGroup.nextElementSibling!==modelBranch)geographicGroup.after(modelBranch);
       const map=geographic.querySelector('.oman-vector-map');
       if(map&&!map.querySelector('.map-surface-heading')){
         map.insertAdjacentHTML('afterbegin','<div class="map-surface-heading"><b>سلطنة عُمان</b><small>اختر محافظة لاستعراض مؤشراتها</small></div>');
