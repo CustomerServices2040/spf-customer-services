@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-11-11T08:56:17.039Z",
+  "updatedAt": "2026-11-11T08:56:47.454Z",
   "edits": {
     "div:1>main:1>header:1>div:1>span:1": "صندوق الحماية الاجتماعية · سلطنة عُمان",
     "div:1>main:1>header:1>div:1>h1:1": "بوصلة المتعامل",
@@ -2925,7 +2925,7 @@
     "communications.savings.period": "الرصد الإعلامي · 2–10 نوفمبر 2026",
     "communications.savings.title": "نظام الادخار",
     "communications.savings.subtitle": "ملخص تنفيذي للجهود الإعلامية ورصد اتجاهات الرأي العام",
-    "communications.savings.lead": "تفاعل محدود ومتراجع، مع حاجة مستمرة إلى توضيح آليات التطبيق وتعزيز فهم النظام.",
+    "communications.savings.lead": "",
     "communications.savings.mentions": "98",
     "communications.savings.mentionslabel": "إشارة إعلامية مرصودة خارجياً",
     "communications.savings.opinions": "25",
