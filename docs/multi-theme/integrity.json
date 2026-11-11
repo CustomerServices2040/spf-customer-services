@@ -40,21 +40,6 @@
       "gzip_bytes": 3667
     },
     {
-      "file": "themes.js",
-      "bytes": 12617,
-      "gzip_bytes": 5103
-    },
-    {
-      "file": "themes.css",
-      "bytes": 4779,
-      "gzip_bytes": 1517
-    },
-    {
-      "file": "compiled-main.css",
-      "bytes": 336461,
-      "gzip_bytes": 22775
-    },
-    {
       "file": "compiled-linked-1.css",
       "bytes": 44641,
       "gzip_bytes": 3667
@@ -65,19 +50,39 @@
       "gzip_bytes": 5034
     },
     {
+      "file": "themes.css",
+      "bytes": 8916,
+      "gzip_bytes": 2269
+    },
+    {
+      "file": "themes.js",
+      "bytes": 15584,
+      "gzip_bytes": 5826
+    },
+    {
+      "file": "compiled-main.css",
+      "bytes": 336461,
+      "gzip_bytes": 22775
+    },
+    {
       "file": "isolation.js",
       "bytes": 1246,
       "gzip_bytes": 707
     },
     {
-      "file": "compiled-linked-3.css",
-      "bytes": 37799,
-      "gzip_bytes": 2811
+      "file": "contrast.js",
+      "bytes": 2906,
+      "gzip_bytes": 1381
     },
     {
       "file": "compiled-linked-4.css",
       "bytes": 98308,
       "gzip_bytes": 6021
+    },
+    {
+      "file": "compiled-linked-3.css",
+      "bytes": 37799,
+      "gzip_bytes": 2811
     }
   ],
   "limits": [

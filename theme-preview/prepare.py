@@ -21,12 +21,12 @@ with ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(fetch,sorted(paths)
 extra=set(re.findall(r'["\'](assets/[^"\']+\.(?:png|jpg|jpeg|svg|webp))["\']',(D/'assets/data.js').read_text()))
 with ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(fetch,sorted(extra)))
 
-for f in ['themes.css','themes.js','isolation.js']:shutil.copy2(P/f,D/'assets'/f)
+for f in ['themes.css','themes.js','contrast.js','isolation.js']:shutil.copy2(P/f,D/'assets'/f)
 files={'index.html':P/'baseline.html','forum/index.html':R/'overrides/forum/index.html','forum/join.html':R/'overrides/forum/join.html','forum/facilitator.html':R/'overrides/forum/facilitator.html','assets/work-tracker.html':R/'overrides/assets/work-tracker.html','reports/dakhiliyah-june-2026.html':R/'overrides/reports/dakhiliyah-june-2026.html'}
 for i,(dest,src) in enumerate(files.items()):
  raw=src.read_text();base=raw.replace('<head>','<head><script src="/assets/isolation.js"></script>',1)
  raw=re.sub(r'<html', '<html data-bt-page="'+dest+'"',raw,count=1)
- out=re.sub(r'(<head[^>]*>)',r'\1<script src="/assets/isolation.js"></script><link rel="stylesheet" href="/assets/themes.css"><script src="/assets/themes.js"></script>',raw,count=1)
+ out=re.sub(r'(<head[^>]*>)',r'\1<script src="/assets/isolation.js"></script><link rel="stylesheet" href="/assets/themes.css"><script src="/assets/contrast.js"></script><script src="/assets/themes.js"></script>',raw,count=1)
  compiled='compiled-main.css' if i==0 else 'compiled-linked-'+str(i-1)+'.css'
  shutil.copy2(P/compiled,D/'assets'/compiled)
  out=out.replace('</head>','<link rel="stylesheet" href="/assets/'+compiled+'"><link rel="stylesheet" href="/assets/themes.css"></head>')

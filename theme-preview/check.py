@@ -7,7 +7,7 @@ for path in paths:
  src=(P/'baseline.html' if path=='index.html' else R/'overrides'/path).read_text()
  out=(D/path).read_text()
  out=re.sub(r' data-bt-page="[^"]+"','',out,count=1)
- out=re.sub(r'<script src="/assets/(?:isolation|themes)\.js"></script>','',out)
+ out=re.sub(r'<script src="/assets/(?:isolation|themes|contrast)\.js"></script>','',out)
  out=re.sub(r'<link rel="stylesheet" href="/assets/(?:themes|compiled-[^"]+)\.css">','',out)
  assert out==src,path
  results.append({'path':path,'content_script_structure_exact':True,'source_sha256':hashlib.sha256(src.encode()).hexdigest()})

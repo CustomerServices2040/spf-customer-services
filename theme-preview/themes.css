@@ -29,3 +29,28 @@ html:fullscreen .topbar .top-actions>.bt-picker,
 body:fullscreen .top-actions>.bt-picker{display:inline-flex!important;visibility:visible!important}
 :root[data-busola-theme]:not([data-busola-theme="original"]) #channels #governorates-map #governorateTotalWork,
 :root[data-busola-theme]:not([data-busola-theme="original"]) #channels .service-catalog>strong{color:var(--bt-gold)!important}
+/* Three families: institutional canvas, contrasting reading surfaces, deliberate gold accents.
+   60/30/10 is an art-direction guide, not a measured pixel quota. Original is excluded. */
+:root[data-busola-theme="green"]{--bt-surface:#fffef9;--bt-soft:#d9e5dc;--bt-gold-soft:#f2e6c9}
+:root[data-busola-theme="navy"]{--bt-surface:#fffef9;--bt-soft:#dbe3ee;--bt-gold-soft:#f2e6c9}
+:root[data-busola-theme="burgundy"]{--bt-surface:#fffef9;--bt-soft:#eadbe2;--bt-gold-soft:#f2e6c9}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(1){background:linear-gradient(135deg,var(--bt-deep),var(--bt-brand))!important;border-color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(2){background:var(--bt-gold-soft)!important;border-color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(4){background:var(--bt-soft)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(1) :is(span,small,p,b){color:var(--bt-on)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(1)>strong{color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card .micro-bar>i{background:var(--bt-gold-text)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(1) .micro-bar>i{background:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(.card-icon,.future-project-icon,.contact-metric-icon,.ring-icon,.budget-icon,.dq-icon){background:var(--bt-gold-soft)!important;color:var(--bt-gold-text)!important;border-color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(.component-card,.risk-card,.service-achievement-card,.recognition-card,.purpose-card-top,.hero-stat):nth-child(3n+2){background:var(--bt-gold-soft)!important;border-color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(.component-card,.risk-card,.service-achievement-card,.recognition-card,.hero-stat):nth-child(3n){background:var(--bt-soft)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(.hero-stat strong,.hero-stat .value,.primary-kpi-score strong,.kpi-value){color:var(--bt-gold-text)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(thead th,.table-head){background:var(--bt-gold-soft)!important;color:var(--bt-ink)!important;border-color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) .ux-nav-groups details.active>summary{background:var(--bt-gold)!important;color:var(--bt-deep)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(input,select,textarea){accent-color:var(--bt-brand)}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(input,textarea)::placeholder{color:var(--bt-muted)!important;opacity:1}
+.bt-picker button:focus-visible{outline-color:#75551b}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #media-center .media-hero-v2{background:linear-gradient(120deg,var(--bt-deep),var(--bt-brand))!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #operationalBudget .budget-ring{background:radial-gradient(circle,var(--bt-surface) 56%,transparent 58%),conic-gradient(var(--bt-gold) calc(var(--budget-used)*1%),var(--bt-line) 0)!important}
+/* Text-clipped shine is unsuitable for long report headings on mixed gradients. */
+:root[data-busola-theme]:not([data-busola-theme="original"]) body .page #centerTitle .straight-title-block :is(.straight-title-main,.straight-title-sub){background:var(--bt-deep)!important;color:var(--bt-on)!important;-webkit-text-fill-color:var(--bt-on)!important;background-clip:border-box!important;-webkit-background-clip:border-box!important;padding:.12em .3em;border-radius:.12em;text-shadow:none!important}
