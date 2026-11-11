@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-11-11T08:56:47.454Z",
+  "updatedAt": "2026-11-11T10:28:55.184Z",
   "edits": {
     "div:1>main:1>header:1>div:1>span:1": "صندوق الحماية الاجتماعية · سلطنة عُمان",
     "div:1>main:1>header:1>div:1>h1:1": "بوصلة المتعامل",
@@ -2977,7 +2977,7 @@
     "communications.savings.rasdlikes-label": "إعجاب",
     "communications.savings.rasdshares": "36",
     "communications.savings.rasdshares-label": "إعادة نشر",
-    "communications.savings.sumayaname": "حساب سمية العمرية",
+    "communications.savings.sumayaname": "حساب أحد مؤثري التواصل الاجتماعي",
     "communications.savings.sumayaviews": "88",
     "communications.savings.sumayaunit": "ألف مشاهدة",
     "communications.savings.sumayalikes": "179",
@@ -3069,7 +3069,21 @@
     "communications.community.plan.v2.caption1": "للتوعية وبناء المعرفة",
     "communications.community.plan.v2.caption2": "للتعلّم والتفاعل المباشر",
     "communications.community.plan.v2.caption3": "للوصول إلى المجتمع ميدانياً",
-    "communications.savings.accounts-title": "أبرز الحسابات في المشاهدات"
+    "communications.savings.accounts-title": "أبرز الحسابات في المشاهدات",
+    "community.plan.dashboard.open": "خطة التواصل المجتمعي",
+    "#appearance-studio>header:1>small:1": "بوصلة المتعامل · مساحة شخصية",
+    "#appearance-studio>header:1>h2:1": "استوديو تخصيص المظهر",
+    "#appearance-studio>div:1>section:1>h3:1": "الأنماط البصرية",
+    "#appearance-studio>div:1>section:1>p:1": "الأنماط الجديدة: 60% أساس، 30% مساحات مساندة، 10% إبراز ذهبي؛ توزيع بصري إرشادي.",
+    "#appearance-studio>div:1>section:2>h3:1": "الخطوط",
+    "#appearance-studio>div:1>section:2>p:1": "خطوط مفتوحة الترخيص. DIN غير مضاف لعدم توفر ترخيص ويب موثّق.",
+    "#appearance-studio>div:1>section:3>h3:1": "حجم الخطوط",
+    "#appearance-studio>div:1>section:4>h3:1": "الألوان",
+    "#appearance-studio>div:1>section:4>p:1": "الحفظ يتطلب تبايناً مقروءاً. الشعارات وألوان الحالات محفوظة.",
+    "#appearance-studio>div:1>section:5>h3:1": "البطاقات",
+    "#appearance-studio>div:1>section:6>h3:1": "الحركة والتفاعلات",
+    "#appearance-studio>div:1>section:6>p:1": "إعداد تقليل الحركة في جهازك له الأولوية.",
+    "communications.community.plan.dashboard.open": "خطة التواصل المجتمعي"
   },
   "planDelivery": {
     "O01": {
