@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-11-11T08:52:25.603Z",
+  "updatedAt": "2026-11-11T08:56:17.039Z",
   "edits": {
     "div:1>main:1>header:1>div:1>span:1": "صندوق الحماية الاجتماعية · سلطنة عُمان",
     "div:1>main:1>header:1>div:1>h1:1": "بوصلة المتعامل",
@@ -2970,7 +2970,7 @@
     "communications.savings.fundlikes-label": "إعجاب",
     "communications.savings.fundshares": "39",
     "communications.savings.fundshares-label": "إعادة نشر",
-    "communications.savings.rasdname": "منصة رصد",
+    "communications.savings.rasdname": "حساب رصد",
     "communications.savings.rasdviews": "243",
     "communications.savings.rasdunit": "ألف مشاهدة",
     "communications.savings.rasdlikes": "223",
@@ -2987,7 +2987,7 @@
     "communications.savings.reach-note": "تعكس هذه المؤشرات اتساع وصول المعلومة خارج الحساب الرسمي، مع ضرورة التمييز بين المشاهدات المسجلة للمحتوى وعدد الأشخاص الفريدين الذين وصل إليهم؛ فقد تتداخل جماهير الحسابات.",
     "communications.savings.s4label": "04 / نظام الادخار",
     "communications.savings.s4": "الجهود الإعلامية المنفذة",
-    "communications.savings.p22": "نفّذ الصندوق حزمة متكاملة من الإجراءات الإعلامية، جمعت بين النشر الاستباقي، وتوسيع الوصول، وتوضيح المعلومات، ومتابعة التفاعل:",
+    "communications.savings.p22": "نفذ الصندوق حزمة متكاملة من الإجراءات الإعلامية، جمعت بين النشر الاستباقي، وتوسيع الوصول، وتوضيح المعلومات، ومتابعة التفاعل:",
     "communications.savings.effort23title": "النشر بثلاث لغات",
     "communications.savings.effort23body": "نشر محتوى تعريفي بالعربية والإنجليزية والأوردية، لتوسيع وصول المعلومة إلى الفئات المستهدفة.",
     "communications.savings.effort24title": "التغطية الصحفية الموسعة",
