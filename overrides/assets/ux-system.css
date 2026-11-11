@@ -1500,3 +1500,28 @@ html.communications-active .content-wrap{display:none}
 
 /* Community plan reference and planning metrics */
 #community-line .community-plan-download{margin:24px 0;padding:28px;border:1px solid #cabb98;border-inline-start:6px solid #CCA862;border-radius:22px;background:linear-gradient(120deg,#f7f4e9,#e5eee6);color:#1c3830;box-shadow:0 10px 25px #1c383012}#community-line .community-plan-intro{display:flex;align-items:center;gap:20px}#community-line .community-plan-intro>i{display:grid;place-items:center;width:68px;height:68px;flex-shrink:0;background:#3A564C;color:#f0d6a3;border-radius:18px}#community-line .community-plan-intro svg{width:34px;height:34px}#community-line .community-plan-intro h3{font-size:28px;margin:6px 0;color:#1c3830}#community-line .community-plan-intro p{font-size:17px;line-height:1.8;margin:0}#community-line .community-plan-intro a{margin-inline-start:auto;display:flex;gap:10px;align-items:center;padding:15px 20px;background:#6C2947;color:white;border-radius:12px;text-decoration:none;flex-shrink:0;font-weight:bold}#community-line .community-plan-intro a svg{width:22px;height:22px}#community-line .community-plan-intro a small{color:#edcf94}#community-line .community-plan-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0 16px}#community-line .community-plan-stats>div{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:22px 15px;background:#3A564C;border-radius:15px;text-align:center;color:#fff}#community-line .community-plan-stats strong{font-size:44px;color:#edcf94;line-height:1.2}#community-line .community-plan-stats span{font-size:16px;color:#fff}#community-line .community-plan-note{display:block;font-size:13px;line-height:1.8;color:#3A564C}@media(max-width:800px){#community-line .community-plan-intro{flex-wrap:wrap}#community-line .community-plan-intro a{margin:0}#community-line .community-plan-stats{grid-template-columns:1fr}#community-line .community-plan-download{padding:22px 18px}}
+
+/* Shared community plan reference card */
+#community-line .community-plan-download{margin:24px 0;padding:0!important;border:1px solid #d0c09a!important;border-radius:24px!important;overflow:hidden;background:#f5f3eb!important;color:#1c3830;box-shadow:0 12px 30px #18382c18}
+#community-line .community-plan-download .community-plan-intro{display:flex;align-items:center;gap:20px;padding:28px;background:radial-gradient(circle at 10% 0%,#cca86233,transparent 45%),#294c40;color:#fff}
+#community-line .community-plan-download .community-plan-intro>i{display:grid;place-items:center;width:64px;height:64px;flex-shrink:0;background:#ffffff12;color:#edcf94;border:1px solid #cca86288;border-radius:18px}
+#community-line .community-plan-download .community-plan-intro svg{width:32px;height:32px}
+#community-line .community-plan-download .community-plan-intro h3{font-size:28px;margin:5px 0;color:#fff!important}
+#community-line .community-plan-download .community-plan-intro p{font-size:16px;line-height:1.8;margin:0;color:#fff!important}
+#community-line .community-plan-download .community-plan-intro>div>span{font-size:13px;color:#edcf94}
+#community-line .community-plan-download .community-plan-intro a{margin-inline-start:auto;display:flex;align-items:center;gap:9px;padding:14px 18px;background:#edcf94!important;color:#1c3830!important;border-radius:12px;text-decoration:none;flex-shrink:0;font-weight:700}
+#community-line .community-plan-download .community-plan-intro a svg{width:22px;height:22px}
+#community-line .community-plan-download .community-plan-intro a small{color:#1c3830!important}
+#community-line .community-plan-download .community-plan-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0!important;padding:24px 24px 16px}
+#community-line .community-plan-download .community-plan-stats>div{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:24px 16px!important;border:1px solid #dce4dc;border-top:4px solid #CCA862;border-radius:16px;background:#fff!important;text-align:center;color:#1c3830!important}
+#community-line .community-plan-download .community-plan-stats>div:nth-child(2){border-top-color:#6C2947}
+#community-line .community-plan-download .community-plan-stats>div:nth-child(3){border-top-color:#3A564C}
+#community-line .community-plan-download .community-plan-stats i{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:#f3ead5;color:#725823}
+#community-line .community-plan-download .community-plan-stats>div:nth-child(2) i{background:#f1e2e9;color:#6C2947}
+#community-line .community-plan-download .community-plan-stats>div:nth-child(3) i{background:#e4eee6;color:#3A564C}
+#community-line .community-plan-download .community-plan-stats svg{width:26px;height:26px}
+#community-line .community-plan-download .community-plan-stats strong{font-size:52px!important;line-height:1.15;color:#6C2947!important;font-weight:700}
+#community-line .community-plan-download .community-plan-stats span{font-size:19px!important;color:#1c3830!important;font-weight:700}
+#community-line .community-plan-download .community-plan-stats small{font-size:13px;color:#51685d}
+#community-line .community-plan-download .community-plan-note{display:block;padding:0 26px 22px;font-size:13px;line-height:1.8;color:#51685d}
+@media(max-width:800px){#community-line .community-plan-download .community-plan-intro{flex-wrap:wrap;padding:24px 18px}#community-line .community-plan-download .community-plan-intro a{margin:0}#community-line .community-plan-download .community-plan-stats{grid-template-columns:1fr;padding:18px}#community-line .community-plan-download .community-plan-intro h3{font-size:24px}}
