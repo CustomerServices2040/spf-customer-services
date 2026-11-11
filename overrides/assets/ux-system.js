@@ -11,14 +11,28 @@
     }
   })();
   function syncPresentationHeader() {
-    const header = document.querySelector('.topbar');
-    if (header) document.documentElement.style.setProperty('--presentation-header-height', `${Math.ceil(header.getBoundingClientRect().height)}px`);
+    const root = document.documentElement;
+    const measurements = [
+      ['.topbar', '--presentation-header-height'],
+      ['.ux-nav-groups', '--presentation-nav-height'],
+      ['.chapter-footer', '--presentation-footer-height']
+    ];
+    measurements.forEach(([selector, variable]) => {
+      const node = document.querySelector(selector);
+      if (node) root.style.setProperty(variable, `${Math.ceil(node.getBoundingClientRect().height)}px`);
+    });
   }
   window.addEventListener('resize', syncPresentationHeader);
   document.addEventListener('fullscreenchange', syncPresentationHeader);
+  document.addEventListener('webkitfullscreenchange', syncPresentationHeader);
   document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('.topbar');
-    if (header) new ResizeObserver(syncPresentationHeader).observe(header);
+    const observer = new ResizeObserver(syncPresentationHeader);
+    ['.topbar', '.ux-nav-groups', '.chapter-footer'].forEach(selector => {
+      const node = document.querySelector(selector);
+      if (node) observer.observe(node);
+    });
+    new MutationObserver(syncPresentationHeader).observe(document.documentElement, {attributes: true, attributeFilter: ['class']});
+    document.fonts?.ready.then(syncPresentationHeader);
     syncPresentationHeader();
   });
   const NAV_GROUPS = [
@@ -81,7 +95,8 @@
           ["channels", "المنصات والوصول"],
           ["community", "التواصل المجتمعي"],
           ["performance", "الأداء والمؤشرات"],
-          ["coordination", "التحديات والتكامل"]
+          ["coordination", "التحديات والتكامل"],
+          ["savings", "نظام الادخار"]
         ];
         subTabs.forEach(([id, name]) => {
           const link = document.createElement("a");
@@ -332,6 +347,9 @@
   function boot() {
     ensureCurrentRelease();
     buildGroupedNavigation();
+    const groupedNav = document.querySelector(".ux-nav-groups");
+    if (groupedNav) new ResizeObserver(syncPresentationHeader).observe(groupedNav);
+    syncPresentationHeader();
     addAccessibilityAids();
     syncHeadlineIndicators();
     loadTaskData();
@@ -374,3 +392,4 @@
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initRecognitions); else initRecognitions();
 })();
+
