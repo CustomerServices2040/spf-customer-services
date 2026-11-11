@@ -1494,3 +1494,6 @@ html.communications-active .chapter-footer{display:none!important}
   html.presentation-fullscreen .ux-nav-menu{max-height:calc(100dvh - var(--presentation-header-height,105px) - var(--presentation-nav-height,66px) - 100px);overflow-y:auto;overscroll-behavior:contain}
   html.presentation-fullscreen .section-block{scroll-margin-top:calc(var(--presentation-header-height,105px) + var(--presentation-nav-height,66px) + 20px)}
 }
+
+/* Communications is mounted after the content wrapper; omit its empty padding. */
+html.communications-active .content-wrap{display:none}
