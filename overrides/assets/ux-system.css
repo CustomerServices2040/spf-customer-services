@@ -1550,16 +1550,19 @@ html.communications-active .content-wrap{display:none}
 #contact-center .cc-channel-assistant{bottom:0;left:17px}#contact-center .cc-channel-chat{bottom:0;right:17px}
 #contact-center .cc-channel-x svg,#contact-center .cc-channel-wa svg{fill:currentColor;stroke:none}
 #contact-center .cc-hub-layout .cc-smart-core>b{margin-top:10px;font-size:23px;color:#fff}
-#contact-center .cc-service-hours{border:1px solid #c9d9ce;border-top:4px solid #cca862;background:#fff;padding:17px 20px;border-radius:22px;color:#243f36}
-#contact-center .cc-service-hours h4{display:flex;justify-content:center;align-items:center;gap:9px;margin:0 0 10px;font-size:17px;color:#243f36}
+#contact-center .cc-service-hours{border:1px solid #c9d9ce;border-top:4px solid #cca862;background:linear-gradient(140deg,#3a564c,#243f36);padding:17px 20px;border-radius:22px;color:#fff}
+#contact-center .cc-service-hours h4{display:flex;justify-content:center;align-items:center;gap:9px;margin:0 0 10px;font-size:17px;color:#fff}
 #contact-center .cc-service-hours svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
-#contact-center .cc-service-hours i{display:grid;place-items:center;flex:none;color:#3a564c}
+#contact-center .cc-service-hours i{display:grid;place-items:center;flex:none;color:#cca862}
 #contact-center .cc-hours-human,#contact-center .cc-hours-always{display:flex;align-items:center;gap:10px;padding:7px 0}
 #contact-center .cc-hours-human div,#contact-center .cc-hours-always div{flex:1;text-align:center;min-width:0}
 #contact-center .cc-service-hours b{font-size:13px;line-height:1.65;display:block;font-weight:400}
-#contact-center .cc-hours-human strong{font-size:25px;line-height:1.5;display:block;color:#6c2947;font-weight:700}
-#contact-center .cc-hours-always{border-top:1px solid #e2e7df;margin-top:7px;padding-top:10px}
-#contact-center .cc-hours-always strong{display:block;color:#243f36;font-size:38px;line-height:1.15;font-weight:700}
-#contact-center .cc-hours-always small{color:#536c5d;font-size:12px}
+#contact-center .cc-hours-human strong{font-size:38px;line-height:1.15;display:block;color:#fff;font-weight:700}
+#contact-center .cc-hours-range{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:8px}
+#contact-center .cc-hours-range small{display:block;font-size:14px;color:#fff}
+#contact-center .cc-hours-separator{font-size:22px;color:#cca862}
+#contact-center .cc-hours-always{border-top:1px solid #ffffff30;margin-top:7px;padding-top:10px}
+#contact-center .cc-hours-always strong{display:block;color:#fff;font-size:38px;line-height:1.15;font-weight:700}
+#contact-center .cc-hours-always small{color:#e5ece8;font-size:12px}
 @media(max-width:1050px){#contact-center .cc-hub-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"core core" "one two" "three four" "five five"}#contact-center .cc-smart-center{grid-template-columns:1fr 1fr;align-items:stretch}#contact-center .cc-service-hours{display:flex;flex-direction:column;justify-content:center}#contact-center .cc-hub-layout .cc-cap-5{width:calc((100% - 16px)/2)}}
-@media(max-width:620px){#contact-center .cc-hub-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"core" "one" "two" "three" "four" "five"}#contact-center .cc-smart-center{grid-template-columns:1fr}#contact-center .cc-hub-layout .cc-capability{padding:22px;min-height:190px;width:100%}#contact-center .cc-feature-name{min-width:0;flex-basis:calc(100% - 58px)}#contact-center .cc-hub-layout .cc-feature-name h4{font-size:18px}#contact-center .cc-term{font-size:13px}#contact-center .cc-hours-human strong{font-size:21px;white-space:nowrap}}
+@media(max-width:620px){#contact-center .cc-hub-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"core" "one" "two" "three" "four" "five"}#contact-center .cc-smart-center{grid-template-columns:1fr}#contact-center .cc-hub-layout .cc-capability{padding:22px;min-height:190px;width:100%}#contact-center .cc-feature-name{min-width:0;flex-basis:calc(100% - 58px)}#contact-center .cc-hub-layout .cc-feature-name h4{font-size:18px}#contact-center .cc-term{font-size:13px}#contact-center .cc-hours-human strong{font-size:38px;white-space:nowrap}}
