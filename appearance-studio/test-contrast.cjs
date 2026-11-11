@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict');
+const C=require('./contrast.js');
+assert.equal(C.ratio(C.parse('#ffffff'),C.parse('#000000')),21);
+assert.equal(C.ratio(C.parse('#ffffff'),C.parse('#ffffff')),1);
+assert(C.ratio(C.parse('#243F36'),C.parse('#ffffff'))>10);
+assert(C.ratio(C.parse('#CCA862'),C.parse('#ffffff'))<3);
+assert(C.ratio(C.parse('#CCA862'),C.parse('#0F172A'))>4.5);
+assert.deepEqual(C.over([255,255,255,.5],[0,0,0,1]),[127.5,127.5,127.5,1]);
+assert.equal(C.score(C.parse('#fff'),[[255,255,255,1],[0,0,0,1]]),1);
+console.log('PASS: contrast boundaries, gold on light/dark, alpha composition, worst gradient background.');

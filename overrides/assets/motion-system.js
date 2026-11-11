@@ -1,5 +1,6 @@
 (()=>{'use strict';
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const motion=()=>document.documentElement.dataset.appearanceMotion||'standard';
+const reduce=()=>matchMedia('(prefers-reduced-motion: reduce)').matches||motion()==='off';
 const numberSelector=[
   '.hero-metrics .metric-card>strong','.metric-value','.plan-hero-kpis>article>strong',
   '.tracker-summary>article>strong','.board-metric-grid>article>strong','.board-proof strong',
@@ -36,10 +37,10 @@ function parseNumeric(raw){
 }
 function animateNumber(element){
   const node=numericNode(element);if(!node||activeNodes.has(node))return;const original=node.nodeValue,parsed=parseNumeric(original);if(!parsed||parsed.value<0)return;
-  if(signatures.get(node)===original)return;signatures.set(node,original);element.classList.add('motion-number');if(reduce){node.nodeValue=original;return}
-  activeNodes.add(node);const started=performance.now(),duration=Math.min(2200,1250+Math.log10(Math.abs(parsed.value)+1)*180);
+  if(signatures.get(node)===original)return;signatures.set(node,original);element.classList.add('motion-number');if(reduce()){node.nodeValue=original;return}
+  activeNodes.add(node);const started=performance.now(),duration=Math.min(2200,1250+Math.log10(Math.abs(parsed.value)+1)*180)*(motion()==='calm'?1.4:motion()==='lively'?.75:1);
   const format=value=>new Intl.NumberFormat('en-US',{useGrouping:parsed.grouped,minimumFractionDigits:parsed.decimal,maximumFractionDigits:parsed.decimal}).format(value);
-  const frame=now=>{const progress=Math.max(0,Math.min(1,(now-started)/duration)),eased=1-Math.pow(1-progress,3),value=parsed.value*eased;node.nodeValue=parsed.before+format(value)+parsed.suffix+parsed.after;if(progress<1)requestAnimationFrame(frame);else{node.nodeValue=original;signatures.set(node,original);setTimeout(()=>activeNodes.delete(node),0)}};requestAnimationFrame(frame);
+  const frame=now=>{const progress=reduce()?1:Math.max(0,Math.min(1,(now-started)/duration)),eased=1-Math.pow(1-progress,3),value=parsed.value*eased;node.nodeValue=parsed.before+format(value)+parsed.suffix+parsed.after;if(progress<1)requestAnimationFrame(frame);else{node.nodeValue=original;signatures.set(node,original);setTimeout(()=>activeNodes.delete(node),0)}};requestAnimationFrame(frame);
 }
 const visibility=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add('motion-visible');visibility.unobserve(entry.target);if(entry.target.matches(numberSelector))animateNumber(entry.target)}),{threshold:.16,rootMargin:'0px 0px -4%'});
 function prepare(root=document){

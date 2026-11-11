@@ -80,6 +80,7 @@ jobs:
           python patches/patch_index.py _site/legacy/index.html
           cp communications/integrated.js _site/legacy/assets/communications.js
           python communications/patch_communications.py _site/legacy/index.html
+          python appearance-studio/integrate.py _site/legacy
           python - <<'PY'
           import json
           import os
