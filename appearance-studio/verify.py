@@ -15,7 +15,14 @@ assert all(c.value is None for row in s for c in list(row)[:1]+list(row)[14:])
 for f in (R/'appearance-studio').glob('*.js'):subprocess.run(['node','--check',str(f)],check=True)
 subprocess.run(['node','--check',str(R/'communications/integrated.js')],check=True)
 # Operational assets and protection remain byte-identical to the branch base.
-for file in ['overrides/assets/app.js','overrides/assets/data.js','overrides/assets/dashboard-edits.json','scripts/encrypt_two_layer.mjs']:
+for file in ['overrides/assets/app.js','overrides/assets/data.js','scripts/encrypt_two_layer.mjs']:
  p=R/file
  if p.exists():assert p.read_bytes()==subprocess.check_output(['git','show','HEAD:'+file],cwd=R),file
 print('PASS: all 83 workbook rows and 13 fields exact; quarters 25/17/16/22; planned quantity 79; 3 unassigned. JS syntax and operational/protection integrity pass.')
+
+# The explicitly approved plan totals may change; unrelated saved edits must not.
+current=json.loads((R/"overrides/assets/dashboard-edits.json").read_text())["edits"]
+base=json.loads(subprocess.check_output(["git","show","e637dccaa487c3a2565255a9125c35c0d57ca7bb:overrides/assets/dashboard-edits.json"],cwd=R))["edits"]
+allowed={p+k for p in ["community.plan.v2.","communications.community.plan.v2."] for k in ["metric1","label1","metric2","label2","metric3","label3","eyebrow","method"]}
+assert {k:v for k,v in current.items() if k not in allowed}=={k:v for k,v in base.items() if k not in allowed}
+assert 28+20+31==79

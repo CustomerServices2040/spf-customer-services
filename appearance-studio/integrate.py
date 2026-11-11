@@ -21,7 +21,7 @@ for page in [site/'index.html',site/'assets/work-tracker.html',*list((site/'foru
  prefix=os.path.relpath(site/'assets',page.parent).replace('\\','/')+'/'
  css=''.join(f'<link data-appearance-studio rel="stylesheet" href="{prefix}{x}?v={revision}">' for x in ['themes.css','appearance-studio.css'])
  # Keep the existing UX assets last, as required by platform audit.
- match=re.search(r'<link[^>]+href="[^\"]*ux-system.css[^\"]*"[^>]*>',s)
+ match=re.search(r'<link[^>]+href="[^\"]*navigation-reliability.css[^\"]*"[^>]*>',s)
  if match:s=s[:match.start()]+css+s[match.start():]
  else:s=s.replace('</head>',css+'</head>')
  scripts='<script>window.BusolaAppearanceOwnsPicker=true;</script>'+''.join(f'<script defer data-appearance-studio src="{prefix}{x}?v={revision}"></script>' for x in ['contrast.js','themes.js','appearance-studio.js'])
