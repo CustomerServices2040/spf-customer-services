@@ -1526,40 +1526,40 @@ html.communications-active .content-wrap{display:none}
 #community-line .community-plan-download .community-plan-note{display:block;padding:0 26px 22px;font-size:13px;line-height:1.8;color:#51685d}
 @media(max-width:800px){#community-line .community-plan-download .community-plan-intro{flex-wrap:wrap;padding:24px 18px}#community-line .community-plan-download .community-plan-intro a{margin:0}#community-line .community-plan-download .community-plan-stats{grid-template-columns:1fr;padding:18px}#community-line .community-plan-download .community-plan-intro h3{font-size:24px}}
 
-/* Smart contact centre: technology ring, channel hub and service hours. */
-#contact-center .cc-hub-layout{grid-template-columns:minmax(0,1fr) minmax(310px,1.1fr) minmax(0,1fr);grid-template-areas:"one core two" "three core four" "five five five";gap:18px;align-items:stretch}
-#contact-center .cc-smart-center{grid-area:core;display:grid;gap:16px;min-width:0}
-#contact-center .cc-hub-layout .cc-capability{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;align-content:center;padding:25px;text-align:center;min-width:0}
-#contact-center .cc-hub-layout .cc-capability>div{grid-column:1/-1}
-#contact-center .cc-term{font-style:normal;font-size:14px;line-height:1.5;color:#3a564c;font-weight:700;overflow-wrap:anywhere;text-align:right}
-#contact-center .cc-hub-layout .cc-smart-core{min-height:335px;padding:20px 12px 22px;grid-area:auto;overflow:hidden;background:linear-gradient(140deg,#3a564c,#243f36)}
+/* Smart contact centre: compact central hub and uniform capability cards. */
+#contact-center .cc-hub-layout{grid-template-columns:minmax(0,1fr) minmax(310px,1.05fr) minmax(0,1fr);grid-template-areas:"one core two" "three core four" "five five five";gap:16px;align-items:stretch}
+#contact-center .cc-smart-center{grid-area:core;display:grid;gap:14px;min-width:0}
+#contact-center .cc-hub-layout .cc-capability{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:22px;gap:13px;text-align:center;min-width:0;border:1px solid #dce2d8;background:#fff;border-radius:20px;color:#243f36}
+#contact-center .cc-feature-heading{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;width:100%}
+#contact-center .cc-feature-icon{width:46px;height:46px;border-radius:14px;background:#eee6d1;color:#725823;display:grid;place-items:center;flex:none}
+#contact-center .cc-feature-name{display:flex;align-items:baseline;justify-content:center;gap:4px 8px;flex-wrap:wrap;flex:1;min-width:160px}
+#contact-center .cc-hub-layout .cc-feature-name h4{font-size:20px;line-height:1.6;margin:0;color:#243f36}
+#contact-center .cc-term{font-style:normal;font-size:14px;line-height:1.5;color:#536c5d;font-weight:700;overflow-wrap:anywhere}
+#contact-center .cc-hub-layout .cc-capability p{font-size:16px;line-height:1.9;margin:0;color:#536c5d;max-width:44ch}
+#contact-center .cc-hub-layout .cc-cap-5{max-width:none;width:calc((100% - 32px)/3);justify-self:center;min-height:200px}
+#contact-center .cc-hub-layout .cc-smart-core{min-height:230px;padding:16px 12px 20px;grid-area:auto;background:linear-gradient(140deg,#3a564c,#243f36)}
 #contact-center .cc-hub-layout .cc-smart-core:before,#contact-center .cc-hub-layout .cc-smart-core:after{display:none}
-#contact-center .cc-channel-orbit{position:relative;width:270px;max-width:100%;height:230px;isolation:isolate}
-#contact-center .cc-channel-orbit:before{content:"";position:absolute;width:190px;height:190px;border:1px solid #cca86288;border-radius:50%;top:20px;left:calc(50% - 95px);box-shadow:0 0 0 12px #cca86209}
-#contact-center .cc-hub-headset{position:absolute;top:78px;left:calc(50% - 37px);width:74px;height:74px;display:grid;place-items:center;background:#cca862;border-radius:50%;color:#243f36}
-#contact-center .cc-channel{position:absolute;width:86px;display:flex;align-items:center;flex-direction:column;gap:4px;color:white;font-size:11px;text-align:center;line-height:1.3}
-#contact-center .cc-channel i{width:43px;height:43px;display:grid;place-items:center;background:#fff;border-radius:14px;color:#243f36;box-shadow:0 5px 15px #0002;border:1px solid #cca862}
+#contact-center .cc-channel-orbit{position:relative;width:220px;max-width:100%;height:160px}
+#contact-center .cc-channel-orbit:before{content:"";position:absolute;width:145px;height:145px;border:1px solid #cca86288;border-radius:50%;top:7px;left:calc(50% - 72px)}
+#contact-center .cc-hub-headset{position:absolute;top:49px;left:calc(50% - 31px);width:62px;height:62px;display:grid;place-items:center;background:#cca862;border-radius:50%;color:#243f36}
+#contact-center .cc-hub-headset svg{width:38px;height:38px}
+#contact-center .cc-channel{position:absolute;display:grid;place-items:center;width:44px;height:44px}
+#contact-center .cc-channel i{width:44px;height:44px;display:grid;place-items:center;background:#fff;border-radius:14px;color:#243f36;box-shadow:0 5px 15px #0002;border:1px solid #cca862}
 #contact-center .cc-channel svg{width:25px;height:25px;stroke-width:1.7}
-#contact-center .cc-channel small{font-size:11px;margin:0;color:white!important}
-#contact-center .cc-channel-x{top:0;left:10px}#contact-center .cc-channel-wa{top:0;right:10px}
-#contact-center .cc-channel-assistant{bottom:0;left:0}#contact-center .cc-channel-chat{bottom:0;right:0}
+#contact-center .cc-channel-x{top:0;left:17px}#contact-center .cc-channel-wa{top:0;right:17px}
+#contact-center .cc-channel-assistant{bottom:0;left:17px}#contact-center .cc-channel-chat{bottom:0;right:17px}
 #contact-center .cc-channel-x svg,#contact-center .cc-channel-wa svg{fill:currentColor;stroke:none}
-#contact-center .cc-hub-layout .cc-smart-core>b{margin-top:10px;font-size:24px;color:#fff}
-#contact-center .cc-service-hours{border:1px solid #c9d9ce;border-top:4px solid #cca862;background:white;padding:20px;border-radius:22px;color:#243f36;box-shadow:0 8px 24px #243f360c}
-#contact-center .cc-service-hours h4{display:flex;justify-content:center;align-items:center;gap:10px;margin:0 0 15px;font-size:20px;color:#243f36}
-#contact-center .cc-service-hours svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
-#contact-center .cc-service-hours i{display:grid;place-items:center;flex-shrink:0}
-#contact-center .cc-hours-human,#contact-center .cc-hours-always{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;background:#eff4ef}
-#contact-center .cc-hours-human>i,#contact-center .cc-hours-always>i{width:38px;height:38px;border-radius:12px;background:#fff;color:#3a564c}
+#contact-center .cc-hub-layout .cc-smart-core>b{margin-top:10px;font-size:23px;color:#fff}
+#contact-center .cc-service-hours{border:1px solid #c9d9ce;border-top:4px solid #cca862;background:#fff;padding:17px 20px;border-radius:22px;color:#243f36}
+#contact-center .cc-service-hours h4{display:flex;justify-content:center;align-items:center;gap:9px;margin:0 0 10px;font-size:17px;color:#243f36}
+#contact-center .cc-service-hours svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
+#contact-center .cc-service-hours i{display:grid;place-items:center;flex:none;color:#3a564c}
+#contact-center .cc-hours-human,#contact-center .cc-hours-always{display:flex;align-items:center;gap:10px;padding:7px 0}
 #contact-center .cc-hours-human div,#contact-center .cc-hours-always div{flex:1;text-align:center;min-width:0}
-#contact-center .cc-service-hours b{font-size:13px;line-height:1.65;display:block}
-#contact-center .cc-hours-human strong{font-size:23px;line-height:1.6;display:block;color:#6c2947}
-#contact-center .cc-hours-always{margin-top:10px;background:#243f36;color:white}
-#contact-center .cc-hours-always strong{display:block;color:#edcf94;font-size:34px;line-height:1.2}
-#contact-center .cc-hours-always small{color:#fff;font-size:12px}
-#contact-center .cc-hub-layout .cc-cap-5{max-width:none;justify-self:stretch;background:linear-gradient(120deg,#3a564c,#243f36);color:#fff;border:1px solid #cca862;grid-template-columns:48px auto;justify-content:center;gap:10px 16px;padding:22px}
-#contact-center .cc-hub-layout .cc-cap-5 h4,#contact-center .cc-hub-layout .cc-cap-5 p,#contact-center .cc-hub-layout .cc-cap-5 .cc-term{color:white}
-#contact-center .cc-hub-layout .cc-cap-5>span{background:#cca862;color:#243f36}
-@media(max-width:1050px){#contact-center .cc-hub-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"core core" "one two" "three four" "five five"}#contact-center .cc-smart-center{grid-template-columns:1fr 1fr;align-items:stretch}#contact-center .cc-service-hours{display:flex;flex-direction:column;justify-content:center}}
-@media(max-width:620px){#contact-center .cc-hub-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"core" "one" "two" "three" "four" "five"}#contact-center .cc-smart-center{grid-template-columns:1fr}#contact-center .cc-hub-layout .cc-capability{padding:22px}#contact-center .cc-term{font-size:13px}}
-@media(max-width:620px){#contact-center .cc-hours-human,#contact-center .cc-hours-always{flex-direction:column;gap:8px}#contact-center .cc-hours-human strong{font-size:20px;white-space:nowrap}}
+#contact-center .cc-service-hours b{font-size:13px;line-height:1.65;display:block;font-weight:400}
+#contact-center .cc-hours-human strong{font-size:25px;line-height:1.5;display:block;color:#6c2947;font-weight:700}
+#contact-center .cc-hours-always{border-top:1px solid #e2e7df;margin-top:7px;padding-top:10px}
+#contact-center .cc-hours-always strong{display:block;color:#243f36;font-size:38px;line-height:1.15;font-weight:700}
+#contact-center .cc-hours-always small{color:#536c5d;font-size:12px}
+@media(max-width:1050px){#contact-center .cc-hub-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"core core" "one two" "three four" "five five"}#contact-center .cc-smart-center{grid-template-columns:1fr 1fr;align-items:stretch}#contact-center .cc-service-hours{display:flex;flex-direction:column;justify-content:center}#contact-center .cc-hub-layout .cc-cap-5{width:calc((100% - 16px)/2)}}
+@media(max-width:620px){#contact-center .cc-hub-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"core" "one" "two" "three" "four" "five"}#contact-center .cc-smart-center{grid-template-columns:1fr}#contact-center .cc-hub-layout .cc-capability{padding:22px;min-height:190px;width:100%}#contact-center .cc-feature-name{min-width:0;flex-basis:calc(100% - 58px)}#contact-center .cc-hub-layout .cc-feature-name h4{font-size:18px}#contact-center .cc-term{font-size:13px}#contact-center .cc-hours-human strong{font-size:21px;white-space:nowrap}}
