@@ -12,6 +12,7 @@ def links(s):
  s=s.replace('<small>Excel</small>','<small>لوحة تفاعلية</small>')
  s=s.replace('تحميل الخطة الكاملة','استعراض الخطة التفاعلية').replace('ملف Excel · خطة التواصل المجتمعي','لوحة تفاعلية · خطة التواصل المجتمعي')
  s=s.replace('<span>استعراض الخطة التفاعلية</span><small>لوحة تفاعلية</small>','<span data-edit-key="community.plan.dashboard.open">استعراض الخطة التفاعلية</span><small data-edit-key="community.plan.dashboard.format">لوحة تفاعلية</small>')
+ s=re.sub(r'<span([^>]*)>استعراض الخطة التفاعلية</span>(?:<small[^>]*>لوحة تفاعلية</small>)?', r'<span\1>خطة التواصل المجتمعي</span>',s)
  return s
 for page in [site/'index.html',site/'assets/work-tracker.html',*list((site/'forum').glob('*.html')),*list((site/'reports').glob('*.html'))]:
  if not page.exists():continue
