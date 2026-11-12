@@ -14,7 +14,7 @@ def links(s):
  s=s.replace('<span>استعراض الخطة التفاعلية</span><small>لوحة تفاعلية</small>','<span data-edit-key="community.plan.dashboard.open">استعراض الخطة التفاعلية</span><small data-edit-key="community.plan.dashboard.format">لوحة تفاعلية</small>')
  s=re.sub(r'<span([^>]*)>استعراض الخطة التفاعلية</span>(?:<small[^>]*>لوحة تفاعلية</small>)?', r'<span\1>خطة التواصل المجتمعي</span>',s)
  return s
-for page in [site/'index.html',site/'assets/work-tracker.html',*list((site/'forum').glob('*.html')),*list((site/'reports').glob('*.html'))]:
+for page in [site/'index.html',site/'leadership.html',site/'assets/work-tracker.html',*list((site/'forum').glob('*.html')),*list((site/'reports').glob('*.html'))]:
  if not page.exists():continue
  s=links(page.read_text())
  if 'data-appearance-studio' in s:continue

@@ -1,7 +1,37 @@
-/* Presentation adapter: no data writes; stores only the selected theme name. */
+/* Busola Design System 2.0: semantic presentation only. Existing API retained.
+   No content, handlers, permissions, data-source or operational storage writes. */
 (()=>{'use strict';
-const KEY='busola.visual-theme.v1', names={original:'التصميم الأصلي',green:'الأخضر المؤسسي',navy:'الأزرق التنفيذي',burgundy:'العنابي المؤسسي'};
-let selected='original';if(!names[selected])selected='original';document.documentElement.dataset.busolaTheme=selected;
+const themes=new Set(['original','green','navy','burgundy']);let selected='original',queued=false,css='';const roots=new Map(),scanned=new WeakSet();
+const exclude='#appearance-studio,.as-palette,.bt-picker,svg,.issuer-logo,.brand-logo,.channel-logo,[data-brand],.official-logo,.spf-mark';
+const families={
+ executive:'.executive-hero,.primary-kpi-hero,.cc-hero,.achievement-hero,.recognition-hero,.community-hero-v2,.media-hero-v2,.tajawob-hero,.hero',
+ performance:'.metric-card,.component-card,.cc-metric,.cc-rate-card,.cc-service-hours,.risk-summary>article,.workload-metrics>*,.contact-kpi-grid>*,.tajawob-year-card,.kpi,.sav-stat,.media-metric,.media-stat,.operation-metric,.output-item',
+ geographic:'.reach-card,.network-card,.map-stat,.inspector-kpis>article,.governorate-work,.work-metrics>article,.population-reading,.premises-metrics>article,.coverage-main',
+ information:'.people-card,.availability-card,.digital-channel-card,.service-catalog,.platform,.community-hero-kpis>*,.community-plan-stats>*,.community-impact-grid>*,.hero-stat',
+ achievement:'.service-achievement-card,.recognition-card,.media-stat-strip>*',
+ project:'.project-card,.future-project-item,.plan-card,.committee-card,.future-projects-card',
+ timeline:'.timeline-card,.roadmap-step',
+ comparison:'.semester-visual,.risk-card,.cc-chart-card,.coverage-bars,.unit-bars',
+ detail:'.cc-capability,.future-project-item,.geographic-map-card,.risk-detail-grid>article,.operational-budget-card,.mission-card,.strategy-card,.method-application,.practice-axis,.practice-item,.org-card,.community-roadmap-card,.community-calendar-card,.community-details,.modal-panel,.privacy-panel,.spf-encrypted-tab-card,.table-wrap,.table-card,.import-panel,.card.challenge,.answer,.sav-panel,.sav-summary,.sav-context,.sav-matrix>article,.sav-timeline>article,.sav-closing,.activity'
+};
+const numbers={
+ hero:'.impact-number>strong,.primary-kpi-score strong,.coverage-total>strong,.cc-primary strong',
+ primary:'.tajawob-hero strong,.tajawob-type-grid strong,.community-plan-stats strong,.community-impact-grid strong,.community-hero-kpis strong,.visual-metrics strong,.digital-workload-row strong,.workload-total strong,.recognition-hero strong,.achievement-hero strong,.media-stat-strip strong,.cc-hours-range strong,.cc-hours-always strong,.semester-score strong,#heroMetrics>article>strong,.workforce-total>strong,.reach-card>strong,.network-card strong,.service-catalog>strong,#governorateTotalWork,.practices-summary strong,.risk-summary strong,.cc-metric strong,.cc-rate-card strong,.contact-primary-metric strong,.contact-satisfaction-metric strong,.contact-x-metric strong,.kpi strong,.media-stat>strong,.media-metric>strong,.operation-metric strong,.output-item>strong,.sav-stat strong',
+ secondary:'.inspector-kpis strong,.work-metrics b,.premises-metrics b,.population-reading strong,.platform strong,.sav-reach-value strong,.quarter-result-row b,.semester-score b,.quarter-score b,.quarter-point strong,.stat-value,.insurance-value,.total-number,.extra-summary-number,.network-split-value'
+};
+const paintCandidates='article,.card,[class$="-card"],[class$="-panel"],[class$="-block"],.kpi,.hero-stat,.stat,form,table';
+function mark(root){
+ for(const [family,selector]of Object.entries(families))for(const e of root.querySelectorAll(selector)){if(e.closest(exclude))continue;if(e.dataset.bsComponent!==family)e.dataset.bsComponent=family;const surface=['detail','comparison'].includes(family)?'light':'dark';if(e.dataset.bsSurface!==surface)e.dataset.bsSurface=surface}
+ for(const e of root.querySelectorAll(paintCandidates)){if(e.dataset.bsSurface||e.closest(exclude)||e.matches('.section-block'))continue;e.dataset.bsSurface=e.matches('form,table')?'light':'dark';if(e.matches('article,.card,[class$="-card"],[class$="-panel"]'))e.dataset.bsComponent='information'}
+ for(const e of root.querySelectorAll('div,section,header,footer,aside,li,figure,details,summary,span,b,small,em,a,button,p,dt,dd,i,time')){if(scanned.has(e))continue;scanned.add(e);if(e.dataset.bsSurface||e.closest(exclude)||e.matches('button,summary,.ux-skip-link,.section-block,.content-wrap,.main-content,.app-shell,.comm-shell,.comm-main,.shell,.topbar,.ux-nav-groups,.chapter-footer')||/bar|ring|meter|track|progress|chart|map|legend|logo|icon|dot|circle|swatch|slide|modal|overlay/.test(e.className||''))continue;const s=getComputedStyle(e);if(s.backgroundImage!=='none'||!['rgba(0, 0, 0, 0)','transparent'].includes(s.backgroundColor))e.dataset.bsSurface='subtle'}
+ for(const [tier,selector]of Object.entries(numbers))for(const e of root.querySelectorAll(selector))if(!e.closest(exclude)&&/^[\s\d٠-٩.,%٪+−–:/]+$/.test([...e.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim())){if(e.dataset.bsKpi!==tier)e.dataset.bsKpi=tier;}
+ for(const e of root.querySelectorAll('table'))if(e.dataset.bsSurface!=='light')e.dataset.bsSurface='light';
+}
+
+/* Legacy Original color customization only. It owns no picker, theme dataset,
+   persistence or operational behavior. Inactive Original remains untouched. */
+function makeOriginalColorAdapter(){
+ let active=false;const roots=new Map(),originals=new Map();
 const colorRE=/#(?:[\da-f]{8}|[\da-f]{6}|[\da-f]{4}|[\da-f]{3})\b|rgba?\([^)]*\)|\b(?:white|black)\b/gi;
 function token(color,property){let r,g,b,a=1;if(color==='white'){r=g=b=255}else if(color==='black'){r=g=b=0}else if(color[0]==='#'){let h=color.slice(1);if(h.length<5)h=[...h].map(x=>x+x).join('');r=parseInt(h.slice(0,2),16);g=parseInt(h.slice(2,4),16);b=parseInt(h.slice(4,6),16);if(h.length===8)a=parseInt(h.slice(6,8),16)/255}else{const n=color.match(/[\d.]+/g);if(!n||n.length<3)return color;[r,g,b]=n.map(Number);if(n.length>3)a=+n[3]}
 // Keep red/orange/bright success/blue semantic colors meaningful across palettes.
@@ -10,66 +40,45 @@ let role;const light=(r+g+b)/3, spread=Math.max(r,g,b)-Math.min(r,g,b),text=/col
 if(r>g*1.2&&b>g*1.1&&r<160&&light<120)role='secondary';else if(r>g*1.08&&g>b*1.15&&r>100&&light<225)role=text?'gold-text':'gold';else if(light>248)role=text?'on':'surface';else if(light>228)role=text?'on':'canvas';else if(light>195)role=text?'muted':'soft';else if(light>145&&spread<50)role=text?'muted':'line';else if(light<48)role=text?'ink':'deep';else if(light<112)role=text?'brand':'brand';else role=text?'muted':'mid';
 const v='var(--bt-'+role+')';return a<1?`color-mix(in srgb, ${v} ${Math.round(a*10000)/100}%, transparent)`:v;}
 function convert(v,p){if(/url\(/i.test(v))return v;return v.replace(colorRE,c=>token(c.toLowerCase(),p))}
-const roots=new Map(), originals=new WeakMap();let pending=false;let serial=0;const contrastFixes=new Map();
 function selectors(text){const out=[];let start=0,depth=0,quote='';for(let i=0;i<text.length;i++){const c=text[i];if(quote){if(c===quote&&text[i-1]!=='\\')quote='';continue}if(c==='"'||c==="'"){quote=c;continue}if(c==='('||c==='[')depth++;if(c===')'||c===']')depth--;if(c===','&&!depth){out.push(text.slice(start,i));start=i+1}}out.push(text.slice(start));return out}
-function rules(list,shadow){let out='';for(const rule of list){if(rule.selectorText&&rule.style){if(/appearance|as-panel|as-control|bt-picker|bt-menu|bt-toggle|data-busola-theme|data-bt-inline/.test(rule.selectorText))continue;let decl='';for(const p of rule.style){if(!/(color|background|border|shadow|fill|stroke|outline|--)/.test(p))continue;const v=rule.style.getPropertyValue(p),n=convert(v,p);if(n!==v)decl+=p+':'+n+(rule.style.getPropertyPriority(p)?'!important':'')+';'}if(decl){const prefix=shadow?':host-context(html[data-busola-theme]:not([data-busola-theme="original"])) ': 'html[data-busola-theme]:not([data-busola-theme="original"]) ';const sels=selectors(rule.selectorText).map(s=>{s=s.trim();if(shadow)return prefix+s;return /^(html|:root)(?=[\s.:#\[]|$)/.test(s)?s.replace(/^(html|:root)/,prefix.trim()):prefix+s}).join(',');out+=sels+'{'+decl+'}\n'}}else if(rule.cssRules&&!rule.name){let inner=rules(rule.cssRules,shadow);if(inner)out+=rule.cssText.slice(0,rule.cssText.indexOf('{')+1)+inner+'}\n'}}return out}
-function register(root){if(roots.has(root))return;const style=document.createElement('style');style.dataset.btGenerated='';(root.head||root).append(style);roots.set(root,{style,signature:''});
-if(root!==document){const art=document.createElement('style');art.dataset.btGenerated='';const prefix=':host-context(html[data-busola-theme]:not([data-busola-theme="original"])) ';art.textContent=[
-'#intro .kpis .kpi:nth-child(1){background:var(--bt-deep)!important;border-color:var(--bt-gold)!important}',
-'#intro .kpis .kpi:nth-child(2){background:var(--bt-gold-soft)!important;border-color:var(--bt-gold)!important}',
-'#intro .kpis .kpi:nth-child(3){background:var(--bt-surface)!important}',
-'#intro .kpis .kpi:nth-child(1) strong{color:var(--bt-gold)!important}',
-'#intro .kpis .kpi:nth-child(1) span{color:var(--bt-on)!important}',
-'.media-metric:nth-child(2),.operation-metric:nth-child(2),.card.initiative:nth-child(3n+2){background:var(--bt-gold-soft)!important}',
-'.kpi strong,.media-stat strong,.operation-metric strong{color:var(--bt-gold-text)!important}'
-].map(r=>{const at=r.indexOf('{');return selectors(r.slice(0,at)).map(s=>prefix+s).join(',')+r.slice(at)}).join('\n');root.append(art)}
-// Watch inserted components, not text counters or style attributes changed by this adapter.
-const observer=new MutationObserver(records=>{if(records.some(r=>!r.target.closest?.('.bt-picker,[data-bt-generated]')&&[...r.addedNodes].some(n=>n.nodeType===1&&!n.matches('.bt-picker,[data-bt-generated]'))))schedule()});observer.observe(root,{childList:true,subtree:true});}
-function rebuild(){pending=false;register(document);document.querySelectorAll('*').forEach(e=>{if(e.shadowRoot)register(e.shadowRoot)});for(const [root,state]of roots){const sheets=[...root.querySelectorAll('style:not([data-bt-generated]),link[rel="stylesheet"]')].filter(e=>!e.href?.includes('themes.css')&&!e.href?.includes('appearance-studio.css')&&!e.hasAttribute('data-as-generated')&&!e.href?.includes('compiled-'));const sig=sheets.map(e=>{let count=0;try{count=e.sheet?.cssRules.length||0}catch{}return(e.href||e.textContent)+':'+count}).join('|');if(sig!==state.signature){let css='';for(const el of sheets){try{if(el.sheet)css+=rules(el.sheet.cssRules,root!==document)}catch{}}for(const e of root.querySelectorAll('svg [fill],svg [stroke]')){for(const p of ['fill','stroke']){const v=e.getAttribute(p);if(!v||!/^#[\da-f]{3,8}$/i.test(v))continue;const n=convert(v,p);if(n!==v){const prefix=root===document?'html[data-busola-theme]:not([data-busola-theme=original]) ':':host-context(html[data-busola-theme]:not([data-busola-theme=original])) ';css+=prefix+'svg ['+p+'="'+v+'"]{'+p+':'+n+'}';}}}state.style.textContent=css;state.signature=sig;}
-for(const el of root.querySelectorAll('[style],[fill],[stroke]')){if(el.closest('.bt-picker,#appearance-studio,[data-as-color-custom]')||el.closest('svg[data-brand],.issuer-logo')||el.tagName==='IMG')continue;let record=originals.get(el);if(!record){record={};originals.set(el,record)}for(const p of ['color','background','background-color','border-color','box-shadow','fill','stroke']){if(contrastFixes.get(el)?.has(p))continue;const current=el.style.getPropertyValue(p);if(current&&!current.includes('--bt-')&&!record[p]&&!el.hasAttribute('data-as-color-custom'))record[p]={value:current,priority:el.style.getPropertyPriority(p)};if(record[p]){const n=selected==='original'?record[p].value:convert(record[p].value,p);if(current!==n)el.style.setProperty(p,n,record[p].priority)}}}
-}
-mount();syncCharts();repairContrast();document.dispatchEvent(new Event('busola:theme-ready'));}
-function rememberStyle(e,p,v){let record=contrastFixes.get(e);if(!record){record=new Map();contrastFixes.set(e,record)}if(!record.has(p))record.set(p,{value:e.style.getPropertyValue(p),priority:e.style.getPropertyPriority(p)});e.style.setProperty(p,v,'important')}
-function repairContrast(){
- if(selected==='original'||!window.BusolaContrast)return;
- const C=window.BusolaContrast,cache=new WeakMap(),changes=[],computed=getComputedStyle(document.documentElement);
- const colors=['ink','on','gold-text','gold'].map(key=>({key,color:C.parse(computed.getPropertyValue('--bt-'+key).trim()),css:'var(--bt-'+key+')'}));
- const brand=e=>e.closest('[data-as-color-custom],#appearance-studio,.bt-swatches,.issuer-logo,.channel-logo,[data-brand],.brand-logo,.official-logo');
- for(const [root,state]of roots){const pseudo=state.pseudoRules||(state.pseudoRules=new Map());
- for(const e of root.querySelectorAll('*')){
-  if(brand(e)||!e.getClientRects().length)continue;
-  const st=getComputedStyle(e);if(st.visibility==='hidden'||Number(st.opacity)===0)continue;
-  const direct=[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim());
-  const svg=e instanceof SVGElement, icon=svg&&e.closest('svg')?.getBoundingClientRect().width<=96&&e.closest('svg')?.getBoundingClientRect().height<=96;
-  const properties=direct?['color']:[];if(icon&&e.tagName.toLowerCase()!=='svg')properties.push('fill','stroke');
-  for(const prop of properties){
-   const value=st.getPropertyValue(prop);if(value==='none'||value.startsWith('url('))continue;
-   const fg=C.parse(value);if(!fg||fg[3]===0)continue;
-   const bg=C.background(e,cache),large=parseFloat(st.fontSize)>=24||(Number(st.fontWeight)>=700&&parseFloat(st.fontSize)>=18.66),minimum=direct&&!large?4.5:3;
-   if(C.score(fg,bg)>=minimum)continue;
-   const gold=fg[0]>fg[1]*1.1&&fg[1]>fg[2]*1.15;
-   const candidates=gold?[colors[3],colors[2],colors[0],colors[1]]:[colors[0],colors[1]];
-   changes.push([e,prop,C.pick(candidates,bg,minimum).css]);
-  }
-  // Font icons and meaningful generated symbols are not text nodes.
-  for(const part of ['before','after']){const ps=getComputedStyle(e,'::'+part);if(!ps.content||['none','normal','""','" "'].includes(ps.content)||ps.display==='none')continue;
-   const fg=C.parse(ps.color);if(!fg)continue;let bg=C.background(e,cache);const surface=C.parse(ps.backgroundColor);if(surface&&surface[3]>0)bg=bg.map(b=>C.over(surface,b));
-   if(C.score(fg,bg)>=4.5)continue;
-   const chosen=C.pick([colors[0],colors[1]],bg,4.5);let id=e.getAttribute('data-bt-contrast-id');if(!id){id='c'+(++serial);e.setAttribute('data-bt-contrast-id',id)}
-   pseudo.set(id+part,'[data-bt-contrast-id="'+id+'"]::'+part+'{color:'+chosen.css+'!important}');
+function rules(list,shadow){let out='';for(const rule of list){if(rule.selectorText&&rule.style){if(/appearance|as-panel|as-control|bt-picker|bt-menu|bt-toggle|data-busola-theme|data-bt-inline/.test(rule.selectorText))continue;let decl='';for(const p of rule.style){if(!/(color|background|border|shadow|fill|stroke|outline|--)/.test(p))continue;const v=rule.style.getPropertyValue(p),n=convert(v,p);if(n!==v)decl+=p+':'+n+(rule.style.getPropertyPriority(p)?'!important':'')+';'}if(decl){const prefix=shadow?':host-context(html[data-bs-original-custom]) ': 'html[data-bs-original-custom] ';const sels=selectors(rule.selectorText).map(s=>{s=s.trim();if(shadow)return prefix+s;return /^(html|:root)(?=[\s.:#\[]|$)/.test(s)?s.replace(/^(html|:root)/,prefix.trim()):prefix+s}).join(',');out+=sels+'{'+decl+'}\n'}}else if(rule.cssRules&&!rule.name){let inner=rules(rule.cssRules,shadow);if(inner)out+=rule.cssText.slice(0,rule.cssText.indexOf('{')+1)+inner+'}\n'}}return out}
+
+ function register(root){if(roots.has(root))return;const style=document.createElement('style');style.dataset.btGenerated='';style.dataset.bsOriginalAdapter='';(root.head||root).append(style);roots.set(root,{style,signature:''});}
+ function refresh(){
+  if(!active)return;
+  register(document);for(const e of document.querySelectorAll('*'))if(e.shadowRoot)register(e.shadowRoot);
+  for(const [root,state]of roots){
+   const sheets=[...root.querySelectorAll('style:not([data-bt-generated]),link[rel="stylesheet"]')].filter(e=>!e.hasAttribute('data-as-generated')&&!/themes\.css|appearance-studio\.css/.test(e.href||''));
+   const signature=sheets.map(e=>{let count=0;try{count=e.sheet?.cssRules.length||0}catch{}return(e.href||e.textContent)+':'+count}).join('|');
+   if(signature!==state.signature){let css='';for(const sheet of sheets){try{if(sheet.sheet)css+=rules(sheet.sheet.cssRules,root!==document)}catch{}}state.style.textContent=css;state.signature=signature;}
+   for(const e of root.querySelectorAll('[style]')){
+    if(e.closest('#appearance-studio,.as-palette,.bt-picker,svg[data-brand],.issuer-logo,.brand-logo,.channel-logo,.official-logo,.spf-mark,[data-as-color-custom]'))continue;
+    for(const property of ['color','background','background-color','border-color','box-shadow','fill','stroke']){
+     const current=e.style.getPropertyValue(property);let record=originals.get(e);
+     if(!record?.has(property)&&current&&!current.includes('--bt-')){if(!record){record=new Map();originals.set(e,record)}record.set(property,{value:current,priority:e.style.getPropertyPriority(property)});}
+     const original=record?.get(property);if(original){const value=convert(original.value,property);if(e.style.getPropertyValue(property)!==value)e.style.setProperty(property,value,original.priority);}
+    }
+   }
   }
  }
- if(!state.contrastStyle){state.contrastStyle=document.createElement('style');state.contrastStyle.dataset.btGenerated='';(root.head||root).append(state.contrastStyle)}
- const prefix=root===document?'html[data-busola-theme]:not([data-busola-theme="original"]) ':':host-context(html[data-busola-theme]:not([data-busola-theme="original"])) ';
- const css=[...pseudo.values()].map(r=>prefix+r).join('\n');if(state.contrastStyle.textContent!==css)state.contrastStyle.textContent=css;
+ function setActive(value){
+  if(value===active){if(active)refresh();return;}
+  active=value;document.documentElement.toggleAttribute('data-bs-original-custom',value);
+  if(active){refresh();return;}
+  for(const [e,properties]of originals)for(const [property,original]of properties){if(original.value)e.style.setProperty(property,original.value,original.priority);else e.style.removeProperty(property)}
+  originals.clear();
  }
- for(const [e,p,v]of changes)rememberStyle(e,p,v);
+ return {setActive,refresh};
 }
-function schedule(){if(pending)return;pending=true;requestAnimationFrame(rebuild)}
-const chartOriginals=new WeakMap(), chartThemes=new WeakMap();function syncCharts(){if(!window.Chart?.instances)return;for(const chart of Object.values(window.Chart.instances)){if(chartThemes.get(chart)===selected)continue;chartThemes.set(chart,selected);let records=chartOriginals.get(chart);if(!records){records=[];function walk(obj,depth=0){if(!obj||typeof obj!=='object'||depth>7)return;for(const k of Object.keys(obj)){if(k==='data'||k==='labels'||k.startsWith('_'))continue;const v=obj[k];if(/color$/i.test(k)&&(typeof v==='string'||Array.isArray(v)))records.push({obj,k,v:structuredClone(v)});else if(typeof v==='object')walk(v,depth+1)}}for(const d of chart.data.datasets)walk(d);walk(chart.options.scales);walk(chart.options.plugins);chartOriginals.set(chart,records)}const computed=getComputedStyle(document.documentElement);const map=v=>Array.isArray(v)?v.map(map):selected==='original'?v:convert(v,'color').replace(/var\((--bt-[\w-]+)\)/g,(_,key)=>computed.getPropertyValue(key).trim());for(const r of records)r.obj[r.k]=map(r.v);if(chart.canvas?.isConnected)chart.update('none')}}
-let menu,button;function close(){if(menu){menu.hidden=true;button.setAttribute('aria-expanded','false')}}
-function choose(value,persist=true){if(!names[value])return;for(const [e,props]of contrastFixes)for(const [p,r]of props){if(r.value)e.style.setProperty(p,r.value,r.priority);else e.style.removeProperty(p)}contrastFixes.clear();for(const state of roots.values()){state.pseudoRules?.clear();if(state.contrastStyle)state.contrastStyle.textContent=''}selected=value;document.documentElement.dataset.busolaTheme=value;if(persist)try{localStorage.setItem(KEY,value)}catch{}for(const [root]of roots)if(root.host)root.host.dataset.busolaTheme=value;schedule();document.querySelectorAll('.bt-menu button').forEach(e=>{e.setAttribute('aria-checked',String(e.dataset.theme===value));e.querySelector('.bt-check').textContent=e.dataset.theme===value?'✓':''});document.querySelectorAll('iframe').forEach(f=>{try{f.contentWindow.postMessage({type:'busola-theme',theme:value},location.origin)}catch{}});close()}
-const bound=new WeakSet();function mount(){if(window.BusolaAppearanceOwnsPicker)return;const existing=document.querySelector('.bt-picker');const editAnchor=document.querySelector('#editTools');if(existing&&editAnchor){if(editAnchor.nextElementSibling!==existing)editAnchor.after(existing);existing.classList.remove('bt-floating')}if(existing&&bound.has(existing))return;const anchor=document.querySelector('#editToolsToggle')?.closest('.toolbar-edit-tools')||document.querySelector('#editToolsToggle')||document.querySelector('.header-actions,.top-actions,.toolbar,.controls');if(!document.body)return;const wrap=existing||document.createElement('div');bound.add(wrap);wrap.className='bt-picker'+(!anchor?' bt-floating':'');wrap.innerHTML='<button type="button" class="bt-toggle" aria-label="الأنماط البصرية" title="الأنماط البصرية" aria-haspopup="menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 0-4h-1a1.5 1.5 0 0 1 0-3h3a6 6 0 0 0 0-12Z"/><circle cx="7" cy="10" r=".7"/><circle cx="10" cy="6" r=".7"/><circle cx="15" cy="6" r=".7"/></svg></button><div class="bt-menu" role="menu" aria-label="اختر النمط البصري" hidden></div>';
-button=wrap.querySelector('button');menu=wrap.querySelector('[role=menu]');const palettes={original:['#3a564c','#ffffff','#cca862'],green:['#3a564c','#edf2ee','#cca862'],navy:['#0f172a','#e2e8f0','#cca862'],burgundy:['#6c2947','#f5eef1','#cca862']};for(const [id,name]of Object.entries(names)){const e=document.createElement('button');e.type='button';e.setAttribute('role','menuitemradio');e.setAttribute('aria-checked',String(id===selected));e.dataset.theme=id;e.innerHTML='<span class="bt-check">'+(id===selected?'✓':'')+'</span><span>'+name+'</span><span class="bt-swatches" aria-hidden="true">'+palettes[id].map(c=>'<i style="background:'+c+'"></i>').join('')+'</span>';e.onclick=()=>{choose(id);button.focus()};menu.append(e)}if(anchor)anchor.after(wrap);else document.body.append(wrap);button.onclick=()=>{menu.hidden=!menu.hidden;button.setAttribute('aria-expanded',String(!menu.hidden));if(!menu.hidden)menu.querySelector('[aria-checked=true]').focus()};wrap.addEventListener('keydown',e=>{if(e.key==='Escape'){close();button.focus()}if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();menu.hidden=false;button.setAttribute('aria-expanded','true');const es=[...menu.querySelectorAll('button')],i=es.indexOf(document.activeElement);es[e.key==='Home'?0:e.key==='End'?3:(i+(e.key==='ArrowDown'?1:3))%4].focus()}if(e.key==='Tab')close()});document.addEventListener('pointerdown',e=>{if(!wrap.contains(e.target))close()});}
-window.BusolaTheme={choose:(v)=>choose(v,false),refresh:schedule};window.addEventListener('message',e=>{if(!window.BusolaAppearanceOwnsPicker&&e.origin===location.origin&&e.data?.type==='busola-theme')choose(e.data.theme,false)});document.addEventListener('load',schedule,true);document.addEventListener('spf:communications-ready',schedule);document.addEventListener('DOMContentLoaded',()=>{register(document);schedule();setTimeout(schedule,700)});window.addEventListener('pageshow',schedule);window.addEventListener('hashchange',schedule);document.addEventListener('click',schedule);document.addEventListener('change',schedule);document.addEventListener('transitionend',e=>{if(e.propertyName==='opacity')schedule()},true);document.addEventListener('animationend',schedule,true);
+let originalColorAdapter;
+function customizeOriginal(enabled){if(enabled&&selected==='original'){originalColorAdapter||(originalColorAdapter=makeOriginalColorAdapter());originalColorAdapter.setActive(true)}else originalColorAdapter?.setActive(false)}
+
+function register(root){if(roots.has(root))return;let style=null;if(root!==document){style=document.createElement('style');style.dataset.btGenerated='';style.textContent=css;root.append(style)}roots.set(root,{style});new MutationObserver(records=>{if(records.some(r=>[...r.addedNodes].some(n=>n.nodeType===1&&!n.matches('[data-bt-generated],[data-as-generated],#appearance-studio,.as-palette'))))schedule();if(records.some(r=>r.type==='attributes'||r.type==='characterData'||[...r.addedNodes].some(n=>n.nodeType===3)))requestAnimationFrame(fit)}).observe(root,{childList:true,characterData:true,attributes:true,attributeFilter:['class','hidden'],subtree:true})}
+function fit(){if(selected==='original')return;for(const root of roots.keys())for(const e of root.querySelectorAll('[data-bs-kpi]')){if(!e.getClientRects().length)continue;e.style.removeProperty('--bs-fit');const r=e.getBoundingClientRect(),p=e.parentElement,s=getComputedStyle(p),available=Math.min(e.clientWidth||r.width||Infinity,p.clientWidth-parseFloat(s.paddingLeft)-parseFloat(s.paddingRight));if(available>0&&e.scrollWidth>available+2)e.style.setProperty('--bs-fit',String(Math.max(.35,Math.min(1,available/e.scrollWidth*.97))))}}
+function rebuild(){queued=false;register(document);for(const e of document.querySelectorAll('*'))if(e.shadowRoot)register(e.shadowRoot);for(const [root,state]of roots){mark(root);if(root!==document){if(state.style.textContent!==css)state.style.textContent=css;const wrapper=root.querySelector('.comm-shell')||root.querySelector('div');if(wrapper){if(selected==='original')delete wrapper.dataset.bsActive;else wrapper.dataset.bsActive=''}}}originalColorAdapter?.refresh();fit();document.dispatchEvent(new Event('busola:theme-ready'))}
+function schedule(){if(!queued){queued=true;requestAnimationFrame(rebuild)}}
+function choose(value){if(!themes.has(value))return;originalColorAdapter?.setActive(false);selected=value;document.documentElement.dataset.busolaTheme=value;if(value==='original')delete document.documentElement.dataset.bsActive;else document.documentElement.dataset.bsActive='';schedule()}
+window.BusolaTheme={choose,customizeOriginal,refresh:schedule,version:'2.0',inventory:()=>Object.fromEntries([...roots].map(([r])=>[r===document?'document':'communications',{cards:r.querySelectorAll('[data-bs-component]').length,dark:r.querySelectorAll('[data-bs-component][data-bs-surface=dark]').length,light:r.querySelectorAll('[data-bs-component][data-bs-surface=light]').length}]))};
+const sheet=[...document.querySelectorAll('link[rel=stylesheet]')].find(e=>/\/themes\.css/.test(e.href));if(sheet)fetch(sheet.href).then(r=>r.text()).then(s=>{css=s;schedule()}).catch(()=>{});
+document.addEventListener('DOMContentLoaded',schedule);document.addEventListener('spf:communications-ready',schedule);document.addEventListener('busola:appearance-applied',fit);window.addEventListener('hashchange',schedule);window.addEventListener('resize',fit);document.fonts?.addEventListener('loadingdone',fit);document.addEventListener('animationend',fit,true);document.addEventListener('load',schedule,true);window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data?.type==='busola-theme')choose(e.data.theme)});if(document.readyState!=='loading')schedule();
 })();
