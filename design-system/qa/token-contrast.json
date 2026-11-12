@@ -1,0 +1,164 @@
+[
+  {
+    "theme": "green",
+    "role": "body-dark",
+    "foreground": "#F7F7F3",
+    "background": "#3A564C",
+    "ratio": 7.4763,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "green",
+    "role": "muted-dark",
+    "foreground": "#D5E0D9",
+    "background": "#3A564C",
+    "ratio": 5.924,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "green",
+    "role": "body-light",
+    "foreground": "#172D25",
+    "background": "#F7F7F3",
+    "ratio": 13.5929,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "green",
+    "role": "muted-light",
+    "foreground": "#475B51",
+    "background": "#F7F7F3",
+    "ratio": 6.7819,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "green",
+    "role": "gold-large",
+    "foreground": "#CCA862",
+    "background": "#3A564C",
+    "ratio": 3.573,
+    "threshold": 3,
+    "pass": true
+  },
+  {
+    "theme": "green",
+    "role": "gold-light",
+    "foreground": "#75551B",
+    "background": "#F7F7F3",
+    "ratio": 6.3658,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "navy",
+    "role": "body-dark",
+    "foreground": "#F7F7F3",
+    "background": "#1E293B",
+    "ratio": 13.621,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "navy",
+    "role": "muted-dark",
+    "foreground": "#CBD5E1",
+    "background": "#1E293B",
+    "ratio": 9.853,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "navy",
+    "role": "body-light",
+    "foreground": "#0F172A",
+    "background": "#F7F7F3",
+    "ratio": 16.6227,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "navy",
+    "role": "muted-light",
+    "foreground": "#475569",
+    "background": "#F7F7F3",
+    "ratio": 7.0557,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "navy",
+    "role": "gold-large",
+    "foreground": "#CCA862",
+    "background": "#1E293B",
+    "ratio": 6.5097,
+    "threshold": 3,
+    "pass": true
+  },
+  {
+    "theme": "navy",
+    "role": "gold-light",
+    "foreground": "#75551B",
+    "background": "#F7F7F3",
+    "ratio": 6.3658,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "burgundy",
+    "role": "body-dark",
+    "foreground": "#F7F7F3",
+    "background": "#6C2947",
+    "ratio": 9.5578,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "burgundy",
+    "role": "muted-dark",
+    "foreground": "#EADBE2",
+    "background": "#6C2947",
+    "ratio": 7.6886,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "burgundy",
+    "role": "body-light",
+    "foreground": "#45182E",
+    "background": "#F5EEF1",
+    "ratio": 12.9168,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "burgundy",
+    "role": "muted-light",
+    "foreground": "#71515F",
+    "background": "#F5EEF1",
+    "ratio": 6.0382,
+    "threshold": 4.5,
+    "pass": true
+  },
+  {
+    "theme": "burgundy",
+    "role": "gold-large",
+    "foreground": "#CCA862",
+    "background": "#6C2947",
+    "ratio": 4.5679,
+    "threshold": 3,
+    "pass": true
+  },
+  {
+    "theme": "burgundy",
+    "role": "gold-light",
+    "foreground": "#75551B",
+    "background": "#F5EEF1",
+    "ratio": 5.9846,
+    "threshold": 4.5,
+    "pass": true
+  }
+]

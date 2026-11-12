@@ -1,0 +1,186 @@
+{
+  "before": [
+    {
+      "background": "rgba(0, 0, 0, 0) linear-gradient(110deg, rgb(36, 75, 64), rgb(58, 86, 76) 68%, rgb(77, 119, 102)) repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(255, 255, 255)",
+      "font": "16px",
+      "padding": "20px 57.6px",
+      "selector": "HEADER.topbar",
+      "text": "صندوق الحماية الاجتماعية · سلطنة عُمان\n          ب"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(255, 255, 255)",
+      "font": "53.28px",
+      "padding": "0px",
+      "selector": "H2.",
+      "text": "\"خير الناس أنفعهم للناس\""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) linear-gradient(145deg, rgb(234, 244, 237), rgb(255, 255, 255)) repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "18px",
+      "color": "rgb(255, 255, 255)",
+      "font": "16px",
+      "padding": "22px 18px",
+      "selector": "ARTICLE.metric-card featured motion-reveal motion-visible",
+      "text": "كم خدمة أنجزنا؟01\n            681,015\n            "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(36, 90, 70)",
+      "font": "62px",
+      "padding": "0px",
+      "selector": "STRONG.motion-visible motion-number",
+      "text": "681,015"
+    },
+    {
+      "background": "rgba(33, 76, 64, 0.933) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "18px",
+      "color": "rgb(255, 255, 255)",
+      "font": "16px",
+      "padding": "22px 18px",
+      "selector": "ARTICLE.metric-card motion-reveal motion-visible",
+      "text": "كم متعاملًا نخدم يوميًا؟02\n            3,439\n     "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(244, 214, 158)",
+      "font": "46px",
+      "padding": "0px",
+      "selector": "STRONG.motion-visible motion-number",
+      "text": "3,439"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) linear-gradient(145deg, rgb(243, 232, 240), rgb(255, 255, 255)) repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "18px",
+      "color": "rgb(255, 255, 255)",
+      "font": "16px",
+      "padding": "22px 18px",
+      "selector": "ARTICLE.metric-card motion-reveal motion-visible",
+      "text": "كيف يقيم المستفيدون التجربة؟03\n            86%\n   "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(118, 44, 80)",
+      "font": "62px",
+      "padding": "0px",
+      "selector": "STRONG.motion-visible motion-number",
+      "text": "86%"
+    },
+    {
+      "background": "rgba(33, 76, 64, 0.933) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "18px",
+      "color": "rgb(255, 255, 255)",
+      "font": "16px",
+      "padding": "22px 18px",
+      "selector": "ARTICLE.metric-card motion-reveal motion-visible",
+      "text": "ما كثافة شبكة تقديم الخدمة؟04\n            213\n    "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(244, 214, 158)",
+      "font": "46px",
+      "padding": "0px",
+      "selector": "STRONG.motion-visible motion-number",
+      "text": "213"
+    }
+  ],
+  "after": [
+    {
+      "background": "rgba(0, 0, 0, 0) linear-gradient(110deg, rgb(36, 75, 64), rgb(58, 86, 76) 68%, rgb(77, 119, 102)) repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(255, 255, 255)",
+      "font": "16px",
+      "padding": "20px 57.6px",
+      "selector": "HEADER.topbar",
+      "text": "صندوق الحماية الاجتماعية · سلطنة عُمان\n          ب"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(255, 255, 255)",
+      "font": "53.28px",
+      "padding": "0px",
+      "selector": "H2.",
+      "text": "\"خير الناس أنفعهم للناس\""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) linear-gradient(145deg, rgb(234, 244, 237), rgb(255, 255, 255)) repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "18px",
+      "color": "rgb(255, 255, 255)",
+      "font": "16px",
+      "padding": "22px 18px",
+      "selector": "ARTICLE.metric-card featured motion-reveal motion-visible",
+      "text": "كم خدمة أنجزنا؟01\n            681,015\n            "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(36, 90, 70)",
+      "font": "62px",
+      "padding": "0px",
+      "selector": "STRONG.motion-visible motion-number",
+      "text": "681,015"
+    },
+    {
+      "background": "rgba(33, 76, 64, 0.933) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "18px",
+      "color": "rgb(255, 255, 255)",
+      "font": "16px",
+      "padding": "22px 18px",
+      "selector": "ARTICLE.metric-card motion-reveal motion-visible",
+      "text": "كم متعاملًا نخدم يوميًا؟02\n            3,439\n     "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(244, 214, 158)",
+      "font": "46px",
+      "padding": "0px",
+      "selector": "STRONG.motion-visible motion-number",
+      "text": "3,439"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) linear-gradient(145deg, rgb(243, 232, 240), rgb(255, 255, 255)) repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "18px",
+      "color": "rgb(255, 255, 255)",
+      "font": "16px",
+      "padding": "22px 18px",
+      "selector": "ARTICLE.metric-card motion-reveal motion-visible",
+      "text": "كيف يقيم المستفيدون التجربة؟03\n            86%\n   "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(118, 44, 80)",
+      "font": "62px",
+      "padding": "0px",
+      "selector": "STRONG.motion-visible motion-number",
+      "text": "86%"
+    },
+    {
+      "background": "rgba(33, 76, 64, 0.933) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "18px",
+      "color": "rgb(255, 255, 255)",
+      "font": "16px",
+      "padding": "22px 18px",
+      "selector": "ARTICLE.metric-card motion-reveal motion-visible",
+      "text": "ما كثافة شبكة تقديم الخدمة؟04\n            213\n    "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "borderRadius": "0px",
+      "color": "rgb(244, 214, 158)",
+      "font": "46px",
+      "padding": "0px",
+      "selector": "STRONG.motion-visible motion-number",
+      "text": "213"
+    }
+  ]
+}

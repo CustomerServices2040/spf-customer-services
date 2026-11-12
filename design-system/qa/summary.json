@@ -1,0 +1,36 @@
+{
+  "matrix448.json": {
+    "cases": 448,
+    "overflow_cases": 0,
+    "clipping_cases": 3,
+    "contrast_cases": 15,
+    "theme_mismatch_cases": 0
+  },
+  "matrix-stable-partial.json": {
+    "cases": 224,
+    "overflow_cases": 0,
+    "clipping_cases": 0,
+    "contrast_cases": 0,
+    "theme_mismatch_cases": 0
+  },
+  "final-1440.json": {
+    "cases": 112,
+    "overflow_cases": 0,
+    "clipping_cases": 3,
+    "contrast_cases": 3,
+    "theme_mismatch_cases": 0
+  },
+  "final-1920.json": {
+    "cases": 112,
+    "overflow_cases": 0,
+    "clipping_cases": 0,
+    "contrast_cases": 0,
+    "theme_mismatch_cases": 0
+  },
+  "limits": [
+    "Original contrast was not scored; geometry and representative style comparison only.",
+    "Protected inner content was not authenticated.",
+    "1440 findings were followed by focused fixes, not rewritten.",
+    "Full logs and screenshots are in the review archive."
+  ]
+}
