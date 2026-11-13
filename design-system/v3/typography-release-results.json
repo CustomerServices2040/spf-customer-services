@@ -1,0 +1,251 @@
+{
+  "date": "2026-11-13",
+  "batches": [
+    {
+      "file": "typography-1024.json",
+      "sha256": "abd558e5c02fe815367b1235739c3162bf19b9733a5f3911c8bf341bc5039885",
+      "cases": 112,
+      "unique_cases": 112,
+      "scale": [
+        "1"
+      ],
+      "widths": [
+        1024
+      ],
+      "themes": [
+        "burgundy",
+        "green",
+        "navy",
+        "original"
+      ],
+      "theme_mismatches": 0,
+      "horizontal_overflow": 0,
+      "clipped": 0,
+      "escaped": 0,
+      "overlaps": 0,
+      "fonts": [
+        "StudioNoto, \"Noto Sans Arabic\", StudioPlex, \"IBM Plex Sans Arabic\", sans-serif"
+      ],
+      "contrast_cases_by_theme": {
+        "original": 28
+      }
+    },
+    {
+      "file": "typography-1440.json",
+      "sha256": "a9a409612183af45e1f03f0d91dfefade9ab741b11ee2a983afd45edd655bbbc",
+      "cases": 112,
+      "unique_cases": 112,
+      "scale": [
+        "1"
+      ],
+      "widths": [
+        1440
+      ],
+      "themes": [
+        "burgundy",
+        "green",
+        "navy",
+        "original"
+      ],
+      "theme_mismatches": 0,
+      "horizontal_overflow": 0,
+      "clipped": 0,
+      "escaped": 0,
+      "overlaps": 0,
+      "fonts": [
+        "StudioNoto, \"Noto Sans Arabic\", StudioPlex, \"IBM Plex Sans Arabic\", sans-serif"
+      ],
+      "contrast_cases_by_theme": {
+        "original": 28
+      }
+    },
+    {
+      "file": "typography-1920.json",
+      "sha256": "fcfff265c4e103befde61395fc4eb5a028ffcaf1719e4cbbdfb852bf1755a005",
+      "cases": 112,
+      "unique_cases": 112,
+      "scale": [
+        "1"
+      ],
+      "widths": [
+        1920
+      ],
+      "themes": [
+        "burgundy",
+        "green",
+        "navy",
+        "original"
+      ],
+      "theme_mismatches": 0,
+      "horizontal_overflow": 0,
+      "clipped": 0,
+      "escaped": 0,
+      "overlaps": 0,
+      "fonts": [
+        "StudioNoto, \"Noto Sans Arabic\", StudioPlex, \"IBM Plex Sans Arabic\", sans-serif"
+      ],
+      "contrast_cases_by_theme": {
+        "original": 28
+      }
+    },
+    {
+      "file": "typography-390.json",
+      "sha256": "614cc46e2356525f6d379d002d21bea7bcf3701a1ca14aa25e00e7ecf8043962",
+      "cases": 112,
+      "unique_cases": 112,
+      "scale": [
+        "1"
+      ],
+      "widths": [
+        390
+      ],
+      "themes": [
+        "burgundy",
+        "green",
+        "navy",
+        "original"
+      ],
+      "theme_mismatches": 0,
+      "horizontal_overflow": 0,
+      "clipped": 0,
+      "escaped": 0,
+      "overlaps": 0,
+      "fonts": [
+        "StudioNoto, \"Noto Sans Arabic\", StudioPlex, \"IBM Plex Sans Arabic\", sans-serif"
+      ],
+      "contrast_cases_by_theme": {
+        "original": 28
+      }
+    },
+    {
+      "file": "typography-768.json",
+      "sha256": "9415e3553e943d5923fbfdd0c5132fac5ce5876fc15ed23eedaf1df123cd9529",
+      "cases": 112,
+      "unique_cases": 112,
+      "scale": [
+        "1"
+      ],
+      "widths": [
+        768
+      ],
+      "themes": [
+        "burgundy",
+        "green",
+        "navy",
+        "original"
+      ],
+      "theme_mismatches": 0,
+      "horizontal_overflow": 0,
+      "clipped": 0,
+      "escaped": 0,
+      "overlaps": 0,
+      "fonts": [
+        "StudioNoto, \"Noto Sans Arabic\", StudioPlex, \"IBM Plex Sans Arabic\", sans-serif"
+      ],
+      "contrast_cases_by_theme": {
+        "original": 28
+      }
+    },
+    {
+      "file": "performance-standard-final.json",
+      "sha256": "9213149c103b04a9bf8e0cd06be0edb69c5131f1804c4bab0b26515b8e4f2f30",
+      "cases": 20,
+      "unique_cases": 20,
+      "scale": [
+        "1"
+      ],
+      "widths": [
+        390,
+        768,
+        1024,
+        1440,
+        1920
+      ],
+      "themes": [
+        "burgundy",
+        "green",
+        "navy",
+        "original"
+      ],
+      "theme_mismatches": 0,
+      "horizontal_overflow": 0,
+      "clipped": 0,
+      "escaped": 0,
+      "overlaps": 0,
+      "fonts": [
+        "StudioNoto, \"Noto Sans Arabic\", StudioPlex, \"IBM Plex Sans Arabic\", sans-serif"
+      ],
+      "contrast_cases_by_theme": {
+        "original": 5
+      }
+    },
+    {
+      "file": "performance-max-final.json",
+      "sha256": "ca5d668b0b10d3ff8e53f71ad79e859f0a13ae6f0d05c64a1d78507c4f7b9e17",
+      "cases": 20,
+      "unique_cases": 20,
+      "scale": [
+        "1.3"
+      ],
+      "widths": [
+        390,
+        768,
+        1024,
+        1440,
+        1920
+      ],
+      "themes": [
+        "burgundy",
+        "green",
+        "navy",
+        "original"
+      ],
+      "theme_mismatches": 0,
+      "horizontal_overflow": 0,
+      "clipped": 0,
+      "escaped": 0,
+      "overlaps": 0,
+      "fonts": [
+        "StudioNoto, \"Noto Sans Arabic\", StudioPlex, \"IBM Plex Sans Arabic\", sans-serif"
+      ],
+      "contrast_cases_by_theme": {
+        "original": 5
+      }
+    }
+  ],
+  "routes": [
+    "about",
+    "achievements",
+    "channels",
+    "committees",
+    "communications",
+    "communications/channels",
+    "communications/community",
+    "communications/coordination",
+    "communications/intro",
+    "communications/performance",
+    "communications/savings",
+    "communications/strategy",
+    "community-line",
+    "contact-center",
+    "coverage",
+    "directorate",
+    "media-center",
+    "methodology",
+    "operational-plan",
+    "overview",
+    "performance",
+    "practices",
+    "projects",
+    "recognitions",
+    "risk-register",
+    "service-achievements",
+    "tajawob",
+    "work-tracker"
+  ],
+  "protected_frontdoors_only": [
+    "operational-plan",
+    "work-tracker",
+    "committees"
+  ]
+}
