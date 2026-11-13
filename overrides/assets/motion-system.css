@@ -11,3 +11,8 @@
 .motion-chart-stroke{stroke-dasharray:var(--motion-stroke-length,700);stroke-dashoffset:var(--motion-stroke-length,700);transition:stroke-dashoffset 1.7s cubic-bezier(.2,.7,.2,1)}
 .motion-chart-stroke.motion-visible{stroke-dashoffset:0}
 @media(prefers-reduced-motion:reduce){.motion-reveal,.motion-bar,.motion-ring,.motion-map-pin,.motion-chart-stroke{opacity:1!important;transform:none!important;transition:none!important;stroke-dashoffset:0!important}}
+
+/* A user-selected motion stop reveals content immediately, just like OS reduction. */
+html[data-appearance-motion=off] :is(.motion-reveal,.motion-bar,.motion-ring,.motion-map-pin,.motion-chart-stroke){opacity:1!important;transform:none!important;transition:none!important;stroke-dashoffset:0!important}
+html[data-appearance-motion=off] .motion-map-pin{transform:translate(-50%,-50%)!important}
+@media(prefers-reduced-motion:reduce){.motion-map-pin{transform:translate(-50%,-50%)!important}}

@@ -1,0 +1,54 @@
+{
+  "baseline": "eea4843e43cde49c8a0810101e48609ee4a62dab",
+  "preview_source": "d2981e35a3ef025ad9954f64b6147db421bbfd75",
+  "evidence": [
+    {
+      "file": "validated-390.json",
+      "sha256": "7c73e043dc7957d22ff4c2c5559f47b36c23430a977d7946ff463908cb41e470"
+    },
+    {
+      "file": "validated-768.json",
+      "sha256": "094feb46794ddaf383c493f7c61da3508aa01b9447826c491c330ddaa25b0f81"
+    },
+    {
+      "file": "validated-1024.json",
+      "sha256": "0f9cbf6d7daa9fbf4942f391850351f25fa954b789e9f917caf0171e4ee3865b"
+    },
+    {
+      "file": "validated-1440.json",
+      "sha256": "e87d27909efcff54811afca3e88f01a28d3abf5d8b0431d955d79e43bb61546c"
+    },
+    {
+      "file": "validated-1920.json",
+      "sha256": "f85a992d4fec4537d9bfc7941d064e62076fc1ade9dce116a8c22d4de37e0464"
+    },
+    {
+      "file": "performance-final-20.json",
+      "sha256": "f9eea0448f63c37228d001257f6546b5f5eb6b526ecb4a61a38c23c346f97ed8"
+    },
+    {
+      "file": "performance-phone-retest.json",
+      "sha256": "6c5219c32d89d93f7d71acb519e78c932bd7dfefbb1eed1ce226c3909c81c129"
+    },
+    {
+      "file": "studio-max-all.json",
+      "sha256": "5108ea9f2806df74f3d5b59a90196ec3346460b96e0f80d259b88b04ff65ef64"
+    },
+    {
+      "file": "map-selection.json",
+      "sha256": "d2ad2d1ebfaca5b133ef6e810762f5155755a3bde7627944c72d377a8728d80c"
+    },
+    {
+      "file": "forum-all-desktop.json",
+      "sha256": "4c5c876bd2bc7dc0e5ca1496e0d432d6a0b0d3497be0257ded54ed605c70ed1a"
+    },
+    {
+      "file": "forum-contrast-retest.json",
+      "sha256": "5c6daf987cdf86ce88942cc26fb75812c228acb2cc149c31bcd2f859a1d3dd7a"
+    },
+    {
+      "file": "secondary-retests.json",
+      "sha256": "5b0cab6479988eb2a77abd3bc9ed433e87acc2a98db07d01885a4b7665f73f39"
+    }
+  ]
+}
