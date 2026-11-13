@@ -104,6 +104,10 @@ jobs:
           node --check _site/legacy/assets/platform-enhancements.js
           node --check _site/legacy/assets/communications.js
           node --check _site/legacy/assets/motion-system.js
+          node --check _site/legacy/assets/themes.js
+          node --check _site/legacy/assets/appearance-studio.js
+          node --check _site/legacy/assets/leadership.js
+          node appearance-studio/test-contrast.cjs
           node --check _site/legacy/assets/practices.js
           node --check _site/legacy/assets/ux-system.js
           node --check _site/legacy/assets/privacy-lock.js

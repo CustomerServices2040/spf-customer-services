@@ -1,0 +1,9209 @@
+{
+  "timestamp": "2026-11-13T14:29:47.665Z",
+  "results": [
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "about",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "overview",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "3.4 مليون",
+          "size": "78px"
+        },
+        {
+          "tier": "primary",
+          "value": "681,015",
+          "size": "62px"
+        },
+        {
+          "tier": "primary",
+          "value": "3,439",
+          "size": "46px"
+        },
+        {
+          "tier": "primary",
+          "value": "86%",
+          "size": "62px"
+        },
+        {
+          "tier": "primary",
+          "value": "213",
+          "size": "46px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "directorate",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "239",
+          "size": "42px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "methodology",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "coverage",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "3,263,592",
+          "size": "42px"
+        },
+        {
+          "tier": "primary",
+          "value": "213",
+          "size": "42px"
+        },
+        {
+          "tier": "primary",
+          "value": "8",
+          "size": "38px"
+        },
+        {
+          "tier": "primary",
+          "value": "11",
+          "size": "38px"
+        },
+        {
+          "tier": "primary",
+          "value": "236",
+          "size": "38px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "channels",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "69 خدمة",
+          "size": "52px"
+        },
+        {
+          "tier": "secondary",
+          "value": "169",
+          "size": "52px"
+        },
+        {
+          "tier": "secondary",
+          "value": "71.6%",
+          "size": "52px"
+        },
+        {
+          "tier": "primary",
+          "value": "289,725",
+          "size": "56px"
+        },
+        {
+          "tier": "secondary",
+          "value": "198,121",
+          "size": "40px"
+        },
+        {
+          "tier": "secondary",
+          "value": "101,809",
+          "size": "40px"
+        },
+        {
+          "tier": "secondary",
+          "value": "28,907",
+          "size": "40px"
+        },
+        {
+          "tier": "secondary",
+          "value": "31,973",
+          "size": "40px"
+        },
+        {
+          "tier": "secondary",
+          "value": "5,012",
+          "size": "40px"
+        },
+        {
+          "tier": "secondary",
+          "value": "25,345",
+          "size": "40px"
+        },
+        {
+          "tier": "secondary",
+          "value": "367",
+          "size": "40px"
+        },
+        {
+          "tier": "secondary",
+          "value": "164,978",
+          "size": "40px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "contact-center",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "271,763",
+          "size": "76px"
+        },
+        {
+          "tier": "primary",
+          "value": "111,740",
+          "size": "76px"
+        },
+        {
+          "tier": "primary",
+          "value": "97.6%",
+          "size": "76px"
+        },
+        {
+          "tier": "primary",
+          "value": "8",
+          "size": "38px"
+        },
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "38px"
+        },
+        {
+          "tier": "primary",
+          "value": "24/7",
+          "size": "38px"
+        },
+        {
+          "tier": "primary",
+          "value": "2,336",
+          "size": "64px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "practices",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "5",
+          "size": "42px"
+        },
+        {
+          "tier": "primary",
+          "value": "40",
+          "size": "42px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "operational-plan",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "work-tracker",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "risk-register",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "4",
+          "size": "54px"
+        },
+        {
+          "tier": "primary",
+          "value": "14",
+          "size": "54px"
+        },
+        {
+          "tier": "primary",
+          "value": "7",
+          "size": "54px"
+        },
+        {
+          "tier": "primary",
+          "value": "52%",
+          "size": "54px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "performance",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "86%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "86%",
+          "size": "72px"
+        },
+        {
+          "tier": "secondary",
+          "value": "82%",
+          "size": "27px"
+        },
+        {
+          "tier": "secondary",
+          "value": "87%",
+          "size": "27px"
+        },
+        {
+          "tier": "primary",
+          "value": "88%",
+          "size": "72px"
+        },
+        {
+          "tier": "secondary",
+          "value": "90%",
+          "size": "27px"
+        },
+        {
+          "tier": "secondary",
+          "value": "86%",
+          "size": "27px"
+        },
+        {
+          "tier": "primary",
+          "value": "681,015",
+          "size": "48px"
+        },
+        {
+          "tier": "primary",
+          "value": "198,121",
+          "size": "18px"
+        },
+        {
+          "tier": "primary",
+          "value": "164,978",
+          "size": "18px"
+        },
+        {
+          "tier": "primary",
+          "value": "31,973",
+          "size": "18px"
+        },
+        {
+          "tier": "primary",
+          "value": "5,012",
+          "size": "18px"
+        },
+        {
+          "tier": "primary",
+          "value": "25,345",
+          "size": "18px"
+        },
+        {
+          "tier": "primary",
+          "value": "367",
+          "size": "18px"
+        },
+        {
+          "tier": "primary",
+          "value": "28,907",
+          "size": "30px"
+        },
+        {
+          "tier": "primary",
+          "value": "271,763",
+          "size": "22px"
+        },
+        {
+          "tier": "primary",
+          "value": "86.6%",
+          "size": "34px"
+        },
+        {
+          "tier": "primary",
+          "value": "3,424",
+          "size": "22px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "tajawob",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "7,289",
+          "size": "43px"
+        },
+        {
+          "tier": "primary",
+          "value": "98.2%",
+          "size": "43px"
+        },
+        {
+          "tier": "primary",
+          "value": "7,161",
+          "size": "43px"
+        },
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "43px"
+        },
+        {
+          "tier": "primary",
+          "value": "256",
+          "size": "44px"
+        },
+        {
+          "tier": "primary",
+          "value": "2,161",
+          "size": "44px"
+        },
+        {
+          "tier": "primary",
+          "value": "21",
+          "size": "44px"
+        },
+        {
+          "tier": "primary",
+          "value": "4,851",
+          "size": "44px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "committees",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "projects",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "community-line",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "316",
+          "size": "64px"
+        },
+        {
+          "tier": "primary",
+          "value": "55.7%",
+          "size": "64px"
+        },
+        {
+          "tier": "primary",
+          "value": "28",
+          "size": "52px"
+        },
+        {
+          "tier": "primary",
+          "value": "20",
+          "size": "52px"
+        },
+        {
+          "tier": "primary",
+          "value": "31",
+          "size": "52px"
+        },
+        {
+          "tier": "primary",
+          "value": "316",
+          "size": "39px"
+        },
+        {
+          "tier": "primary",
+          "value": "17,093",
+          "size": "39px"
+        },
+        {
+          "tier": "primary",
+          "value": "+255",
+          "size": "39px"
+        },
+        {
+          "tier": "primary",
+          "value": "11",
+          "size": "39px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "media-center",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "22px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "service-achievements",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "17",
+          "size": "76px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "recognitions",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "178",
+          "size": "64px"
+        },
+        {
+          "tier": "primary",
+          "value": "52",
+          "size": "14px"
+        },
+        {
+          "tier": "primary",
+          "value": "30",
+          "size": "14px"
+        },
+        {
+          "tier": "primary",
+          "value": "20",
+          "size": "14px"
+        }
+      ]
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "achievements",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "communications",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "communications/intro",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "communications/strategy",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "communications/channels",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "communications/community",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "communications/performance",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "communications/coordination",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "original",
+      "width": 1920,
+      "page": "communications/savings",
+      "actual": "original",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "about",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "overview",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "3.4 مليون",
+          "size": "88px"
+        },
+        {
+          "tier": "primary",
+          "value": "681,015",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "3,439",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "86%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "213",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "directorate",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "239",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "methodology",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "coverage",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "3,263,592",
+          "size": "88px"
+        },
+        {
+          "tier": "primary",
+          "value": "213",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "8",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "11",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "236",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "channels",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "69 خدمة",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "169",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "71.6%",
+          "size": "34px"
+        },
+        {
+          "tier": "primary",
+          "value": "289,725",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "198,121",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "101,809",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "28,907",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "31,973",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "5,012",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "25,345",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "367",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "164,978",
+          "size": "34px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "contact-center",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "271,763",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "111,740",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "97.6%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "8",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "24/7",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "2,336",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "practices",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "5",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "40",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "operational-plan",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "work-tracker",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "risk-register",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "4",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "14",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "7",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "52%",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "performance",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "86%",
+          "size": "88px"
+        },
+        {
+          "tier": "primary",
+          "value": "86%",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "82%",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "87%",
+          "size": "34px"
+        },
+        {
+          "tier": "primary",
+          "value": "88%",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "90%",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "86%",
+          "size": "34px"
+        },
+        {
+          "tier": "primary",
+          "value": "681,015",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "198,121",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "164,978",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "31,973",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "5,012",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "25,345",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "367",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "28,907",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "271,763",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "86.6%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "3,424",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "tajawob",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "7,289",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "98.2%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "7,161",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "256",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "2,161",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "21",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "4,851",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "committees",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "projects",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "community-line",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "316",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "55.7%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "28",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "20",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "31",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "316",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "17,093",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "+255",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "11",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "media-center",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "service-achievements",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "17",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "recognitions",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "178",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "52",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "30",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "20",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "achievements",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "communications",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "communications/intro",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "communications/strategy",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "communications/channels",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "communications/community",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "communications/performance",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "communications/coordination",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "green",
+      "width": 1920,
+      "page": "communications/savings",
+      "actual": "green",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "about",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "overview",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "3.4 مليون",
+          "size": "88px"
+        },
+        {
+          "tier": "primary",
+          "value": "681,015",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "3,439",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "86%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "213",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "directorate",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "239",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "methodology",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "coverage",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "3,263,592",
+          "size": "88px"
+        },
+        {
+          "tier": "primary",
+          "value": "213",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "8",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "11",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "236",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "channels",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "69 خدمة",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "169",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "71.6%",
+          "size": "34px"
+        },
+        {
+          "tier": "primary",
+          "value": "289,725",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "198,121",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "101,809",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "28,907",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "31,973",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "5,012",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "25,345",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "367",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "164,978",
+          "size": "34px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "contact-center",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "271,763",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "111,740",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "97.6%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "8",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "24/7",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "2,336",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "practices",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "5",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "40",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "operational-plan",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "work-tracker",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "risk-register",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "4",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "14",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "7",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "52%",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "performance",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "86%",
+          "size": "88px"
+        },
+        {
+          "tier": "primary",
+          "value": "86%",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "82%",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "87%",
+          "size": "34px"
+        },
+        {
+          "tier": "primary",
+          "value": "88%",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "90%",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "86%",
+          "size": "34px"
+        },
+        {
+          "tier": "primary",
+          "value": "681,015",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "198,121",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "164,978",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "31,973",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "5,012",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "25,345",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "367",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "28,907",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "271,763",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "86.6%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "3,424",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "tajawob",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "7,289",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "98.2%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "7,161",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "256",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "2,161",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "21",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "4,851",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "committees",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "projects",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "community-line",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "316",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "55.7%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "28",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "20",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "31",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "316",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "17,093",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "+255",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "11",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "media-center",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "service-achievements",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "17",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "recognitions",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "178",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "52",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "30",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "20",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "achievements",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "communications",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "communications/intro",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "communications/strategy",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "communications/channels",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "communications/community",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "communications/performance",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "communications/coordination",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "navy",
+      "width": 1920,
+      "page": "communications/savings",
+      "actual": "navy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "about",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "overview",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "3.4 مليون",
+          "size": "88px"
+        },
+        {
+          "tier": "primary",
+          "value": "681,015",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "3,439",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "86%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "213",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "directorate",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "239",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "methodology",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "coverage",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "3,263,592",
+          "size": "88px"
+        },
+        {
+          "tier": "primary",
+          "value": "213",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "8",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "11",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "236",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "channels",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "geographic",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "69 خدمة",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "169",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "71.6%",
+          "size": "34px"
+        },
+        {
+          "tier": "primary",
+          "value": "289,725",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "198,121",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "101,809",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "28,907",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "31,973",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "5,012",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "25,345",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "367",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "164,978",
+          "size": "34px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "contact-center",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "271,763",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "111,740",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "97.6%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "8",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "24/7",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "2,336",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "practices",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "5",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "40",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "operational-plan",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "work-tracker",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "risk-register",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "4",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "14",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "7",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "52%",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "performance",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "comparison",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "hero",
+          "value": "86%",
+          "size": "88px"
+        },
+        {
+          "tier": "primary",
+          "value": "86%",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "82%",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "87%",
+          "size": "34px"
+        },
+        {
+          "tier": "primary",
+          "value": "88%",
+          "size": "60px"
+        },
+        {
+          "tier": "secondary",
+          "value": "90%",
+          "size": "34px"
+        },
+        {
+          "tier": "secondary",
+          "value": "86%",
+          "size": "34px"
+        },
+        {
+          "tier": "primary",
+          "value": "681,015",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "198,121",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "164,978",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "31,973",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "5,012",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "25,345",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "367",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "28,907",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "271,763",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "86.6%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "3,424",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "tajawob",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "7,289",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "98.2%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "7,161",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "256",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "2,161",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "21",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "4,851",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "committees",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": true,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "projects",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        },
+        {
+          "family": "project",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "community-line",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "316",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "55.7%",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "28",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "20",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "31",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "316",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "17,093",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "+255",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "11",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "media-center",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "9",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "service-achievements",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "17",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "recognitions",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        },
+        {
+          "family": "achievement",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": [
+        {
+          "tier": "primary",
+          "value": "178",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "52",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "30",
+          "size": "60px"
+        },
+        {
+          "tier": "primary",
+          "value": "20",
+          "size": "60px"
+        }
+      ]
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "achievements",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "communications",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "communications/intro",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "executive",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "communications/strategy",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "communications/channels",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "communications/community",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "communications/performance",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "communications/coordination",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    },
+    {
+      "theme": "burgundy",
+      "width": 1920,
+      "page": "communications/savings",
+      "actual": "burgundy",
+      "overflow": 0,
+      "clipped": [],
+      "contrast": [],
+      "cards": [
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "performance",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "information",
+          "surface": "dark"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        },
+        {
+          "family": "detail",
+          "surface": "light"
+        }
+      ],
+      "protected": false,
+      "kpis": []
+    }
+  ]
+}

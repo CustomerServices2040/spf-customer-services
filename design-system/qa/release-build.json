@@ -1,0 +1,100 @@
+{
+  "generated_utc": "2026-11-13T14:26:25.152281+00:00",
+  "scope": "Local release-build preflight; no deployment or production write",
+  "base_commit": "71cb847300e2ae4fc48c0916d706286ef11c99b8",
+  "working_tree_presentation_assets_included": true,
+  "fresh_workflow": {
+    "external_base_reachable": true,
+    "downloaded_files": 24,
+    "prepare_exit_code": 0,
+    "apply_exit_code": 0,
+    "validation_exit_code": 0,
+    "workflow_sha256": "e0139da7b7dd9a555e25380114cf839f3625b0133c6ad220b59e534a11843948",
+    "validation_context": "Isolated fresh build; repository Git metadata used read-only for the existing catalog diff assertion",
+    "static_tabs": 20,
+    "runtime_main_tabs": 21,
+    "scripts": 16,
+    "styles": 10
+  },
+  "comparison_to_review_before": {
+    "byte_identical_files": 105,
+    "changed_files": [
+      "assets/appearance-studio.js",
+      "assets/leadership.js",
+      "assets/motion-system.js",
+      "assets/release.json",
+      "assets/themes.css",
+      "assets/themes.js",
+      "assets/work-tracker.html",
+      "communications/index.html",
+      "forum/facilitator.html",
+      "forum/index.html",
+      "forum/join.html",
+      "index.html",
+      "leadership.html",
+      "reports/community-communication-plan-2026.html",
+      "reports/dakhiliyah-june-2026.html"
+    ],
+    "omitted_preview_only_files": [
+      "assets/preview-isolation.js"
+    ],
+    "public_main_text_equal": true,
+    "protected_main_sections_excluded": [
+      "operational-plan",
+      "work-tracker",
+      "committees"
+    ],
+    "subordinate_html_text_equal": true,
+    "subordinate_html_pages": 8,
+    "subordinate_inline_operational_scripts_equal": true,
+    "unchanged_operational_files": [
+      "assets/data.js",
+      "assets/tasks-data.json",
+      "assets/plan-data-2026.js",
+      "assets/recognitions.json",
+      "assets/app.js",
+      "assets/excel-import.js",
+      "assets/platform-enhancements.js",
+      "assets/communications.js"
+    ]
+  },
+  "additional_syntax_checks": [
+    {
+      "asset": "assets/themes.js",
+      "exit_code": 0
+    },
+    {
+      "asset": "assets/appearance-studio.js",
+      "exit_code": 0
+    },
+    {
+      "asset": "assets/leadership.js",
+      "exit_code": 0
+    },
+    {
+      "asset": "assets/motion-system.js",
+      "exit_code": 0
+    }
+  ],
+  "integrate_idempotence_blocks_fresh_workflow": false,
+  "protected_authenticated_validation": {
+    "status": "not_performed",
+    "reason": "The current browser authentication rules do not permit automatic credential entry; live protected content remains unverified.",
+    "fixture_authentication_success_claimed": false
+  },
+  "presentation_source_sha256": {
+    "appearance-studio/themes.css": "b3668cebfa7e5b5da77e99d74ea971373acd5b14e12a21bab36ac95cf242f2f6",
+    "appearance-studio/themes.js": "173ad1ea13740c47acae687f75b25b9cf423c47e7c34e32ba595f60ce2b24ef9",
+    "appearance-studio/contrast.js": "3412992f0cfca3eb00f3ac363660a7d8e7b478bdd83f167a02bac25ac38a6806",
+    "appearance-studio/appearance-studio.css": "947c29f53946b3a155f33a4ddb974840c626ac9c0d1d56f7f160b6985b34a270",
+    "appearance-studio/appearance-studio.js": "113d04acd6cf320838d4e194e82a28b46b77ff9d4d260ce6389951d24a541de8",
+    "overrides/assets/leadership.js": "0a4830f4d9d65f36f38eea7f9ba42f72ac72a0f483db264f690a3820ad0ca673",
+    "overrides/assets/motion-system.js": "a9aaaaf70cf03b1d84083931a9ed4d62419577805d0cc1b7fc34679e760a1f01"
+  },
+  "limitations": [
+    "Local validation does not establish authenticated equivalence of protected production content.",
+    "Deployment and post-deployment revision verification are outside this local preflight."
+  ],
+  "post_preflight_css_adjustment": "After the fresh-build validation, presentation CSS widened the executive ring and made the performance hero column intrinsic; verified in browser at 1920 and 768. Original preflight hashes above remain historical.",
+  "final_themes_css_sha256": "9519941289e9ffb510b1c84b0591e13ba215fc2ee29eb1c19d3f44b6e18b8763"
+}

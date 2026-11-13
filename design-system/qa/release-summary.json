@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-13",
+  "matrix": [
+    {
+      "width": 1440,
+      "cases": 112,
+      "overflow": 0,
+      "clipped": 0,
+      "contrast": 0,
+      "theme_mismatches": 0
+    },
+    {
+      "width": 1920,
+      "cases": 112,
+      "overflow": 0,
+      "clipped": 0,
+      "contrast": 0,
+      "theme_mismatches": 0
+    },
+    {
+      "width": 390,
+      "cases": 112,
+      "overflow": 0,
+      "clipped": 0,
+      "contrast": 0,
+      "theme_mismatches": 0
+    },
+    {
+      "width": 768,
+      "cases": 112,
+      "overflow": 0,
+      "clipped": 0,
+      "contrast": 0,
+      "theme_mismatches": 0
+    }
+  ],
+  "total_cases": 448,
+  "scope": "28 navigation cases × 4 themes × 4 widths; protected cases cover login gates only; automated contrast applies to three new themes. Not a WCAG certification.",
+  "executive_followup": "1920px hero 112px, score ring enlarged to 280px after matrix; verified separately.",
+  "limitations": [
+    "Authenticated editing, operational save/import and protected tab interiors not tested.",
+    "Fullscreen API rejected by cloud browser; native fullscreen not verified.",
+    "Safari, Firefox, physical iOS/Android and presentation viewing distance not tested.",
+    "Figma Starter MCP limit prevented Figma design creation."
+  ]
+}
