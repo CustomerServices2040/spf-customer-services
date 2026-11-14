@@ -1,0 +1,56 @@
+:root[data-busola-theme="green"]{--bt-brand:#3A564C;--bt-deep:#243F36;--bt-mid:#536f63;--bt-muted:#52665c;--bt-ink:#243F36;--bt-canvas:#edf2ee;--bt-surface:#ffffff;--bt-soft:#dce7df;--bt-line:#a7baad;--bt-on:#ffffff;--bt-gold:#CCA862;--bt-gold-text:#75551b;--bt-gold-soft:#f1e6ce;--bt-secondary:#6C2947}
+:root[data-busola-theme="navy"]{--bt-brand:#0F172A;--bt-deep:#0F172A;--bt-mid:#334155;--bt-muted:#475569;--bt-ink:#0F172A;--bt-canvas:#E2E8F0;--bt-surface:#F8FAFC;--bt-soft:#d3dce7;--bt-line:#94A3B8;--bt-on:#F8FAFC;--bt-gold:#CCA862;--bt-gold-text:#75551b;--bt-gold-soft:#f1e6ce;--bt-secondary:#334155}
+:root[data-busola-theme="burgundy"]{--bt-brand:#6C2947;--bt-deep:#45182E;--bt-mid:#87445f;--bt-muted:#71515f;--bt-ink:#45182E;--bt-canvas:#F5EEF1;--bt-surface:#FFFFFF;--bt-soft:#EADBE2;--bt-line:#bca0ad;--bt-on:#FFFFFF;--bt-gold:#CCA862;--bt-gold-text:#75551b;--bt-gold-soft:#f1e6ce;--bt-secondary:#6C2947}
+/* Controls alone are present in Original; no unscoped application rules. */
+.bt-picker{position:relative;display:inline-flex;flex:none;font:14px/1.6 Tahoma,Arial,sans-serif;color:#243f36;z-index:90}
+.bt-toggle{display:grid;place-items:center;width:42px;height:42px;padding:9px;border:1px solid #cca86270;border-radius:11px;background:#fff;color:#3a564c;cursor:pointer}
+.bt-toggle svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.bt-menu{position:absolute;inset-block-start:calc(100% + 9px);inset-inline-end:0;width:245px;max-width:calc(100vw - 24px);padding:9px;background:#fff;color:#243f36;border:1px solid #ccd5ce;border-radius:15px;box-shadow:0 16px 45px #10221b30;z-index:1000}
+.bt-menu[hidden]{display:none!important}.bt-menu button{display:flex;align-items:center;gap:10px;width:100%;min-height:46px;border:0;border-radius:8px;padding:9px;background:transparent;color:inherit;font:inherit;text-align:start;cursor:pointer}.bt-menu button:hover,.bt-menu button[aria-checked=true]{background:#edf2ee}.bt-check{width:18px;color:#75551b;font-weight:bold}.bt-swatches{display:flex;gap:3px;margin-inline-start:auto}.bt-swatches i{height:15px;width:15px;border-radius:50%;border:1px solid #0002}.bt-picker button:focus-visible{outline:3px solid #cca862;outline-offset:3px}.bt-floating{position:fixed;inset-inline-end:16px;inset-block-start:16px;z-index:9999}
+:root[data-busola-theme]:not([data-busola-theme="original"]) body{background:var(--bt-canvas)!important;color:var(--bt-ink)}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(button,a,input,select,textarea):focus-visible{outline:3px solid var(--bt-gold-text)!important;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.bt-picker *{transition:none!important;animation:none!important}}
+@media print{.bt-picker{display:none!important}}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(.hero-number strong,.hero-metric strong,.hero-metric-value,.metric-value,.cc-primary strong,.work-total strong){color:var(--bt-gold)!important}
+
+:root[data-busola-theme]:not([data-busola-theme="original"]) .ux-nav-groups details.active>summary{background:var(--bt-gold-soft)!important;color:var(--bt-ink)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics article{background:var(--bt-surface)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics article strong{color:var(--bt-gold-text)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics article :is(span,small,p){color:var(--bt-ink)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) .hero-number strong{color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #overview strong,
+:root[data-busola-theme]:not([data-busola-theme="original"]) strong.motion-number{color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) .primary-kpi-hero{background:var(--bt-deep)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) .primary-kpi-hero :is(h2,h3,p,small,span){color:var(--bt-on)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) .primary-kpi-hero strong{color:var(--bt-gold)!important}
+/* The original presentation toolbar hides additional children; retain the requested picker. */
+html.presentation-fullscreen .topbar .top-actions>.bt-picker,
+html:fullscreen .topbar .top-actions>.bt-picker,
+body:fullscreen .top-actions>.bt-picker{display:inline-flex!important;visibility:visible!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #channels #governorates-map #governorateTotalWork,
+:root[data-busola-theme]:not([data-busola-theme="original"]) #channels .service-catalog>strong{color:var(--bt-gold)!important}
+/* Three families: institutional canvas, contrasting reading surfaces, deliberate gold accents.
+   60/30/10 is an art-direction guide, not a measured pixel quota. Original is excluded. */
+:root[data-busola-theme="green"]{--bt-surface:#fffef9;--bt-soft:#d9e5dc;--bt-gold-soft:#f2e6c9}
+:root[data-busola-theme="navy"]{--bt-surface:#fffef9;--bt-soft:#dbe3ee;--bt-gold-soft:#f2e6c9}
+:root[data-busola-theme="burgundy"]{--bt-surface:#fffef9;--bt-soft:#eadbe2;--bt-gold-soft:#f2e6c9}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(1){background:linear-gradient(135deg,var(--bt-deep),var(--bt-brand))!important;border-color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(2){background:var(--bt-gold-soft)!important;border-color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(4){background:var(--bt-soft)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(1) :is(span,small,p,b){color:var(--bt-on)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(1)>strong{color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card .micro-bar>i{background:var(--bt-gold-text)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #heroMetrics>article.metric-card:nth-child(1) .micro-bar>i{background:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(.card-icon,.future-project-icon,.contact-metric-icon,.ring-icon,.budget-icon,.dq-icon){background:var(--bt-gold-soft)!important;color:var(--bt-gold-text)!important;border-color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(.component-card,.risk-card,.service-achievement-card,.recognition-card,.purpose-card-top,.hero-stat):nth-child(3n+2){background:var(--bt-gold-soft)!important;border-color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(.component-card,.risk-card,.service-achievement-card,.recognition-card,.hero-stat):nth-child(3n){background:var(--bt-soft)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(.hero-stat strong,.hero-stat .value,.primary-kpi-score strong,.kpi-value){color:var(--bt-gold-text)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(thead th,.table-head){background:var(--bt-gold-soft)!important;color:var(--bt-ink)!important;border-color:var(--bt-gold)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) .ux-nav-groups details.active>summary{background:var(--bt-gold)!important;color:var(--bt-deep)!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(input,select,textarea){accent-color:var(--bt-brand)}
+:root[data-busola-theme]:not([data-busola-theme="original"]) :is(input,textarea)::placeholder{color:var(--bt-muted)!important;opacity:1}
+.bt-picker button:focus-visible{outline-color:#75551b}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #media-center .media-hero-v2{background:linear-gradient(120deg,var(--bt-deep),var(--bt-brand))!important}
+:root[data-busola-theme]:not([data-busola-theme="original"]) #operationalBudget .budget-ring{background:radial-gradient(circle,var(--bt-surface) 56%,transparent 58%),conic-gradient(var(--bt-gold) calc(var(--budget-used)*1%),var(--bt-line) 0)!important}
+/* Text-clipped shine is unsuitable for long report headings on mixed gradients. */
+:root[data-busola-theme]:not([data-busola-theme="original"]) body .page #centerTitle .straight-title-block :is(.straight-title-main,.straight-title-sub){background:var(--bt-deep)!important;color:var(--bt-on)!important;-webkit-text-fill-color:var(--bt-on)!important;background-clip:border-box!important;-webkit-background-clip:border-box!important;padding:.12em .3em;border-radius:.12em;text-shadow:none!important}

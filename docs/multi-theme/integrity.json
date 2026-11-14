@@ -1,0 +1,91 @@
+{
+  "baseline": "fcd2fe2f350c33af119c7909cd0c0dc6d73cfba4",
+  "original_files_changed": [],
+  "entrypoints": [
+    {
+      "path": "index.html",
+      "content_script_structure_exact": true,
+      "source_sha256": "038d453768604f09fbaad731409577cee3291d0a0fe485778229182fc56ceed3"
+    },
+    {
+      "path": "forum/index.html",
+      "content_script_structure_exact": true,
+      "source_sha256": "f65a1aa16cd23d9c13fa103ce76f377964eebf8a8997c96b17d6bd226b16d04b"
+    },
+    {
+      "path": "forum/join.html",
+      "content_script_structure_exact": true,
+      "source_sha256": "5889cda1eae700b0694a4edbd80ff030dae541cb4a2c5dad5344c152fcdb27d4"
+    },
+    {
+      "path": "forum/facilitator.html",
+      "content_script_structure_exact": true,
+      "source_sha256": "82f8e491a7ca9158321cc07361729ce557213569cb29bf98e9aaf7eaf8a476b7"
+    },
+    {
+      "path": "assets/work-tracker.html",
+      "content_script_structure_exact": true,
+      "source_sha256": "b6ff22ca232bdfb776265846c136cf08507cfa5ee9817df7b5b80cbc9acc1831"
+    },
+    {
+      "path": "reports/dakhiliyah-june-2026.html",
+      "content_script_structure_exact": true,
+      "source_sha256": "4aac63b00c6404479d6b174ffb599083bedb82cc646d1e45435ac76a7b8201f5"
+    }
+  ],
+  "assets": [
+    {
+      "file": "compiled-linked-2.css",
+      "bytes": 44641,
+      "gzip_bytes": 3667
+    },
+    {
+      "file": "compiled-linked-1.css",
+      "bytes": 44641,
+      "gzip_bytes": 3667
+    },
+    {
+      "file": "compiled-linked-0.css",
+      "bytes": 62311,
+      "gzip_bytes": 5034
+    },
+    {
+      "file": "themes.css",
+      "bytes": 8916,
+      "gzip_bytes": 2269
+    },
+    {
+      "file": "themes.js",
+      "bytes": 15584,
+      "gzip_bytes": 5826
+    },
+    {
+      "file": "compiled-main.css",
+      "bytes": 336461,
+      "gzip_bytes": 22775
+    },
+    {
+      "file": "isolation.js",
+      "bytes": 1246,
+      "gzip_bytes": 707
+    },
+    {
+      "file": "contrast.js",
+      "bytes": 2906,
+      "gzip_bytes": 1381
+    },
+    {
+      "file": "compiled-linked-4.css",
+      "bytes": 98308,
+      "gzip_bytes": 6021
+    },
+    {
+      "file": "compiled-linked-3.css",
+      "bytes": 37799,
+      "gzip_bytes": 2811
+    }
+  ],
+  "limits": [
+    "Static preservation is not a complete end-to-end functional or WCAG audit."
+  ]
+}

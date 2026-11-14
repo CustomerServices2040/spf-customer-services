@@ -1,0 +1,310 @@
+[
+  {
+    "theme": "original",
+    "governorate": "مسقط",
+    "heading": "محافظة مسقط",
+    "total": "69,465",
+    "selected": "true"
+  },
+  {
+    "theme": "original",
+    "governorate": "ظفار",
+    "heading": "محافظة ظفار",
+    "total": "30,332",
+    "selected": "true"
+  },
+  {
+    "theme": "original",
+    "governorate": "شمال الباطنة",
+    "heading": "محافظة شمال الباطنة",
+    "total": "37,219",
+    "selected": "true"
+  },
+  {
+    "theme": "original",
+    "governorate": "جنوب الباطنة",
+    "heading": "محافظة جنوب الباطنة",
+    "total": "41,085",
+    "selected": "true"
+  },
+  {
+    "theme": "original",
+    "governorate": "الداخلية",
+    "heading": "محافظة الداخلية",
+    "total": "17,144",
+    "selected": "true"
+  },
+  {
+    "theme": "original",
+    "governorate": "شمال الشرقية",
+    "heading": "محافظة شمال الشرقية",
+    "total": "16,199",
+    "selected": "true"
+  },
+  {
+    "theme": "original",
+    "governorate": "جنوب الشرقية",
+    "heading": "محافظة جنوب الشرقية",
+    "total": "20,942",
+    "selected": "true"
+  },
+  {
+    "theme": "original",
+    "governorate": "الظاهرة",
+    "heading": "محافظة الظاهرة",
+    "total": "18,398",
+    "selected": "true"
+  },
+  {
+    "theme": "original",
+    "governorate": "البريمي",
+    "heading": "محافظة البريمي",
+    "total": "23,389",
+    "selected": "true"
+  },
+  {
+    "theme": "original",
+    "governorate": "مسندم",
+    "heading": "محافظة مسندم",
+    "total": "8,182",
+    "selected": "true"
+  },
+  {
+    "theme": "original",
+    "governorate": "الوسطى",
+    "heading": "محافظة الوسطى",
+    "total": "7,370",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "مسقط",
+    "heading": "محافظة مسقط",
+    "total": "69,465",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "ظفار",
+    "heading": "محافظة ظفار",
+    "total": "30,332",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "شمال الباطنة",
+    "heading": "محافظة شمال الباطنة",
+    "total": "37,219",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "جنوب الباطنة",
+    "heading": "محافظة جنوب الباطنة",
+    "total": "41,085",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "الداخلية",
+    "heading": "محافظة الداخلية",
+    "total": "17,144",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "شمال الشرقية",
+    "heading": "محافظة شمال الشرقية",
+    "total": "16,199",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "جنوب الشرقية",
+    "heading": "محافظة جنوب الشرقية",
+    "total": "20,942",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "الظاهرة",
+    "heading": "محافظة الظاهرة",
+    "total": "18,398",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "البريمي",
+    "heading": "محافظة البريمي",
+    "total": "23,389",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "مسندم",
+    "heading": "محافظة مسندم",
+    "total": "8,182",
+    "selected": "true"
+  },
+  {
+    "theme": "green",
+    "governorate": "الوسطى",
+    "heading": "محافظة الوسطى",
+    "total": "7,370",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "مسقط",
+    "heading": "محافظة مسقط",
+    "total": "69,465",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "ظفار",
+    "heading": "محافظة ظفار",
+    "total": "30,332",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "شمال الباطنة",
+    "heading": "محافظة شمال الباطنة",
+    "total": "37,219",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "جنوب الباطنة",
+    "heading": "محافظة جنوب الباطنة",
+    "total": "41,085",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "الداخلية",
+    "heading": "محافظة الداخلية",
+    "total": "17,144",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "شمال الشرقية",
+    "heading": "محافظة شمال الشرقية",
+    "total": "16,199",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "جنوب الشرقية",
+    "heading": "محافظة جنوب الشرقية",
+    "total": "20,942",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "الظاهرة",
+    "heading": "محافظة الظاهرة",
+    "total": "18,398",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "البريمي",
+    "heading": "محافظة البريمي",
+    "total": "23,389",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "مسندم",
+    "heading": "محافظة مسندم",
+    "total": "8,182",
+    "selected": "true"
+  },
+  {
+    "theme": "navy",
+    "governorate": "الوسطى",
+    "heading": "محافظة الوسطى",
+    "total": "7,370",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "مسقط",
+    "heading": "محافظة مسقط",
+    "total": "69,465",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "ظفار",
+    "heading": "محافظة ظفار",
+    "total": "30,332",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "شمال الباطنة",
+    "heading": "محافظة شمال الباطنة",
+    "total": "37,219",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "جنوب الباطنة",
+    "heading": "محافظة جنوب الباطنة",
+    "total": "41,085",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "الداخلية",
+    "heading": "محافظة الداخلية",
+    "total": "17,144",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "شمال الشرقية",
+    "heading": "محافظة شمال الشرقية",
+    "total": "16,199",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "جنوب الشرقية",
+    "heading": "محافظة جنوب الشرقية",
+    "total": "20,942",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "الظاهرة",
+    "heading": "محافظة الظاهرة",
+    "total": "18,398",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "البريمي",
+    "heading": "محافظة البريمي",
+    "total": "23,389",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "مسندم",
+    "heading": "محافظة مسندم",
+    "total": "8,182",
+    "selected": "true"
+  },
+  {
+    "theme": "burgundy",
+    "governorate": "الوسطى",
+    "heading": "محافظة الوسطى",
+    "total": "7,370",
+    "selected": "true"
+  }
+]
