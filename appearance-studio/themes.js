@@ -3,7 +3,7 @@
 (()=>{'use strict';
 document.documentElement.dataset.bsType='';
 const themes=new Set(['original','green','navy','burgundy']);let selected='original',queued=false,css='';const roots=new Map(),scanned=new WeakSet();
-const exclude='#appearance-studio,.as-palette,.bt-picker,svg,.issuer-logo,.brand-logo,.channel-logo,[data-brand],.official-logo,.spf-mark';
+const exclude='#busola-visual-editor,#appearance-studio,.as-palette,.bt-picker,svg,.issuer-logo,.brand-logo,.channel-logo,[data-brand],.official-logo,.spf-mark';
 const families={
  media:'.photo-card',
  executive:'.executive-hero,.primary-kpi-hero,.cc-hero,.achievement-hero,.recognition-hero,.community-hero-v2,.media-hero-v2,.tajawob-hero,.future-hero,.hero',
@@ -54,7 +54,7 @@ function rules(list,shadow){let out='';for(const rule of list){if(rule.selectorT
    const signature=sheets.map(e=>{let count=0;try{count=e.sheet?.cssRules.length||0}catch{}return(e.href||e.textContent)+':'+count}).join('|');
    if(signature!==state.signature){let css='';for(const sheet of sheets){try{if(sheet.sheet)css+=rules(sheet.sheet.cssRules,root!==document)}catch{}}state.style.textContent=css;state.signature=signature;}
    for(const e of root.querySelectorAll('[style]')){
-    if(e.closest('#appearance-studio,.as-palette,.bt-picker,svg[data-brand],.issuer-logo,.brand-logo,.channel-logo,.official-logo,.spf-mark,[data-as-color-custom]'))continue;
+    if(e.closest('#busola-visual-editor,#appearance-studio,.as-palette,.bt-picker,svg[data-brand],.issuer-logo,.brand-logo,.channel-logo,.official-logo,.spf-mark,[data-as-color-custom]'))continue;
     for(const property of ['color','background','background-color','border-color','box-shadow','fill','stroke']){
      const current=e.style.getPropertyValue(property);let record=originals.get(e);
      if(!record?.has(property)&&current&&!current.includes('--bt-')){if(!record){record=new Map();originals.set(e,record)}record.set(property,{value:current,priority:e.style.getPropertyPriority(property)});}
@@ -75,7 +75,7 @@ function rules(list,shadow){let out='';for(const rule of list){if(rule.selectorT
 let originalColorAdapter;
 function customizeOriginal(enabled){if(enabled&&selected==='original'){originalColorAdapter||(originalColorAdapter=makeOriginalColorAdapter());originalColorAdapter.setActive(true)}else originalColorAdapter?.setActive(false)}
 
-function register(root){if(roots.has(root))return;let style=null;if(root!==document){style=document.createElement('style');style.dataset.btGenerated='';style.textContent=css;root.append(style)}roots.set(root,{style});new MutationObserver(records=>{if(records.some(r=>[...r.addedNodes].some(n=>n.nodeType===1&&!n.matches('[data-bt-generated],[data-as-generated],#appearance-studio,.as-palette'))))schedule();if(records.some(r=>r.type==='attributes'||r.type==='characterData'||[...r.addedNodes].some(n=>n.nodeType===3)))requestAnimationFrame(fit)}).observe(root,{childList:true,characterData:true,attributes:true,attributeFilter:['class','hidden'],subtree:true})}
+function register(root){if(roots.has(root))return;let style=null;if(root!==document){style=document.createElement('style');style.dataset.btGenerated='';style.textContent=css;root.append(style)}roots.set(root,{style});new MutationObserver(records=>{if(records.some(r=>[...r.addedNodes].some(n=>n.nodeType===1&&!n.matches('[data-bt-generated],[data-as-generated],#busola-visual-editor,#appearance-studio,.as-palette'))))schedule();if(records.some(r=>r.type==='attributes'||r.type==='characterData'||[...r.addedNodes].some(n=>n.nodeType===3)))requestAnimationFrame(fit)}).observe(root,{childList:true,characterData:true,attributes:true,attributeFilter:['class','hidden'],subtree:true})}
 let fitQueued=false;
 function fit(){if(fitQueued)return;fitQueued=true;requestAnimationFrame(()=>{fitQueued=false;const values=[...roots.keys()].flatMap(root=>[...root.querySelectorAll('[data-bs-kpi]')]).filter(e=>e.getClientRects().length);for(const e of values)e.style.removeProperty('--bs-fit');
 // Measure the group after resetting it, then converge after sibling reflow.

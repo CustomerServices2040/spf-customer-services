@@ -4,7 +4,7 @@ import sys,os,shutil,re
 ROOT=Path(__file__).resolve().parents[1]
 site=Path(sys.argv[1]).resolve()
 revision=os.environ.get('GITHUB_SHA','appearance-v1')[:12]
-for name in ['themes.css','themes.js','contrast.js','appearance-studio.css','appearance-studio.js']:
+for name in ['themes.css','themes.js','contrast.js','appearance-studio.css','appearance-studio.js','visual-editor.js','visual-editor.css']:
  shutil.copy2(ROOT/'appearance-studio'/name,site/'assets'/name)
 
 def links(s):
@@ -17,14 +17,23 @@ def links(s):
 for page in [site/'index.html',site/'leadership.html',site/'assets/work-tracker.html',*list((site/'forum').glob('*.html')),*list((site/'reports').glob('*.html'))]:
  if not page.exists():continue
  s=links(page.read_text())
- if 'data-appearance-studio' in s:continue
+ if 'visual-editor.js' in s:continue
+ if 'data-appearance-studio' in s:
+  prefix=os.path.relpath(site/'assets',page.parent).replace('\\','/')+'/'
+  css=f'<link data-appearance-studio rel="stylesheet" href="{prefix}visual-editor.css?v={revision}">'
+  scripts=f'<script defer data-appearance-studio src="{prefix}visual-editor.js?v={revision}"></script>'
+  match=re.search(r'<link[^>]+href="[^\"]*navigation-reliability.css[^\"]*"[^>]*>',s)
+  s=s[:match.start()]+css+s[match.start():] if match else s.replace('</head>',css+'</head>')
+  match=re.search(r'<script[^>]+src="[^\"]*ux-system.js[^\"]*"[^>]*>',s)
+  s=s[:match.start()]+scripts+s[match.start():] if match else s.replace('</body>',scripts+'</body>')
+  page.write_text(s);continue
  prefix=os.path.relpath(site/'assets',page.parent).replace('\\','/')+'/'
- css=''.join(f'<link data-appearance-studio rel="stylesheet" href="{prefix}{x}?v={revision}">' for x in ['themes.css','appearance-studio.css'])
+ css=''.join(f'<link data-appearance-studio rel="stylesheet" href="{prefix}{x}?v={revision}">' for x in ['themes.css','appearance-studio.css','visual-editor.css'])
  # Keep the existing UX assets last, as required by platform audit.
  match=re.search(r'<link[^>]+href="[^\"]*navigation-reliability.css[^\"]*"[^>]*>',s)
  if match:s=s[:match.start()]+css+s[match.start():]
  else:s=s.replace('</head>',css+'</head>')
- scripts='<script>window.BusolaAppearanceOwnsPicker=true;</script>'+''.join(f'<script defer data-appearance-studio src="{prefix}{x}?v={revision}"></script>' for x in ['contrast.js','themes.js','appearance-studio.js'])
+ scripts='<script>window.BusolaAppearanceOwnsPicker=true;</script>'+''.join(f'<script defer data-appearance-studio src="{prefix}{x}?v={revision}"></script>' for x in ['contrast.js','themes.js','appearance-studio.js','visual-editor.js'])
  match=re.search(r'<script[^>]+src="[^\"]*ux-system.js[^\"]*"[^>]*>',s)
  if match:s=s[:match.start()]+scripts+s[match.start():]
  else:s=s.replace('</body>',scripts+'</body>')

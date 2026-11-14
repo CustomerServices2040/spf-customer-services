@@ -1,0 +1,10 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const document={readyState:'loading',addEventListener(){}};const window={addEventListener(){}};
+vm.runInNewContext(fs.readFileSync(__dirname+'/visual-editor.js','utf8'),{document,window,localStorage:{getItem:()=>null},structuredClone,Map,Set});
+const clean=window.BusolaVisualEditor.clean;
+const fixture=p=>({version:1,rules:[{id:'overview|stable',kind:'number:hero',section:'overview',theme:'green',scope:'element',props:p}]});
+assert.equal(clean(fixture({size:80,color:'#CCA862'})).rules[0].props.size,80);
+for(const p of [{size:1000},{size:NaN},{color:'url(https://x)'},{position:'fixed'},{font:'unsafe'},{background:'red'},{line:.5},{span:99}])assert.throws(()=>clean(fixture(p)));
+assert.throws(()=>clean({version:3,rules:[]}));assert.throws(()=>clean({version:1,rules:Array(1501).fill({})}));
+assert.throws(()=>clean({...fixture({}),rules:[{...fixture({}).rules[0],theme:'bad'}]}));
+assert(!JSON.stringify(clean(fixture({size:80}))).includes('token'));console.log('PASS: strict import schema, limits, enums, colors, record cap and version');
