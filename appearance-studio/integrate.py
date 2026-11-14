@@ -20,7 +20,12 @@ for page in [site/'index.html',site/'leadership.html',site/'assets/work-tracker.
  if 'visual-editor.js' in s:continue
  if 'data-appearance-studio' in s:
   prefix=os.path.relpath(site/'assets',page.parent).replace('\\','/')+'/'
-  s=s.replace('</head>',f'<link rel="stylesheet" href="{prefix}visual-editor.css?v={revision}"></head>').replace('</body>',f'<script defer src="{prefix}visual-editor.js?v={revision}"></script></body>')
+  css=f'<link data-appearance-studio rel="stylesheet" href="{prefix}visual-editor.css?v={revision}">'
+  scripts=f'<script defer data-appearance-studio src="{prefix}visual-editor.js?v={revision}"></script>'
+  match=re.search(r'<link[^>]+href="[^\"]*navigation-reliability.css[^\"]*"[^>]*>',s)
+  s=s[:match.start()]+css+s[match.start():] if match else s.replace('</head>',css+'</head>')
+  match=re.search(r'<script[^>]+src="[^\"]*ux-system.js[^\"]*"[^>]*>',s)
+  s=s[:match.start()]+scripts+s[match.start():] if match else s.replace('</body>',scripts+'</body>')
   page.write_text(s);continue
  prefix=os.path.relpath(site/'assets',page.parent).replace('\\','/')+'/'
  css=''.join(f'<link data-appearance-studio rel="stylesheet" href="{prefix}{x}?v={revision}">' for x in ['themes.css','appearance-studio.css','visual-editor.css'])
