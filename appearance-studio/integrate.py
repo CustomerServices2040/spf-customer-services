@@ -4,7 +4,7 @@ import sys,os,shutil,re
 ROOT=Path(__file__).resolve().parents[1]
 site=Path(sys.argv[1]).resolve()
 revision=os.environ.get('GITHUB_SHA','appearance-v1')[:12]
-for name in ['themes.css','themes.js','contrast.js','appearance-studio.css','appearance-studio.js','visual-editor.js','visual-editor.css']:
+for name in ['themes.css','themes.js','contrast.js','appearance-studio.css','appearance-studio.js','visual-editor.js','visual-editor.css','smart-fullscreen.js','smart-fullscreen.css']:
  shutil.copy2(ROOT/'appearance-studio'/name,site/'assets'/name)
 
 def links(s):
@@ -39,3 +39,16 @@ for page in [site/'index.html',site/'leadership.html',site/'assets/work-tracker.
  else:s=s.replace('</body>',scripts+'</body>')
  page.write_text(s)
 print('Appearance Studio integrated:',site)
+
+# Load focus chrome after all existing presentation rules, idempotently.
+for page in [site/'index.html', site/'leadership.html']:
+ if not page.exists():continue
+ s=page.read_text()
+ if 'smart-fullscreen.js' not in s:
+  css=f'<link rel="stylesheet" href="assets/smart-fullscreen.css?v={revision}">'
+  match=re.search(r'<link[^>]+href="[^\"]*navigation-reliability.css[^\"]*"[^>]*>',s)
+  s=s[:match.start()]+css+s[match.start():] if match else s.replace('</head>',css+'</head>')
+  script=f'<script defer src="assets/smart-fullscreen.js?v={revision}"></script>'
+  match=re.search(r'<script[^>]+src="[^\"]*ux-system.js[^\"]*"[^>]*>',s)
+  s=s[:match.start()]+script+s[match.start():] if match else s.replace('</body>',script+'</body>')
+  page.write_text(s)

@@ -1,0 +1,34 @@
+/* Shared presentation chrome; no content or data selectors are hidden. */
+html body .topbar .bs-gold-logo {
+  display:block;width:60px;height:60px;flex:0 0 60px;padding:0;
+  background:#CCA862!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+  mask:var(--bs-logo-url) center/contain no-repeat;
+  -webkit-mask:var(--bs-logo-url) center/contain no-repeat;
+}
+body header .spf-mark{width:70px;height:70px;background:#CCA862;border:0;border-radius:0;box-shadow:none}
+html.bs-focus-active {
+  --presentation-header-height:0px!important;--presentation-nav-height:0px!important;--presentation-footer-height:0px!important;
+  scroll-padding-top:16px!important;scroll-padding-bottom:64px!important;
+}
+html.bs-focus-active body .topbar,
+html.bs-focus-active body .ux-nav-groups,
+html.bs-focus-active body .top-navigation,
+html.bs-focus-active body .chapter-footer,
+html.bs-focus-active body>.as-palette,
+html.bs-focus-active body>.ux-skip-link,
+html.bs-focus-active body:has(>#platform)>header {display:none!important}
+html.bs-focus-active body .main-content{padding-top:0!important;padding-bottom:64px!important}
+html.bs-focus-active body .content-wrap{padding-top:16px!important}
+html.bs-focus-active body:has(>main>#platform){grid-template-rows:minmax(0,1fr)!important}
+html.bs-focus-active body:has(>main>#platform)>header,
+html.bs-focus-active body:has(>main>#platform)>footer{display:none!important}
+#bs-focus-toggle,#bs-focus-panel {position:fixed;z-index:500;box-sizing:border-box;background:#243F36;color:#F7F7F3;border:1px solid #CCA862;box-shadow:0 4px 16px #0003;font-family:inherit}
+#bs-focus-toggle{left:12px;bottom:calc(12px + env(safe-area-inset-bottom));border-radius:24px;padding:8px 14px;min-height:44px;font-size:14px;cursor:pointer}
+#bs-focus-panel{left:12px;bottom:calc(66px + env(safe-area-inset-bottom));max-width:calc(100vw - 24px);padding:12px;display:flex;flex-wrap:wrap;gap:8px;border-radius:16px;align-items:center}
+#bs-focus-panel select,#bs-focus-panel button{font:inherit;font-size:14px;min-height:44px;padding:8px 12px;border:1px solid #81988b;border-radius:8px;background:#304c41;color:#F7F7F3;cursor:pointer}
+#bs-focus-panel select{max-width:100%;min-width:0;flex:1 1 180px}
+#bs-focus-panel button[aria-pressed=true]{background:#CCA862;color:#243F36}
+#bs-focus-panel :focus-visible,#bs-focus-toggle:focus-visible{outline:3px solid #CCA862;outline-offset:3px}
+#bs-focus-toggle[hidden],#bs-focus-panel[hidden]{display:none!important}
+@media(max-width:700px){html body .topbar .bs-gold-logo{width:48px;height:48px;flex-basis:48px}body header .spf-mark{width:60px;height:60px}}
+@media print{#bs-focus-toggle,#bs-focus-panel{display:none!important}}
