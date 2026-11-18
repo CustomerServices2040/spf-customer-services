@@ -1,0 +1,18 @@
+Suggested template name: spf_forum_arrival_welcome
+Language: ar
+Body parameter 1: nickname from the invitee record, otherwise name as stored.
+Category: Request Utility review; Meta determines final classification and price.
+
+مرحبا {{1}}،
+
+يسعدنا الترحيب بك في ملتقى دوائر المحافظات.
+
+نؤكد لك إتمام تسجيل وصولك بنجاح، ونتطلع إلى مشاركتك وإسهاماتك في إثراء أعمال الملتقى ومناقشاته.
+
+أهلا وسهلا بك، ونتمنى لك ملتقى مثمرا.
+
+المديرية العامة لخدمات المتعاملين
+صندوق الحماية الاجتماعية
+
+A separate approved Authentication template with a copy-code button is required for OTP.
+Do not reuse the welcome template for authentication. No real template has been submitted.
