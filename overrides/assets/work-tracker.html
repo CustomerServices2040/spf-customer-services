@@ -501,7 +501,7 @@ header{height:72px;padding:0 34px;background:rgba(20,56,47,.97);border:0;color:#
 
   <div class="tabs" aria-label="أقسام لوحة الموقف التنفيذي">
     <button class="tab active" data-tab="overview" onclick="switchTab('overview')"><span class="tab-icon" aria-hidden="true">◉</span><span><b>نظرة عامة</b><small>المشهد التنفيذي</small></span></button>
-    <button class="tab" data-tab="table" onclick="switchTab('table')"><span class="tab-icon" aria-hidden="true">▤</span><span><b>السجل التفصيلي</b><small>الأقدم أولا · حسب الاستلام أو الإضافة</small></span></button>
+    <button class="tab" data-tab="table" onclick="switchTab('table')"><span class="tab-icon" aria-hidden="true">▤</span><span><b>السجل التفصيلي</b><small>الأحدث أولا · حسب الإضافة إلى المنصة</small></span></button>
     <button class="tab" data-tab="perf" onclick="switchTab('perf')"><span class="tab-icon" aria-hidden="true">↗</span><span><b>الأداء</b><small>الأقسام والموظفون</small></span></button>
     <button class="tab" data-tab="dq" onclick="switchTab('dq')"><span class="tab-icon" aria-hidden="true">✓</span><span><b>جودة البيانات</b><small>اكتمال السجل <em class="badge" id="dq-badge">0</em></small></span></button>
   </div>
@@ -1276,7 +1276,7 @@ function buildReviewedTaskPlan(tasks,rows,now=new Date().toISOString()){
   const fieldsKey=t=>JSON.stringify(['title','dept','emp','status','pct','tech','received','due'].map(k=>t[k]??null));
   if(old&&fieldsKey(old)===fieldsKey(fields)){unchanged++;continue}
   if(!old&&result.some(t=>fieldsKey(t)===fieldsKey(fields))){unchanged++;continue}
-  const task={...(old||{}),...fields,id:old?.id||`text-${globalThis.crypto?.randomUUID?.()||Date.now()+'-'+result.length}`,created_at:old?.created_at||(!old?now:undefined),updated_at:now,imported_at:old?.imported_at||now};
+  const task={...(old||{}),...fields,id:old?.id||`text-${globalThis.crypto?.randomUUID?.()||Date.now()+'-'+result.length}`,created_at:old?.created_at||(!old?now:undefined),updated_at:now,imported_at:old?.imported_at||(!old?now:undefined)};
   if(old){task.text_history=[...(old.text_history||[]),{source_text:old.source_text,tech:old.tech,emp:old.emp,status:old.status,pct:old.pct,received:old.received,due:old.due,updated_at:old.updated_at}];result[index]=task;updated++}else{result.push(task);added++}
  }
  return {tasks:result,added,updated,unchanged};
@@ -1313,7 +1313,7 @@ function mergeTextTaskEntries(tasks,entries,source='إدخال نصي موزع �
    if(fields.pct==null)fields.pct=old.pct??null;
    if(!fields.tech)fields.tech=old.tech||'';
    const changed=['emp','tech','status','pct','received','due'].some(k=>k in fields&&String(fields[k]??'')!==String(old[k]??''));
-   if(changed){result[i]={...old,...fields,imported_at:new Date().toISOString(),text_history:[...(old.text_history||[]),{source_file:old.source_file||'السجل السابق',source_text:old.source_text,tech:old.tech,status:old.status,pct:old.pct,emp:old.emp,received:old.received,due:old.due}]};updated++}else unchanged++;
+   if(changed){result[i]={...old,...fields,updated_at:new Date().toISOString(),text_history:[...(old.text_history||[]),{source_file:old.source_file||'السجل السابق',source_text:old.source_text,tech:old.tech,status:old.status,pct:old.pct,emp:old.emp,received:old.received,due:old.due}]};updated++}else unchanged++;
   }else{result.push({id:`text-${globalThis.crypto?.randomUUID?.()||`${Date.now()}-${result.length}`}`,received:null,due:null,date:null,...fields,imported_at:new Date().toISOString()});added++}
  }
  return {tasks:result,added,updated,unchanged};
@@ -1756,8 +1756,9 @@ function taskDateValue(value){
  const named=s.toLowerCase().match(/^(\d{1,2})[\s-]+([^\s-]+)(?:[\s-]+(\d{4}))?$/);
  if(numeric||named){const day=Number((numeric||named)[1]),month=numeric?Number(numeric[2])-1:months[named[2]],year=Number((numeric||named)[3]||2026);if(month==null||month<0||month>11)return null;const d=new Date(Date.UTC(year,month,day));return d.getUTCDate()===day?d.getTime():null}return null;
 }
-function sortTasksChronologically(tasks,newest=false){
- const keys=newest?['updated_at','created_at','imported_at','received','date','due']:['received','created_at','date','due','imported_at'];
+function sortTasksChronologically(tasks,newest=true){
+ // Entry time only: edits and business deadlines must never change insertion order.
+ const keys=['created_at','imported_at'];
  return tasks.map((task,index)=>({task,index,time:keys.map(k=>taskDateValue(task[k])).find(t=>t!=null)})).sort((a,b)=>a.time==null&&b.time!=null?1:b.time==null&&a.time!=null?-1:(a.time!=null&&b.time!=null&&a.time!==b.time?(newest?b.time-a.time:a.time-b.time):(newest?b.index-a.index:a.index-b.index))).map(x=>x.task);
 }
 
@@ -1766,7 +1767,7 @@ function renderTable(){
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   if(page>totalPages) page=totalPages;
   const start = (page-1)*PAGE_SIZE;
-  const pageItems = sortTasksChronologically(filtered).slice(start, start+PAGE_SIZE);
+  const pageItems = sortTasksChronologically(filtered,true).slice(start, start+PAGE_SIZE);
 
   if(!pageItems.length){
     tbody.innerHTML = `<tr><td colspan="6" class="empty-note">لا توجد نتائج مطابقة للفلاتر المحددة.</td></tr>`;
@@ -1975,5 +1976,6 @@ init();
 </script>
 </body>
 </html>
+
 
 

@@ -562,8 +562,9 @@ function taskDateValue(value){
  const named=s.toLowerCase().match(/^(\d{1,2})[\s-]+([^\s-]+)(?:[\s-]+(\d{4}))?$/);
  if(numeric||named){const day=Number((numeric||named)[1]),month=numeric?Number(numeric[2])-1:months[named[2]],year=Number((numeric||named)[3]||2026);if(month==null||month<0||month>11)return null;const d=new Date(Date.UTC(year,month,day));return d.getUTCDate()===day?d.getTime():null}return null;
 }
-function sortTasksChronologically(tasks,newest=false){
- const keys=newest?['updated_at','created_at','imported_at','received','date','due']:['received','created_at','date','due','imported_at'];
+function sortTasksChronologically(tasks,newest=true){
+ // Entry time only: edits and business deadlines must never change insertion order.
+ const keys=['created_at','imported_at'];
  return tasks.map((task,index)=>({task,index,time:keys.map(k=>taskDateValue(task[k])).find(t=>t!=null)})).sort((a,b)=>a.time==null&&b.time!=null?1:b.time==null&&a.time!=null?-1:(a.time!=null&&b.time!=null&&a.time!==b.time?(newest?b.time-a.time:a.time-b.time):(newest?b.index-a.index:a.index-b.index))).map(x=>x.task);
 }
   function renderTrackerKanban(tasks){
@@ -664,5 +665,6 @@ function sortTasksChronologically(tasks,newest=false){
   renderTrackerBoard();
   refreshTrackerSummary();
 })();
+
 
 
