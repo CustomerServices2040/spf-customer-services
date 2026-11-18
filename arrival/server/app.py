@@ -176,7 +176,7 @@ def create_app(db_path=None,demo=False,provider=None):
                     if v.get('metadata',{}).get('phone_number_id')!=os.getenv('META_PHONE_ID'):continue
                     for item in v.get('statuses',[]):
                         state=item.get('status');pid=item.get('id');oid=item.get('biz_opaque_callback_data')
-                        row=db.execute('SELECT * FROM outbox WHERE provider_id=? OR (id=? AND provider_id IS NULL)',(pid,oid)).fetchone()
+                        row=db.execute('SELECT * FROM outbox WHERE provider_id=? OR (callback_token=? AND provider_id IS NULL)',(pid,oid)).fetchone()
                         if row and state in ('sent','delivered','read','failed') and rank[state]>=rank.get(row['status'],0):
                             db.execute('UPDATE outbox SET status=?,provider_id=?,updated_at=?,error=? WHERE id=?',(state,pid,time.time(),'provider_delivery_failed' if state=='failed' else '',row['id']))
         return {'ok':True}

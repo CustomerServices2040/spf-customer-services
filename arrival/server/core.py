@@ -11,7 +11,7 @@ PRAGMA foreign_keys=ON;
 CREATE TABLE IF NOT EXISTS participants(id TEXT PRIMARY KEY, source_key TEXT UNIQUE, name TEXT NOT NULL, nickname TEXT NOT NULL DEFAULT '', division TEXT NOT NULL DEFAULT '', governorate TEXT NOT NULL DEFAULT '', phone TEXT NOT NULL DEFAULT '', day1 TEXT NOT NULL DEFAULT '', day2 TEXT NOT NULL DEFAULT '', version INTEGER NOT NULL DEFAULT 1);
 CREATE INDEX IF NOT EXISTS phone_idx ON participants(phone);
 CREATE TABLE IF NOT EXISTS arrivals(participant_id TEXT PRIMARY KEY REFERENCES participants(id), arrived_at TEXT NOT NULL, source TEXT NOT NULL, actor TEXT NOT NULL, consent INTEGER NOT NULL);
-CREATE TABLE IF NOT EXISTS outbox(id TEXT PRIMARY KEY, participant_id TEXT UNIQUE REFERENCES participants(id), status TEXT NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, provider_id TEXT UNIQUE, updated_at REAL NOT NULL, error TEXT NOT NULL DEFAULT '');
+CREATE TABLE IF NOT EXISTS outbox(id TEXT PRIMARY KEY, participant_id TEXT UNIQUE REFERENCES participants(id), status TEXT NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, provider_id TEXT UNIQUE, updated_at REAL NOT NULL, error TEXT NOT NULL DEFAULT '', callback_token TEXT);
 CREATE TABLE IF NOT EXISTS challenges(id TEXT PRIMARY KEY, participant_id TEXT, digest TEXT NOT NULL, expires REAL NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, used INTEGER NOT NULL DEFAULT 0);
 CREATE TABLE IF NOT EXISTS tickets(id TEXT PRIMARY KEY, participant_id TEXT NOT NULL, expires REAL NOT NULL);
 CREATE TABLE IF NOT EXISTS users(username TEXT PRIMARY KEY, password TEXT NOT NULL, role TEXT NOT NULL CHECK(role IN ('organizer','reception')));
@@ -45,7 +45,9 @@ def verify_password(value,encoded):return hmac.compare_digest(password_hash(valu
 class Store:
     def __init__(self,path):
         self.path=str(Path(path).resolve());Path(self.path).parent.mkdir(mode=0o700,parents=True,exist_ok=True)
-        with self.db() as db:db.executescript(SCHEMA)
+        with self.db() as db:
+            db.executescript(SCHEMA)
+            if 'callback_token' not in [r[1] for r in db.execute('PRAGMA table_info(outbox)')]:db.execute('ALTER TABLE outbox ADD COLUMN callback_token TEXT')
         os.chmod(self.path,0o600)
     @contextmanager
     def db(self,write=False):
@@ -108,12 +110,14 @@ class Store:
             # A crash after POST is ambiguous. Never auto-send again.
             db.execute("UPDATE outbox SET status='uncertain',error='تحقق من حالة المزود قبل إعادة الإرسال',updated_at=? WHERE status='processing' AND updated_at<?",(time.time(),time.time()-120))
             row=db.execute("SELECT o.*,p.phone,p.nickname,p.name FROM outbox o JOIN participants p ON p.id=o.participant_id WHERE o.status='pending' ORDER BY o.updated_at LIMIT 1").fetchone()
-            if row:db.execute("UPDATE outbox SET status='processing',attempts=attempts+1,updated_at=? WHERE id=?",(time.time(),row['id']))
-            return dict(row) if row else None
+            if not row:return None
+            result=dict(row);result['callback_token']=secrets.token_urlsafe(24)
+            db.execute("UPDATE outbox SET status='processing',attempts=attempts+1,updated_at=?,callback_token=? WHERE id=?",(time.time(),result['callback_token'],row['id']))
+            return result
     def message_result(self,oid,status,provider_id=None,error=''):
         with self.db(True) as db:db.execute("UPDATE outbox SET status=?,provider_id=coalesce(?,provider_id),error=?,updated_at=? WHERE id=? AND status IN ('processing','pending','uncertain')",(status,provider_id,error,time.time(),oid))
     def retry(self,oid,actor):
         with self.db(True) as db:
-            cur=db.execute("UPDATE outbox SET status='pending',error='',provider_id=NULL,updated_at=? WHERE id=? AND status='failed'",(time.time(),oid))
+            cur=db.execute("UPDATE outbox SET status='pending',error='',provider_id=NULL,callback_token=NULL,updated_at=? WHERE id=? AND status='failed'",(time.time(),oid))
             if cur.rowcount!=1:raise ValueError('تتاح الإعادة للفشل المؤكد فقط، ولا تكرر الرسائل المرسلة أو غير محسومة الحالة')
             self.audit(db,actor,'message_retry')

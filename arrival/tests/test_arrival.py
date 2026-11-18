@@ -77,12 +77,14 @@ class ArrivalTests(unittest.TestCase):
   self.s.arrive(self.pid,'reception','test',True);p=FakeProvider();p.enabled=False;self.assertFalse(dispatch_one(self.s,p));self.assertEqual(p.calls,0)
  def test_webhook_signature_order_and_race(self):
   self.s.arrive(self.pid,'reception','test',True);row=self.s.claim_message()
-  body={'entry':[{'changes':[{'value':{'metadata':{'phone_number_id':'test-phone'},'statuses':[{'id':'wamid.test','status':'delivered','biz_opaque_callback_data':row['id']}]}}]}]}
+  body={'entry':[{'changes':[{'value':{'metadata':{'phone_number_id':'test-phone'},'statuses':[{'id':'wamid.test','status':'delivered','biz_opaque_callback_data':row['callback_token']}]}}]}]}
   raw=json.dumps(body).encode();url='/api/meta/webhook';self.assertEqual(self.c.post(url,content=raw).status_code,403)
   def post(data):
    raw=json.dumps(data).encode();sig='sha256='+hmac.new(b'webhook-test',raw,hashlib.sha256).hexdigest();return self.c.post(url,content=raw,headers={'x-hub-signature-256':sig})
   self.assertEqual(post(body).status_code,200);self.s.message_result(row['id'],'accepted','wamid.test');self.assertEqual(self.s.roster()[0]['message_status'],'delivered')
   body['entry'][0]['changes'][0]['value']['statuses'][0]['status']='sent';post(body);self.assertEqual(self.s.roster()[0]['message_status'],'delivered')
+ def test_retry_changes_callback_identity(self):
+  self.s.arrive(self.pid,'reception','test',True);first=self.s.claim_message();self.s.message_result(first['id'],'failed');self.s.retry(first['id'],'test');second=self.s.claim_message();self.assertNotEqual(first['callback_token'],second['callback_token'])
  def test_stale_processing_is_uncertain(self):
   self.s.arrive(self.pid,'reception','test',True);row=self.s.claim_message()
   with self.s.db(True) as db:db.execute('UPDATE outbox SET updated_at=?',(time.time()-200,))

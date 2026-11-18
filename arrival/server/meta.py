@@ -30,7 +30,7 @@ def dispatch_one(store,provider):
     row=store.claim_message()
     if not row:return False
     try:
-        pid=provider.send(row['phone'],os.getenv('META_WELCOME_TEMPLATE',''),[row['nickname'] or row['name']],row['id'])
+        pid=provider.send(row['phone'],os.getenv('META_WELCOME_TEMPLATE',''),[row['nickname'] or row['name']],row['callback_token'])
         # accepted is not delivered; signed webhooks are authoritative.
         store.message_result(row['id'],'accepted',pid)
     except DeliveryError as e:store.message_result(row['id'],'pending' if e.state=='disabled' else e.state,error=e.code)
