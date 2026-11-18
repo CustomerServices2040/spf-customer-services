@@ -439,6 +439,9 @@ header{height:72px;padding:0 34px;background:rgba(20,56,47,.97);border:0;color:#
 #panel-table .table-card{border-top:4px solid #762E50}#panel-perf .perf-toggle{border-top:3px solid #B58A4A}#panel-perf .perf-card{border-top:3px solid #356B56}#panel-dq .dq-card{border-top:3px solid #4D6672}
 @media(max-width:760px){header{background:rgba(20,56,47,.97)}.hero{padding:24px 14px 20px}.hero-figure{justify-self:start}.tabs{grid-template-columns:1fr 1fr;overflow:visible}.tab{min-width:0;min-height:70px;grid-template-columns:38px minmax(0,1fr);padding:10px}.tab-icon{width:36px;height:36px}.tab b{font-size:12px}.tab small{font-size:9px}}
 @media(max-width:430px){.tabs{grid-template-columns:1fr}.tab{min-height:64px}}
+
+.text-review-row{border:1px solid #c6d3cb;border-radius:14px;padding:16px;background:#fff;margin:12px 0;box-shadow:0 2px 8px #233e3010}.text-review-row.needs-review{border-inline-start:4px solid #c49947}.review-row-top,.review-row-bottom,.review-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.review-row-top{color:#3a564c;font-weight:700;margin-bottom:12px}.review-row-top button,.review-toolbar button{border:1px solid #bdcbbf;background:#eef3ef;color:#304e40;border-radius:8px;padding:8px 12px;cursor:pointer;font:inherit}.review-main-fields{display:grid;grid-template-columns:1fr 1.5fr;gap:12px}.review-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0}.text-review-row label{display:grid;gap:5px;font-size:12px;color:#344c40}.text-review-row input:not([type=checkbox]),.text-review-row textarea,.text-review-row select,.review-toolbar select{width:100%;min-width:0;min-height:42px;border:1px solid #b7c7bb;border-radius:8px;padding:9px;background:#fcfdfb;color:#182d22;font:inherit}.text-review-row textarea{min-height:76px;line-height:1.7;resize:vertical}.text-review-row input[type=checkbox]{accent-color:#3a564c;width:18px;height:18px}.review-row-top>label,.text-review-row .review-confirm{display:flex;align-items:center;gap:8px}.review-row-bottom>label:first-child{flex:1;min-width:220px}.review-row-note{font-size:11px;color:#754e16;width:100%}.review-toolbar{justify-content:flex-start}.review-toolbar select{width:auto}#text-review-summary{color:#3a564c}#text-review-notes pre{white-space:pre-wrap;font:inherit}#task-distribution-preview{overflow:visible}#task-text-mode .task-text-actions{position:sticky;top:0;z-index:3;background:#eef3ef;padding:10px;border-radius:10px} .text-review-row :focus-visible{outline:3px solid #cca862;outline-offset:2px}@media(max-width:700px){.review-main-fields,.review-fields{grid-template-columns:1fr}.text-review-row{padding:12px}.review-toolbar>*{flex:1}.review-row-bottom>label:first-child{min-width:100%}}
+
 </style>
 </head>
 <body>
@@ -498,7 +501,7 @@ header{height:72px;padding:0 34px;background:rgba(20,56,47,.97);border:0;color:#
 
   <div class="tabs" aria-label="أقسام لوحة الموقف التنفيذي">
     <button class="tab active" data-tab="overview" onclick="switchTab('overview')"><span class="tab-icon" aria-hidden="true">◉</span><span><b>نظرة عامة</b><small>المشهد التنفيذي</small></span></button>
-    <button class="tab" data-tab="table" onclick="switchTab('table')"><span class="tab-icon" aria-hidden="true">▤</span><span><b>السجل التفصيلي</b><small>عرض وتحديث المهام</small></span></button>
+    <button class="tab" data-tab="table" onclick="switchTab('table')"><span class="tab-icon" aria-hidden="true">▤</span><span><b>السجل التفصيلي</b><small>الأقدم أولا · حسب الاستلام أو الإضافة</small></span></button>
     <button class="tab" data-tab="perf" onclick="switchTab('perf')"><span class="tab-icon" aria-hidden="true">↗</span><span><b>الأداء</b><small>الأقسام والموظفون</small></span></button>
     <button class="tab" data-tab="dq" onclick="switchTab('dq')"><span class="tab-icon" aria-hidden="true">✓</span><span><b>جودة البيانات</b><small>اكتمال السجل <em class="badge" id="dq-badge">0</em></small></span></button>
   </div>
@@ -543,9 +546,13 @@ header{height:72px;padding:0 34px;background:rgba(20,56,47,.97);border:0;color:#
         </div>
         <div class="task-text-entry" id="task-text-mode" role="tabpanel" aria-labelledby="task-text-mode-button" hidden>
           <label>النص الحر للمهام والتفاصيل<textarea id="task-text-lines" oninput="scheduleTextTaskAnalysis()" placeholder="مثال:&#10;المهمة: إعداد التقرير الشهري لخدمات المتعاملين&#10;التفاصيل: استكمال تحليل البيانات ومراجعة المؤشرات، قيد الإجراء بنسبة 60%&#10;&#10;المهمة: متابعة تجهيز صالة الدائرة&#10;التفاصيل: التنسيق مع الدعم المؤسسي ومتابعة أعمال الصيانة"></textarea></label>
-          <span class="task-text-entry-note">ألصق المهام كقائمة مرقمة أو نقطية، أو جدول نصي، أو باستخدام «المهمة:». يبدأ الفصل والتوزيع تلقائياً؛ تُحفظ تفاصيل كل مهمة معها. اذكر عنوان القسم والموظف والحالة إن توفرت، وراجع الحقول غير المحددة قبل النشر.</span>
-          <div class="task-text-actions"><button type="button" class="btn-secondary" id="analyze-text-tasks" onclick="analyzeTextTasks()">تحليل المهام وتوزيعها</button><button type="button" class="btn-primary" id="save-text-tasks" onclick="saveTextTasks()" hidden>اعتماد التوزيع ونشر المهام</button></div>
+          <span class="task-text-entry-note">ألصق المهام كقائمة مرقمة أو نقطية، أو جدول نصي، أو باستخدام «المهمة:». يبدأ الفصل والتوزيع تلقائياً؛ تُحفظ تفاصيل كل مهمة معها. يمكنك تعديل العنوان والتفاصيل والقسم والموظف والحالة والتواريخ في الصفوف أدناه. الحقول غير الواضحة تبقى فارغة لاستكمالها، ولا تنشر المهمة قبل مراجعتها.</span>
+          <div class="task-text-actions"><button type="button" class="btn-secondary" id="analyze-text-tasks" onclick="analyzeTextTasks()">إعادة التحليل</button><button type="button" class="btn-primary" id="save-text-tasks" onclick="saveTextTasks()" hidden>اعتماد المهام المحددة ونشرها</button></div>
+          <button type="button" class="btn-secondary" id="load-prepared-text" onclick="loadPreparedTextDraft()" hidden></button>
+          <div class="review-toolbar"><button type="button" onclick="selectTextReviewRows(true)">تحديد الكل</button><button type="button" onclick="selectTextReviewRows(false)">إلغاء التحديد</button><button type="button" onclick="addTextReviewRow()">إضافة صف</button><select id="review-bulk-status" aria-label="الحالة للخانات الفارغة"><option value="">حالة للخانات الفارغة</option><option>قيد الإجراء</option><option>منجز</option><option>متأخر</option></select><button type="button" onclick="fillReviewStatus()">تعبئة الحالة</button><button type="button" onclick="reviewAllComplete()">تأكيد مراجعة الصفوف المكتملة</button></div>
+          <strong id="text-review-summary" role="status"></strong>
           <div class="task-text-feedback" id="task-text-feedback" role="status"></div>
+          <details id="text-review-notes"></details>
           <div class="task-distribution-preview" id="task-distribution-preview" aria-live="polite"></div>
         </div>
       </div>
@@ -702,7 +709,7 @@ async function loadTasks(){
     const response=await fetch(`tasks-data.json?v=${Date.now()}`,{cache:'no-store'});
     if(!response.ok)throw new Error('تعذر تحميل ملف البيانات المركزي');
     const payload=await response.json();
-    if(Array.isArray(payload.tasks)&&payload.tasks.length){loadedTasksUpdatedAt=payload.updated_at||null;return payload.tasks.map((r,index)=>({...r,emp:normalizeEmployees(r.emp),id:r.id||`central-${index+1}`}));}
+    if(Array.isArray(payload.tasks)&&payload.tasks.length){loadedTasksUpdatedAt=payload.updated_at||null;textReviewDrafts=payload.text_review_drafts||[];return payload.tasks.map((r,index)=>({...r,emp:normalizeEmployees(r.emp),id:r.id||`central-${index+1}`}));}
   }catch(error){console.warn(error)}
   document.getElementById('tracker-load-error').hidden=false;
   return cloneDefaults();
@@ -742,7 +749,14 @@ async function fetchCurrentTaskSnapshot(token){
   const response=await fetch(`${endpoint}?ref=main&t=${Date.now()}`,{headers:githubHeaders(token),cache:'no-store'});
   if(!response.ok)throw await githubError(response,'تعذر قراءة أحدث نسخة من سجل الأعمال');
   const metadata=await response.json();
-  const bytes=Uint8Array.from(atob(metadata.content.replace(/\s/g,'')),ch=>ch.charCodeAt(0));
+  let encoded=metadata.content;
+  if(!encoded||metadata.encoding==='none'){
+    const blobResponse=await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/blobs/${metadata.sha}`,{headers:githubHeaders(token),cache:'no-store'});
+    if(!blobResponse.ok)throw await githubError(blobResponse,'تعذر قراءة سجل المهام');
+    encoded=(await blobResponse.json()).content;
+  }
+  if(typeof encoded!=='string')throw new Error('تعذر قراءة محتوى سجل المهام. لم تُحفظ أي تغييرات.');
+  const bytes=Uint8Array.from(atob(encoded.replace(/\s/g,'')),ch=>ch.charCodeAt(0));
   return {endpoint,metadata,payload:JSON.parse(new TextDecoder().decode(bytes))};
 }
 async function syncTasksFromGithub(token){
@@ -807,7 +821,7 @@ async function restoreOwnerSession(){
   // while edits and repeated saves during the open session remain uninterrupted.
   updateOwnerUI();
 }
-async function saveTasks(){
+async function saveTasks(options={}){
   const token=await authorizeTaskPublishing();
   let snapshot=await fetchCurrentTaskSnapshot(token);
   // GitHub's read endpoint may briefly return the version preceding our last save.
@@ -819,7 +833,7 @@ async function saveTasks(){
   if(!loadedTasksUpdatedAt||remote.updated_at!==loadedTasksUpdatedAt||loadedTasksSha&&metadata.sha!==loadedTasksSha)
     throw new Error('تغيّرت البيانات في جلسة أخرى. اضغط «تحديث السجل» لمراجعة أحدث المهام، ثم أعد التعديل. جلسة الدخول ما زالت فعالة.');
   const updatedAt=new Date(Math.max(Date.now(),Date.parse(remote.updated_at||'')+1||0)).toISOString();
-  const document={...remote,version:(Number(remote.version)||0)+1,updated_at:updatedAt,tasks:DATA};
+  const document={...remote,version:(Number(remote.version)||0)+1,updated_at:updatedAt,tasks:DATA,text_review_drafts:(remote.text_review_drafts||[]).map(d=>d.id===options.consumeTextDraft?{...d,entries:options.remainingTextRows||[]}:d).filter(d=>d.entries.length)};
   const response=await fetch(endpoint,{method:'PUT',headers:{...githubHeaders(token),'Content-Type':'application/json'},body:JSON.stringify({message:`Update work tracker (${DATA.length} tasks)`,content:encodeBase64(JSON.stringify(document,null,2)+'\n'),sha:metadata.sha,branch:'main'})});
   if(!response.ok)throw await githubError(response,'تعذر نشر التحديث إلى GitHub');
   const saved=await response.json();
@@ -1106,7 +1120,7 @@ function textDepartment(value){
  if(n.includes('ادارهعلاقاتمتعاملين'))return depts[1];
  return depts.find(d=>n.includes(normalizeTaskMatch(d).replace(/\s/g,'')))||'';
 }
-function parseFreeTextTasks(raw){
+function parseLegacyTextTasks(raw){
  const entries=[],notes=[];let context='',mode='',header=[],current=null;
  const clean=String(raw||'').replace(/\r/g,'').replace(/\s*\/\s*•\s*/g,'\n• ').trim();
  const strip=s=>s.replace(/^\s*(?:[-•●▪*]|[\d٠-٩۰-۹]+[.)、-])\s*/,'').replace(/^(?:المهمة|مهمة|عنوان المهمة)\s*[:：-]\s*/,'').trim();
@@ -1177,6 +1191,94 @@ function parseFreeTextTasks(raw){
  }
  entries.notes=notes;return entries;
 }
+function cleanTaskText(value){return String(value||'').replace(/\r/g,'').replace(/\\([.*_)])/g,'$1').replace(/\*\*|__/g,'').replace(/^\s*#{1,6}\s*/gm,'').replace(/[ \t\u00a0]+/g,' ').trim()}
+function knownTextDepartment(value){
+ const n=normalizeTaskMatch(value).replace(/\s/g,'');
+ if(/^(?:قسم)?التنسيق(?:والمتابعه)?(?:لمي)?$/.test(n))return 'التنسيق والمتابعة';
+ return textDepartment(value);
+}
+function parseFreeTextTasks(raw){
+ const cleaned=cleanTaskText(raw);
+ if(!/(?:المسؤول|الموظف المسؤول)\s*[:：]/.test(cleaned)||!/^\s*[\d٠-٩۰-۹]+[.)-]\s+.+[:：]/m.test(cleaned))return parseLegacyTextTasks(/\*\*|\\\./.test(String(raw))?cleaned:raw);
+ const entries=[],notes=[];let dept='',current=null;
+ const metadata=/(?:[—–|؛]\s*)?(المسؤول|الموظف المسؤول|الموظف|القسم|الحالة|نسبة الإنجاز|الإنجاز|تاريخ الاستلام|موعد التسليم)\s*[:：]\s*/g;
+ for(const line of cleaned.split('\n').map(s=>s.trim())){
+  if(!line)continue;
+  const candidate=line.replace(/^(?:أولا|أولاً|اولاً|ثانيا|ثانياً|ثالثا|ثالثاً|رابعا|رابعاً|خامسا|خامساً|سادسا|سادساً)\s*[:：]\s*/,'');
+  if(/^قسم\s/.test(candidate)&&candidate.length<100&&!candidate.includes('المسؤول:')){dept=knownTextDepartment(candidate.replace(/\([^)]*\)/g,''));notes.push(line);current=null;continue}
+  if(/^(?:ملاحظة|وين |حقك علي|الفترة المرجعية)/.test(line)){notes.push(line);current=null;continue}
+  const start=line.match(/^(?:[\d٠-٩۰-۹]+[.)-]|[-•●▪])\s*(.+)$/);
+  if(!start){if(current){current.details+='\n'+line;current.source_text+='\n'+line}else notes.push(line);continue}
+  const source=start[1],trailing=source.match(/\(\s*قسم\s+([^)]*)\)\s*[.،]?$/);
+  const body=source.replace(/\(\s*قسم\s+[^)]*\)\s*[.،]?$/,'').trim();
+  const fields=[...body.matchAll(metadata)],content=body.slice(0,fields[0]?.index??body.length).replace(/[—–|\s]+$/,'').trim(),colon=content.indexOf(':');
+  current={title:(colon>=0?content.slice(0,colon):content).trim(),details:colon>=0?content.slice(colon+1).trim():'',dept:knownTextDepartment(trailing?.[1]||'')||dept,emp:'',status:null,pct:null,received:null,due:null,source_text:line,raw:line};
+  for(let i=0;i<fields.length;i++){
+   const key=fields[i][1],value=body.slice(fields[i].index+fields[i][0].length,fields[i+1]?.index??body.length).replace(/[.،؛|—–\s]+$/,'').trim();
+   if(/مسؤول|الموظف/.test(key))current.emp=/غير محدد|غير واضح|لم يذكر|لم يظهر/.test(value)?'':normalizeEmployees(value);
+   else if(key==='القسم')current.dept=knownTextDepartment(value)||value;
+   else if(key==='الحالة')current.status=textStatus(value);
+   else if(/إنجاز/.test(key))current.pct=textPercent(value);
+   else if(key==='تاريخ الاستلام')current.received=value||null;
+   else if(key==='موعد التسليم')current.due=value||null;
+  }
+  const percent=textDigits(current.details).match(/(?:^|\s)(\d+(?:\.\d+)?)\s*%/);if(current.pct==null&&percent)current.pct=Number(percent[1]);
+  if(current.status==='منجز')current.pct=100;
+  entries.push(current);
+ }
+ entries.notes=notes;return entries;
+}
+function reviewMatchCandidates(row){
+ const key=importKey(row),title=normalizeTaskMatch(row.title),tokens=textTaskTokens(row.title);
+ return DATA.filter(t=>t.dept===row.dept).map(task=>{
+  if(importKey(task)===key)return {task,score:1};
+  const other=textTaskTokens(task.title),common=[...tokens].filter(t=>other.has(t)).length;
+  const score=common>=2?common/Math.max(tokens.size,other.size):0;
+  return {task,score};
+ }).filter(x=>x.score>=.55).sort((a,b)=>b.score-a.score).slice(0,8).map(x=>x.task);
+}
+
+function prepareTextReview(raw){
+ const parsed=parseFreeTextTasks(raw),rows=[],byKey=new Map();let repeated=0;
+ for(const entry of parsed){
+  const distribution=inferTextTaskDistribution(entry);
+  const row={...entry,dept:entry.dept||distribution.dept||'',emp:entry.emp??'',status:entry.status||'',pct:entry.pct??null,selected:true,reviewed:false,action:'new',target_id:'',source_text:entry.source_text||entry.raw||'',review_reason:entry.review_reason||''};
+  const key=importKey(row)+'|'+(row.received||'')+'|'+(row.due||'');
+  if(byKey.has(key)){const previous=byKey.get(key);if(row.details&&!previous.details.includes(row.details))previous.details+='\n'+row.details;previous.source_text+='\n'+row.source_text;if(!previous.emp)previous.emp=row.emp;repeated++;continue}
+  const matches=DATA.filter(t=>importKey(t)===importKey(row)&&(!row.received||!t.received||row.received===t.received));
+  if(matches.length===1){row.action='update';row.target_id=matches[0].id;row.match_note='تطابق عنوان المهمة والقسم؛ راجع التحديث قبل الاعتماد'}
+  else if(matches.length>1){row.action='choose';row.match_note='عدة سجلات بالعنوان نفسه؛ اختر السجل المقصود أو إضافة مستقلة'}
+  else if(reviewMatchCandidates(row).length){row.action='choose';row.match_note='توجد مهام مشابهة؛ اختر التحديث أو إضافة مستقلة بعد المراجعة'}
+  byKey.set(key,row);rows.push(row);
+ }
+ return {rows,ignored:parsed.notes||[],repeated};
+}
+function validateTextReview(rows){
+ const issues=[];rows.forEach((r,i)=>{if(!r.selected)return;const missing=[];
+  if(!r.title?.trim())missing.push('عنوان المهمة');if(!r.dept?.trim())missing.push('القسم');if(!r.emp?.trim())missing.push('الموظف المسؤول');if(!['منجز','قيد الإجراء','متأخر'].includes(r.status))missing.push('الحالة');
+  if(r.action==='choose'||(r.action==='update'&&!r.target_id))missing.push('اختيار السجل');
+  if(r.pct!==null&&r.pct!==''&&(!Number.isFinite(Number(r.pct))||Number(r.pct)<0||Number(r.pct)>100))missing.push('نسبة بين 0 و100');
+  if(r.status!=='منجز'&&Number(r.pct)===100)missing.push('توافق الحالة مع نسبة 100%');
+  if(!r.reviewed)missing.push('تأكيد المراجعة');if(missing.length)issues.push({index:i,missing});
+ });return issues;
+}
+function buildReviewedTaskPlan(tasks,rows,now=new Date().toISOString()){
+ const issues=validateTextReview(rows);if(issues.length)throw new Error('أكمل الحقول المطلوبة وأكد مراجعة الصفوف المحددة قبل النشر.');
+ const result=tasks.map(t=>({...t}));let added=0,updated=0,unchanged=0;
+ for(const row of rows.filter(r=>r.selected)){
+  const id=row.action==='update'?row.target_id:null,index=id?result.findIndex(t=>t.id===id):-1;
+  if(id&&index<0)throw new Error('المهمة المحددة للتحديث لم تعد موجودة. حدّث السجل وأعد اختيارها.');
+  const old=index>=0?result[index]:null;
+  const pctValue=row.pct==null||row.pct===''?(old?.pct===100&&row.status!=='منجز'?null:(old?.pct??null)):Number(row.pct);
+  const fields={title:row.title.trim(),dept:row.dept.trim(),emp:normalizeEmployees(row.emp),status:row.status,pct:row.status==='منجز'?100:pctValue,tech:row.details||old?.tech||'',overdue:row.status==='متأخر',received:row.received||old?.received||null,due:row.due||old?.due||null,date:row.due||old?.date||null,review_reason:'',source_text:row.source_text||'',source_file:'إدخال نصي — تمت المراجعة'};
+  const fieldsKey=t=>JSON.stringify(['title','dept','emp','status','pct','tech','received','due'].map(k=>t[k]??null));
+  if(old&&fieldsKey(old)===fieldsKey(fields)){unchanged++;continue}
+  if(!old&&result.some(t=>fieldsKey(t)===fieldsKey(fields))){unchanged++;continue}
+  const task={...(old||{}),...fields,id:old?.id||`text-${globalThis.crypto?.randomUUID?.()||Date.now()+'-'+result.length}`,created_at:old?.created_at||(!old?now:undefined),updated_at:now,imported_at:old?.imported_at||now};
+  if(old){task.text_history=[...(old.text_history||[]),{source_text:old.source_text,tech:old.tech,emp:old.emp,status:old.status,pct:old.pct,received:old.received,due:old.due,updated_at:old.updated_at}];result[index]=task;updated++}else{result.push(task);added++}
+ }
+ return {tasks:result,added,updated,unchanged};
+}
 function inferTextTaskStatus(text){
  const normalized=normalizeTaskMatch(textDigits(text)),percentage=normalized.match(/(?:^|\s)(100|[1-9]?\d)\s*%/),pct=percentage?Number(percentage[1]):null;
  if(/(?:غير منجز|غير مكتمل|لم يتم الانتهاء|لم يتم الانجاز|لن يتم التنفيذ|قيد الاجراء|جاري العمل)/.test(normalized))return {status:'قيد الإجراء',pct};
@@ -1191,16 +1293,6 @@ function inferTextTaskDistribution(entry){
  const state=entry.status?{status:entry.status,pct:entry.pct}:entry.record_type==='project'?{status:'قيد الإجراء',pct:null}:inferTextTaskStatus(entry.title+' '+entry.details);
  const emp=entry.emp!==undefined?entry.emp:(exact.length===1?normalizeEmployees(exact[0].emp):'');
  return {dept,emp,...state,pct:state.status==='منجز'?100:(entry.pct??state.pct),review_reason:[entry.review_reason,!dept?'لم يتضح القسم المسؤول':'',!entry.status?'الحالة تحتاج تأكيداً من النص':''].filter(Boolean).join('؛ ')};
-}
-let textTaskAnalysisTimer;
-function scheduleTextTaskAnalysis(){resetTextTaskAnalysis();clearTimeout(textTaskAnalysisTimer);textTaskAnalysisTimer=setTimeout(analyzeTextTasks,450)}
-function analyzeTextTasks(){
-  const feedback=document.getElementById('task-text-feedback'),preview=document.getElementById('task-distribution-preview'),entries=parseFreeTextTasks(document.getElementById('task-text-lines').value);
-  if(!entries.length){feedback.textContent='اكتب مهمة واحدة على الأقل مع تفاصيلها.';return}
-  pendingTextTasks=entries.map(entry=>({...entry,...inferTextTaskDistribution(entry)}));
-  preview.innerHTML=`<table><thead><tr><th>المهمة</th><th>التفاصيل</th><th>التوزيع التلقائي</th><th>الموظف</th><th>الحالة</th><th>الإنجاز</th></tr></thead><tbody>${pendingTextTasks.map(task=>`<tr><td>${esc(task.title)}</td><td>${esc(task.details||'—')}</td><td><span class="auto-tag">${esc(task.dept||'غير محدد — يلزم تحديد القسم')}</span>${task.review_reason?`<small style="display:block;color:#8e2948">${esc(task.review_reason)}</small>`:''}</td><td>${esc(task.emp||'يُحدد من القسم')}</td><td>${esc(task.status)}</td><td>${task.pct==null?'غير محدد':task.pct+'%'}</td></tr>`).join('')}</tbody></table>`;
-  feedback.textContent=`تم فصل ${pendingTextTasks.length} مهمة. استُبعد ${entries.notes.length} سطر عنوان أو ملاحظة من العدّاد. التوزيع المقترح قابل للمراجعة؛ المهام المطابقة تُحدّث دون تكرار. راجع النتيجة ثم اعتمد النشر.`;
-  document.getElementById('save-text-tasks').hidden=false;
 }
 function mergeTextTaskEntries(tasks,entries,source='إدخال نصي موزع تلقائيًا'){
  const result=tasks.map(t=>({...t}));let added=0,updated=0,unchanged=0;
@@ -1224,18 +1316,76 @@ function mergeTextTaskEntries(tasks,entries,source='إدخال نصي موزع �
  }
  return {tasks:result,added,updated,unchanged};
 }
+let textTaskAnalysisTimer,reviewDirty=false,reviewSource='',textReviewDrafts=[],activeTextDraftId=null;
+const TEXT_REVIEW_CACHE='spf-text-review-v2';
+function cacheTextReview(){try{localStorage.setItem(TEXT_REVIEW_CACHE,JSON.stringify({source:reviewSource,rows:pendingTextTasks,draftId:activeTextDraftId}))}catch(_){}}
+function scheduleTextTaskAnalysis(){clearTimeout(textTaskAnalysisTimer);if(reviewDirty){document.getElementById('task-text-feedback').textContent='تغير النص الأصلي. اضغط «إعادة التحليل» لاستبدال المعاينة، أو أعد النص السابق للاحتفاظ بتعديلاتك.';return}textTaskAnalysisTimer=setTimeout(analyzeTextTasks,500)}
+function analyzeTextTasks(){
+ clearTimeout(textTaskAnalysisTimer);const raw=document.getElementById('task-text-lines').value;
+ if(reviewDirty&&raw===reviewSource){renderTextReview();return}
+ if(reviewDirty&&raw!==reviewSource&&!confirm('إعادة التحليل ستستبدل التعديلات اليدوية في المعاينة الحالية. هل تريد المتابعة؟'))return;
+ const parsed=prepareTextReview(raw);pendingTextTasks=parsed.rows;reviewSource=raw;reviewDirty=false;activeTextDraftId=null;
+ document.getElementById('task-text-feedback').textContent=`تم فصل ${parsed.rows.length} مهمة، ودمج ${parsed.repeated} تكرار داخل النص. أكمل الحقول الفارغة وراجع كل صف قبل الاعتماد.`;
+ renderTextReview();cacheTextReview();
+ const notes=document.getElementById('text-review-notes');notes.innerHTML=parsed.ignored.length?`<summary>نصوص خارج المهام (${parsed.ignored.length})</summary><pre>${esc(parsed.ignored.join('\n'))}</pre>`:'';
+}
+function reviewInput(index,key,value){
+ const row=pendingTextTasks[index];if(!row)return;row[key]=key==='pct'?(value===''?null:Number(textDigits(value))):value;reviewDirty=true;
+ if(key!=='reviewed'&&key!=='selected'){row.reviewed=false;const check=document.querySelector(`[data-review-row="${index}"] [data-field="reviewed"]`);if(check)check.checked=false;}
+ if(key==='status'&&value==='منجز'){row.pct=100;document.querySelector(`[data-review-row="${index}"] [data-field="pct"]`).value=100}
+ if(key==='target'){row.action=value==='new'?'new':value?'update':'choose';row.target_id=value==='new'?'':value;}
+ cacheTextReview();updateReviewSummary();
+}
+function updateReviewSummary(){
+ const rows=pendingTextTasks||[],issues=validateTextReview(rows),selected=rows.filter(r=>r.selected).length;
+ document.getElementById('text-review-summary').textContent=`${rows.length} مهمة · ${selected} محددة · ${selected-issues.length} جاهزة · ${issues.length} تحتاج استكمالا أو مراجعة`;
+ document.getElementById('save-text-tasks').hidden=!rows.length;
+ document.querySelectorAll('[data-review-row]').forEach(el=>{const issue=issues.find(x=>x.index===Number(el.dataset.reviewRow));el.classList.toggle('needs-review',!!issue);el.querySelector('.review-row-note').textContent=issue?'مطلوب: '+issue.missing.join('، '):'جاهزة للاعتماد';});
+}
+function renderTextReview(){
+ const rows=pendingTextTasks||[],depts=['إدارة وتطوير الخدمات','إدارة علاقات المتعاملين','شؤون الدوائر والمنافذ','مركز الاتصال','التنسيق والمتابعة'];
+ document.getElementById('task-distribution-preview').innerHTML=rows.map((r,i)=>{
+  const matches=reviewMatchCandidates(r);const target=DATA.find(t=>t.id===r.target_id);if(target&&!matches.some(t=>t.id===target.id))matches.push(target);
+  const field=(label,key,type='text')=>`<label>${label}<input data-field="${key}" aria-label="${label} ${i+1}" type="${type}" ${type==='number'?'min="0" max="100" step="0.01"':''} value="${esc(r[key]??'')}" oninput="reviewInput(${i},'${key}',this.value)"></label>`;
+  return `<article class="text-review-row" data-review-row="${i}"><div class="review-row-top"><label><input type="checkbox" ${r.selected?'checked':''} onchange="reviewInput(${i},'selected',this.checked)"> المهمة ${i+1}</label><div><button type="button" onclick="splitTextReviewRow(${i})">تقسيم</button><button type="button" onclick="removeTextReviewRow(${i})">حذف من المعاينة</button></div></div><div class="review-main-fields">${field('عنوان المهمة','title')}<label>التفاصيل والموقف التنفيذي<textarea aria-label="التفاصيل ${i+1}" oninput="reviewInput(${i},'details',this.value)">${esc(r.details||'')}</textarea></label></div><div class="review-fields"><label>القسم المسؤول<select aria-label="القسم المسؤول ${i+1}" onchange="reviewInput(${i},'dept',this.value)"><option value="">اختر القسم</option>${depts.map(d=>`<option ${r.dept===d?'selected':''}>${esc(d)}</option>`).join('')}</select></label>${field('الموظف المسؤول','emp')}<label>الحالة<select aria-label="الحالة ${i+1}" onchange="reviewInput(${i},'status',this.value)"><option value="">حدد الحالة</option>${['قيد الإجراء','منجز','متأخر'].map(s=>`<option ${r.status===s?'selected':''}>${s}</option>`).join('')}</select></label>${field('نسبة الإنجاز %','pct','number')}${field('تاريخ الاستلام','received')}${field('موعد التسليم','due')}</div><div class="review-row-bottom"><label>الإجراء عند الاعتماد<select aria-label="الإجراء ${i+1}" onchange="reviewInput(${i},'target',this.value)">${r.action==='choose'?'<option value="">اختر السجل المقصود</option>':''}<option value="new" ${r.action==='new'?'selected':''}>إضافة مهمة مستقلة</option>${matches.map(t=>`<option value="${esc(t.id)}" ${r.target_id===t.id?'selected':''}>تحديث: ${esc(t.title)} — ${esc(t.received||t.date||t.emp||'بلا تاريخ')}</option>`).join('')}</select></label><label class="review-confirm"><input type="checkbox" data-field="reviewed" ${r.reviewed?'checked':''} onchange="reviewInput(${i},'reviewed',this.checked)"> راجعت بيانات هذه المهمة</label><span class="review-row-note"></span></div></article>`;
+ }).join('');updateReviewSummary();
+}
+function selectTextReviewRows(selected){(pendingTextTasks||[]).forEach(r=>r.selected=selected);reviewDirty=true;renderTextReview();cacheTextReview()}
+function addTextReviewRow(){pendingTextTasks=pendingTextTasks||[];pendingTextTasks.push({title:'',details:'',dept:'',emp:'',status:'',pct:null,selected:true,reviewed:false,action:'new'});reviewDirty=true;renderTextReview();cacheTextReview()}
+function removeTextReviewRow(i){pendingTextTasks.splice(i,1);reviewDirty=true;renderTextReview();cacheTextReview()}
+function splitTextReviewRow(i){
+ const row=pendingTextTasks[i],input=prompt('اكتب عنوان كل مهمة في سطر مستقل. ستبقى التفاصيل في الصف الأول لتوزيعها يدويا.',row.title+'\n');if(input===null)return;
+ const titles=input.split('\n').map(s=>s.trim()).filter(Boolean);if(titles.length<2){alert('اكتب مهمتين على الأقل، كل واحدة في سطر مستقل.');return}
+ const split=titles.map((title,n)=>({...row,title,details:n===0?row.details:'',source_text:row.source_text,reviewed:false,action:'new',target_id:''}));pendingTextTasks.splice(i,1,...split);reviewDirty=true;renderTextReview();cacheTextReview();
+}
+function fillReviewStatus(){const status=document.getElementById('review-bulk-status').value;if(!status)return;(pendingTextTasks||[]).filter(r=>r.selected&&!r.status).forEach(r=>{r.status=status;if(status==='منجز')r.pct=100;r.reviewed=false});reviewDirty=true;renderTextReview();cacheTextReview()}
+function reviewAllComplete(){(pendingTextTasks||[]).filter(r=>r.selected).forEach(r=>{if(!validateTextReview([{...r,reviewed:true}]).length)r.reviewed=true});reviewDirty=true;renderTextReview();cacheTextReview()}
+function restoreTextReview(){
+ try{const draft=JSON.parse(localStorage.getItem(TEXT_REVIEW_CACHE)||'null');if(draft?.rows?.length){pendingTextTasks=draft.rows;reviewSource=draft.source||'';activeTextDraftId=draft.draftId||null;document.getElementById('task-text-lines').value=reviewSource;reviewDirty=true;renderTextReview();document.getElementById('task-text-feedback').textContent='استعيدت مسودة المراجعة المحفوظة على هذا الجهاز.'}}catch(_){}
+ const button=document.getElementById('load-prepared-text');button.hidden=!textReviewDrafts.length;button.textContent=textReviewDrafts.length?`فتح المهام المرفقة للمراجعة (${textReviewDrafts[0].entries.length})`:'';
+}
+function loadPreparedTextDraft(){
+ if(pendingTextTasks?.length&&reviewDirty&&!confirm('فتح المسودة المرفقة سيستبدل المعاينة الحالية. هل تريد المتابعة؟'))return;
+ const draft=textReviewDrafts[0];if(!draft)return;pendingTextTasks=draft.entries.map(r=>({...r}));activeTextDraftId=draft.id;reviewSource=draft.source_text||'';document.getElementById('task-text-lines').value=reviewSource;reviewDirty=true;setTaskEntryMode('text');renderTextReview();cacheTextReview();document.getElementById('task-text-feedback').textContent='المهام مفصولة وجاهزة للمراجعة. أكمل الحقول الناقصة ثم اعتمد النشر.';
+}
 async function saveTextTasks(){
- if(taskMutationInFlight)return;
- clearTimeout(textTaskAnalysisTimer);analyzeTextTasks();
- const feedback=document.getElementById('task-text-feedback'),button=document.getElementById('save-text-tasks');
- if(!pendingTextTasks?.length)return;
- if(pendingTextTasks.some(t=>!t.dept)){feedback.textContent='أضف عنوان القسم قبل المهام غير المحددة في النص، ثم راجع التوزيع.';return}
- let plan;try{plan=mergeTextTaskEntries(DATA,pendingTextTasks)}catch(error){feedback.textContent=error.message;return}
- if(!plan.added&&!plan.updated){feedback.textContent='جميع المهام مطابقة للسجل؛ لم تُضف نسخ مكررة.';return}
- const previous=DATA;DATA=plan.tasks;taskMutationInFlight=true;button.disabled=true;feedback.textContent=`جارٍ نشر ${plan.added} مهمة جديدة وتحديث ${plan.updated} مهمة…`;
- try{await saveTasks();refreshFiltersAfterDataChange();document.getElementById('task-text-lines').value='';resetTextTaskAnalysis();feedback.textContent=`تم نشر ${plan.added} مهمة جديدة وتحديث ${plan.updated} مهمة، وتجاوز ${plan.unchanged} بند مطابق.`}
- catch(error){DATA=previous;refreshFiltersAfterDataChange();feedback.textContent=error.message||'تعذر النشر؛ لم تتغير البيانات.'}
- finally{taskMutationInFlight=false;button.disabled=false}
+ if(taskMutationInFlight)return;clearTimeout(textTaskAnalysisTimer);const feedback=document.getElementById('task-text-feedback');
+ if(document.getElementById('task-text-lines').value!==reviewSource){feedback.textContent='تغير النص الأصلي؛ أعد التحليل قبل الاعتماد.';return}
+ if(!pendingTextTasks?.some(r=>r.selected)){feedback.textContent='حدد مهمة واحدة على الأقل.';return}
+ const issues=validateTextReview(pendingTextTasks);if(issues.length){updateReviewSummary();feedback.textContent=`تعذر النشر: ${issues.length} مهمة تحتاج استكمالا أو مراجعة.`;document.querySelector(`[data-review-row="${issues[0].index}"]`).scrollIntoView({block:'center',behavior:'smooth'});return}
+ let plan;try{plan=buildReviewedTaskPlan(DATA,pendingTextTasks)}catch(error){feedback.textContent=error.message;return}
+ if(!plan.added&&!plan.updated){feedback.textContent='البيانات مطابقة للسجل؛ لا توجد مهام جديدة أو تحديثات.';return}
+ const previous=DATA;DATA=plan.tasks;taskMutationInFlight=true;document.querySelectorAll('#task-text-mode input,#task-text-mode select,#task-text-mode textarea,#task-text-mode button').forEach(e=>e.disabled=true);feedback.textContent='جار حفظ المهام المعتمدة…';
+ try{
+  const remaining=pendingTextTasks.filter(r=>!r.selected);
+  await saveTasks({consumeTextDraft:activeTextDraftId,remainingTextRows:remaining});refreshFiltersAfterDataChange();
+  if(activeTextDraftId)textReviewDrafts=textReviewDrafts.map(d=>d.id===activeTextDraftId?{...d,entries:remaining}:d).filter(d=>d.entries.length);
+  pendingTextTasks=remaining.length?remaining:null;reviewDirty=!!remaining.length;
+  if(remaining.length){cacheTextReview()}else{activeTextDraftId=null;reviewSource='';document.getElementById('task-text-lines').value='';try{localStorage.removeItem(TEXT_REVIEW_CACHE)}catch(_){}}
+  renderTextReview();restoreTextReview();
+  feedback.textContent=`تم حفظ ${plan.added} مهمة جديدة وتحديث ${plan.updated} مهمة. ستظهر للجميع بعد اكتمال نشر المنصة.`;
+ }catch(error){DATA=previous;refreshFiltersAfterDataChange();cacheTextReview();feedback.textContent=(error.message||'تعذر الحفظ')+' — احتفظنا بتعديلات المراجعة لإعادة المحاولة.'}
+ finally{taskMutationInFlight=false;document.querySelectorAll('#task-text-mode input,#task-text-mode select,#task-text-mode textarea,#task-text-mode button').forEach(e=>e.disabled=false)}
 }
 async function readTaskImportSheets(file){
   if(/\.(csv|tsv)$/i.test(file.name))return [[file.name,parseDelimited(await file.text())]];
@@ -1543,7 +1693,7 @@ function renderOverview(){
   // attention list: late items + near-done items (>=85% not done)
   const late_ = filtered.filter(r=>r.status==='متأخر');
   const nearDone = filtered.filter(r=>r.status==='قيد الإجراء' && r.pct!=null && r.pct>=85);
-  const items = [...late_, ...nearDone].slice(0,8);
+  const items = sortTasksChronologically([...late_, ...nearDone],true).slice(0,8);
   const el = document.getElementById('attn-list');
   if(!items.length){
     el.innerHTML = '<div class="empty-note">لا توجد بنود تحتاج انتباهاً حالياً ضمن الفلاتر المحددة.</div>';
@@ -1553,7 +1703,7 @@ function renderOverview(){
       const isLate = r.status==='متأخر';
       return `<div class="attn-item" onclick="openTaskDrawer(${idx})">
         <span class="attn-dot" style="background:${isLate?'var(--bad)':'var(--warn)'}"></span>
-        <span class="attn-title">${r.title}</span>
+        <span class="attn-title">${esc(r.title)}</span>
         <span class="attn-meta">${isLate?'متأخر':(r.pct+'%')}</span>
       </div>`;
     }).join('');
@@ -1576,12 +1726,25 @@ function renderOverview(){
 // ═══════════════════════════════════════════════
 // TABLE TAB
 // ═══════════════════════════════════════════════
+function taskDateValue(value){
+ const s=String(value||'').trim().replace(/[٠-٩]/g,c=>String(c.charCodeAt(0)-1632));if(!s)return null;
+ if(/^\d{4}-\d{2}-\d{2}(?:T|$)/.test(s)){const n=Date.parse(s);return Number.isFinite(n)?n:null}
+ const numeric=s.match(/^(\d{1,2})[\/.-](\d{1,2})(?:[\/.-](\d{4}))?$/);
+ const months={'يناير':0,'فبراير':1,'مارس':2,'أبريل':3,'ابريل':3,'مايو':4,'يونيو':5,'يوليو':6,'أغسطس':7,'اغسطس':7,'سبتمبر':8,'أكتوبر':9,'اكتوبر':9,'نوفمبر':10,'ديسمبر':11,jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+ const named=s.toLowerCase().match(/^(\d{1,2})[\s-]+([^\s-]+)(?:[\s-]+(\d{4}))?$/);
+ if(numeric||named){const day=Number((numeric||named)[1]),month=numeric?Number(numeric[2])-1:months[named[2]],year=Number((numeric||named)[3]||2026);if(month==null||month<0||month>11)return null;const d=new Date(Date.UTC(year,month,day));return d.getUTCDate()===day?d.getTime():null}return null;
+}
+function sortTasksChronologically(tasks,newest=false){
+ const keys=newest?['updated_at','created_at','imported_at','received','date','due']:['received','created_at','date','due','imported_at'];
+ return tasks.map((task,index)=>({task,index,time:keys.map(k=>taskDateValue(task[k])).find(t=>t!=null)})).sort((a,b)=>a.time==null&&b.time!=null?1:b.time==null&&a.time!=null?-1:(a.time!=null&&b.time!=null&&a.time!==b.time?(newest?b.time-a.time:a.time-b.time):(newest?b.index-a.index:a.index-b.index))).map(x=>x.task);
+}
+
 function renderTable(){
   const tbody = document.getElementById('tbody');
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   if(page>totalPages) page=totalPages;
   const start = (page-1)*PAGE_SIZE;
-  const pageItems = filtered.slice(start, start+PAGE_SIZE);
+  const pageItems = sortTasksChronologically(filtered).slice(start, start+PAGE_SIZE);
 
   if(!pageItems.length){
     tbody.innerHTML = `<tr><td colspan="6" class="empty-note">لا توجد نتائج مطابقة للفلاتر المحددة.</td></tr>`;
@@ -1747,7 +1910,7 @@ async function saveTaskEdit(event,idx,isNew){
   const selectedStatus=String(fd.get('status')||'قيد الإجراء');
   const task={
     ...(isNew?{}:DATA[idx]),
-    id:isNew?`task-${Date.now()}`:(DATA[idx].id||`task-${Date.now()}`),
+    id:isNew?`task-${Date.now()}`:(DATA[idx].id||`task-${Date.now()}`),created_at:isNew?new Date().toISOString():DATA[idx].created_at,updated_at:new Date().toISOString(),
     title:String(fd.get('title')||'').trim(),dept:String(fd.get('dept')||'').trim(),emp:normalizeEmployees(fd.get('emp')),
     status:selectedStatus,pct:selectedStatus==='منجز'?100:(rawPct===''?null:Math.max(0,Math.min(100,Number(rawPct)))),
     received:String(fd.get('received')||'').trim()||null,due:String(fd.get('due')||'').trim()||null,
@@ -1778,6 +1941,7 @@ async function init(){
   DATA=await loadTasks();
   populateFilters();
   restoreFilterState();
+  restoreTextReview();
   const fmt = new Intl.DateTimeFormat('ar', {day:'numeric', month:'long', year:'numeric'});
   document.getElementById('last-update-tag').innerHTML = `<span class="live-dot"></span>آخر تحديث: ${fmt.format(new Date())}`;
   applyFilters();
@@ -1789,4 +1953,5 @@ init();
 </script>
 </body>
 </html>
+
 

@@ -554,6 +554,18 @@
     }catch(_){renderTrackerBoard(readTrackerSummary())}
   }
 
+function taskDateValue(value){
+ const s=String(value||'').trim().replace(/[٠-٩]/g,c=>String(c.charCodeAt(0)-1632));if(!s)return null;
+ if(/^\d{4}-\d{2}-\d{2}(?:T|$)/.test(s)){const n=Date.parse(s);return Number.isFinite(n)?n:null}
+ const numeric=s.match(/^(\d{1,2})[\/.-](\d{1,2})(?:[\/.-](\d{4}))?$/);
+ const months={'يناير':0,'فبراير':1,'مارس':2,'أبريل':3,'ابريل':3,'مايو':4,'يونيو':5,'يوليو':6,'أغسطس':7,'اغسطس':7,'سبتمبر':8,'أكتوبر':9,'اكتوبر':9,'نوفمبر':10,'ديسمبر':11,jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+ const named=s.toLowerCase().match(/^(\d{1,2})[\s-]+([^\s-]+)(?:[\s-]+(\d{4}))?$/);
+ if(numeric||named){const day=Number((numeric||named)[1]),month=numeric?Number(numeric[2])-1:months[named[2]],year=Number((numeric||named)[3]||2026);if(month==null||month<0||month>11)return null;const d=new Date(Date.UTC(year,month,day));return d.getUTCDate()===day?d.getTime():null}return null;
+}
+function sortTasksChronologically(tasks,newest=false){
+ const keys=newest?['updated_at','created_at','imported_at','received','date','due']:['received','created_at','date','due','imported_at'];
+ return tasks.map((task,index)=>({task,index,time:keys.map(k=>taskDateValue(task[k])).find(t=>t!=null)})).sort((a,b)=>a.time==null&&b.time!=null?1:b.time==null&&a.time!=null?-1:(a.time!=null&&b.time!=null&&a.time!==b.time?(newest?b.time-a.time:a.time-b.time):(newest?b.index-a.index:a.index-b.index))).map(x=>x.task);
+}
   function renderTrackerKanban(tasks){
     const section=$("#work-tracker"),departments=$(".tracker-departments",section);if(!section||!departments)return;
     let panel=$("#trackerKanban");if(!panel){panel=document.createElement("div");panel.id="trackerKanban";panel.className="tracker-kanban";departments.insertAdjacentElement("afterend",panel)}
@@ -573,9 +585,9 @@
       {code:"done",label:"منجز",tone:"done",icon:"✓"}
     ];
     const headerValue=(key,fallback)=>Object.prototype.hasOwnProperty.call(workingEdits,key)?workingEdits[key]:fallback;
-    panel.innerHTML=`<div class="tracker-kanban-head"><div><span data-edit-key="tracker.kanban.eyebrow">${escapeHtml(headerValue("tracker.kanban.eyebrow","المشهد التشغيلي"))}</span><h3 data-edit-key="tracker.kanban.title">${escapeHtml(headerValue("tracker.kanban.title","المهام حسب الحالة"))}</h3></div><small data-edit-key="tracker.kanban.subtitle">${escapeHtml(headerValue("tracker.kanban.subtitle","الأعداد من السجل التفصيلي المباشر · تُعرض ثلاث مهام نموذجية من كل حالة"))}</small></div>
+    panel.innerHTML=`<div class="tracker-kanban-head"><div><span data-edit-key="tracker.kanban.eyebrow">${escapeHtml(headerValue("tracker.kanban.eyebrow","المشهد التشغيلي"))}</span><h3 data-edit-key="tracker.kanban.title">${escapeHtml(headerValue("tracker.kanban.title","المهام حسب الحالة"))}</h3></div><small data-edit-key="tracker.kanban.subtitle">${escapeHtml(headerValue("tracker.kanban.subtitle","الأعداد من السجل التفصيلي المباشر · أحدث ثلاث مهام من كل حالة"))}</small></div>
     <div class="tracker-kanban-columns">${groups.map(group=>{
-      const items=tasks.filter(task=>classify(task)===group.code);
+      const items=sortTasksChronologically(tasks.filter(task=>classify(task)===group.code),true);
       return `<section class="tracker-kanban-column ${group.tone}" aria-label="${group.label}: ${items.length} مهام"><h4><span><i aria-hidden="true">${group.icon}</i>${group.label}</span><strong data-calculated="true">${items.length}</strong></h4><div class="tracker-kanban-list">${items.slice(0,3).map(task=>{
         const pct=Number(task.pct),valid=Number.isFinite(pct)&&task.pct!=null;
         return `<article><small>${escapeHtml(task.dept||"قسم غير محدد")}</small><b>${escapeHtml(task.title)}</b><div class="tracker-kanban-progress"><i><em style="width:${valid?Math.max(0,Math.min(100,pct)):0}%"></em></i><span>${valid?`${Math.round(pct)}%`:"—"}</span></div><footer><span>${escapeHtml(task.emp||"غير محدد")}</span><time>${escapeHtml(task.date||task.due||"—")}</time></footer></article>`;
@@ -652,4 +664,5 @@
   renderTrackerBoard();
   refreshTrackerSummary();
 })();
+
 

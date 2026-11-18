@@ -113,6 +113,8 @@ jobs:
           node --check _site/legacy/assets/privacy-lock.js
           node scripts/validate_data_integrity.mjs _site/legacy/assets/tasks-data.json
           node scripts/test_text_tasks.cjs
+          node scripts/test_review_flow.cjs
+          node scripts/test_review_save.cjs
           node --check _site/legacy/assets/plan-data-2026.js
           node --check _site/legacy/assets/excel-import.js
           node --check _site/legacy/assets/executive-mode.js
@@ -335,5 +337,6 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+
 
 

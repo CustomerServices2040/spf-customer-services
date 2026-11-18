@@ -2,7 +2,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const html=fs.readFileSync('overrides/assets/work-tracker.html','utf8');
 const data=JSON.parse(fs.readFileSync('overrides/assets/tasks-data.json','utf8'));
 const ctx={DATA:data.tasks,crypto:require('node:crypto').webcrypto};vm.createContext(ctx);
-vm.runInContext(html.slice(html.indexOf('const EMPLOYEE_ALIASES='),html.indexOf('async function loadTasks()'))+html.slice(html.indexOf('function importKey('),html.indexOf('const IMPORT_COLUMNS'))+html.slice(html.indexOf('const TEXT_TASK_STOP_WORDS'),html.indexOf('function analyzeTextTasks()'))+html.slice(html.indexOf('function mergeTextTaskEntries'),html.indexOf('async function saveTextTasks')),ctx);
+vm.runInContext(html.slice(html.indexOf('const EMPLOYEE_ALIASES='),html.indexOf('async function loadTasks()'))+html.slice(html.indexOf('function importKey('),html.indexOf('const IMPORT_COLUMNS'))+html.slice(html.indexOf('const TEXT_TASK_STOP_WORDS'),html.indexOf('let textTaskAnalysisTimer')),ctx);
 const parse=t=>ctx.parseFreeTextTasks(t);
 let e=parse('إدارة وتطوير الخدمات\n١. إعداد التقرير\nالتفاصيل: مراجعة البيانات\n٢. تحديث الدليل\nالحالة: غير منجز\nالإنجاز: ٦٠٪');
 assert.equal(e.length,2);assert.match(e[0].details,/مراجعة البيانات/);assert.equal(e[1].pct,60);assert.equal(e[1].status,'قيد الإجراء');
@@ -32,3 +32,4 @@ if(data.text_import_audit){
  const ids=data.tasks.map(t=>t.id);assert.equal(new Set(ids).size,ids.length);
 }
 console.log('Text task parsing, field extraction, continuation, repeat-import and repair coverage passed');
+
