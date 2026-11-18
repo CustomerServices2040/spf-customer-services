@@ -501,7 +501,7 @@ header{height:72px;padding:0 34px;background:rgba(20,56,47,.97);border:0;color:#
 
   <div class="tabs" aria-label="أقسام لوحة الموقف التنفيذي">
     <button class="tab active" data-tab="overview" onclick="switchTab('overview')"><span class="tab-icon" aria-hidden="true">◉</span><span><b>نظرة عامة</b><small>المشهد التنفيذي</small></span></button>
-    <button class="tab" data-tab="table" onclick="switchTab('table')"><span class="tab-icon" aria-hidden="true">▤</span><span><b>السجل التفصيلي</b><small>الأقدم أولا · حسب الاستلام أو الإضافة</small></span></button>
+    <button class="tab" data-tab="table" onclick="switchTab('table')"><span class="tab-icon" aria-hidden="true">▤</span><span><b>السجل التفصيلي</b><small>الأحدث أولا · حسب آخر تحديث أو إضافة</small></span></button>
     <button class="tab" data-tab="perf" onclick="switchTab('perf')"><span class="tab-icon" aria-hidden="true">↗</span><span><b>الأداء</b><small>الأقسام والموظفون</small></span></button>
     <button class="tab" data-tab="dq" onclick="switchTab('dq')"><span class="tab-icon" aria-hidden="true">✓</span><span><b>جودة البيانات</b><small>اكتمال السجل <em class="badge" id="dq-badge">0</em></small></span></button>
   </div>
@@ -1744,7 +1744,7 @@ function renderTable(){
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   if(page>totalPages) page=totalPages;
   const start = (page-1)*PAGE_SIZE;
-  const pageItems = sortTasksChronologically(filtered).slice(start, start+PAGE_SIZE);
+  const pageItems = sortTasksChronologically(filtered,true).slice(start, start+PAGE_SIZE);
 
   if(!pageItems.length){
     tbody.innerHTML = `<tr><td colspan="6" class="empty-note">لا توجد نتائج مطابقة للفلاتر المحددة.</td></tr>`;
