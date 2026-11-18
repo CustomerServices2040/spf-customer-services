@@ -492,7 +492,7 @@ header{height:72px;padding:0 34px;background:rgba(20,56,47,.97);border:0;color:#
       <option value="all">كل الحالات</option>
       <option value="منجز">منجز</option>
       <option value="قيد الإجراء">قيد الإجراء</option>
-      <option value="متأخر">متأخر</option>
+      <option value="متأخر">متأخر</option><option value="غير محدد">غير محدد</option>
     </select>
     <input type="text" id="f-search" placeholder="بحث في المهام أو الموظفين..." oninput="onSearchInput()">
     <button class="btn-reset" onclick="resetFilters()">إعادة تعيين</button>
@@ -501,7 +501,7 @@ header{height:72px;padding:0 34px;background:rgba(20,56,47,.97);border:0;color:#
 
   <div class="tabs" aria-label="أقسام لوحة الموقف التنفيذي">
     <button class="tab active" data-tab="overview" onclick="switchTab('overview')"><span class="tab-icon" aria-hidden="true">◉</span><span><b>نظرة عامة</b><small>المشهد التنفيذي</small></span></button>
-    <button class="tab" data-tab="table" onclick="switchTab('table')"><span class="tab-icon" aria-hidden="true">▤</span><span><b>السجل التفصيلي</b><small>الأحدث أولا · حسب آخر تحديث أو إضافة</small></span></button>
+    <button class="tab" data-tab="table" onclick="switchTab('table')"><span class="tab-icon" aria-hidden="true">▤</span><span><b>السجل التفصيلي</b><small>الأقدم أولا · حسب الاستلام أو الإضافة</small></span></button>
     <button class="tab" data-tab="perf" onclick="switchTab('perf')"><span class="tab-icon" aria-hidden="true">↗</span><span><b>الأداء</b><small>الأقسام والموظفون</small></span></button>
     <button class="tab" data-tab="dq" onclick="switchTab('dq')"><span class="tab-icon" aria-hidden="true">✓</span><span><b>جودة البيانات</b><small>اكتمال السجل <em class="badge" id="dq-badge">0</em></small></span></button>
   </div>
@@ -765,6 +765,7 @@ async function syncTasksFromGithub(token){
   DATA=payload.tasks.map((task,index)=>({...task,emp:normalizeEmployees(task.emp),id:task.id||`central-${index+1}`}));
   loadedTasksUpdatedAt=payload.updated_at||null;
   loadedTasksSha=metadata.sha;
+  textReviewDrafts=payload.text_review_drafts||[];
   refreshFiltersAfterDataChange();
   publishSummary();
 }
@@ -840,6 +841,7 @@ async function saveTasks(options={}){
   loadedTasksUpdatedAt=document.updated_at;
   loadedTasksSha=saved.content?.sha||null;
   publishSummary(); // Keep the authorized session for the next weekly edit.
+  return {commit:saved.commit?.sha,updatedAt:document.updated_at};
 }
 function completionSummary(){
   const names={'مركز الاتصال':'contact','إدارة علاقات المتعاملين':'crm','إدارة وتطوير الخدمات':'service-dev','شؤون الدوائر والمنافذ':'branches','التنسيق والمتابعة':'coord'};
@@ -1255,7 +1257,7 @@ function prepareTextReview(raw){
 }
 function validateTextReview(rows){
  const issues=[];rows.forEach((r,i)=>{if(!r.selected)return;const missing=[];
-  if(!r.title?.trim())missing.push('عنوان المهمة');if(!r.dept?.trim())missing.push('القسم');if(!r.emp?.trim())missing.push('الموظف المسؤول');if(!['منجز','قيد الإجراء','متأخر'].includes(r.status))missing.push('الحالة');
+  if(!r.title?.trim())missing.push('عنوان المهمة');if(!r.dept?.trim())missing.push('القسم');if(!['منجز','قيد الإجراء','متأخر','غير محدد'].includes(r.status))missing.push('الحالة');
   if(r.action==='choose'||(r.action==='update'&&!r.target_id))missing.push('اختيار السجل');
   if(r.pct!==null&&r.pct!==''&&(!Number.isFinite(Number(r.pct))||Number(r.pct)<0||Number(r.pct)>100))missing.push('نسبة بين 0 و100');
   if(r.status!=='منجز'&&Number(r.pct)===100)missing.push('توافق الحالة مع نسبة 100%');
@@ -1347,7 +1349,7 @@ function renderTextReview(){
  document.getElementById('task-distribution-preview').innerHTML=rows.map((r,i)=>{
   const matches=reviewMatchCandidates(r);const target=DATA.find(t=>t.id===r.target_id);if(target&&!matches.some(t=>t.id===target.id))matches.push(target);
   const field=(label,key,type='text')=>`<label>${label}<input data-field="${key}" aria-label="${label} ${i+1}" type="${type}" ${type==='number'?'min="0" max="100" step="0.01"':''} value="${esc(r[key]??'')}" oninput="reviewInput(${i},'${key}',this.value)"></label>`;
-  return `<article class="text-review-row" data-review-row="${i}"><div class="review-row-top"><label><input type="checkbox" ${r.selected?'checked':''} onchange="reviewInput(${i},'selected',this.checked)"> المهمة ${i+1}</label><div><button type="button" onclick="splitTextReviewRow(${i})">تقسيم</button><button type="button" onclick="removeTextReviewRow(${i})">حذف من المعاينة</button></div></div><div class="review-main-fields">${field('عنوان المهمة','title')}<label>التفاصيل والموقف التنفيذي<textarea aria-label="التفاصيل ${i+1}" oninput="reviewInput(${i},'details',this.value)">${esc(r.details||'')}</textarea></label></div><div class="review-fields"><label>القسم المسؤول<select aria-label="القسم المسؤول ${i+1}" onchange="reviewInput(${i},'dept',this.value)"><option value="">اختر القسم</option>${depts.map(d=>`<option ${r.dept===d?'selected':''}>${esc(d)}</option>`).join('')}</select></label>${field('الموظف المسؤول','emp')}<label>الحالة<select aria-label="الحالة ${i+1}" onchange="reviewInput(${i},'status',this.value)"><option value="">حدد الحالة</option>${['قيد الإجراء','منجز','متأخر'].map(s=>`<option ${r.status===s?'selected':''}>${s}</option>`).join('')}</select></label>${field('نسبة الإنجاز %','pct','number')}${field('تاريخ الاستلام','received')}${field('موعد التسليم','due')}</div><div class="review-row-bottom"><label>الإجراء عند الاعتماد<select aria-label="الإجراء ${i+1}" onchange="reviewInput(${i},'target',this.value)">${r.action==='choose'?'<option value="">اختر السجل المقصود</option>':''}<option value="new" ${r.action==='new'?'selected':''}>إضافة مهمة مستقلة</option>${matches.map(t=>`<option value="${esc(t.id)}" ${r.target_id===t.id?'selected':''}>تحديث: ${esc(t.title)} — ${esc(t.received||t.date||t.emp||'بلا تاريخ')}</option>`).join('')}</select></label><label class="review-confirm"><input type="checkbox" data-field="reviewed" ${r.reviewed?'checked':''} onchange="reviewInput(${i},'reviewed',this.checked)"> راجعت بيانات هذه المهمة</label><span class="review-row-note"></span></div></article>`;
+  return `<article class="text-review-row" data-review-row="${i}"><div class="review-row-top"><label><input type="checkbox" ${r.selected?'checked':''} onchange="reviewInput(${i},'selected',this.checked)"> المهمة ${i+1}</label><div><button type="button" onclick="splitTextReviewRow(${i})">تقسيم</button><button type="button" onclick="removeTextReviewRow(${i})">حذف من المعاينة</button></div></div><div class="review-main-fields">${field('عنوان المهمة','title')}<label>التفاصيل والموقف التنفيذي<textarea aria-label="التفاصيل ${i+1}" oninput="reviewInput(${i},'details',this.value)">${esc(r.details||'')}</textarea></label></div><div class="review-fields"><label>القسم المسؤول<select aria-label="القسم المسؤول ${i+1}" onchange="reviewInput(${i},'dept',this.value)"><option value="">اختر القسم</option>${depts.map(d=>`<option ${r.dept===d?'selected':''}>${esc(d)}</option>`).join('')}</select></label>${field('الموظف المسؤول','emp')}<label>الحالة<select aria-label="الحالة ${i+1}" onchange="reviewInput(${i},'status',this.value)"><option value="">حدد الحالة</option>${['قيد الإجراء','منجز','متأخر','غير محدد'].map(s=>`<option ${r.status===s?'selected':''}>${s}</option>`).join('')}</select></label>${field('نسبة الإنجاز %','pct','number')}${field('تاريخ الاستلام','received')}${field('موعد التسليم','due')}</div><div class="review-row-bottom"><label>الإجراء عند الاعتماد<select aria-label="الإجراء ${i+1}" onchange="reviewInput(${i},'target',this.value)">${r.action==='choose'?'<option value="">اختر السجل المقصود</option>':''}<option value="new" ${r.action==='new'?'selected':''}>إضافة مهمة مستقلة</option>${matches.map(t=>`<option value="${esc(t.id)}" ${r.target_id===t.id?'selected':''}>تحديث: ${esc(t.title)} — ${esc(t.received||t.date||t.emp||'بلا تاريخ')}</option>`).join('')}</select></label><label class="review-confirm"><input type="checkbox" data-field="reviewed" ${r.reviewed?'checked':''} onchange="reviewInput(${i},'reviewed',this.checked)"> راجعت بيانات هذه المهمة</label><span class="review-row-note"></span></div></article>`;
  }).join('');updateReviewSummary();
 }
 function selectTextReviewRows(selected){(pendingTextTasks||[]).forEach(r=>r.selected=selected);reviewDirty=true;renderTextReview();cacheTextReview()}
@@ -1361,12 +1363,12 @@ function splitTextReviewRow(i){
 function fillReviewStatus(){const status=document.getElementById('review-bulk-status').value;if(!status)return;(pendingTextTasks||[]).filter(r=>r.selected&&!r.status).forEach(r=>{r.status=status;if(status==='منجز')r.pct=100;r.reviewed=false});reviewDirty=true;renderTextReview();cacheTextReview()}
 function reviewAllComplete(){(pendingTextTasks||[]).filter(r=>r.selected).forEach(r=>{if(!validateTextReview([{...r,reviewed:true}]).length)r.reviewed=true});reviewDirty=true;renderTextReview();cacheTextReview()}
 function restoreTextReview(){
- try{const draft=JSON.parse(localStorage.getItem(TEXT_REVIEW_CACHE)||'null');if(draft?.rows?.length){pendingTextTasks=draft.rows;reviewSource=draft.source||'';activeTextDraftId=draft.draftId||null;document.getElementById('task-text-lines').value=reviewSource;reviewDirty=true;renderTextReview();document.getElementById('task-text-feedback').textContent='استعيدت مسودة المراجعة المحفوظة على هذا الجهاز.'}}catch(_){}
+ try{const draft=JSON.parse(localStorage.getItem(TEXT_REVIEW_CACHE)||'null');if(draft?.draftId&&!textReviewDrafts.some(d=>d.id===draft.draftId)){localStorage.removeItem(TEXT_REVIEW_CACHE)}else if(draft?.rows?.length){pendingTextTasks=draft.rows;reviewSource=draft.source||'';activeTextDraftId=draft.draftId||null;document.getElementById('task-text-lines').value=reviewSource;reviewDirty=true;renderTextReview();document.getElementById('task-text-feedback').textContent='استعيدت مسودة المراجعة المحفوظة على هذا الجهاز.'}}catch(_){}
  const button=document.getElementById('load-prepared-text');button.hidden=!textReviewDrafts.length;button.textContent=textReviewDrafts.length?`فتح المهام المرفقة للمراجعة (${textReviewDrafts[0].entries.length})`:'';
 }
 function loadPreparedTextDraft(){
  if(pendingTextTasks?.length&&reviewDirty&&!confirm('فتح المسودة المرفقة سيستبدل المعاينة الحالية. هل تريد المتابعة؟'))return;
- const draft=textReviewDrafts[0];if(!draft)return;pendingTextTasks=draft.entries.map(r=>({...r}));activeTextDraftId=draft.id;reviewSource=draft.source_text||'';document.getElementById('task-text-lines').value=reviewSource;reviewDirty=true;setTaskEntryMode('text');renderTextReview();cacheTextReview();document.getElementById('task-text-feedback').textContent='المهام مفصولة وجاهزة للمراجعة. أكمل الحقول الناقصة ثم اعتمد النشر.';
+ const draft=textReviewDrafts[0];if(!draft)return;pendingTextTasks=draft.entries.map(r=>({...r}));activeTextDraftId=draft.id;reviewSource=draft.source_text||'';document.getElementById('task-text-lines').value=reviewSource;reviewDirty=true;setTaskEntryMode('text');renderTextReview();cacheTextReview();document.getElementById('task-text-feedback').textContent='راجع المهام ثم اعتمد النشر. يمكن اختيار «غير محدد» للحالة وترك الموظف فارغا لاستكمالهما لاحقا.';
 }
 async function saveTextTasks(){
  if(taskMutationInFlight)return;clearTimeout(textTaskAnalysisTimer);const feedback=document.getElementById('task-text-feedback');
@@ -1374,18 +1376,37 @@ async function saveTextTasks(){
  if(!pendingTextTasks?.some(r=>r.selected)){feedback.textContent='حدد مهمة واحدة على الأقل.';return}
  const issues=validateTextReview(pendingTextTasks);if(issues.length){updateReviewSummary();feedback.textContent=`تعذر النشر: ${issues.length} مهمة تحتاج استكمالا أو مراجعة.`;document.querySelector(`[data-review-row="${issues[0].index}"]`).scrollIntoView({block:'center',behavior:'smooth'});return}
  let plan;try{plan=buildReviewedTaskPlan(DATA,pendingTextTasks)}catch(error){feedback.textContent=error.message;return}
- if(!plan.added&&!plan.updated){feedback.textContent='البيانات مطابقة للسجل؛ لا توجد مهام جديدة أو تحديثات.';return}
- const previous=DATA;DATA=plan.tasks;taskMutationInFlight=true;document.querySelectorAll('#task-text-mode input,#task-text-mode select,#task-text-mode textarea,#task-text-mode button').forEach(e=>e.disabled=true);feedback.textContent='جار حفظ المهام المعتمدة…';
+ taskPublicationMonitor++;const previous=DATA;DATA=plan.tasks;taskMutationInFlight=true;document.querySelectorAll('#task-text-mode input,#task-text-mode select,#task-text-mode textarea,#task-text-mode button').forEach(e=>e.disabled=true);feedback.textContent='جار حفظ المهام المعتمدة…';
  try{
   const remaining=pendingTextTasks.filter(r=>!r.selected);
-  await saveTasks({consumeTextDraft:activeTextDraftId,remainingTextRows:remaining});refreshFiltersAfterDataChange();
+  const publication=await saveTasks({consumeTextDraft:activeTextDraftId,remainingTextRows:remaining});refreshFiltersAfterDataChange();
   if(activeTextDraftId)textReviewDrafts=textReviewDrafts.map(d=>d.id===activeTextDraftId?{...d,entries:remaining}:d).filter(d=>d.entries.length);
   pendingTextTasks=remaining.length?remaining:null;reviewDirty=!!remaining.length;
   if(remaining.length){cacheTextReview()}else{activeTextDraftId=null;reviewSource='';document.getElementById('task-text-lines').value='';try{localStorage.removeItem(TEXT_REVIEW_CACHE)}catch(_){}}
   renderTextReview();restoreTextReview();
-  feedback.textContent=`تم حفظ ${plan.added} مهمة جديدة وتحديث ${plan.updated} مهمة. ستظهر للجميع بعد اكتمال نشر المنصة.`;
+  feedback.textContent=`تم حفظ ${plan.added} مهمة جديدة وتحديث ${plan.updated} مهمة واعتماد ${plan.unchanged} مهمة مطابقة للسجل. جار التحقق من النشر…`;
+  if(publication)monitorTaskPublication(publication,feedback);
  }catch(error){DATA=previous;refreshFiltersAfterDataChange();cacheTextReview();feedback.textContent=(error.message||'تعذر الحفظ')+' — احتفظنا بتعديلات المراجعة لإعادة المحاولة.'}
  finally{taskMutationInFlight=false;document.querySelectorAll('#task-text-mode input,#task-text-mode select,#task-text-mode textarea,#task-text-mode button').forEach(e=>e.disabled=false)}
+}
+let taskPublicationMonitor=0;
+async function monitorTaskPublication(publication,feedback){
+ const monitor=++taskPublicationMonitor;
+ const prefix=feedback.textContent.replace('جار التحقق من النشر…','');
+ for(let attempt=0;attempt<120;attempt++){
+  if(monitor!==taskPublicationMonitor)return;
+  try{
+   const response=await fetch(new URL('release.json?v='+Date.now(),location.href),{cache:'no-store'});
+   if(response.ok){const release=await response.json();
+    if(release.revision===publication.commit?.slice(0,12)||Date.parse(release.tasks_updated_at)>=Date.parse(publication.updatedAt)){
+     if(monitor===taskPublicationMonitor)feedback.textContent=prefix+'اكتمل النشر على المنصة بنجاح.';
+     return;
+    }
+   }
+  }catch(_){/* Retry deployment verification without undoing the confirmed save. */}
+  await new Promise(resolve=>setTimeout(resolve,5000));
+ }
+ if(monitor===taskPublicationMonitor)feedback.textContent=prefix+'تم الحفظ في المستودع، لكن لم نتأكد من اكتمال نشر الموقع بعد. لا تعد إضافة المهام؛ راجع حالة النشر في GitHub.';
 }
 async function readTaskImportSheets(file){
   if(/\.(csv|tsv)$/i.test(file.name))return [[file.name,parseDelimited(await file.text())]];
@@ -1525,6 +1546,7 @@ function pctColor(p){
   return 'var(--bad)';
 }
 function statusPill(r){
+  if(r.status==='غير محدد')return '<span class="pill pill-warn">غير محدد — يحتاج استكمالا</span>';
   if(r.status === 'منجز') return `<span class="pill pill-good"><span class="pill-dot"></span>منجز</span>`;
   if(r.status === 'متأخر') return `<span class="pill pill-bad"><span class="pill-dot"></span>متأخر</span>`;
   return `<span class="pill pill-warn"><span class="pill-dot"></span>قيد الإجراء</span>`;
@@ -1744,7 +1766,7 @@ function renderTable(){
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   if(page>totalPages) page=totalPages;
   const start = (page-1)*PAGE_SIZE;
-  const pageItems = sortTasksChronologically(filtered,true).slice(start, start+PAGE_SIZE);
+  const pageItems = sortTasksChronologically(filtered).slice(start, start+PAGE_SIZE);
 
   if(!pageItems.length){
     tbody.innerHTML = `<tr><td colspan="6" class="empty-note">لا توجد نتائج مطابقة للفلاتر المحددة.</td></tr>`;
@@ -1870,7 +1892,7 @@ function taskForm(r,idx,isNew=false){
     <label>القسم<input name="dept" required list="dept-options" value="${esc(r.dept)}"><datalist id="dept-options">${[...new Set(DATA.map(x=>x.dept))].map(d=>`<option value="${esc(d)}">`).join('')}</datalist></label>
     <label>الموظف أو الفريق<input name="emp" value="${esc(r.emp)}"></label>
     <div class="drawer-form-grid">
-      <label>الحالة<select name="status" onchange="syncTaskStatusProgress(this.form)"><option${r.status==='منجز'?' selected':''}>منجز</option><option${r.status==='قيد الإجراء'?' selected':''}>قيد الإجراء</option><option${r.status==='متأخر'?' selected':''}>متأخر</option></select></label>
+      <label>الحالة<select name="status" onchange="syncTaskStatusProgress(this.form)"><option${r.status==='غير محدد'?' selected':''}>غير محدد</option><option${r.status==='منجز'?' selected':''}>منجز</option><option${r.status==='قيد الإجراء'?' selected':''}>قيد الإجراء</option><option${r.status==='متأخر'?' selected':''}>متأخر</option></select></label>
       <label>نسبة الإنجاز<input name="pct" type="number" min="0" max="100" step="1" value="${esc(pct)}" placeholder="0–100"></label>
     </div>
     <div class="drawer-form-grid"><label>تاريخ الاستلام<input name="received" value="${esc(r.received)}" placeholder="مثال: 17 سبتمبر"></label><label>التاريخ / موعد التسليم<input name="due" value="${esc(r.due||r.date)}" placeholder="مثال: 30 سبتمبر"></label></div>

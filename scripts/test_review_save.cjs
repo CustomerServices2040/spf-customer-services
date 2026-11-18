@@ -10,5 +10,21 @@ vm.runInContext(html.slice(html.indexOf('const EMPLOYEE_ALIASES='),html.indexOf(
  let calls=0;ctx.saveTasks=async options=>{calls++;assert.equal(options.consumeTextDraft,'draft-test');assert.equal(options.remainingTextRows.length,1);assert.equal(ctx.DATA.at(-1).tech,'بيانات يدوية');};await ctx.saveTextTasks();assert.equal(calls,1);assert.equal(ctx.DATA.length,count+1);assert.equal(vm.runInContext('pendingTextTasks.length',ctx),1);assert.equal(vm.runInContext('textReviewDrafts[0].entries.length',ctx),1);assert.match(node('task-text-feedback').textContent,/تم حفظ 1/);
  vm.runInContext('pendingTextTasks[0].selected=true',ctx);await ctx.saveTextTasks();assert.equal(calls,1);assert.match(node('task-text-feedback').textContent,/تعذر النشر/);
  node('task-text-lines').value='نص مختلف';await ctx.saveTextTasks();assert.equal(calls,1);assert.match(node('task-text-feedback').textContent,/تغير النص/);
+ // Publishing an already saved row must still consume the shared draft.
+ node('task-text-lines').value='نص الاختبار';
+ ctx.rows=[{...ctx.rows[0]}];
+ vm.runInContext("pendingTextTasks=rows;reviewSource='نص الاختبار';activeTextDraftId='draft-repeat';textReviewDrafts=[{id:'draft-repeat',entries:rows}];",ctx);
+ let consumed=false;ctx.saveTasks=async options=>{consumed=options.consumeTextDraft==='draft-repeat';assert.equal(options.remainingTextRows.length,0)};
+ await ctx.saveTextTasks();assert(consumed);assert.equal(ctx.DATA.length,count+1);assert.equal(vm.runInContext('textReviewDrafts.length',ctx),0);
+ // Do not announce a deployed release before the matching manifest is served.
+ ctx.location={href:'https://example.test/legacy/assets/work-tracker.html'};ctx.URL=URL;
+ ctx.setTimeout=resolve=>{resolve();return 0};let polls=0;
+ ctx.fetch=async()=>({ok:true,json:async()=>({revision:++polls===1?'old':'abcdef123456'})});
+ node('publication').textContent='تم الحفظ. جار التحقق من النشر…';
+ await ctx.monitorTaskPublication({commit:'abcdef1234567890',updatedAt:'2026-11-18T08:00:00Z'},node('publication'));
+ assert.equal(polls,2);assert.match(node('publication').textContent,/اكتمل النشر/);
+ ctx.fetch=async()=>{throw Error('offline')};
+ await ctx.monitorTaskPublication({commit:'different',updatedAt:'2026-11-18T08:00:00Z'},node('publication'));
+ assert.match(node('publication').textContent,/لم نتأكد/);
  console.log('Save integration passed: manual edits retained, failed-save rollback, no reparse on save, partial draft preservation, invalid rows blocked');
 })().catch(error=>{console.error(error);process.exitCode=1});

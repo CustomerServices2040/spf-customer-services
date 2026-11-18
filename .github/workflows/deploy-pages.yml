@@ -87,7 +87,8 @@ jobs:
           from pathlib import Path
 
           revision = os.environ["GITHUB_SHA"][:12]
-          manifest = {"revision": revision}
+          task_document = json.loads(Path("_site/legacy/assets/tasks-data.json").read_text(encoding="utf-8"))
+          manifest = {"revision": revision, "tasks_updated_at": task_document.get("updated_at")}
           Path("_site/legacy/assets/release.json").write_text(
               json.dumps(manifest, ensure_ascii=False),
               encoding="utf-8",
