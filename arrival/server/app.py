@@ -53,45 +53,25 @@ def create_app(db_path=None,demo=False,provider=None):
         if not store.is_open():raise HTTPException(409,'تسجيل الوصول مغلق حاليا. يرجى مراجعة فريق الاستقبال')
         if not demo and not gate_valid(gate):raise HTTPException(403,'يرجى مسح رمز الاستقبال الحالي لإتمام تسجيل الوصول')
     @app.get('/api/config')
-    def config():return {'demo':demo,'open':store.is_open(),'whatsapp_enabled':meta.enabled,'timezone':'Asia/Muscat'}
+    def config():return {'demo':demo,'open':store.is_open(),'whatsapp_enabled':False,'platform_only':True,'timezone':'Asia/Muscat'}
     @app.post('/api/challenge')
     async def challenge(req:Request):
         throttle(req,'challenge',120);b=await req.json();check_open(b.get('gate',''))
         phone=normalize_phone(b.get('phone'));throttle(req,'phone:'+digest(phone),3,300)
-        if b.get('consent') is not True:raise HTTPException(400,'يلزم طلب رمز التحقق على واتساب أو مراجعة فريق الاستقبال')
         matches=store.matching(phone)
         if len(matches)>1:raise HTTPException(409,'يتطلب هذا الرقم التحقق لدى فريق الاستقبال. لن يتم اختيار سجل تلقائيا')
         if not matches:raise HTTPException(404,'تعذر العثور على رقم الهاتف ضمن قائمة المدعوين. يرجى التأكد من الرقم المدخل وإعادة المحاولة، أو مراجعة فريق الاستقبال للمساعدة')
-        if not demo and not meta.enabled:raise HTTPException(503,'التحقق عبر واتساب غير مفعل بعد. يرجى مراجعة فريق الاستقبال')
-        code='246810' if demo else str(secrets.randbelow(900000)+100000);cid=secrets.token_urlsafe(24)
-        if not demo:
-            try:meta.send(phone,os.getenv('META_AUTH_TEMPLATE',''),[code],otp=True)
-            except DeliveryError:raise HTTPException(503,'تعذر إرسال رمز التحقق مؤقتا. يرجى مراجعة فريق الاستقبال')
+        ticket=secrets.token_urlsafe(32)
         with store.db(True) as db:
-            db.execute('UPDATE challenges SET used=1 WHERE participant_id=?',(matches[0]['id'],))
-            db.execute('INSERT INTO challenges(id,participant_id,digest,expires) VALUES(?,?,?,?)',(cid,matches[0]['id'],digest(cid+code),time.time()+300))
-        return {'challenge':cid,'expires_in':300,'demo_code':code if demo else None}
-    @app.post('/api/verify')
-    async def verify(req:Request):
-        throttle(req,'verify',240);b=await req.json();cid=str(b.get('challenge',''));code=str(b.get('code',''));ticket=secrets.token_urlsafe(32);error=False
-        with store.db(True) as db:
-            r=db.execute('SELECT * FROM challenges WHERE id=?',(cid,)).fetchone()
-            if not r or r['used'] or r['expires']<time.time() or r['attempts']>=5:error=True
-            else:
-                db.execute('UPDATE challenges SET attempts=attempts+1 WHERE id=?',(cid,))
-                if not hmac.compare_digest(r['digest'],digest(cid+code)):error=True
-                else:
-                    db.execute('UPDATE challenges SET used=1 WHERE id=?',(cid,));db.execute('INSERT INTO tickets VALUES(?,?,?)',(digest(ticket),r['participant_id'],time.time()+600))
-                    p=dict(db.execute('SELECT id,name,nickname,division,governorate FROM participants WHERE id=?',(r['participant_id'],)).fetchone())
-                    a=db.execute('SELECT arrived_at FROM arrivals WHERE participant_id=?',(r['participant_id'],)).fetchone()
-        if error:raise HTTPException(400,'رمز التحقق غير صحيح أو انتهت صلاحيته. أعد المحاولة أو اطلب رمزا جديدا')
-        return {'ticket':ticket,'participant':p,'arrived_at':oman(a['arrived_at']) if a else None}
+            db.execute('INSERT INTO tickets VALUES(?,?,?)',(digest(ticket),matches[0]['id'],time.time()+600))
+        # Phone lookup is not identity verification: expose no personal card.
+        return {'ticket':ticket,'participant':{},'platform_only':True}
     @app.post('/api/arrive')
     async def arrive(req:Request):
         throttle(req,'arrive',240);b=await req.json();check_open(b.get('gate',''))
         with store.db() as db:r=db.execute('SELECT * FROM tickets WHERE id=? AND expires>?',(digest(str(b.get('ticket',''))),time.time())).fetchone()
         if not r:raise HTTPException(401,'انتهت صلاحية التحقق. يرجى المحاولة مجددا')
-        return store.arrive(r['participant_id'],'self','participant',b.get('consent') is True)
+        return store.arrive(r['participant_id'],'self','participant',False)
     @app.post('/api/login')
     async def login(req:Request):
         throttle(req,'login',5,300);b=await req.json();username=str(b.get('username',''))[:100]
@@ -115,7 +95,7 @@ def create_app(db_path=None,demo=False,provider=None):
         r=JSONResponse({'ok':True});r.delete_cookie('arrival_session',path='/');return r
     @app.get('/api/admin/roster')
     def roster(req:Request):
-        a=auth(req);rows=store.roster();return {'rows':rows,'open':store.is_open(),'role':a['role'],'updated_at':time.time(),'whatsapp_enabled':meta.enabled}
+        a=auth(req);rows=store.roster();return {'rows':rows,'open':store.is_open(),'role':a['role'],'updated_at':time.time(),'whatsapp_enabled':False,'platform_only':True}
     @app.post('/api/admin/open')
     async def open_registration(req:Request):
         a=auth(req,'organizer',True);b=await req.json();store.set_open(b.get('open') is True,a['username']);return {'open':store.is_open()}
@@ -126,7 +106,7 @@ def create_app(db_path=None,demo=False,provider=None):
     async def admin_arrive(req:Request):
         a=auth(req,mutate=True);b=await req.json()
         if b.get('verified') is not True:raise HTTPException(400,'تحقق من هوية المشارك قبل تسجيل وصوله')
-        return store.arrive(b.get('id'),'reception',a['username'],b.get('consent') is True)
+        return store.arrive(b.get('id'),'reception',a['username'],False)
     @app.post('/api/admin/retry')
     async def retry(req:Request):
         a=auth(req,'organizer',True);b=await req.json();store.retry(b.get('id'),a['username']);return {'ok':True}

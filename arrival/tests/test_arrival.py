@@ -27,7 +27,7 @@ class ArrivalTests(unittest.TestCase):
   r=self.c.post('/api/login',json={'username':name,'password':'a-long-test-password'});self.assertEqual(r.status_code,200);self.c.headers['x-csrf-token']=r.json()['csrf']
  def ticket(self,phone='99000001'):
   r=self.c.post('/api/challenge',json={'phone':phone,'consent':True});self.assertEqual(r.status_code,200)
-  v=self.c.post('/api/verify',json={'challenge':r.json()['challenge'],'code':'246810'});self.assertEqual(v.status_code,200);return v.json()['ticket']
+  return r.json()['ticket']
  def test_phone_normalization(self):
   for p in ['99000001','+968 99000001','0096899000001','٩٩٠٠٠٠٠١','۹۹۰۰۰۰۰۱']:self.assertEqual(normalize_phone(p),'+96899000001')
   for p in ['123','+97199000001','12345678','99000001abc']:
@@ -35,7 +35,7 @@ class ArrivalTests(unittest.TestCase):
  def test_success_and_duplicate(self):
   t=self.ticket();a=self.c.post('/api/arrive',json={'ticket':t,'consent':True}).json();b=self.c.post('/api/arrive',json={'ticket':t,'consent':True}).json()
   self.assertFalse(a['duplicate']);self.assertTrue(b['duplicate']);self.assertEqual(a['arrived_at'],b['arrived_at']);self.assertTrue(a['arrived_at'].endswith('+04:00'))
-  with self.s.db() as db:self.assertEqual(db.execute('SELECT count(*) FROM outbox').fetchone()[0],1)
+  with self.s.db() as db:self.assertEqual(db.execute('SELECT count(*) FROM outbox').fetchone()[0],0)
  def test_concurrent_arrival_unique(self):
   with ThreadPoolExecutor(max_workers=8) as pool:r=list(pool.map(lambda _:self.s.arrive(self.pid,'reception','test',True),range(24)))
   self.assertEqual(sum(not x['duplicate'] for x in r),1)
@@ -43,16 +43,22 @@ class ArrivalTests(unittest.TestCase):
  def test_unknown_and_ambiguous(self):
   self.assertEqual(self.c.post('/api/challenge',json={'phone':'99000999','consent':True}).status_code,404)
   self.s.add({'name':'آخر','phone':'99000001'});self.assertEqual(self.c.post('/api/challenge',json={'phone':'99000001','consent':True}).status_code,409)
- def test_no_personal_data_before_otp(self):
+ def test_no_personal_data_in_phone_lookup(self):
   r=self.c.post('/api/challenge',json={'phone':'99000001','consent':True});self.assertNotIn('مشارك اختبار',r.text)
   self.assertEqual(self.c.post('/api/arrive',json={'ticket':'invented','consent':True}).status_code,401)
- def test_otp_attempt_limit_and_expiry(self):
-  cid=self.c.post('/api/challenge',json={'phone':'99000001','consent':True}).json()['challenge']
-  for _ in range(5):self.assertEqual(self.c.post('/api/verify',json={'challenge':cid,'code':'000000'}).status_code,400)
-  self.assertEqual(self.c.post('/api/verify',json={'challenge':cid,'code':'246810'}).status_code,400)
- def test_otp_replay_rejected(self):
-  cid=self.c.post('/api/challenge',json={'phone':'99000001','consent':True}).json()['challenge'];body={'challenge':cid,'code':'246810'}
-  self.assertEqual(self.c.post('/api/verify',json=body).status_code,200);self.assertEqual(self.c.post('/api/verify',json=body).status_code,400)
+ def test_ticket_expiry(self):
+  t=self.ticket()
+  with self.s.db(True) as db:db.execute('UPDATE tickets SET expires=0')
+  self.assertEqual(self.c.post('/api/arrive',json={'ticket':t}).status_code,401)
+ def test_platform_only_never_contacts_provider(self):
+  provider=FakeProvider();app=create_app(self.temp.name+'/other.sqlite',demo=True,provider=provider);st=app.state.store
+  st.add({'name':'Private name','phone':'99000001'});st.set_open(True,'test')
+  with TestClient(app) as c:
+   r=c.post('/api/challenge',json={'phone':'99000001'})
+   self.assertEqual(r.status_code,200);self.assertEqual(r.json()['participant'],{})
+   self.assertEqual(c.post('/api/arrive',json={'ticket':r.json()['ticket'],'consent':True}).status_code,200)
+  self.assertEqual(provider.calls,0)
+  with st.db() as db:self.assertEqual(db.execute('SELECT count(*) FROM outbox').fetchone()[0],0)
  def test_closed_and_expired_event(self):
   self.s.set_open(False,'test');self.assertEqual(self.c.post('/api/challenge',json={'phone':'99000001','consent':True}).status_code,409)
   self.s.set_open(True,'test')
