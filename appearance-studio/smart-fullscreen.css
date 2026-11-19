@@ -1,9 +1,15 @@
 /* Shared presentation chrome; no content or data selectors are hidden. */
+html body .topbar {--bs-top-logo-size:74px}
 html body .topbar .bs-gold-logo {
-  display:block;width:60px;height:60px;flex:0 0 60px;padding:0;
-  background:#CCA862!important;border:0!important;border-radius:0!important;box-shadow:none!important;
-  mask:var(--bs-logo-url) center/contain no-repeat;
-  -webkit-mask:var(--bs-logo-url) center/contain no-repeat;
+  display:block;
+  width:var(--bs-top-logo-size);
+  height:var(--bs-top-logo-size);
+  flex:0 0 var(--bs-top-logo-size);
+  padding:0;
+  background:#FFE0A1!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+  /* The visible artwork fills 77% of the source PNG's width. */
+  mask:var(--bs-logo-url) center/128% no-repeat;
+  -webkit-mask:var(--bs-logo-url) center/128% no-repeat;
 }
 body header .spf-mark{width:70px;height:70px;background:#CCA862;border:0;border-radius:0;box-shadow:none}
 html.bs-focus-active {
@@ -30,5 +36,11 @@ html.bs-focus-active body:has(>main>#platform)>footer{display:none!important}
 #bs-focus-panel button[aria-pressed=true]{background:#CCA862;color:#243F36}
 #bs-focus-panel :focus-visible,#bs-focus-toggle:focus-visible{outline:3px solid #CCA862;outline-offset:3px}
 #bs-focus-toggle[hidden],#bs-focus-panel[hidden]{display:none!important}
-@media(max-width:700px){html body .topbar .bs-gold-logo{width:48px;height:48px;flex-basis:48px}body header .spf-mark{width:60px;height:60px}}
+@media(max-width:700px){
+  html body .topbar{--bs-top-logo-size:56px;grid-template-columns:var(--bs-top-logo-size) minmax(0,1fr) 78px}
+  body header .spf-mark{width:60px;height:60px}
+}
+@media(max-width:360px){
+  html body .topbar{--bs-top-logo-size:50px;grid-template-columns:var(--bs-top-logo-size) minmax(0,1fr) 74px}
+}
 @media print{#bs-focus-toggle,#bs-focus-panel{display:none!important}}
