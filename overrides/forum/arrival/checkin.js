@@ -1,0 +1,1 @@
+(()=>{const value=window.ARRIVAL_PARTICIPANT_URL;if(!value)return;try{const u=new URL(value),origin=new URL(window.ARRIVAL_SERVICE_ORIGIN);if(u.protocol!=='https:'||u.origin!==origin.origin||u.username||u.password)throw Error();location.replace(u.href)}catch{document.querySelector('#checkin-status').textContent='تعذر فتح التسجيل. يرجى مراجعة فريق الاستقبال.'}})();

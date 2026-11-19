@@ -16,7 +16,7 @@ function updateData(values){Object.keys(window.FORUM_DATA).forEach(k=>delete win
 function stableKey(el){const scope=el.closest('[data-edit-scope]')||el.closest('.page');if(!scope)return '';const parts=[];let node=el;while(node&&node!==scope){if(node.id){parts.unshift('#'+node.id);break}const siblings=[...node.parentElement.children].filter(e=>e.tagName===node.tagName&&!e.matches('[aria-hidden="true"],.card-symbol,.section-symbol,.mini-symbol,.future-symbol'));parts.unshift(node.tagName.toLowerCase()+':'+siblings.indexOf(node));node=node.parentElement}return 'text.'+(scope.dataset.editScope||scope.id)+'.'+parts.join('/')}
 function prepare(){
  const candidates=all('main .page h1,main .page h2,main .page h3,main .page p,main .page span,main .page strong,main .page small,main .page b,main .page em,main .page li');
- for(const el of candidates){if(el.dataset.forumEdit||el.parentElement.closest('[data-forum-edit]'))continue;
+ for(const el of candidates){if(el.closest('[data-no-edit]')||el.dataset.forumEdit||el.parentElement.closest('[data-forum-edit]'))continue;
  if(el.closest('#answer-wall,#answer-count,#connection,#wall-caption,#qr-wrap,#join-short,#current-mission,#stage-track,#emergency,.timer-block,.mission-limit,.gov-metrics,.work-row,.branch-stat,.branch-secondary,.future-orbit,.future-total,.future-focus>header>strong,.future-card>span,.future-card>b,.activity-footer,.agreement-rules,.paths-budget,.solution-cost,.solution-index,.solution-open,.solution-detail>aside,.reflection-count,.reflection-controls,.stage,.join-steps,.title-visual,[aria-hidden="true"]'))continue;
  if(el.closest('button')&&!el.closest('.solution-card'))continue;
  if(el.querySelector('h1,h2,h3,p,span,strong,small,b,em,li')||!el.textContent.trim())continue;

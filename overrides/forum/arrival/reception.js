@@ -1,0 +1,1 @@
+document.querySelector('#print-arrival').onclick=()=>{document.body.classList.add('arrival-print');window.print()};window.addEventListener('afterprint',()=>document.body.classList.remove('arrival-print'));if(window.ARRIVAL_PARTICIPANT_URL)document.querySelector('#arrival-service-status').textContent='';

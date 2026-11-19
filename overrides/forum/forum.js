@@ -1,7 +1,7 @@
 (async()=>{'use strict';await window.ForumEditor.ready;const D=window.FORUM_DATA,$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],fmt=n=>Number(n).toLocaleString('en-US');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const storage={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v)}catch{}},remove(k){try{localStorage.removeItem(k)}catch{}}};
-const params=new URLSearchParams(location.search);let room=params.get('room')||storage.get('spf-forum-room')||'',page='overview',gov='all',govTab='work',certPage=0,lastWall='',lastActivity='',clockSkew=0,localActivityView=null,localPath=0,reflectionIndex=0,hostSignature='',previousStage=-1,previousView='',suggestedView='scenario';
+const params=new URLSearchParams(location.search);let room=params.get('room')||storage.get('spf-forum-room')||'',page='arrival-reception',gov='all',govTab='work',certPage=0,lastWall='',lastActivity='',clockSkew=0,localActivityView=null,localPath=0,reflectionIndex=0,hostSignature='',previousStage=-1,previousView='',suggestedView='scenario';
 let live={state:{stage:0,view:'scenario',reveal:false,timerRemaining:300,timerRunning:false},answers:[],accepting:false};
 const API=window.FORUM_API_BASE||'';let hostToken=room?sessionStorage.getItem('spf-host-'+room)||'':'';
 if(room)storage.set('spf-forum-room',room);
@@ -99,7 +99,7 @@ $('#setup-live-room').onclick=createSession;$('#create-session').onclick=createS
 $('#accept-answers').onclick=()=>hostSend({action:'accepting',value:true});$('#stop-answers').onclick=()=>hostSend({action:'accepting',value:false});
 $('#timer-start').onclick=()=>activityCommand('start');$('#timer-pause').onclick=()=>activityCommand('pause');$('#timer-restart').onclick=()=>activityCommand('restart');
 $('#reveal-update').onclick=()=>activityCommand('reveal');$('#reset-activity').onclick=()=>activityCommand('reset');
-document.addEventListener('forum:content-applied',()=>{drawGov();drawActivity(true)});qr();drawWall();drawActivity();clock();drawSessionControls();window.ForumEditor.prepare();navigate($$('.page').map(el=>el.id).includes(location.hash.slice(1))?location.hash.slice(1):'overview');poll();setInterval(()=>{if(!document.hidden)poll()},2500);setInterval(clock,250);document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});
+document.addEventListener('forum:content-applied',()=>{drawGov();drawActivity(true)});qr();drawWall();drawActivity();clock();drawSessionControls();window.ForumEditor.prepare();navigate($$('.page').map(el=>el.id).includes(location.hash.slice(1))?location.hash.slice(1):'arrival-reception');poll();setInterval(()=>{if(!document.hidden)poll()},2500);setInterval(clock,250);document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});
 })();
 
 // Keep sticky navigation below the measured brand bar on every viewport.

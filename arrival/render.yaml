@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: busola-arrival
+    runtime: python
+    region: frankfurt
+    plan: starter
+    branch: main
+    buildCommand: pip install -r arrival/requirements.txt
+    startCommand: python -m arrival.server.hosted
+    autoDeploy: false
+    healthCheckPath: /api/config
+    disk:
+      name: arrival-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: ARRIVAL_DB
+        value: /var/data/private/arrival.db
+      - key: ARRIVAL_SECRET
+        generateValue: true
+      - key: ARRIVAL_DEMO
+        value: 'false'
+      - key: COOKIE_SECURE
+        value: 'true'
+      - key: WHATSAPP_ENABLED
+        value: 'false'
