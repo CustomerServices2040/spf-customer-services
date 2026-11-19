@@ -13,7 +13,7 @@ async function api(path,body){
 }
 function toast(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>$('#toast').hidden=true,4500)}
 function err(){return state.error?`<div class="error" role="alert">${esc(state.error)}</div>`:''}
-function steps(){return `<ol class="steps">${['رقم الهاتف','التحقق والبيانات','تسجيل الوصول'].map((t,i)=>`<li class="${(state.step===0?0:state.step<3?1:2)===i?'current':''}"><i>${i+1}</i>${t}</li>`).join('')}</ol>`}
+function steps(){return `<ol class="steps">${['رقم الهاتف','تأكيد الوصول','تسجيل الوصول'].map((t,i)=>`<li class="${(state.step===0?0:state.step<3?1:2)===i?'current':''}"><i>${i+1}</i>${t}</li>`).join('')}</ol>`}
 function participant(){
  let content='';
  if(state.step===0)content=`<h2>مرحبا بك في ملتقى<br>دوائر المحافظات</h2><p>يسعدنا حضورك ومشاركتك في الملتقى. يرجى إدخال رقم هاتفك المسجل ضمن قائمة المدعوين لإتمام تسجيل الوصول.</p><form id="phone-form"><div class="field"><label for="phone">رقم الهاتف</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="+968 9XXX XXXX" value="${esc(state.phone)}" required></div>${err()}<button class="wide" type="submit">${state.error?'إعادة المحاولة':'متابعة'} <span aria-hidden="true">←</span></button></form><small class="hint">تسجيل وصول فعلي عند مدخل الملتقى</small>${state.config.demo?'<div class="test-hint">للتجربة فقط: <button data-sample="99000001">رقم صحيح</button><button data-sample="99000008">رقم مكرر</button><button data-sample="99000999">غير موجود</button><br>رقم صحيح: <bdi>99000001</bdi></div>':''}`;
