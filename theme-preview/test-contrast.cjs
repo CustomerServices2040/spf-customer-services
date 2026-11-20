@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict');
+const C=require('./contrast.js');
+assert.deepEqual(C.parse('color(srgb 1 0.5 0 / 0.95)'),[255,127.5,0,.95]);
+assert.deepEqual(C.parse('rgb(255 255 255 / 50%)'),[255,255,255,.5]);
+assert.deepEqual(C.over([255,255,255,.5],[0,0,0,1]),[127.5,127.5,127.5,1]);
+assert.equal(C.ratio([0,0,0],[255,255,255]),21);
+const pale=C.over(C.parse('color(srgb .98 .98 .98 / .95)'),[15,23,42,1]);
+assert(C.ratio([15,23,42],pale)>15,'Translucent map marker must be read as light');
+const choices=[{key:'gold',color:C.parse('#cca862')},{key:'dark-gold',color:C.parse('#75551b')},{key:'white',color:C.parse('#fff')}];
+assert.equal(C.pick(choices,[[255,255,255,1]],4.5).key,'dark-gold');
+assert.equal(C.pick(choices,[C.parse('#0f172a')],4.5).key,'gold');
+assert(C.score(C.parse('#75551b'),[C.parse('#f2e6c9'),C.parse('#fffef9')])>=4.5);
+console.log('PASS: sRGB, alpha compositing, transparent map labels, gold on dark/light surfaces');
