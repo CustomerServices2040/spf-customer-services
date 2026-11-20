@@ -1,0 +1,42 @@
+[
+  {
+    "file": "executive.css",
+    "bytes": 16953,
+    "gzip_bytes": 3222
+  },
+  {
+    "file": "experience.js",
+    "bytes": 5512,
+    "gzip_bytes": 1908
+  },
+  {
+    "file": "foundation.css",
+    "bytes": 11074,
+    "gzip_bytes": 2876
+  },
+  {
+    "file": "geography.css",
+    "bytes": 28521,
+    "gzip_bytes": 4815
+  },
+  {
+    "file": "linked.css",
+    "bytes": 60792,
+    "gzip_bytes": 10872
+  },
+  {
+    "file": "performance.css",
+    "bytes": 15186,
+    "gzip_bytes": 2733
+  },
+  {
+    "file": "report-motion.js",
+    "bytes": 12392,
+    "gzip_bytes": 4170
+  },
+  {
+    "file": "sections.css",
+    "bytes": 78492,
+    "gzip_bytes": 13399
+  }
+]

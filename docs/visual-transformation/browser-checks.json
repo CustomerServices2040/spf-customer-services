@@ -1,0 +1,1642 @@
+{
+  "date": "2026-11-10",
+  "browser": "Cloud Chrome, viewport frames (not physical devices)",
+  "summary": {
+    "about": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "overview": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "directorate": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "methodology": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "coverage": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "channels": "نجحت اختيارات المحافظات الـ11 والإجمالي؛ فحص خمسة مقاسات",
+    "contact-center": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "practices": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "operational-plan": "واجهة الحماية محفوظة؛ المكونات الداخلية مشمولة بالقواعد ولم تُفتح لاختبارها",
+    "work-tracker": "واجهة الحماية محفوظة؛ المكونات الداخلية مشمولة بالقواعد ولم تُفتح لاختبارها",
+    "risk-register": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "performance": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "tajawob": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "committees": "واجهة الحماية محفوظة؛ المكونات الداخلية مشمولة بالقواعد ولم تُفتح لاختبارها",
+    "projects": "نجح فتح وإغلاق التفاصيل لجميع المشاريع الـ33؛ فحص خمسة مقاسات",
+    "community-line": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "media-center": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "service-achievements": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "recognitions": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "achievements": "فحص العرض والتنقل والاستجابة على خمسة مقاسات؛ سلامة المحتوى متحققة آلياً",
+    "communications": "نجح التنقل بين الصفحات الست وفحصها على خمسة مقاسات",
+    "forum": "نجح التنقل بين التبويبات الست وفحصها على خمسة مقاسات؛ الحفظ والجلسات الحية غير مختبرة",
+    "tasks": "نجح التنقل بين التبويبات الأربعة؛ العرض على خمسة مقاسات؛ الحفظ الخارجي غير مختبر",
+    "dakhiliyah": "فحص العرض والاستجابة والتكبير والتصغير؛ لم يُختبر كل تفاعل داخل المعارض",
+    "join": "فحص عرض النموذج؛ إرسال الإجابات الحية غير مختبر",
+    "facilitator": "فحص عرض الواجهة؛ إنشاء الجلسات والتحكم الحي غير مختبر"
+  },
+  "responsive_cases": [
+    {
+      "section": "about",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "about",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "about",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "about",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "about",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "overview",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "overview",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "overview",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "overview",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "overview",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "directorate",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "directorate",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "directorate",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "directorate",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "directorate",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "methodology",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "methodology",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "methodology",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "methodology",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "methodology",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "coverage",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "coverage",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "coverage",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "coverage",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "coverage",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "channels",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "channels",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "channels",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "channels",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "channels",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "contact-center",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "contact-center",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "contact-center",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "contact-center",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "contact-center",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "practices",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "practices",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "practices",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "practices",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "practices",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "operational-plan",
+      "viewport": 320,
+      "client": 318,
+      "overflow": false,
+      "scroll": 318
+    },
+    {
+      "section": "operational-plan",
+      "viewport": 390,
+      "client": 388,
+      "overflow": false,
+      "scroll": 388
+    },
+    {
+      "section": "operational-plan",
+      "viewport": 768,
+      "client": 766,
+      "overflow": false,
+      "scroll": 766
+    },
+    {
+      "section": "operational-plan",
+      "viewport": 1024,
+      "client": 1022,
+      "overflow": false,
+      "scroll": 1022
+    },
+    {
+      "section": "operational-plan",
+      "viewport": 1920,
+      "client": 1918,
+      "overflow": false,
+      "scroll": 1918
+    },
+    {
+      "section": "work-tracker",
+      "viewport": 320,
+      "client": 318,
+      "overflow": false,
+      "scroll": 318
+    },
+    {
+      "section": "work-tracker",
+      "viewport": 390,
+      "client": 388,
+      "overflow": false,
+      "scroll": 388
+    },
+    {
+      "section": "work-tracker",
+      "viewport": 768,
+      "client": 766,
+      "overflow": false,
+      "scroll": 766
+    },
+    {
+      "section": "work-tracker",
+      "viewport": 1024,
+      "client": 1022,
+      "overflow": false,
+      "scroll": 1022
+    },
+    {
+      "section": "work-tracker",
+      "viewport": 1920,
+      "client": 1918,
+      "overflow": false,
+      "scroll": 1918
+    },
+    {
+      "section": "risk-register",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "risk-register",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "risk-register",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "risk-register",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "risk-register",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "performance",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "performance",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "performance",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "performance",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "performance",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "tajawob",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "tajawob",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "tajawob",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "tajawob",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "tajawob",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "committees",
+      "viewport": 320,
+      "client": 318,
+      "overflow": false,
+      "scroll": 318
+    },
+    {
+      "section": "committees",
+      "viewport": 390,
+      "client": 388,
+      "overflow": false,
+      "scroll": 388
+    },
+    {
+      "section": "committees",
+      "viewport": 768,
+      "client": 766,
+      "overflow": false,
+      "scroll": 766
+    },
+    {
+      "section": "committees",
+      "viewport": 1024,
+      "client": 1022,
+      "overflow": false,
+      "scroll": 1022
+    },
+    {
+      "section": "committees",
+      "viewport": 1920,
+      "client": 1918,
+      "overflow": false,
+      "scroll": 1918
+    },
+    {
+      "section": "projects",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "projects",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "projects",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "projects",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "projects",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "community-line",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "community-line",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "community-line",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "community-line",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "community-line",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "media-center",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "media-center",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "media-center",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "media-center",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "media-center",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "service-achievements",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "service-achievements",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "service-achievements",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "service-achievements",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "service-achievements",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "recognitions",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "recognitions",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "recognitions",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "recognitions",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "recognitions",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "achievements",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "achievements",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "achievements",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "achievements",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "achievements",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "section": "communications",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "section": "communications",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "section": "communications",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "section": "communications",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "section": "communications",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "communications",
+      "page": 1,
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "communications",
+      "page": 1,
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "communications",
+      "page": 1,
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "communications",
+      "page": 1,
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "communications",
+      "page": 1,
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "communications",
+      "page": 2,
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "communications",
+      "page": 2,
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "communications",
+      "page": 2,
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "communications",
+      "page": 2,
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "communications",
+      "page": 2,
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "communications",
+      "page": 3,
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "communications",
+      "page": 3,
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "communications",
+      "page": 3,
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "communications",
+      "page": 3,
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "communications",
+      "page": 3,
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "communications",
+      "page": 4,
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "communications",
+      "page": 4,
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "communications",
+      "page": 4,
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "communications",
+      "page": 4,
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "communications",
+      "page": 4,
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "communications",
+      "page": 5,
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "communications",
+      "page": 5,
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "communications",
+      "page": 5,
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "communications",
+      "page": 5,
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "communications",
+      "page": 5,
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "communications",
+      "page": 6,
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "communications",
+      "page": 6,
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "communications",
+      "page": 6,
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "communications",
+      "page": 6,
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "communications",
+      "page": 6,
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "forum",
+      "page": "overview",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "forum",
+      "page": "overview",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "forum",
+      "page": "overview",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "forum",
+      "page": "overview",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "forum",
+      "page": "overview",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "forum",
+      "page": "future",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "forum",
+      "page": "future",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "forum",
+      "page": "future",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "forum",
+      "page": "future",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "forum",
+      "page": "future",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "forum",
+      "page": "pride",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "forum",
+      "page": "pride",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "forum",
+      "page": "pride",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "forum",
+      "page": "pride",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "forum",
+      "page": "pride",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "forum",
+      "page": "map",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "forum",
+      "page": "map",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "forum",
+      "page": "map",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "forum",
+      "page": "map",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "forum",
+      "page": "map",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "forum",
+      "page": "practices",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "forum",
+      "page": "practices",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "forum",
+      "page": "practices",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "forum",
+      "page": "practices",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "forum",
+      "page": "practices",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    },
+    {
+      "surface": "forum",
+      "page": "activity",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "forum",
+      "page": "activity",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "forum",
+      "page": "activity",
+      "viewport": 768,
+      "client": 766,
+      "overflow": false,
+      "scroll": 766
+    },
+    {
+      "surface": "forum",
+      "page": "activity",
+      "viewport": 1024,
+      "client": 1022,
+      "overflow": false,
+      "scroll": 1022
+    },
+    {
+      "surface": "forum",
+      "page": "activity",
+      "viewport": 1920,
+      "client": 1918,
+      "overflow": false,
+      "scroll": 1918
+    },
+    {
+      "surface": "join",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "join",
+      "viewport": 390,
+      "client": 388,
+      "overflow": false,
+      "scroll": 388
+    },
+    {
+      "surface": "join",
+      "viewport": 768,
+      "client": 766,
+      "overflow": false,
+      "scroll": 766
+    },
+    {
+      "surface": "join",
+      "viewport": 1024,
+      "client": 1022,
+      "overflow": false,
+      "scroll": 1022
+    },
+    {
+      "surface": "join",
+      "viewport": 1920,
+      "client": 1918,
+      "overflow": false,
+      "scroll": 1918
+    },
+    {
+      "surface": "facilitator",
+      "viewport": 320,
+      "client": 318,
+      "overflow": false,
+      "scroll": 318
+    },
+    {
+      "surface": "facilitator",
+      "viewport": 390,
+      "client": 388,
+      "overflow": false,
+      "scroll": 388
+    },
+    {
+      "surface": "facilitator",
+      "viewport": 768,
+      "client": 766,
+      "overflow": false,
+      "scroll": 766
+    },
+    {
+      "surface": "facilitator",
+      "viewport": 1024,
+      "client": 1022,
+      "overflow": false,
+      "scroll": 1022
+    },
+    {
+      "surface": "facilitator",
+      "viewport": 1920,
+      "client": 1918,
+      "overflow": false,
+      "scroll": 1918
+    },
+    {
+      "surface": "tasks",
+      "viewport": 320,
+      "client": 318,
+      "overflow": false,
+      "scroll": 318
+    },
+    {
+      "surface": "tasks",
+      "viewport": 390,
+      "client": 388,
+      "overflow": false,
+      "scroll": 388
+    },
+    {
+      "surface": "tasks",
+      "viewport": 768,
+      "client": 766,
+      "overflow": false,
+      "scroll": 766
+    },
+    {
+      "surface": "tasks",
+      "viewport": 1024,
+      "client": 1022,
+      "overflow": false,
+      "scroll": 1022
+    },
+    {
+      "surface": "tasks",
+      "viewport": 1920,
+      "client": 1910,
+      "overflow": false,
+      "scroll": 1910
+    },
+    {
+      "surface": "dakhiliyah",
+      "viewport": 320,
+      "client": 303,
+      "overflow": false,
+      "scroll": 303
+    },
+    {
+      "surface": "dakhiliyah",
+      "viewport": 390,
+      "client": 373,
+      "overflow": false,
+      "scroll": 373
+    },
+    {
+      "surface": "dakhiliyah",
+      "viewport": 768,
+      "client": 751,
+      "overflow": false,
+      "scroll": 751
+    },
+    {
+      "surface": "dakhiliyah",
+      "viewport": 1024,
+      "client": 1007,
+      "overflow": false,
+      "scroll": 1007
+    },
+    {
+      "surface": "dakhiliyah",
+      "viewport": 1920,
+      "client": 1903,
+      "overflow": false,
+      "scroll": 1903
+    }
+  ],
+  "projects": [
+    {
+      "id": "I01",
+      "open": "modal open",
+      "text": "×\nمقترح للدمج\nآلية قياس التميز في الخدمات (Excellence Meter)\n\nلم يُنفذ المشروع، "
+    },
+    {
+      "id": "I02",
+      "open": "modal open",
+      "text": "×\nاختبار مبدئي\nالمقابلات الافتراضية (Video Calling)\n\nيُطبق عبر Richcall ضمن مركز"
+    },
+    {
+      "id": "I03",
+      "open": "modal open",
+      "text": "×\nتم التحويل\nمنصة إلكترونية تفاعلية للموظفين\n\nحُوّل المقترح إلى قسم إدارة علاقات"
+    },
+    {
+      "id": "I04",
+      "open": "modal open",
+      "text": "×\nللمتابعة\nتحديث تطبيق الهاتف الذكي — المرحلتان الثانية والثالثة\n\nالمشروع لدى ال"
+    },
+    {
+      "id": "I05",
+      "open": "modal open",
+      "text": "×\nفحص الحزمة الثانية\nمنصة واتساب لتقديم الخدمات\n\nضمن مركز الاتصال؛ تم توثيق الحس"
+    },
+    {
+      "id": "I06",
+      "open": "modal open",
+      "text": "×\nمفعّل جزئيًا\nالمستشار الإلكتروني الذكي KB–CC\n\nدُمج ضمن مركز الاتصال، وفُعّل ال"
+    },
+    {
+      "id": "I07",
+      "open": "modal open",
+      "text": "×\nمرحلة التخطيط\nلقاء المدراء\n\nالمقترح في مرحلة التخطيط ويتطلب اعتماد خطة التنفيذ"
+    },
+    {
+      "id": "I08",
+      "open": "modal open",
+      "text": "×\nمخطط لأكتوبر\nملتقى المتعاملين\n\nالمقترح في مرحلة التخطيط، ومقرر تنفيذه في أكتوب"
+    },
+    {
+      "id": "I09",
+      "open": "modal open",
+      "text": "×\nالربع الرابع\nركن تجربة العميل\n\nالتصميم والدراسة جاهزان، والتنفيذ مستهدف في الر"
+    },
+    {
+      "id": "I10",
+      "open": "modal open",
+      "text": "×\nدراسة 2027\nمشروع الروبوت الذكي\n\nتمت مراجعة عروض الشركة وطلب العرض المالي، والم"
+    },
+    {
+      "id": "I11",
+      "open": "modal open",
+      "text": "×\nتم التحويل\nتطبيق نافذ للإعاقة السمعية\n\nحُوّل مقترح الشركة إلى فريق التحول الرق"
+    },
+    {
+      "id": "I12",
+      "open": "modal open",
+      "text": "×\nتم التحويل\nجهاز الترجمة الذكي\n\nحُوّل مقترح الشركة إلى فريق التحول الرقمي.\n\nالم"
+    },
+    {
+      "id": "I13",
+      "open": "modal open",
+      "text": "×\nعُرض المقترح\nإطار امتيازات موظفي خدمات المتعاملين\n\nأُعد مقترح لتفعيل الامتيازا"
+    },
+    {
+      "id": "I14",
+      "open": "modal open",
+      "text": "×\nقيد الدراسة\nمشروع E‑Learning\n\nالدراسة اللازمة للتفعيل قيد الإعداد، وقد عُرضت ع"
+    },
+    {
+      "id": "I15",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nمنهجية مستشار الحماية الاجتماعية\n\nإعداد منهجية ومعايير اختيار مستش"
+    },
+    {
+      "id": "I16",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nمصفوفة مصادر قاعدة المعرفة\n\nتنظيم مصادر المعرفة وتوحيد مرجعيات الم"
+    },
+    {
+      "id": "I17",
+      "open": "modal open",
+      "text": "×\nتم التسليم\nالإطار العام للخدمات الاستباقية\n\nأُعد التصور والمنهجية، وعُرضا على "
+    },
+    {
+      "id": "I18",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nمبررات الإبقاء على دائرة الحماية — مسقط\n\nوثيقة مبررات مرتبطة باستم"
+    },
+    {
+      "id": "I19",
+      "open": "modal open",
+      "text": "×\nجارٍ العمل\nإعادة تهيئة مبنى دائرة ظفار\n\nأعمال التصميم لدى الاستشاري لإضافة الأ"
+    },
+    {
+      "id": "I20",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nSMART CRM — إدارة علاقات المتعاملين\n\nمنظومة موحدة لإدارة علاقات ال"
+    },
+    {
+      "id": "I21",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nالإشعارات وصرف المنافع\n\nتطوير الإشعارات المرتبطة بمراحل صرف المناف"
+    },
+    {
+      "id": "I22",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nالرسائل النصية — من عائلة الصندوق\n\nمقترح رسائل نصية للمناسبات والت"
+    },
+    {
+      "id": "I23",
+      "open": "modal open",
+      "text": "×\nبانتظار الاعتماد\nاعتماد مسمى المساعد الذكي\n\nأُعد مقترح بمشاركة مجتمعية، وهو با"
+    },
+    {
+      "id": "I24",
+      "open": "modal open",
+      "text": "×\nبانتظار الاعتماد\nخطة نشر المساعد الذكي\n\nأُعدت خطة النشر من قبل الإعلام، وهي با"
+    },
+    {
+      "id": "I25",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nمصفوفة الخدمات الشاملة\n\nمصفوفة لتحديد الخدمات وقنواتها ومتطلبات ال"
+    },
+    {
+      "id": "I26",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nمؤشرات قياس الأعمال خارج أوقات العمل\n\nمؤشرات لقياس حجم وجودة الخدم"
+    },
+    {
+      "id": "I27",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nمنهجية فتح منافذ ودوائر الصندوق\n\nإطار موحد لدراسة واعتماد فتح المن"
+    },
+    {
+      "id": "I28",
+      "open": "modal open",
+      "text": "×\nجارٍ العمل\nركن أصحاب الأعمال بالمبنى الرئيسي\n\nالمشروع لدى دائرة المشتريات لاست"
+    },
+    {
+      "id": "I29",
+      "open": "modal open",
+      "text": "×\nيتطلب توجيهًا\nإعادة تهيئة مساحة دائرة مسقط بالمبنى الرئيسي\n\nيتطلب المشروع توجي"
+    },
+    {
+      "id": "I30",
+      "open": "modal open",
+      "text": "×\nتم إعداد المقترح\nإطار منهجية التدشين\n\nتم العمل على مقترح الإطار العام لمنهجية "
+    },
+    {
+      "id": "I31",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nتوسيع صلاحيات مركز الاتصال\n\nتوسيع نطاق الصلاحيات لرفع نسبة الحل من"
+    },
+    {
+      "id": "I32",
+      "open": "modal open",
+      "text": "×\nمطبقة حاليًا\nمنهجية تعزيز المعرفة\n\nالمنهجية الحالية لتعزيز وقياس معرفة مقدمي ا"
+    },
+    {
+      "id": "I33",
+      "open": "modal open",
+      "text": "×\nمدرج بالحصر\nأطلس الحماية الاجتماعية\n\nيوحّد بيانات البرامج والمستفيدين والإنفاق"
+    }
+  ],
+  "governorates": [
+    {
+      "value": "all",
+      "title": "إجمالي المحافظات",
+      "total": "289,725"
+    },
+    {
+      "value": "muscat",
+      "title": "محافظة مسقط",
+      "total": "69,465"
+    },
+    {
+      "value": "dhofar",
+      "title": "محافظة ظفار",
+      "total": "30,332"
+    },
+    {
+      "value": "north_batinah",
+      "title": "محافظة شمال الباطنة",
+      "total": "37,219"
+    },
+    {
+      "value": "south_batinah",
+      "title": "محافظة جنوب الباطنة",
+      "total": "41,085"
+    },
+    {
+      "value": "dakhiliyah",
+      "title": "محافظة الداخلية",
+      "total": "17,144"
+    },
+    {
+      "value": "north_sharqiyah",
+      "title": "محافظة شمال الشرقية",
+      "total": "16,199"
+    },
+    {
+      "value": "south_sharqiyah",
+      "title": "محافظة جنوب الشرقية",
+      "total": "20,942"
+    },
+    {
+      "value": "dhahirah",
+      "title": "محافظة الظاهرة",
+      "total": "18,398"
+    },
+    {
+      "value": "buraimi",
+      "title": "محافظة البريمي",
+      "total": "23,389"
+    },
+    {
+      "value": "musandam",
+      "title": "محافظة مسندم",
+      "total": "8,182"
+    },
+    {
+      "value": "wusta",
+      "title": "محافظة الوسطى",
+      "total": "7,370"
+    }
+  ],
+  "function_checks": {
+    "task_tabs": [
+      "overview",
+      "table",
+      "perf",
+      "dq"
+    ],
+    "communications_subpages": 6,
+    "forum_tabs": 6,
+    "update_guide": "opened and closed",
+    "excel_template_download": "completed browser download",
+    "edit_auth_dialog": "opened and closed; token input disabled in isolated preview; no authentication attempted",
+    "presentation_mode": "entered/exited existing presentation-fullscreen mode; nativeFullscreen=false in cloud browser",
+    "report_zoom": "100% -> 110% -> 100%",
+    "protected_sections": "locked UI inspected; no decryption",
+    "external_save_publish": "not executed; blocked in preview",
+    "live_forum_rooms": "not tested; static preview has no rooms backend"
+  },
+  "remaining_limits": [
+    "No physical iOS/Android/Safari verification",
+    "No Lighthouse or measured end-user network benchmark",
+    "No production writes, credentials or actual protected-tab edit/save verification",
+    "No full end-to-end test of every report gallery and all task editing/import permutations"
+  ]
+}

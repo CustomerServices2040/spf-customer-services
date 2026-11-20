@@ -1,0 +1,89 @@
+{
+  "type": "static-integrity-check",
+  "baseline_commit": "fcd2fe2f350c33af119c7909cd0c0dc6d73cfba4",
+  "original_repository_files_changed": [],
+  "unchanged_asset_count": 82,
+  "missing_assets": [],
+  "modified_assets": [],
+  "html_preservation": [
+    {
+      "path": "/workspace/scratch/7d973d4fab23/boussole/dist/index.html",
+      "status": "pass",
+      "source_sha256": "038d453768604f09fbaad731409577cee3291d0a0fe485778229182fc56ceed3",
+      "target_sha256": "9a0127322c643e8cb487fdc07e6388be1b906aff2bbb98309529ca47ecca268d",
+      "tokens_original": 12702,
+      "tokens_preview": 12702
+    },
+    {
+      "path": "/workspace/scratch/7d973d4fab23/boussole/dist/assets/work-tracker.html",
+      "status": "pass",
+      "source_sha256": "b6ff22ca232bdfb776265846c136cf08507cfa5ee9817df7b5b80cbc9acc1831",
+      "target_sha256": "1ba3e6b174c317682006c1545face763fc5dea9ee94c69b928cbee57d9920295",
+      "tokens_original": 444,
+      "tokens_preview": 444
+    },
+    {
+      "path": "/workspace/scratch/7d973d4fab23/boussole/dist/communications/index.html",
+      "status": "pass",
+      "source_sha256": "cf5c7cd2481c1b8d036d0a1e43c6479d328b46e4226c449b05c38d86eaf9e91a",
+      "target_sha256": "cf5c7cd2481c1b8d036d0a1e43c6479d328b46e4226c449b05c38d86eaf9e91a",
+      "tokens_original": 22,
+      "tokens_preview": 22
+    },
+    {
+      "path": "/workspace/scratch/7d973d4fab23/boussole/dist/forum/facilitator.html",
+      "status": "pass",
+      "source_sha256": "82f8e491a7ca9158321cc07361729ce557213569cb29bf98e9aaf7eaf8a476b7",
+      "target_sha256": "21727a13c8575cc949d12f03f708dfba560088daaff428c5483870bce5573de1",
+      "tokens_original": 171,
+      "tokens_preview": 171
+    },
+    {
+      "path": "/workspace/scratch/7d973d4fab23/boussole/dist/forum/index.html",
+      "status": "pass",
+      "source_sha256": "f65a1aa16cd23d9c13fa103ce76f377964eebf8a8997c96b17d6bd226b16d04b",
+      "target_sha256": "f53afec04577738561d223d1c86bebc062bc66be5aec8857df4988f7761a918e",
+      "tokens_original": 794,
+      "tokens_preview": 794
+    },
+    {
+      "path": "/workspace/scratch/7d973d4fab23/boussole/dist/forum/join.html",
+      "status": "pass",
+      "source_sha256": "5889cda1eae700b0694a4edbd80ff030dae541cb4a2c5dad5344c152fcdb27d4",
+      "target_sha256": "d4148ab67343d689bd4b22294d24b01bccd196e1478407268161c30a54502c40",
+      "tokens_original": 77,
+      "tokens_preview": 77
+    },
+    {
+      "path": "/workspace/scratch/7d973d4fab23/boussole/dist/reports/dakhiliyah-june-2026.html",
+      "status": "pass",
+      "source_sha256": "4aac63b00c6404479d6b174ffb599083bedb82cc646d1e45435ac76a7b8201f5",
+      "target_sha256": "cd046c23165e109f002ec5066d5cdbd8afbb3766f4ddf48e9ddd9e215aea96b9",
+      "tokens_original": 1075,
+      "tokens_preview": 1075
+    }
+  ],
+  "explicit_preview_link_remaps": {},
+  "missing_local_html_asset_references": [],
+  "local_reference_coverage": {
+    "html_files": 15,
+    "css_files": 18,
+    "html_references": 476,
+    "css_references": 15
+  },
+  "missing_local_css_asset_references": [],
+  "adapter_forbidden_operations": {
+    "network_write": false,
+    "storage_write": false,
+    "text_replacement": false,
+    "input_value_replacement": false,
+    "navigation_rewrite": false
+  },
+  "limitations": [
+    "Does not execute application behavior or prove browser layout/accessibility.",
+    "HTML comparison excludes only preview assets/root markers and explicit link remaps; original scripts and encrypted payloads remain compared.",
+    "Remote references and dynamic JavaScript-generated URLs require separate checks.",
+    "Authenticated publication and live forum operations are not exercised."
+  ],
+  "passed": true
+}
