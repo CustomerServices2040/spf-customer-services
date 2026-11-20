@@ -1,0 +1,211 @@
+[
+  {
+    "brokenImages": 0,
+    "cards": 0,
+    "documentWidth": 1348,
+    "heading": "المديرية العامة لخدمات المتعاملين",
+    "id": "about",
+    "title": "من نحن",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 0,
+    "documentWidth": 1348,
+    "heading": "\"خير الناس أنفعهم للناس\"",
+    "id": "overview",
+    "title": "نظرة عامة",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 5,
+    "documentWidth": 1348,
+    "heading": "المديرية في سطر واحد",
+    "id": "directorate",
+    "title": "المديرية والهيكل",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 22,
+    "documentWidth": 1348,
+    "heading": "مركزية المتعامل كنظام تشغيل",
+    "id": "methodology",
+    "title": "مركزية المتعامل",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 5,
+    "documentWidth": 1348,
+    "heading": "حماية تصل إلى مختلف فئات المجتمع",
+    "id": "coverage",
+    "title": "التغطية والوصول",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 41,
+    "documentWidth": 1348,
+    "heading": "الخدمة متاحة حيث يفضّل المتعامل",
+    "id": "channels",
+    "title": "قنوات الخدمة",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 15,
+    "documentWidth": 1348,
+    "heading": "نبذة تعريفية عن مركز الاتصال",
+    "id": "contact-center",
+    "title": "مركز الاتصال",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 7,
+    "documentWidth": 1348,
+    "heading": "الممارسات المؤسسية والمجتمعية بالمحافظات",
+    "id": "practices",
+    "title": "الممارسات",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 0,
+    "documentWidth": 1363,
+    "heading": "هذا التبويب محمي",
+    "id": "operational-plan",
+    "title": "الخطة التشغيلية",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 0,
+    "documentWidth": 1363,
+    "heading": "هذا التبويب محمي",
+    "id": "work-tracker",
+    "title": "متابعة الأعمال",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 28,
+    "documentWidth": 1348,
+    "heading": "المخاطر المصاحبة لأنشطة المديرية لعام 2026",
+    "id": "risk-register",
+    "title": "سجل المخاطر",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 13,
+    "documentWidth": 1348,
+    "heading": "المؤشر الرئيسي للمديرية ثم الأداء التشغيلي وحجم الأعمال",
+    "id": "performance",
+    "title": "الأداء والمؤشرات",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 16,
+    "documentWidth": 1348,
+    "heading": "صوت المتعامل في مسار قابل للقياس",
+    "id": "tajawob",
+    "title": "منصة تجاوب",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 0,
+    "documentWidth": 1363,
+    "heading": "هذا التبويب محمي",
+    "id": "committees",
+    "title": "اللجان والفرق",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 34,
+    "documentWidth": 1348,
+    "heading": "المشاريع والممارسات",
+    "id": "projects",
+    "title": "المشاريع",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 6,
+    "documentWidth": 1348,
+    "heading": "نقترب من المجتمع، ونحوّل المعرفة إلى أثر",
+    "id": "community-line",
+    "title": "خطة التواصل المجتمعي",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 12,
+    "documentWidth": 1348,
+    "heading": "مكتبة التقارير والنشرات",
+    "id": "media-center",
+    "title": "التقارير والإصدارات",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 17,
+    "documentWidth": 1348,
+    "heading": "أفضل منافذ تقديم الخدمة",
+    "id": "service-achievements",
+    "title": "الإنجازات",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 1,
+    "cards": 178,
+    "documentWidth": 1348,
+    "heading": "تقديرٌ يوثّق الشراكة والأثر",
+    "id": "recognitions",
+    "title": "الشهادات والدروع",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 13,
+    "documentWidth": 1348,
+    "heading": "إنجازات موثّقة وأثر ممتد",
+    "id": "achievements",
+    "title": "الريادة والمجتمع",
+    "visible": true,
+    "width": 1363
+  },
+  {
+    "brokenImages": 0,
+    "cards": 0,
+    "documentWidth": 1348,
+    "id": "communications",
+    "title": "التواصل والإعلام",
+    "visible": true,
+    "width": 1363
+  }
+]
