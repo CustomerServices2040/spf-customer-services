@@ -107,6 +107,24 @@ def create_app(db_path=None,demo=False,provider=None):
         a=auth(req,mutate=True);b=await req.json()
         if b.get('verified') is not True:raise HTTPException(400,'تحقق من هوية المشارك قبل تسجيل وصوله')
         return store.arrive(b.get('id'),'reception',a['username'],False)
+    @app.post('/api/admin/reset-arrival')
+    async def reset_arrival(req:Request):
+        a=auth(req,'organizer',True);b=await req.json()
+        if b.get('reason')!='test_cleanup':raise HTTPException(400,'حدد سبب إلغاء تسجيل الوصول')
+        with store.db(True) as db:
+            db.execute('DELETE FROM outbox WHERE participant_id=?',(b.get('id'),))
+            db.execute('DELETE FROM arrivals WHERE participant_id=?',(b.get('id'),))
+            store.audit(db,a['username'],'test_arrival_reset',b.get('id'))
+        return {'ok':True}
+    @app.post('/api/admin/password')
+    async def change_password(req:Request):
+        a=auth(req,mutate=True);b=await req.json();pw=str(b.get('password',''))
+        if not 12<=len(pw)<=256:raise HTTPException(400,'استخدم كلمة مرور من 12 إلى 256 حرفا')
+        with store.db(True) as db:
+            db.execute('UPDATE users SET password=? WHERE username=?',(password_hash(pw),a['username']))
+            db.execute('DELETE FROM sessions WHERE username=? AND id<>?',(a['username'],a['id']))
+            store.audit(db,a['username'],'password_changed')
+        return {'ok':True}
     @app.post('/api/admin/retry')
     async def retry(req:Request):
         a=auth(req,'organizer',True);b=await req.json();store.retry(b.get('id'),a['username']);return {'ok':True}
