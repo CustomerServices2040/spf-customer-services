@@ -14,3 +14,40 @@ body{background:radial-gradient(ellipse at 8% 10%,#cca86226,transparent 42%),rad
 .welcome-symbol{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:#f5eaf0;color:#6c2947;border:1px solid #cca86266;margin-bottom:16px}
 .welcome-symbol svg{width:29px;height:29px}
 :fullscreen .reception .no-print{display:none!important}
+
+/* Participant identity uses original artwork and logo from the supplied invitation. */
+.spf-logo{display:block;width:104px;height:104px;object-fit:contain;flex-shrink:0}
+.brand-copy{min-width:0}.brand .brand-directorate{display:block;color:#a17a32;font-size:13px;line-height:1.7;margin-top:5px}
+body.participant-view{min-height:100svh;background:linear-gradient(120deg,#102b24b8,#183a2ed9),url('/assets/invitation-background.webp') center/cover fixed;color:var(--ink)}
+.participant-view .brand{max-width:1160px;padding:20px 32px;gap:20px;color:#fff}
+.participant-view .brand b{font-size:clamp(20px,2.2vw,27px);line-height:1.5}
+.participant-view .brand .brand-directorate{color:#e5c580;font-size:14px}
+.participant-view .brand-label{color:#e4eae5;font-size:13px;border-right:1px solid #cca86266;padding-right:20px}
+.participant-view .journey{width:calc(100% - 64px);max-width:1096px;min-height:0;margin:8px auto 24px;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);border-color:#cca86266;background:#18392f38;box-shadow:0 24px 70px #071c2733;align-items:stretch}
+.participant-view .hero{background:linear-gradient(155deg,#173a2a52,#18372e9e);padding:48px 40px;justify-content:center;gap:24px}
+.participant-view .hero:before,.participant-view .hero:after{display:none}
+.participant-view .hero h1{font-size:clamp(34px,4vw,52px);line-height:1.5}
+.participant-view .hero p{font-size:17px;line-height:1.9;max-width:340px}
+.participant-view .hero .eyebrow{margin-bottom:20px}
+.participant-view .flow{padding:36px;align-self:stretch;background:#fcfcf9;display:flex;flex-direction:column;justify-content:center}
+.participant-view .steps{margin-bottom:24px;gap:8px}.participant-view .steps li{font-size:12px;line-height:1.5;min-width:0}.participant-view .steps i{flex-shrink:0}
+.participant-view .welcome-symbol{width:46px;height:46px;border-radius:15px;margin-bottom:12px}
+.participant-view .flow .welcome-title{font-size:clamp(27px,2.5vw,34px);line-height:1.5;margin-bottom:0}
+.participant-view .flow p{font-size:16px;line-height:1.85;margin:12px 0 20px}
+.participant-view .field{margin:12px 0 20px}.participant-view .field label{font-size:15px}
+.participant-view button.wide{min-height:54px}.participant-view .hint{margin:12px 0 0}
+.participant-view .success h2{overflow-wrap:anywhere}.participant-view .success-icon{margin:12px auto 24px}
+.participant-view footer{color:#e4eae5;margin:0 auto;padding:0 24px 20px;font-size:12px}
+@media(max-width:760px){
+ .participant-view .brand{max-width:560px;padding:20px 20px 16px;gap:14px}
+ .participant-view .spf-logo{width:82px;height:82px}
+ .participant-view .brand b{font-size:21px}.participant-view .brand .brand-directorate{font-size:13px}
+ .participant-view .brand-label{display:none}
+ .participant-view .journey{display:block;width:calc(100% - 32px);max-width:520px;margin:0 auto 20px;border-radius:24px}
+ .participant-view .hero{display:none}
+ .participant-view .flow{padding:26px 24px}.participant-view .flow .welcome-title{font-size:28px}
+ .participant-view .steps{margin-bottom:22px}.participant-view .steps li{font-size:12px;gap:5px}
+ .participant-view .steps i{width:24px;height:24px}
+ .participant-view footer{padding-bottom:20px}
+}
+@media(max-width:360px){.participant-view .brand{padding:16px;gap:10px}.participant-view .spf-logo{width:72px;height:72px}.participant-view .brand b{font-size:18px}.participant-view .brand .brand-directorate{font-size:12px}.participant-view .flow{padding:22px 18px}.participant-view .flow .welcome-title{font-size:26px}.participant-view .steps li{font-size:11px}}
