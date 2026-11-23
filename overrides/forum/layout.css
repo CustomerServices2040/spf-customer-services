@@ -1,0 +1,93 @@
+/* Forum presentation layout. Surfaces inherit the active studio palette. */
+html[data-forum-appearance] {
+  --forum-dark: var(--bs-canvas, #253f36);
+  --forum-raised: var(--bs-surface, #3b574c);
+  --forum-accent: var(--bs-accent, #cca862);
+  --forum-read: var(--bs-ink, #253c33);
+  --forum-soft: var(--bs-light, #edf2ed);
+  --forum-rule: var(--bs-light-line, #c3d0c8);
+  --forum-gutter: clamp(16px, 2.2vw, 36px);
+}
+html[data-busola-theme=meeting] { --forum-dark: #490b23; --forum-raised: #364d44; --forum-soft: #ebf1ec }
+#forum-tools-toggle { display: none }
+main > .page { scroll-margin-block-start: var(--forum-header-height, 100px) }
+.page :is(.wall-panel,.gov-detail,.arrival-copy,.arrival-code,.future-focus,.purpose-copy,.activity-identity,.practice-axis-head > div) { min-width: 0 }
+#future .visual-intro { grid-template-columns: minmax(0, 1.6fr) minmax(160px, .65fr) }
+#future .future-hero {
+  grid-template-columns: minmax(0, 1fr); min-height: 0;
+  padding: clamp(20px, 2.6vw, 42px); border-inline-start: 5px solid var(--forum-accent);
+}
+.future-focus > header p, .future-card.open p, .scenario-text p { max-inline-size: 78ch; text-wrap: pretty }
+#future .future-axis-nav { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px }
+#future .future-axis { min-width: 0; min-height: 78px; padding: 12px; text-wrap: pretty }
+#future .future-grid { grid-template-columns: repeat(auto-fit,minmax(min(100%,250px),1fr)) }
+#future .future-card.open { grid-column: 1 / -1 }
+
+#overview .purpose-route article { border-block-start: 3px solid #b7cabe; padding: clamp(16px,1.7vw,26px) }
+#overview .purpose-route article:nth-of-type(even) { border-block-start-color: #decda9 }
+#overview .purpose-route p { font-size: clamp(15px,1.1vw,18px); line-height: 1.7 }
+#pride .wall-layout { grid-template-columns: minmax(240px,.8fr) minmax(0,2fr); align-items: stretch }
+#map .gov-detail, #pride .wall-panel, #future .future-focus { padding: var(--forum-gutter) }
+#map .gov-tabs, #activity .audience-tools { flex-wrap: wrap; gap: 8px }
+#practices .practice-item { align-content: start; line-height: 1.65 }
+#practices .practice-item b { font-size: clamp(15px,1vw,18px) }
+#practices .practice-item span { font-size: 13px }
+#activity .scenario-text p { margin-inline: auto }
+
+/* Reconcile the global studio's inherited text colors with the forum's mixed surfaces. */
+@layer busola {
+  html[data-bs-active] #arrival-reception :is(.arrival-stage,.arrival-code) {
+    --bs-context-text: #fff; --bs-context-muted: #e2ebe5; --bs-context-heading: #fff;
+  }
+  html[data-bs-active] #arrival-reception .arrival-tools .primary { --bs-context-text: #243a30 }
+  html[data-bs-active] #arrival-reception .arrival-stage {
+    background: linear-gradient(125deg,var(--forum-dark),var(--forum-raised)) !important;
+  }
+  html[data-bs-active] .page :is(.forum-outputs,.forum-audiences,.purpose-outcome,.future-focus,.page-intro:not(.map-page-intro),.wall-panel,.map-card,.gov-detail,.activity-identity,.activity-instructions,.scenario-board,.solution-card,.stage-track,.audience-tools button,.gov-tabs button) {
+    --bs-context-text: var(--forum-read); --bs-context-muted: var(--bs-light-muted); --bs-context-heading: var(--forum-read);
+    background: var(--forum-soft) !important;
+  }
+  html[data-bs-active] .page :is(.future-card:not(.open),.future-axis:not(.active),.practice-axis-head,.practice-item,.stage:not(.active)) {
+    --bs-context-text: var(--forum-read); --bs-context-heading: var(--forum-read); --bs-context-muted: var(--bs-light-muted);
+  }
+  html[data-bs-active] .page :is(.purpose-route article,.future-card.open,.stage.active,.gov-metrics>div:first-child,.gov-tabs button.active,.audience-tools button.active) {
+    --bs-context-text: #fff; --bs-context-muted: #e2ebe5; --bs-context-heading: #fff;
+    background: var(--forum-raised) !important;
+  }
+  html[data-bs-active] .page .future-axis.active { --bs-context-text: #182820; --bs-context-muted: #273c31 }
+  html[data-bs-active] #arrival-reception .arrival-copy h1 {
+    font-size: clamp(30px,3.1vw,58px) !important; line-height: 1.4 !important;
+  }
+}
+@media (max-width: 850px) {
+  #arrival-reception .arrival-stage, #pride .wall-layout { grid-template-columns: minmax(0,1fr) }
+  #arrival-reception .arrival-copy h1 { margin-block: 12px }
+  #arrival-reception .arrival-copy .arrival-signature { margin-block-start: 16px }
+  #future .future-axis-nav { grid-template-columns: repeat(2,minmax(0,1fr)) }
+  #future .visual-intro { grid-template-columns: minmax(0,1fr) }
+  #future .future-visual { display: none }
+}
+@media (max-width: 760px) {
+  html[data-forum-appearance] .forum-masthead.has-tools-menu {
+    display: grid; grid-template-columns: minmax(0,1fr) auto auto; align-items: center; gap: 6px;
+  }
+  .has-tools-menu #forum-tools-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 7px 9px; border: 1px solid #bdc9c1; background: white;
+    color: #273833; border-radius: 10px; font-size: 12px; min-height: 40px;
+  }
+  .has-tools-menu #forum-tools-toggle span { margin-inline-start: 4px }
+  html[data-forum-appearance] .has-tools-menu .as-palette { grid-row: 1; grid-column: 3 }
+  .has-tools-menu #forum-tools { display: none }
+  .has-tools-menu.tools-expanded #forum-tools { display: flex; grid-column: 1 / -1; grid-row: 2 }
+  .presenting .has-tools-menu :is(#forum-tools-toggle,#forum-tools,.as-palette) { display: none !important }
+  #overview .purpose-route > i { display: none }
+}
+@media(max-width:450px) {
+  .forum-masthead.has-tools-menu .brand { flex-wrap: wrap; gap: 2px 8px }
+  #future .future-axis-nav { grid-template-columns: minmax(0,1fr) }
+  #future .future-axis { min-height: 56px }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page, .page .motion-reveal { animation: none !important; transition: none !important }
+}

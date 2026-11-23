@@ -1,9 +1,42 @@
-.arrival-stage{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;min-height:70vh;padding:clamp(28px,5vw,72px);border-radius:28px;background:radial-gradient(ellipse at 5% 100%,#6c294799,transparent 55%),linear-gradient(140deg,#18392f,#365e4c);color:white}.arrival-copy>span{color:#e5c580}.arrival-copy h1{font-size:clamp(36px,4.6vw,76px);line-height:1.45;color:#fff;margin:24px 0}.arrival-copy p{font-size:clamp(20px,2vw,30px);color:#e6eee8}.arrival-copy ol{padding-right:26px;font-size:clamp(18px,1.7vw,26px);line-height:2.3}.arrival-copy .arrival-signature{font-size:16px;margin-top:36px;color:#dcc493}.arrival-code{background:white;color:#213e34;border-radius:24px;padding:28px;text-align:center}.arrival-code img{display:block;width:min(100%,480px);height:auto;margin:auto}.arrival-code h2{font-size:32px}.arrival-code p{font-size:16px;color:#6c2947}.arrival-tools{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px}.arrival-tools a,.arrival-tools button{font-size:14px}.arrival-tools a{text-decoration:none}#arrival-reception [contenteditable=true]{outline:2px dashed #cca862;outline-offset:4px}@media(max-width:750px){.arrival-stage{grid-template-columns:1fr;padding:24px}.arrival-copy h1{font-size:36px}.arrival-code{padding:18px}}@media print{body.arrival-print .site-header,body.arrival-print .main-nav,body.arrival-print #editor-toolbar,body.arrival-print .arrival-tools,body.arrival-print .presentation-exit{display:none!important}body.arrival-print .page{display:none!important}body.arrival-print #arrival-reception{display:block!important}body.arrival-print .arrival-stage{min-height:90vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+.arrival-stage{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;min-height:70vh;padding:clamp(28px,5vw,72px);border-radius:28px;background:radial-gradient(ellipse at 5% 100%,#6c294799,transparent 55%),linear-gradient(140deg,#18392f,#365e4c);color:white}.arrival-copy>span{color:#e5c580}.arrival-copy h1{font-size:clamp(36px,4.6vw,76px);line-height:1.45;color:#fff;margin:24px 0}.arrival-copy p{font-size:clamp(20px,2vw,30px);color:#e6eee8}.arrival-copy ol{padding-right:26px;font-size:clamp(18px,1.7vw,26px);line-height:2.3}.arrival-copy .arrival-signature{font-size:16px;margin-top:36px;color:#dcc493}.arrival-code{border-radius:24px;text-align:center}.arrival-code img{display:block;width:min(100%,480px);height:auto;margin:auto}.arrival-code h2{font-size:32px}.arrival-code p{font-size:16px;color:#6c2947}.arrival-tools{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px}.arrival-tools a,.arrival-tools button{font-size:14px}.arrival-tools a{text-decoration:none}#arrival-reception [contenteditable=true]{outline:2px dashed #cca862;outline-offset:4px}@media(max-width:750px){.arrival-stage{grid-template-columns:1fr;padding:24px}.arrival-copy h1{font-size:36px}.arrival-code{padding:18px}}@media print{body.arrival-print .site-header,body.arrival-print .main-nav,body.arrival-print #editor-toolbar,body.arrival-print .arrival-tools,body.arrival-print .presentation-exit{display:none!important}body.arrival-print .page{display:none!important}body.arrival-print #arrival-reception{display:block!important}body.arrival-print .arrival-stage{min-height:90vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 
-/* Artwork extracted from the supplied SPF invitation; preserve the SVG quiet zone without a separate white panel. */
-.arrival-code{position:relative;isolation:isolate;overflow:hidden;background:#e8ede7;border:1px solid #cca86288;box-shadow:0 18px 55px #071b2430}
-.arrival-code:before{content:"";position:absolute;inset:0;z-index:-2;background:url("invitation-background.webp") center/cover no-repeat;opacity:.28}
-.arrival-code:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#eef3e8a6,#e9eee7b8)}
-.arrival-code img{background:transparent;border-radius:0;box-shadow:none}
-.arrival-code h2{color:#213e34}
 body.presenting #arrival-reception .arrival-tools,:fullscreen #arrival-reception .arrival-tools{display:none!important}
+
+/* Keep the invitation artwork on the card and the scan field uniformly light. */
+#arrival-reception .arrival-stage {
+  grid-template-columns: minmax(0,1.12fr) minmax(0,.88fr);
+  gap: clamp(20px,4vw,64px); padding: clamp(22px,3.5vw,56px);
+}
+#arrival-reception .arrival-copy ol {
+  counter-reset: arrival-step; list-style: none; display: grid; gap: 10px;
+  margin: 22px 0; padding: 0;
+}
+.arrival-copy ol li { counter-increment: arrival-step; display: flex; align-items: center; gap: 12px }
+.arrival-copy ol li::before {
+  content: counter(arrival-step); display: grid; place-items: center; flex: none;
+  inline-size: 31px; block-size: 31px; border-radius: 50%;
+  background: #e6eee8; color: #263a31; font-size: 15px; font-weight: 700;
+}
+#arrival-reception .arrival-code {
+  display: grid; justify-items: center; align-content: center;
+  width: min(100%,490px); justify-self: center; gap: clamp(10px,1vw,16px);
+  padding: clamp(18px,2.2vw,34px); color: white; border: 1px solid #ffffff57;
+  --arrival-card-background: linear-gradient(145deg,color-mix(in srgb,var(--forum-raised) 92%,transparent),color-mix(in srgb,var(--forum-dark) 88%,transparent)),
+              url("invitation-background.webp") center / cover;
+  background: var(--arrival-card-background);
+  box-shadow: 0 12px 32px #14211b26;
+}
+#arrival-reception .arrival-code img {
+  width: min(100%, clamp(220px, 26vw, 410px));
+  background: #ebf1ec; border-radius: 9px; height: auto;
+}
+#arrival-reception .arrival-code :is(h2,p), #arrival-reception .arrival-copy :is(h1,li) { color: white }
+#arrival-reception .arrival-code h2 { margin: 0; line-height: 1.35 }
+#arrival-reception .arrival-code p:empty { display: none }
+#arrival-reception .arrival-tools { margin: 0; align-items: center }
+#arrival-reception .arrival-tools :is(a,button) { background: #23382f; color: white; border: 1px solid #c5d0c9 }
+#arrival-reception .arrival-tools .primary { background: #e6eee8; color: #243a30 }
+
+@layer busola {
+  html[data-bs-active] #arrival-reception .arrival-code { background: var(--arrival-card-background) !important }
+}

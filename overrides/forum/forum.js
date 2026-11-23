@@ -104,3 +104,25 @@ document.addEventListener('forum:content-applied',()=>{drawGov();drawActivity(tr
 
 // Keep sticky navigation below the measured brand bar on every viewport.
 (()=>{const header=document.querySelector('.site-header');if(!header)return;const sync=()=>document.documentElement.style.setProperty('--forum-header-height',Math.ceil(header.getBoundingClientRect().height+8)+'px');new ResizeObserver(sync).observe(header);sync()})();
+
+
+// Keep organizer controls accessible without occupying the mobile presentation area.
+(() => {
+  const header = document.querySelector('.forum-masthead');
+  const toggle = document.getElementById('forum-tools-toggle');
+  if (!header || !toggle) return;
+  toggle.hidden = false;
+  header.classList.add('has-tools-menu');
+  function setExpanded(open) {
+    toggle.setAttribute('aria-expanded', String(open));
+    header.classList.toggle('tools-expanded', open);
+  }
+  toggle.addEventListener('click', () => setExpanded(toggle.getAttribute('aria-expanded') !== 'true'));
+  header.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && header.classList.contains('tools-expanded')) {
+      setExpanded(false);
+      toggle.focus();
+    }
+  });
+  document.addEventListener('fullscreenchange', () => setExpanded(false));
+})();

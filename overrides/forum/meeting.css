@@ -80,10 +80,7 @@ html[data-busola-theme="meeting"] {
   & .forum-purpose .eyebrow, & .purpose-horizon span, & .purpose-route > i { color: #fff }
   & .purpose-card-top svg, & .purpose-horizon svg { stroke: #e1ebe6 }
   & .purpose-outcome, & .purpose-route b { background: #e1ebe6; color: #283d33 }
-  & .arrival-code { background: var(--bs-user-card,white); border-color: var(--line) }
-  & .arrival-code::before, & .arrival-code::after { display: none }
-  & .arrival-code img { background: white }
-  & .arrival-code h2, & .arrival-code p, & .page-intro h1, & .activity-identity h1 { color: var(--bs-user-heading,var(--wine)) }
+  & .page-intro h1, & .activity-identity h1 { color: var(--bs-user-heading,var(--wine)) }
   & .page-intro, & .activity-identity, & .panel { background: var(--bs-user-card,white); border-color: var(--line) }
   & .primary { background: var(--wine); color: white }
   & .practices-intro .eyebrow { color: white !important }
