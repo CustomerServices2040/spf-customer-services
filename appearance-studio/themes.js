@@ -3,6 +3,9 @@
 (()=>{'use strict';
 document.documentElement.dataset.bsType='';
 const themes=new Set(['original','green','navy','burgundy']);let selected='original',queued=false,css='';const roots=new Map(),scanned=new WeakSet();
+if (document.documentElement.hasAttribute('data-forum-appearance')) themes.add('meeting');
+// The event artwork supplies its own light and dark surfaces.
+const usesSemanticSurfaces = value => value !== 'original' && value !== 'meeting';
 const exclude='#busola-visual-editor,#appearance-studio,.as-palette,.bt-picker,svg,.issuer-logo,.brand-logo,.channel-logo,[data-brand],.official-logo,.spf-mark';
 const families={
  media:'.photo-card',
@@ -81,9 +84,9 @@ function fit(){if(fitQueued)return;fitQueued=true;requestAnimationFrame(()=>{fit
 // Measure the group after resetting it, then converge after sibling reflow.
 for(let pass=0;pass<3;pass++){const changes=[];for(const e of values){const p=e.parentElement,s=getComputedStyle(p),available=Math.min(e.clientWidth||Infinity,p.clientWidth-parseFloat(s.paddingLeft)-parseFloat(s.paddingRight));if(available>0&&e.scrollWidth>available+1){const previous=Number(e.style.getPropertyValue('--bs-fit'))||1;changes.push([e,Math.max(.35,previous*available/e.scrollWidth*.97)]);}}if(!changes.length)break;for(const [e,factor]of changes)e.style.setProperty('--bs-fit',String(factor));}
 });}
-function rebuild(){queued=false;register(document);for(const e of document.querySelectorAll('*'))if(e.shadowRoot)register(e.shadowRoot);for(const [root,state]of roots){mark(root);if(root!==document){if(state.style.textContent!==css)state.style.textContent=css;const wrapper=root.querySelector('.comm-shell')||root.querySelector('div');if(wrapper){wrapper.dataset.bsType='';if(selected==='original')delete wrapper.dataset.bsActive;else wrapper.dataset.bsActive=''}}}originalColorAdapter?.refresh();fit();document.dispatchEvent(new Event('busola:theme-ready'))}
+function rebuild(){queued=false;register(document);for(const e of document.querySelectorAll('*'))if(e.shadowRoot)register(e.shadowRoot);for(const [root,state]of roots){mark(root);if(root!==document){if(state.style.textContent!==css)state.style.textContent=css;const wrapper=root.querySelector('.comm-shell')||root.querySelector('div');if(wrapper){wrapper.dataset.bsType='';if(!usesSemanticSurfaces(selected))delete wrapper.dataset.bsActive;else wrapper.dataset.bsActive=''}}}originalColorAdapter?.refresh();fit();document.dispatchEvent(new Event('busola:theme-ready'))}
 function schedule(){if(!queued){queued=true;requestAnimationFrame(rebuild)}}
-function choose(value){if(!themes.has(value))return;originalColorAdapter?.setActive(false);selected=value;document.documentElement.dataset.busolaTheme=value;if(value==='original')delete document.documentElement.dataset.bsActive;else document.documentElement.dataset.bsActive='';schedule()}
+function choose(value){if(!themes.has(value))return;originalColorAdapter?.setActive(false);selected=value;document.documentElement.dataset.busolaTheme=value;if(!usesSemanticSurfaces(value))delete document.documentElement.dataset.bsActive;else document.documentElement.dataset.bsActive='';schedule()}
 window.BusolaTheme={choose,customizeOriginal,refresh:schedule,version:'3.0',inventory:()=>Object.fromEntries([...roots].map(([r])=>[r===document?'document':'communications',{cards:r.querySelectorAll('[data-bs-component]').length,dark:r.querySelectorAll('[data-bs-component][data-bs-surface=dark]').length,light:r.querySelectorAll('[data-bs-component][data-bs-surface=light]').length}]))};
 const sheet=[...document.querySelectorAll('link[rel=stylesheet]')].find(e=>/\/themes\.css/.test(e.href));if(sheet)fetch(sheet.href).then(r=>r.text()).then(s=>{css=s;schedule()}).catch(()=>{});
 document.addEventListener('DOMContentLoaded',schedule);document.addEventListener('spf:communications-ready',schedule);document.addEventListener('busola:appearance-applied',fit);window.addEventListener('hashchange',schedule);window.addEventListener('resize',fit);document.fonts?.addEventListener('loadingdone',fit);document.addEventListener('animationend',fit,true);document.addEventListener('load',schedule,true);window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data?.type==='busola-theme')choose(e.data.theme)});if(document.readyState!=='loading')schedule();

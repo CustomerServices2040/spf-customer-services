@@ -1,6 +1,6 @@
 /* Busola 3.1 — local presentation overrides. No operational writes. */
 (()=>{'use strict';
-const KEY='busola.visual.v1', THEMES=['original','green','navy','burgundy'], EXCLUDE='#appearance-studio,#busola-visual-editor,.as-palette,svg,img,canvas,video,[data-brand],.official-logo,.spf-encrypted-tab';
+const KEY='busola.visual.v1', THEMES=['original','green','navy','burgundy','meeting'], EXCLUDE='#appearance-studio,#busola-visual-editor,.as-palette,svg,img,canvas,video,[data-brand],.official-logo,.spf-encrypted-tab';
 const limits={size:[14,120],unit:[12,48],weight:[400,700],line:[1.1,2],paragraph:[0,48],radius:[0,40],padding:[8,48],gap:[4,48],height:[0,600],borderWidth:[0,4],shadow:[0,3],span:[1,3]};
 const options={font:['StudioNoto','StudioPlex'],align:['start','center','end'],borderStyle:['solid','dashed','none'],layout:['base','vertical','horizontal'],icon:['base','first','last']};
 const targets={heading:'h1,h2,h3,h4,h5,h6,.metric-top>span,.kpi-label,.metric-label,.card-title',number:'[data-bs-kpi]',iconColor:'.card-icon,.kpi-icon,.cc-icon,.card-symbol',unit:'.kpi-unit,.metric-unit,[data-kpi-unit],[data-unit]'};

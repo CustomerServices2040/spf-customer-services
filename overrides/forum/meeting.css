@@ -1,0 +1,72 @@
+/* The two lockups and the two backgrounds are extracted from the forum artwork. */
+.brand img.meeting-logo, .meeting-issuers, .meeting-brand-copy { display: none }
+html[data-busola-theme="meeting"] {
+  --wine: var(--bt-brand, #490b23);
+  --green: #3b574d;
+  --green-2: var(--bt-secondary, #5b7b70);
+  --green-3: #e9efec;
+  --wine-2: #f3eaf0;
+  --gold: var(--bt-gold, #490b23);
+  --gold-2: #e0eae5;
+  --sand: #e9efec;
+  --paper: var(--bt-canvas, white);
+  --deep: var(--bt-ink, #273833);
+  --muted: #495d54;
+  --line: var(--bt-line, #c6d0cb);
+  --meeting-band: linear-gradient(90deg, var(--wine), #503c46 45%, var(--green));
+}
+[data-busola-theme="meeting"] {
+  & body {
+    min-height: 100vh;
+    background: var(--paper) url("assets/meeting-paper.webp") right bottom / 100% auto no-repeat fixed;
+    background-blend-mode: multiply;
+  }
+  & body::before { display: none }
+  & .site-header, & .simple-page .brand { background: white; color: var(--wine); border-color: var(--line) }
+  & .brand > img:first-child, & .busola-brand-copy, & .header-actions .preview-tag { display: none }
+  & .meeting-brand-copy { display: block }
+  & .brand img.meeting-logo {
+    display: block; width: clamp(112px, 13vw, 182px); height: auto;
+    padding: 0; border: 0; border-radius: 0; box-shadow: none; object-fit: contain;
+  }
+  & .site-header .brand b, & .site-header .brand small { color: var(--deep) }
+  & .site-header .header-actions :is(.quiet,.outline), & .site-header .preview-tag {
+    color: var(--wine); border-color: var(--line); background: white;
+  }
+  & .site-header::after, & .main-nav button.active { background: var(--meeting-band); color: white }
+  & .main-nav { background: white; border-color: var(--line) }
+  & .arrival-stage, & .forum-purpose, & .practices-intro, & .join-card, & .activity-clock {
+    color: white;
+    background: linear-gradient(90deg, #2a101c30, #16271fb0),
+                url("assets/meeting-table.webp") center / cover, var(--green);
+  }
+  & .meeting-issuers {
+    display: block; width: clamp(128px, 12vw, 170px); height: auto;
+    margin-block-end: clamp(16px, 2.3vw, 34px);
+  }
+  & .arrival-copy > span, & .arrival-copy p, & .arrival-copy .arrival-signature,
+  & .forum-purpose .eyebrow, & .purpose-horizon span, & .purpose-route > i { color: #fff }
+  & .purpose-card-top svg, & .purpose-horizon svg { stroke: #e1ebe6 }
+  & .purpose-outcome, & .purpose-route b { background: #e1ebe6; color: #283d33 }
+  & .arrival-code { background: var(--bs-user-card,white); border-color: var(--line) }
+  & .arrival-code::before, & .arrival-code::after { display: none }
+  & .arrival-code img { background: white }
+  & .arrival-code h2, & .arrival-code p, & .page-intro h1, & .activity-identity h1 { color: var(--bs-user-heading,var(--wine)) }
+  & .page-intro, & .activity-identity, & .panel { background: var(--bs-user-card,white); border-color: var(--line) }
+  & .primary { background: var(--wine); color: white }
+  & .practices-intro .eyebrow { color: white !important }
+  & .as-palette:focus-visible, & :is(a,button,input,select,textarea):focus-visible {
+    outline: 3px solid #fff; box-shadow: 0 0 0 6px #490b23;
+  }
+  & .presenting .as-palette { display: none }
+  @media (max-width: 760px) {
+    & .site-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 12px }
+    & .site-header .brand { gap: 8px; min-width: 0 }
+    & .site-header .brand b { font-size: 17px }
+    & .site-header .brand small { font-size: 11px }
+    & .site-header .as-palette { grid-column: 2; grid-row: 1 }
+    & .site-header .header-actions { grid-row: 2; grid-column: 1 / -1; justify-content: flex-start }
+    & .site-header .header-actions { flex-wrap: wrap; min-width: 0 }
+    & .site-header .brand img.meeting-logo { width: clamp(76px, 22vw, 110px) }
+  }
+}
