@@ -1,0 +1,92 @@
+/* Open editorial hero and differentiated executive metrics. */
+html.vt-next #overview{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,.7fr);gap:48px;align-items:center;min-height:330px!important;margin:0!important;padding:32px 0 38px!important;border:0!important;border-bottom:1px solid #b8c8b8!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;overflow:visible}
+html.vt-next #overview::before{content:'';position:absolute;z-index:-1;inset:-33px -64px 0 auto;width:63%;background:linear-gradient(120deg,transparent,#e5e9da85);border-radius:0 0 160px 0;pointer-events:none}
+html.vt-next #overview::after{display:none!important}
+html.vt-next #overview .hero-copy{padding:0!important;max-width:900px;min-width:0}
+html.vt-next #overview .section-kicker{display:inline-block;border-inline-start:3px solid var(--vt-wine);padding-inline-start:13px;font-weight:600}
+html.vt-next #overview h2{font-size:clamp(35px,4.2vw,68px)!important;line-height:1.45!important;font-weight:600!important;color:var(--vt-forest)!important;margin:17px 0 19px!important;letter-spacing:-.045em;max-width:920px;text-wrap:balance}
+html.vt-next #overview p{font-size:17px!important;color:var(--vt-muted)!important;line-height:1.95;max-width:760px;margin:0!important}
+html.vt-next #overview .hero-meta{margin-top:26px!important;display:flex;flex-wrap:wrap;gap:9px 22px;font-size:13px!important;color:#667161!important;line-height:1.8}
+html.vt-next #overview .impact-number{position:relative;width:100%!important;aspect-ratio:auto!important;min-height:292px!important;padding:38px 26px 30px!important;border-radius:150px 150px 20px 20px!important;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:7px;background:linear-gradient(145deg,#6c2947,#48233b)!important;border:1px solid #80405c!important;box-shadow:10px 12px 0 #e4d7bb!important;transform:none!important;overflow:hidden}
+html.vt-next #overview .impact-number::before{content:'';position:absolute;inset:14px;border:1px solid #e4c78955;border-radius:inherit;pointer-events:none}
+html.vt-next #overview .impact-number::after{display:none!important}
+html.vt-next #overview .impact-number>span{position:relative;font-size:14px!important;line-height:1.8;color:#f0dec0!important;max-width:250px}
+html.vt-next #overview .impact-number strong{position:relative;display:flex;align-items:baseline;gap:10px;font-size:clamp(78px,7.3vw,116px)!important;line-height:1.15;color:#fff!important;font-weight:500!important;letter-spacing:-.06em;direction:ltr;unicode-bidi:isolate}
+html.vt-next #overview .impact-number small{font-size:24px!important;letter-spacing:0;color:#f0d49c!important;font-weight:400}
+html.vt-next #overview .impact-number em{color:#eddde3!important;font-size:13px!important;line-height:1.8;font-style:normal;position:relative}
+html.vt-next #heroMetrics{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr!important;gap:0!important;margin:30px 0 32px!important;padding:0!important;min-height:0!important;align-items:stretch;border-radius:20px;background:#fffef8;border:1px solid #dbdfd0;overflow:hidden;box-shadow:var(--vt-shadow)}
+html.vt-next #heroMetrics .metric-card{display:flex!important;flex-direction:column;align-items:flex-start!important;justify-content:flex-start;gap:0!important;position:relative;min-width:0;min-height:260px!important;padding:26px!important;border:0!important;border-radius:0!important;border-inline-start:1px solid #dce0d1!important;background:transparent!important;box-shadow:none!important;text-align:right!important;overflow:visible;transform:none!important}
+html.vt-next #heroMetrics .metric-card::before,html.vt-next #heroMetrics .metric-card::after{display:none!important}
+html.vt-next #heroMetrics .metric-card:first-child{border:0!important;background:var(--vt-green)!important;color:#fff!important}
+html.vt-next #heroMetrics .metric-card:nth-child(3){background:#f4e9ed!important}
+html.vt-next #heroMetrics .metric-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;width:100%;min-height:42px;order:0}
+html.vt-next #heroMetrics .metric-top>span{color:var(--vt-ink)!important;font-size:14px!important;font-weight:600;line-height:1.8}
+html.vt-next #heroMetrics .metric-top>b{background:none!important;padding:0!important;color:#a08b5c!important;font-size:11px!important;line-height:2;font-weight:400}
+html.vt-next #heroMetrics .metric-card>strong{display:block;font-size:clamp(38px,4.1vw,66px)!important;font-weight:500!important;color:var(--vt-green)!important;line-height:1.3!important;letter-spacing:-.04em;margin:10px 0 8px!important;direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums;order:1}
+html.vt-next #heroMetrics .metric-card:first-child>strong{color:#f1d69b!important}
+html.vt-next #heroMetrics .metric-card:first-child .metric-top>span{color:#fff!important}
+html.vt-next #heroMetrics .metric-card:first-child>small{color:#e5ebdf!important}
+html.vt-next #heroMetrics .metric-card:nth-child(3)>strong{color:var(--vt-wine)!important}
+html.vt-next #heroMetrics .metric-card>small{font-size:13px!important;color:var(--vt-muted)!important;line-height:1.9;order:2;min-height:50px}
+html.vt-next #heroMetrics .micro-bar{order:3;width:100%;height:5px!important;margin:15px 0 8px!important;background:#ffffff25!important;border-radius:4px;overflow:hidden;display:block!important}
+html.vt-next #heroMetrics .micro-bar i{background:#e0c184!important;height:100%}
+html.vt-next #heroMetrics .split-label{order:4;font-size:12px!important;color:#ebeddc!important;display:flex;justify-content:space-between;gap:8px;width:100%;line-height:1.7}
+html.vt-next #heroMetrics .split-label span{background:transparent!important;border:0!important;padding:0!important;color:inherit!important}
+html.vt-next #heroMetrics .trend{order:3;background:none!important;color:var(--vt-green)!important;border:0!important;border-inline-start:2px solid var(--vt-gold)!important;border-radius:0!important;margin-top:13px!important;padding:2px 10px!important;box-shadow:none!important;font-size:12px!important;line-height:1.8;white-space:normal}
+html.vt-next #heroMetrics .metric-card:nth-child(3) .trend{color:var(--vt-wine)!important}
+html.vt-next #operationalBudget{padding:25px 30px!important;margin:0!important;background:#e9ede2!important;border:1px solid #d7dfcc!important;border-radius:18px!important;box-shadow:none!important;gap:28px}
+html.vt-next #operationalBudget h2{font-size:22px!important;color:var(--vt-green)}
+html.vt-next #operationalBudget p{font-size:13px!important;color:var(--vt-muted)}
+html.vt-next #operationalBudget .budget-values article{background:#ffffffa6!important;border:0!important;border-radius:10px!important}
+html.vt-next #operationalBudget .budget-values strong{font-weight:500!important}
+/* Performance remains data-first, but comparison panels and totals have different weight. */
+html.vt-next #performance .primary-kpi-hero{border-radius:24px 24px 24px 70px!important;background:linear-gradient(125deg,#1d3d33,#3a564c)!important;min-height:300px!important;padding:36px 42px!important}
+html.vt-next #performance .primary-kpi-hero::before{width:420px;height:420px;border:35px solid #cca8620a;inset:-240px auto auto -100px;box-shadow:0 0 0 24px #cca86206}
+html.vt-next #performance .primary-kpi-copy h3{font-size:clamp(30px,3.3vw,48px)!important;max-width:850px}
+html.vt-next #performance .score-ring{width:205px!important;height:205px!important;box-shadow:0 0 0 14px #ffffff04!important}
+html.vt-next #performance .score-ring strong{font-size:68px!important;font-weight:500!important}
+html.vt-next #performance .primary-kpi-trend{background:transparent!important;border:0!important;border-radius:0!important;border-top:1px solid #ffffff26!important;padding:18px 0 0!important;max-width:580px}
+html.vt-next #performance .primary-kpi-trend>div b{font-weight:500!important;font-size:35px!important}
+html.vt-next #performance .primary-kpi-trend>div i{font-size:13px!important}
+html.vt-next #performance .kpi-components{gap:26px!important;margin-top:28px!important;align-items:stretch}
+html.vt-next #performance .component-card{border-radius:18px!important;border:1px solid #d7dfcf!important;padding:28px!important;border-top:4px solid var(--vt-green)!important}
+html.vt-next #performance .component-card.communication{border-top-color:var(--vt-wine)!important;background:#fdf9fa!important}
+html.vt-next #performance .component-head h3{font-size:24px!important;font-weight:600}
+html.vt-next #performance .component-head>div>span{font-size:13px!important}
+html.vt-next #performance .component-head>b{font-weight:500!important;font-size:26px!important;border-radius:12px!important}
+html.vt-next #performance .semester-visual{background:#edf2e7!important;border:0!important;border-radius:12px!important;padding:20px!important;min-height:160px}
+html.vt-next #performance .communication .semester-visual{background:#f2e5eb!important}
+html.vt-next #performance .semester-score strong{font-size:64px!important;font-weight:500!important}
+html.vt-next #performance .semester-caption{font-size:15px!important}
+html.vt-next #performance .semester-caption small{font-size:13px!important}
+html.vt-next #performance .quarter-result-row{background:transparent!important;border:0!important;padding:20px 0 0!important;gap:14px!important}
+html.vt-next #performance .quarter-result-row>div{border:0!important;border-bottom:2px solid #d0d9c7!important;background:transparent!important;border-radius:0!important;padding:5px 12px 12px!important}
+html.vt-next #performance .quarter-result-row span{font-size:13px!important}
+html.vt-next #performance .quarter-result-row b{font-size:35px!important;font-weight:500!important}
+html.vt-next #performance .satisfaction-sources article{background:none!important;border:0!important;border-inline-start:2px solid #d7dfce!important;border-radius:0!important;padding:3px 10px!important}
+html.vt-next #performance .satisfaction-sources :is(b,small){font-size:12px!important;line-height:1.9}
+html.vt-next #performance .performance-tier-heading{margin-top:38px!important;padding:16px 0!important;border-top:1px solid #c7d2c0}
+html.vt-next #performance .performance-tier-heading h3{font-size:28px!important;font-weight:600}
+html.vt-next #performance .performance-tier-heading>span{font-size:13px!important}
+html.vt-next #performance .workload-overview>article{min-height:200px!important}
+html.vt-next #performance .workload-overview .workload-total{border-radius:18px 18px 18px 50px!important}
+html.vt-next #performance .workload-total strong{font-size:56px!important}
+html.vt-next #performance .workload-overview :is(span,small),html.vt-next #performance .workload-metrics :is(span,small),html.vt-next #performance .contact-kpi-grid :is(span,small){font-size:13px!important}
+html.vt-next #performance .contact-primary-metric span{color:#fff!important}
+html.vt-next #performance .component-card.communication{display:block!important}
+html.vt-next #performance :is(.summary-icon,.operational-rank,.contact-metric-icon,.contact-lead-icon){padding:0!important;display:grid;place-items:center;flex-shrink:0}
+@media(min-width:1800px){html.vt-next #overview h2{font-size:70px!important}html.vt-next #heroMetrics .metric-card{padding:32px!important;min-height:280px!important}}
+@media(max-width:1100px){html.vt-next #overview{grid-template-columns:minmax(0,1.5fr) 270px;gap:28px}html.vt-next #heroMetrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}html.vt-next #heroMetrics .metric-card:nth-child(3){border-inline-start:0!important;border-top:1px solid #dce0d1!important}html.vt-next #heroMetrics .metric-card:nth-child(4){border-top:1px solid #dce0d1!important}html.vt-next #performance .primary-kpi-hero{grid-template-columns:1fr 210px!important;padding:28px!important}html.vt-next #performance .kpi-components,html.vt-next #performance .workload-groups{grid-template-columns:1fr!important}html.vt-next #performance .operational-priority-grid{grid-template-columns:1fr!important}}
+@media(max-width:700px){html.vt-next #overview{grid-template-columns:1fr;gap:30px;padding:10px 0 30px!important}html.vt-next #overview::before{inset:-20px -16px 50% auto;width:100%}html.vt-next #overview h2{font-size:37px!important;letter-spacing:-.04em}html.vt-next #overview p{font-size:15px!important}html.vt-next #overview .hero-meta{font-size:12px!important;margin-top:20px!important}html.vt-next #overview .impact-number{min-height:240px!important;width:min(100%,320px)!important;justify-self:center;padding:28px!important}html.vt-next #overview .impact-number strong{font-size:90px!important}html.vt-next #heroMetrics{margin-top:24px!important}html.vt-next #heroMetrics .metric-card{padding:20px 17px!important;min-height:250px!important}html.vt-next #heroMetrics .metric-card>strong{font-size:38px!important}html.vt-next #heroMetrics .metric-top>span{font-size:13px!important}html.vt-next #heroMetrics .metric-card>small{font-size:12px!important;min-height:65px}html.vt-next #heroMetrics .split-label{flex-wrap:wrap;font-size:11px!important}html.vt-next #operationalBudget{padding:22px!important}html.vt-next #performance .primary-kpi-hero{grid-template-columns:1fr!important;padding:26px!important;gap:26px;border-radius:22px!important}html.vt-next #performance .primary-kpi-copy h3{font-size:29px!important}html.vt-next #performance .primary-kpi-trend{grid-template-columns:1fr 60px 1fr!important;gap:10px!important}html.vt-next #performance .primary-kpi-trend>div b{font-size:28px!important}html.vt-next #performance .primary-kpi-score{grid-row:auto!important}html.vt-next #performance .component-card{padding:22px 18px!important}html.vt-next #performance .component-head h3{font-size:20px!important}html.vt-next #performance .semester-visual{grid-template-columns:110px minmax(0,1fr)!important;padding:17px!important;gap:12px!important}html.vt-next #performance .semester-score strong{font-size:51px!important}html.vt-next #performance .quarter-result-row{grid-template-columns:1fr 24px 1fr!important;gap:8px!important}html.vt-next #performance .quarter-result-row b{font-size:30px!important}html.vt-next #performance .satisfaction-sources>div{grid-template-columns:1fr!important}html.vt-next #performance .workload-overview,html.vt-next #performance .operational-priority-grid{grid-template-columns:1fr!important}html.vt-next #performance .workload-overview .workload-total strong{font-size:48px!important}html.vt-next #performance .operational-priority-grid>article{grid-template-columns:35px minmax(0,1fr) 80px!important;padding:20px 15px!important;gap:12px!important}html.vt-next #performance .operational-rank{width:35px;height:35px}html.vt-next #performance .target-ring{width:80px!important;height:80px!important;min-width:80px!important}html.vt-next #performance .workload-group{padding:22px 18px!important}html.vt-next #performance .contact-kpi-grid strong{font-size:29px!important}html.vt-next #performance .workload-metrics strong{font-size:29px!important}html.vt-next #performance .contact-kpi-grid .contact-primary-metric strong{font-size:36px!important}}
+@media(max-width:370px){html.vt-next #heroMetrics{grid-template-columns:1fr!important}html.vt-next #heroMetrics .metric-card{min-height:220px!important;border-inline-start:0!important;border-top:1px solid #dce0d1!important}html.vt-next #heroMetrics .metric-card>strong{font-size:52px!important}html.vt-next #heroMetrics .metric-card>small{min-height:0}html.vt-next #performance .semester-visual{grid-template-columns:1fr!important;text-align:center}html.vt-next #performance .workload-metrics{grid-template-columns:1fr!important}}
+/* Reset inherited decorative geometry so it stays within the hero. */
+html.vt-next #overview::before{transform:none!important;border:0!important;height:auto!important;opacity:1!important;box-shadow:none!important}
+html.vt-next #overview .hero-meta span{color:var(--vt-muted)!important;font-size:13px!important}
+html.vt-next #performance .kpi-components{align-items:start!important}
+html.vt-next #performance .component-card.communication-component{display:block!important;border-top-color:var(--vt-wine)!important;background:#fdf9fa!important;min-height:0!important;height:auto!important}
+html.vt-next #performance .communication-component .semester-visual{background:#f2e5eb!important}
+html.vt-next #performance .communication-component .semester-score{background:#fcf6f8!important;border-color:#e5cdd9!important}
+html.vt-next #performance .communication-component .semester-score strong{color:var(--vt-wine)!important}
+html.vt-next #performance .performance-tier-heading{background:transparent!important;border:0!important;border-top:1px solid #c7d2c0!important;border-radius:0!important;box-shadow:none!important}
+html.vt-next #performance .quarter-result-row>div{box-shadow:none!important}
+html.vt-next #performance .quarter-result-row small{font-size:13px!important}

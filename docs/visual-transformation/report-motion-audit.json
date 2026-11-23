@@ -1,0 +1,136 @@
+{
+  "source_sha256": "cd046c23165e109f002ec5066d5cdbd8afbb3766f4ddf48e9ddd9e215aea96b9",
+  "enhanced_sha256": "afe27402ef43f95cb4256bf9ab1ee9461d036e40d406a983372df4a45b9a99d3",
+  "reversed_sha256": "cd046c23165e109f002ec5066d5cdbd8afbb3766f4ddf48e9ddd9e215aea96b9",
+  "byte_exact_inverse": true,
+  "non_script_bytes_unchanged": true,
+  "embedded_assets_unchanged": true,
+  "modified_script_ids": [
+    "__original_carousel__",
+    "spf-anim-js",
+    "spf-open-js",
+    "spf-req6-js",
+    "spf-req10-js",
+    "spf-req15-js",
+    "spf-v95-fast-navigation",
+    "spf-v100-swap-js",
+    "spf-v103-home-button-js"
+  ],
+  "scripts": [
+    {
+      "id": "__original_carousel__",
+      "original_sha256": "c7a06e4cd80d58c2cd2851020b5a4ada456e6c95a137579bdac563535a716873",
+      "enhanced_sha256": "6c2ab28044b02fd0c4cde860eef4e13eb5e19c9a60ad2604e8aaf1a29a053853",
+      "replacements": [
+        {
+          "before": "function animate(now) {",
+          "after": "function animate(now) {\n    if (window.BusolaReportMotion && window.BusolaReportMotion.paused()) { window.BusolaReportMotion.resume(animate); return; }"
+        },
+        {
+          "before": "function animateIntro(startTime) {",
+          "after": "function animateIntro(startTime) {\n    if (window.BusolaReportMotion && window.BusolaReportMotion.reduced()) {\n      ctx.clearRect(0, 0, innerWidth, innerHeight);\n      introFinished = true;\n      cards.forEach(el => { el.classList.remove('intro-hidden'); el.classList.add('intro-reveal'); });\n      if (centerTitle) centerTitle.classList.add('show');\n      render();\n      return;\n    }"
+        }
+      ]
+    },
+    {
+      "id": "spf-anim-js",
+      "original_sha256": "0990cc5be61643018ecab61894e475042493a9c38e5801dfd7d996488d70545c",
+      "enhanced_sha256": "be9e087e93227852ad338785ad6d1eb9c84102dadceb9ef2cfd26580d208ab0a",
+      "replacements": [
+        {
+          "before": "function glint(s){s.classList.remove('go');",
+          "after": "function glint(s){if (window.BusolaReportMotion && window.BusolaReportMotion.paused()) return;s.classList.remove('go');"
+        },
+        {
+          "before": "function step(ts){if(t0===null)t0=ts;",
+          "after": "function step(ts){if (window.BusolaReportMotion && window.BusolaReportMotion.reduced()) { e.textContent=t.orig; return; }if(t0===null)t0=ts;"
+        }
+      ]
+    },
+    {
+      "id": "spf-open-js",
+      "original_sha256": "793831134b36609a7d41b51af7991767334a4a12e6cd2c529a7a7fadb0503324",
+      "enhanced_sha256": "8737ef1a689da0252697b5b56684bdfc00ca144472a8c1e90029ce3d63407d8c",
+      "replacements": [
+        {
+          "before": "if(reduced)return;",
+          "after": "if(reduced || (window.BusolaReportMotion && window.BusolaReportMotion.reduced()))return;"
+        },
+        {
+          "before": "function frame(ts){\n      if(t0===null)t0=ts;",
+          "after": "function frame(ts){\n      if (window.BusolaReportMotion && window.BusolaReportMotion.reduced()) { img.style.opacity='1'; canvas.remove(); return; }\n      if(t0===null)t0=ts;"
+        }
+      ]
+    },
+    {
+      "id": "spf-req6-js",
+      "original_sha256": "25dacba56eb91d039b62040348daeac5b1803bfa95f81863afd58d3145099616",
+      "enhanced_sha256": "6c56f79be5388933e8903bb9c9d07acd0f127849dbc6e4e91875db379a7d0f64",
+      "replacements": [
+        {
+          "before": "function advance(){",
+          "after": "function advance(){\n  if (!wrap.isConnected || (window.BusolaReportMotion && window.BusolaReportMotion.paused())) return;"
+        }
+      ]
+    },
+    {
+      "id": "spf-req10-js",
+      "original_sha256": "5747bad229b59ec1be25bb5848fbadd03f6ad7dce196d298848264161058d862",
+      "enhanced_sha256": "6d13bdc50c4e0136677548824371681ee2e67e764baf73d84e84ff2f8f74dbe0",
+      "replacements": [
+        {
+          "before": "function frame(ts){\n    if(start===null)start=ts;",
+          "after": "function frame(ts){\n    if (!wrap.isConnected || wrap.classList.contains('spf-v100-icons-source-hidden')) return;\n    if (window.BusolaReportMotion && window.BusolaReportMotion.paused()) { window.BusolaReportMotion.resume(frame); return; }\n    if(start===null)start=ts;"
+        }
+      ]
+    },
+    {
+      "id": "spf-req15-js",
+      "original_sha256": "a6f82f11812a5fc71687edf33a80c41e8a5402d792e367067c2e1f85d3ae935d",
+      "enhanced_sha256": "ec40e5a1c22c7ca2424ca1219cbdd34e25bbea40419fd7d39ecab4f5d607ad72",
+      "replacements": [
+        {
+          "before": "if(reduced){\n  data.forEach(activate);",
+          "after": "if (window.BusolaReportMotion) window.BusolaReportMotion.onReduce(function(){data.forEach(activate);});\nif(reduced){\n  data.forEach(activate);"
+        }
+      ]
+    },
+    {
+      "id": "spf-v95-fast-navigation",
+      "original_sha256": "6471e48ba09d16c1f10fbc232f296d47a62eb63857d73e78c04e7493ce96b345",
+      "enhanced_sha256": "d035347aa524ef57e1b53f8e06d128625f3d3e73a8293765cc28d0fb035bf245",
+      "replacements": [
+        {
+          "before": "function fastScrollTo(targetY) {\n      const startY = window.scrollY;",
+          "after": "function fastScrollTo(targetY) {\n      if (window.BusolaReportMotion && window.BusolaReportMotion.reduced()) { window.scrollTo({top:targetY,behavior:'instant'}); busy=false; return; }\n      const startY = window.scrollY;"
+        },
+        {
+          "before": "function tick(now) {\n        const p = Math.min(1, (now - start) / duration);",
+          "after": "function tick(now) {\n        if (window.BusolaReportMotion && window.BusolaReportMotion.reduced()) { window.scrollTo({top:targetY,behavior:'instant'}); busy=false; return; }\n        const p = Math.min(1, (now - start) / duration);"
+        }
+      ]
+    },
+    {
+      "id": "spf-v100-swap-js",
+      "original_sha256": "05ea732f73dd74c416533a03df60cedfd61cd34835311c4213f0120a7af15d98",
+      "enhanced_sha256": "7a20f9547a35a8b9043963c41ae781f2f7ebb4ef06fa28119ca4c9cd7b2b91d6",
+      "replacements": [
+        {
+          "before": "function frame(now){\n        var dt=Math.min(32,now-last);",
+          "after": "function frame(now){\n        if (window.BusolaReportMotion && window.BusolaReportMotion.paused()) { window.BusolaReportMotion.resume(frame); return; }\n        var dt=Math.min(32,now-last);"
+        }
+      ]
+    },
+    {
+      "id": "spf-v103-home-button-js",
+      "original_sha256": "cbb3a98768191467ec1eab09179422d8acfd2db12889e38ea64c2d8d77b7300c",
+      "enhanced_sha256": "eb13fe332e969cfb2a100c9215d74f8f732aed37b6af727720dd36a2c1bcb3f4",
+      "replacements": [
+        {
+          "before": "window.scrollTo({top: top, behavior:'smooth'});",
+          "after": "window.scrollTo({top: top, behavior:(window.BusolaReportMotion && window.BusolaReportMotion.reduced())?'instant':'smooth'});"
+        }
+      ]
+    }
+  ]
+}

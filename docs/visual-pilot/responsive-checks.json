@@ -1,0 +1,72 @@
+[
+  {
+    "chapter": "overview",
+    "contentWidth": 303,
+    "documentWidth": 303,
+    "escaped": [],
+    "width": 318
+  },
+  {
+    "chapter": "performance",
+    "contentWidth": 303,
+    "documentWidth": 303,
+    "escaped": [],
+    "width": 318
+  },
+  {
+    "chapter": "overview",
+    "contentWidth": 373,
+    "documentWidth": 373,
+    "escaped": [],
+    "width": 388
+  },
+  {
+    "chapter": "performance",
+    "contentWidth": 373,
+    "documentWidth": 373,
+    "escaped": [],
+    "width": 388
+  },
+  {
+    "chapter": "overview",
+    "contentWidth": 751,
+    "documentWidth": 751,
+    "escaped": [],
+    "width": 766
+  },
+  {
+    "chapter": "performance",
+    "contentWidth": 751,
+    "documentWidth": 751,
+    "escaped": [],
+    "width": 766
+  },
+  {
+    "chapter": "overview",
+    "contentWidth": 1331,
+    "documentWidth": 1331,
+    "escaped": [],
+    "width": 1346
+  },
+  {
+    "chapter": "performance",
+    "contentWidth": 1331,
+    "documentWidth": 1331,
+    "escaped": [],
+    "width": 1346
+  },
+  {
+    "chapter": "overview",
+    "contentWidth": 1903,
+    "documentWidth": 1903,
+    "escaped": [],
+    "width": 1918
+  },
+  {
+    "chapter": "performance",
+    "contentWidth": 1903,
+    "documentWidth": 1903,
+    "escaped": [],
+    "width": 1918
+  }
+]
