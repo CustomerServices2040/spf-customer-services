@@ -1,5 +1,38 @@
 /* The two lockups and the two backgrounds are extracted from the forum artwork. */
-.brand img.meeting-logo, .meeting-issuers, .meeting-brand-copy { display: none }
+/* Companion pages retain their contextual headings and optional event lockup. */
+.brand:not([data-brand]) img.meeting-logo, .meeting-issuers { display: none }
+
+/* The audience masthead uses one identity across all forum presets. */
+html[data-forum-appearance] .forum-masthead {
+  --bs-context-text: #273833;
+  --bs-context-muted: #273833;
+  --bs-context-accent: #490b23;
+  background: #fff; color: #273833; border-color: #c6d0cb;
+}
+.forum-masthead::after { background: linear-gradient(90deg, #490b23, #5b7b70) }
+.forum-masthead .brand { min-width: 0 }
+html[data-forum-appearance] .forum-masthead .brand img.meeting-logo {
+  display: block; width: clamp(112px, 13vw, 182px); height: auto;
+  padding: 0; border: 0; border-radius: 0; box-shadow: none; object-fit: contain;
+}
+.forum-masthead .meeting-brand-copy b,
+.forum-masthead .meeting-brand-copy small { color: #273833 }
+html[data-forum-appearance] .forum-masthead .header-actions :is(.quiet,.outline) {
+  color: #490b23; border-color: #c6d0cb; background: #fff;
+}
+/* The semantic themes put all page headers in this cascade layer. */
+@layer busola {
+  html[data-bs-active] .forum-masthead { background: #fff !important; border-color: #c6d0cb !important }
+}
+@media (max-width: 760px) {
+  html[data-forum-appearance] .forum-masthead { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 12px }
+  .forum-masthead .brand { gap: 8px }
+  .forum-masthead .meeting-brand-copy b { font-size: 17px }
+  .forum-masthead .meeting-brand-copy small { font-size: 11px }
+  .forum-masthead .as-palette { grid-column: 2; grid-row: 1 }
+  .forum-masthead .header-actions { grid-row: 2; grid-column: 1 / -1; justify-content: flex-start; flex-wrap: wrap; min-width: 0 }
+  html[data-forum-appearance] .forum-masthead .brand img.meeting-logo { width: clamp(76px, 22vw, 110px) }
+}
 html[data-busola-theme="meeting"] {
   --wine: var(--bt-brand, #490b23);
   --green: #3b574d;
@@ -23,9 +56,8 @@ html[data-busola-theme="meeting"] {
   }
   & body::before { display: none }
   & .site-header, & .simple-page .brand { background: white; color: var(--wine); border-color: var(--line) }
-  & .brand > img:first-child, & .busola-brand-copy, & .header-actions .preview-tag { display: none }
-  & .meeting-brand-copy { display: block }
-  & .brand img.meeting-logo {
+  & .brand:not([data-brand]) > img:first-child { display: none }
+  & .brand:not([data-brand]) img.meeting-logo {
     display: block; width: clamp(112px, 13vw, 182px); height: auto;
     padding: 0; border: 0; border-radius: 0; box-shadow: none; object-fit: contain;
   }
@@ -60,13 +92,13 @@ html[data-busola-theme="meeting"] {
   }
   & .presenting .as-palette { display: none }
   @media (max-width: 760px) {
-    & .site-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 12px }
+    & .site-header:not(.forum-masthead) { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 12px }
     & .site-header .brand { gap: 8px; min-width: 0 }
     & .site-header .brand b { font-size: 17px }
     & .site-header .brand small { font-size: 11px }
     & .site-header .as-palette { grid-column: 2; grid-row: 1 }
     & .site-header .header-actions { grid-row: 2; grid-column: 1 / -1; justify-content: flex-start }
     & .site-header .header-actions { flex-wrap: wrap; min-width: 0 }
-    & .site-header .brand img.meeting-logo { width: clamp(76px, 22vw, 110px) }
+    & .site-header:not(.forum-masthead) .brand img.meeting-logo { width: clamp(76px, 22vw, 110px) }
   }
 }
