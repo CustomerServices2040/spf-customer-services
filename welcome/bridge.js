@@ -71,10 +71,10 @@
     try {
       const [stylesheet] = await assets();
       if (ticket !== generation || !host.open) return;
-      // A closed root keeps the platform-wide card classifier and typography
+      // A shadow root keeps the platform-wide card classifier and typography
       // overrides away from the welcome's compass, while retaining its theme.
       const shell = document.createElement('div');
-      const surface = shell.attachShadow({mode:'closed'});
+      const surface = shell.attachShadow({mode:'open'});
       const styles = stylesheet.cloneNode();
       const styled = new Promise((resolve, reject) => {
         styles.onload = resolve;
