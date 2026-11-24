@@ -25,3 +25,14 @@
    mask-composite:intersect;
  }
 }
+
+/* The four bearings share the dial's space at every viewport. */
+.bw{grid-template-rows:auto 1fr}
+.bw .bw-map{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:auto auto auto;grid-template-areas:". north ." "east dial west" ". south .";direction:rtl;gap:0;align-content:center;justify-self:center;width:min(100%,calc(44vw * var(--scale)));max-width:1550px}
+.bw .bw-dial{grid-area:dial;width:100%;min-width:0}
+.bw-axis{font-size:clamp(15px,1.18vw,43px);font-weight:700;line-height:1.5;text-align:center;color:#f3deb2;overflow-wrap:anywhere;max-width:8em}
+.bw-north{grid-area:north}.bw-east{grid-area:east}.bw-south{grid-area:south}.bw-west{grid-area:west}
+.bw[data-context=forum] .bw-photo{inset:0;width:100%;height:100%;aspect-ratio:auto;background:url("../forum/assets/meeting-table.webp") center/cover no-repeat;mask-image:linear-gradient(110deg,transparent,#000a 55%,#000)}
+.bw[data-context=forum] .bw-brand img{width:calc(clamp(125px,11vw,330px)*var(--logo));background:#faf8f1;padding:.35em .7em;border-radius:4px}
+.bw[data-context=forum] .bw-wash{background:linear-gradient(0deg,var(--base),transparent 78%),linear-gradient(110deg,var(--base),transparent)}
+@media(max-width:700px){.bw .bw-map{width:min(100%,calc(clamp(245px,36svh,310px)*var(--scale)));gap:0}.bw .bw-dial{width:100%!important}.bw-axis{font-size:14px}.bw .bw-layout{gap:12px}.bw-brand img{flex-shrink:0}.bw[data-context=forum] .bw-brand img{width:95px}}

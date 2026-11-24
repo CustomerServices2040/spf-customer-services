@@ -4,7 +4,8 @@
   if (window.top !== window.self) return;
   const assetBase = new URL(document.currentScript.src);
   const doc = document.documentElement;
-  const key = 'busola.welcome.v1';
+  const forum = document.documentElement.hasAttribute('data-forum-appearance');
+  const key = forum ? 'busola.forum.welcome.v1' : 'busola.welcome.v1';
   const host = document.getElementById('busola-welcome-host');
   const fallback = host.firstElementChild.cloneNode(true);
   const eligible = doc.hasAttribute('data-busola-intro');
@@ -16,7 +17,7 @@
   }
 
   function presentation() {
-    return !!document.fullscreenElement || doc.matches('.presentation-fullscreen,.bs-focus-active');
+    return !!document.fullscreenElement || doc.matches('.presentation-fullscreen,.bs-focus-active') || document.body.classList.contains('presenting');
   }
 
   function loadAsset(tag, name) {
@@ -50,11 +51,11 @@
 
   function enter() {
     close();
-    const link = document.querySelector('.top-navigation a[href="#overview"]');
+    const link = document.querySelector(forum ? '.main-nav [data-page="arrival-reception"]' : '.top-navigation a[href="#overview"]');
     if (link) link.click();
-    else location.hash = 'overview';
+    else location.hash = forum ? 'arrival-reception' : 'overview';
     requestAnimationFrame(() => {
-      const heading = document.querySelector('#overview h2, #overview');
+      const heading = document.querySelector(forum ? '#arrival-title' : '#overview h2, #overview');
       if (heading) { heading.setAttribute('tabindex','-1'); heading.focus({preventScroll:true}); }
     });
   }
@@ -86,7 +87,7 @@
       host.querySelector('.bw-fallback')?.remove();
       instance = window.BusolaWelcome.mount(surface, {
         theme: window.BusolaAppearance?.get()?.theme || doc.dataset.busolaTheme || 'original',
-        settings: settings(), admin, onEnter: enter,
+        context: forum ? 'forum' : 'main', settings: settings(), admin, onEnter: enter,
         onSave: value => {
           if (!admin || presentation()) throw new Error('أدوات التحرير غير متاحة في وضع العرض.');
           localStorage.setItem(key, JSON.stringify(value));
@@ -126,7 +127,7 @@
     }
     const button = document.querySelector('.bw-return');
     if (button) button.disabled = disabled;
-    const panel = document.querySelector('#busola-visual-editor');
+    const panel = document.querySelector(forum ? '#editor-toolbar' : '#busola-visual-editor');
     if (!panel || panel.querySelector('#bw-editor-entry')) return;
     const edit = document.createElement('button');
     edit.id = 'bw-editor-entry'; edit.type = 'button'; edit.textContent = 'تحرير الصفحة الترحيبية';
@@ -143,7 +144,7 @@
     // Both the logo and editor are mounted asynchronously by their existing modules.
     const observer = new MutationObserver(() => {
       refreshEntry();
-      if (document.querySelector('#bw-editor-entry') && document.querySelector('.bw-return .bs-gold-logo')) observer.disconnect();
+      if (document.querySelector('#bw-editor-entry') && (forum || document.querySelector('.bw-return .bs-gold-logo'))) observer.disconnect();
     });
     observer.observe(document.body, {childList:true, subtree:true});
     if (eligible && doc.hasAttribute('data-busola-intro')) show();

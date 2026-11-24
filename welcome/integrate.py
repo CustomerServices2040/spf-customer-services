@@ -32,7 +32,7 @@ html:fullscreen #bw-editor-entry,html.presentation-fullscreen #bw-editor-entry,h
 """
 HOST = """
 <dialog id="busola-welcome-host" dir="rtl" aria-label="بوصلة المتعامل">
-  <div class="bw-fallback"><strong>صندوق الحماية الاجتماعية</strong><span>المديرية العامة لخدمات المتعاملين</span><h1>بوصلة المتعامل</h1><p>الإنسان غايتنا، والتميز وجهتنا</p>
+  <div class="bw-fallback"><strong>صندوق الحماية الاجتماعية</strong><span>المديرية العامة لخدمات المتعاملين</span><h1>بوصلة المتعامل</h1><p>خير الناس أنفعهم للناس</p>
   <a href="#overview" onclick="document.documentElement.removeAttribute('data-busola-intro');this.closest('dialog').close()">بدء استعراض المنصة</a></div>
 </dialog>
 """
@@ -45,16 +45,27 @@ def integrate(site, source, revision):
         shutil.copy2(source / asset, dest / asset)
     if (source / "plex-bold.woff2").is_file():
         shutil.copy2(source / "plex-bold.woff2", dest / "plex-bold.woff2")
-    page = site / "index.html"
+    attach(site / "index.html", revision, False)
+    attach(site / "forum" / "index.html", revision, True)
+
+
+def attach(page, revision, forum):
+    head = HEAD.replace("busola.welcome.v1", "busola.forum.welcome.v1") if forum else HEAD
+    host = HOST
+    if forum:
+        host = host.replace("بوصلة المتعامل", "ملتقى المدراء").replace("#overview", "#arrival-reception").replace("بدء استعراض المنصة", "الدخول إلى الملتقى")
     text = page.read_text()
     if 'id="busola-welcome-host"' in text:
         return
-    text, head_count = re.subn(r"(<head(?:\s[^>]*)?>)", lambda m: m[0] + HEAD, text, count=1, flags=re.I)
-    text, body_count = re.subn(r"(<body(?:\s[^>]*)?>)", lambda m: m[0] + HOST, text, count=1, flags=re.I)
+    text, head_count = re.subn(r"(<head(?:\s[^>]*)?>)", lambda m: m[0] + head, text, count=1, flags=re.I)
+    text, body_count = re.subn(r"(<body(?:\s[^>]*)?>)", lambda m: m[0] + host, text, count=1, flags=re.I)
     hook = re.search(r'<script\b[^>]*\bsrc="[^"]*/ux-system\.js[^"]*"[^>]*>', text)
+    if forum:
+        hook = re.search(r"</body>", text, re.I)
     if not head_count or not body_count or not hook:
         raise ValueError("Expected dashboard head, body and UX script")
-    bridge = f'<script defer src="welcome/bridge.js?v={escape(revision, quote=True)}"></script>\n'
+    prefix = "../" if forum else ""
+    bridge = f'<script defer src="{prefix}welcome/bridge.js?v={escape(revision, quote=True)}"></script>\n'
     page.write_text(text[:hook.start()] + bridge + text[hook.start():])
 
 
