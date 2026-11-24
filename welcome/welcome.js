@@ -66,7 +66,14 @@
     for (const [key,value] of Object.entries(old)) if (config[key]===value) config[key]=initial[key];
     const root=document.createElement('section');
     root.className='bw';root.dir='rtl';root.lang='ar';root.dataset.context=forum?'forum':'main';host.append(root);
-    const brand='<header class="bw-brand"><img alt=""><div><strong></strong><span></span></div></header>';
+    // Render the approved artwork in reverse on the dark welcome background.
+    const logoMarkup = forum ? `<svg class="bw-forum-logo" role="img" aria-label="شعار ملتقى دوائر المحافظات" viewBox="0 0 595 187">
+      <defs><filter id="bw-forum-ink" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0 0 0 0 .98  0 0 0 0 .92  0 0 0 0 .80  -.30 -1.00 -.10 1.40 0"/>
+      </filter></defs>
+      <image href="${asset('../forum/assets/meeting-logo.png')}" width="595" height="187" filter="url(#bw-forum-ink)"/>
+    </svg>` : `<img src="${asset('spf-logo.webp')}" alt="شعار صندوق الحماية الاجتماعية">`;
+    const brand='<header class="bw-brand">'+logoMarkup+'<div><strong></strong><span></span></div></header>';
     const copy='<div class="bw-copy"><h1></h1><h2></h2><p></p><div class="bw-actions"><button class="bw-go" type="button" autofocus><b></b></button>'+(forum?'<a class="bw-checkin">'+icon('gate')+'<span></span></a>':'')+'</div></div>';
     const bearings=axes.map(key=>'<button type="button" class="bw-axis bw-'+key+'" data-axis="'+key+'">'+icon(key)+'<span></span></button>').join('');
     const instrument='<figure class="bw-instrument"><div class="bw-map">'+bearings+'<div class="bw-dial"></div></div><figcaption class="bw-message" aria-live="polite"></figcaption></figure>';
@@ -102,7 +109,7 @@
         if(value!=='' && value!=null) root.style.setProperty('--'+key,value);else root.style.removeProperty('--'+key);
       }
       for (const [selector,key] of Object.entries({'.bw-brand strong':'org','.bw-brand span':'unit','h1':'title','h2':'slogan','.bw-copy p':'intro','.bw-go b':'action'})) get(selector).textContent=config[key];
-      const logo=get('.bw-brand img');logo.src=asset(forum?'../forum/assets/meeting-logo.png':'spf-logo.webp');logo.alt=forum?'شعار ملتقى دوائر المحافظات':'شعار صندوق الحماية الاجتماعية';logo.hidden=!config.crest;
+      get('.bw-brand > :first-child').toggleAttribute('hidden', !config.crest);
       const photo=get('.bw-photo');photo.hidden=!config.photo;
       photo.style.backgroundImage=/^data:image\/(webp|png|jpeg);base64,[A-Za-z0-9+/=]+$/.test(config.picture)?'url('+config.picture+')':'';
       const figure=get('figure');figure.hidden=!config.compass;root.classList.toggle('bw-text-only',figure.hidden);
