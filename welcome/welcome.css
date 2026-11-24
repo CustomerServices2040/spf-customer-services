@@ -81,7 +81,7 @@
 .bw-totals>div+div{border-inline-start:1px solid #cbbca74d}
 .bw-totals dt{font-size:clamp(14px,1.12vw,40px);line-height:1.45;color:#faf5eb}
 .bw-totals dd{direction:ltr;margin:0;color:#f0cf8b;font-size:clamp(40px,4.2vw,154px);line-height:1.08;font-weight:700;font-variant-numeric:tabular-nums}
-.bw[data-context=forum] .bw-brand img{width:calc(clamp(105px,13vw,420px) * var(--logo));border-radius:5px}
+.bw-forum-logo{display:block;flex:none;width:calc(clamp(105px,13vw,420px) * var(--logo));height:auto}
 
 @keyframes welcome-rise{from{transform:translateY(.36em);opacity:.38}to{transform:none;opacity:1}}
 @keyframes welcome-wake{from{opacity:0}to{opacity:var(--photo)}}
