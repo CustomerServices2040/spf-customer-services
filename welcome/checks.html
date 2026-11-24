@@ -1,0 +1,23 @@
+<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>فحص مقاسات العرض | بوصلة المتعامل</title><link rel="stylesheet" href="welcome.css"><style>body{background:#102d29;color:#fff;font:18px/1.8 BusolaWelcome,sans-serif;padding:24px;max-width:900px;margin:auto}table{border-collapse:collapse;width:100%}td,th{text-align:start;padding:8px;border-bottom:1px solid #587568}a{color:#f2d39e}iframe{position:absolute;top:0;left:-10000px;border:0}</style><h1>فحص مقاسات العرض</h1><p>تختبر هذه الصفحة التصورات الثلاثة والأنماط الخمسة في المتصفح الحالي. يشمل الفحص ظهور زر الدخول في الشاشة الأولى، وحدود العرض، والفصل بين البوصلة والرسالة.</p><table><thead><tr><th>المقاس</th><th>الحالات المجتازة</th></tr></thead><tbody></tbody></table><p id="result" role="status">جار الفحص…</p><a href="./">العودة إلى المعاينة</a><script>
+(async()=>{
+ const sizes=[[390,844],[768,1024],[1024,768],[1440,900],[1920,1080],[3840,2160],[720,450]];
+ let passed=0;
+ const iframe=document.createElement('iframe');iframe.title='بيئة اختبار أبعاد العرض';iframe.setAttribute('aria-hidden','true');
+ const loaded=new Promise(ok=>iframe.onload=ok);
+ iframe.srcdoc='<html lang="ar" dir="rtl"><meta charset="utf-8"><link rel="stylesheet" href="welcome.css"><style>body{margin:0}</style><script src="welcome.js"><\/script><main></main></html>';
+ document.body.append(iframe);await loaded;
+ const w=iframe.contentWindow,doc=iframe.contentDocument,main=doc.querySelector('main');
+ for(const [width,height] of sizes){
+   iframe.style.width=width+'px';iframe.style.height=height+'px';let score=0;
+   for(const variant of ['cinema','digital','executive'])for(const theme of ['original','green','navy','burgundy','meeting']){
+     const view=w.BusolaWelcome.mount(main,{settings:{variant,motion:false},theme});await doc.fonts.ready;
+     const rect=s=>doc.querySelector(s).getBoundingClientRect(), a=rect('.bw-go'),b=rect('.bw-copy'),c=rect('.bw-dial');
+     const separated=b.right<=c.left+1||c.right<=b.left+1||b.bottom<=c.top+1||c.bottom<=b.top+1;
+     if(doc.documentElement.scrollWidth<=width+1 && a.width>0 && (width===720 || a.bottom<=height+1) && separated)score++;
+     view.destroy();
+   }
+   document.querySelector('tbody').insertAdjacentHTML('beforeend','<tr><td dir="ltr">'+(width===720?'1440 × 900 · 200% (محاكاة مساحة القراءة)':width+' × '+height)+'</td><td>'+score+' / 15</td></tr>');passed+=score;
+ }
+ iframe.remove();document.getElementById('result').textContent='اجتازت '+passed+' من 105 حالات.';
+})().catch(e=>document.getElementById('result').textContent='تعذر إكمال الفحص: '+e.message);
+</script></html>

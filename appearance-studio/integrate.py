@@ -1,6 +1,7 @@
 """Inject presentation assets into a built platform. No operational data changes."""
 from pathlib import Path
 import sys,os,shutil,re
+import subprocess
 ROOT=Path(__file__).resolve().parents[1]
 site=Path(sys.argv[1]).resolve()
 revision=os.environ.get('GITHUB_SHA','appearance-v1')[:12]
@@ -52,3 +53,6 @@ for page in [site/'index.html', site/'leadership.html']:
   match=re.search(r'<script[^>]+src="[^\"]*ux-system.js[^\"]*"[^>]*>',s)
   s=s[:match.start()]+script+s[match.start():] if match else s.replace('</body>',script+'</body>')
   page.write_text(s)
+
+# Add the welcome after the dashboard and its appearance assets are ready.
+subprocess.run([sys.executable, str(ROOT / "welcome" / "integrate.py"), str(site)], check=True)
