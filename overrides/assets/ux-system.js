@@ -129,6 +129,22 @@
       navigation.appendChild(details);
     });
 
+    // Reuse the same links (including the communications sub-tabs) in the compact navigator.
+    const jump = document.createElement("select");
+    jump.className = "ux-nav-jump";
+    jump.setAttribute("aria-label", "انتقل إلى قسم");
+    const targets = [];
+    for (const group of navigation.querySelectorAll("details")) {
+      const options = document.createElement("optgroup");
+      options.label = group.querySelector("summary").firstChild.textContent;
+      for (const link of group.querySelectorAll("a")) {
+        options.append(new Option(link.textContent, String(targets.length)));
+        targets.push(link);
+      }
+      jump.append(options);
+    }
+    jump.addEventListener("change", () => targets[jump.selectedIndex]?.click());
+    navigation.prepend(jump);
     source.after(navigation);
     document.documentElement.classList.add("ux-enhanced");
     const closeOthers = event => {
@@ -152,6 +168,8 @@
           if (current) link.setAttribute("aria-current", "page"); else link.removeAttribute("aria-current");
         });
       });
+      const index = targets.findIndex(link => link.getAttribute("aria-current") === "page");
+      if (index >= 0) jump.selectedIndex = index;
       const skip = $(".ux-skip-link");
       if (skip) skip.href = `#${activeId}`;
     };
@@ -344,7 +362,34 @@
 
   document.addEventListener("spf:content-applied", syncHeadlineIndicators);
 
+  function addComparisonBars() {
+    const quarters = Array.from(document.querySelectorAll(".quarter-result-row > div"));
+    const riskScores = Array.from(document.querySelectorAll(".risk-score-flow .score"));
+    const value = element => {
+      const raw = element.querySelector("b")?.textContent.trim() || "";
+      const digits = raw.replace(/[٠-٩]/g, digit => String(digit.charCodeAt(0) - 1632))
+        .replace("٫", ".").replace(/[%٪\s]/g, "");
+      return digits !== "" && /^\d+(?:\.\d+)?$/.test(digits) ? Number(digits) : NaN;
+    };
+    function update() {
+      const highest = Math.max(1, ...riskScores.map(value).filter(Number.isFinite));
+      for (const [nodes, maximum] of [[quarters, 100], [riskScores, highest]]) {
+        for (const node of nodes) {
+          const n = value(node);
+          node.toggleAttribute("data-visual-ratio", Number.isFinite(n) && n <= maximum);
+          if (Number.isFinite(n)) node.style.setProperty("--reading-fill", (100 * n / maximum) + "%");
+        }
+      }
+    }
+    update();
+    const observer = new MutationObserver(update);
+    for (const node of [...quarters, ...riskScores]) {
+      observer.observe(node, {childList:true, characterData:true, subtree:true});
+    }
+  }
+
   function boot() {
+    addComparisonBars();
     ensureCurrentRelease();
     buildGroupedNavigation();
     const groupedNav = document.querySelector(".ux-nav-groups");

@@ -1566,3 +1566,14 @@ html.communications-active .content-wrap{display:none}
 #contact-center .cc-hours-always small{color:#e5ece8;font-size:12px}
 @media(max-width:1050px){#contact-center .cc-hub-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"core core" "one two" "three four" "five five"}#contact-center .cc-smart-center{grid-template-columns:1fr 1fr;align-items:stretch}#contact-center .cc-service-hours{display:flex;flex-direction:column;justify-content:center}#contact-center .cc-hub-layout .cc-cap-5{width:calc((100% - 16px)/2)}}
 @media(max-width:620px){#contact-center .cc-hub-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"core" "one" "two" "three" "four" "five"}#contact-center .cc-smart-center{grid-template-columns:1fr}#contact-center .cc-hub-layout .cc-capability{padding:22px;min-height:190px;width:100%}#contact-center .cc-feature-name{min-width:0;flex-basis:calc(100% - 58px)}#contact-center .cc-hub-layout .cc-feature-name h4{font-size:18px}#contact-center .cc-term{font-size:13px}#contact-center .cc-hours-human strong{font-size:38px;white-space:nowrap}}
+
+/* Signature 2.0. The small-screen navigator follows the same router as the desktop groups. */
+.ux-nav-jump{display:none}
+html .ux-nav-groups details.active summary::before{content:"";width:.5em;height:.5em;border-radius:50%;background:currentColor;flex:none}
+@media(max-width:800px){
+ html body .ux-nav-groups:has(.ux-nav-jump){display:block;position:relative;inset:auto;padding:6px clamp(12px,4vw,28px)}
+ html body .ux-nav-groups:has(.ux-nav-jump)>details{display:none}
+ html body .ux-nav-groups>.ux-nav-jump{display:block;width:100%;max-width:100%;min-height:44px;padding:4px 12px;background:var(--bs-canvas,#243f36);color:#fff5db;border:1px solid #af9e77;border-radius:7px}
+ html.bs-focus-active body .ux-nav-groups:has(.ux-nav-jump){display:none}
+}
+@media print{.ux-nav-jump{display:none!important}}

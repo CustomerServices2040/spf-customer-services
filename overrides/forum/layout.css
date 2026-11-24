@@ -91,3 +91,28 @@ main > .page { scroll-margin-block-start: var(--forum-header-height, 100px) }
 @media (prefers-reduced-motion: reduce) {
   .page, .page .motion-reveal { animation: none !important; transition: none !important }
 }
+
+/* Meeting agenda, outcomes and directions have separate reading patterns. */
+html[data-forum-appearance] #overview .forum-outputs ol{list-style:none;counter-reset:forum-output;margin:0;padding:0;display:grid}
+html[data-forum-appearance] #overview .forum-outputs li{
+ counter-increment:forum-output;display:grid;grid-template-columns:2em minmax(0,1fr);
+ align-items:baseline;gap:.75em;border-block-end:1px solid var(--forum-rule);padding:.7em 0;
+}
+html[data-forum-appearance] #overview .forum-outputs li::before{
+ content:counter(forum-output,decimal-leading-zero);font-variant-numeric:tabular-nums;
+ color:var(--bs-accent-ink,#785420);font-weight:700;font-size:.95em;border:0;background:none;position:static;width:auto;height:auto
+}
+html[data-forum-appearance] #future .future-card.open{border-inline-start:4px solid var(--forum-accent)}
+html[data-forum-appearance] #pride .word-wall,html[data-forum-appearance] #answer-wall{align-content:center}
+html[data-forum-appearance] #map .gov-tabs :is(button,a)[aria-selected=true],html[data-forum-appearance] .main-nav [aria-current=page]{text-decoration:underline;text-decoration-color:var(--forum-accent);text-underline-offset:.4em;text-decoration-thickness:2px}
+html[data-forum-appearance] :is(.practice-axis,.future-focus,.gov-detail,.wall-panel,.scenario-text){scroll-margin-block:1.5em}
+html[data-forum-appearance] :is(.future-axis-nav,.stage-track) button:focus-visible{outline-offset:-3px}
+@media(min-width:860px){
+ html[data-forum-appearance] .forum-overview-details{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
+ html[data-forum-appearance] #future .future-axis-nav{grid-template-columns:repeat(3,minmax(0,1fr))}
+ html[data-forum-appearance] #future .future-axis.active{border-inline-start:4px solid var(--forum-accent)}
+}
+@media(min-width:2200px){
+ html[data-forum-appearance] :is(.site-header,body>main,.main-nav){max-width:min(93vw,3300px)}
+ html[data-forum-appearance] .page :is(.purpose-copy,.arrival-copy,.activity-identity) h1{font-size:clamp(54px,2.5vw,110px)}
+}
