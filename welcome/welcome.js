@@ -90,8 +90,8 @@
     if (forum) {
       const select=get('.bw-atlas select');
       provinces.forEach(([id,name])=>select.add(new Option(name,id)));
-      select.onchange=()=>selectProvince(select.value);
-      get('.bw-atlas-svg').onclick=event=>{const node=event.target.closest('.bw-point');if(node)selectProvince(node.dataset.id)};
+      select.onchange=()=>{root.classList.add('bw-engaged');selectProvince(select.value)};
+      get('.bw-atlas-svg').onclick=event=>{const node=event.target.closest('.bw-point');if(node){root.classList.add('bw-engaged');selectProvince(node.dataset.id)}};
       get('.bw-checkin').href=asset('../forum/arrival/checkin.html');
       selectProvince('muscat');
     } else {
@@ -137,7 +137,7 @@
       const groups=[
         ['المحتوى',[...(!forum?[['variant','التصور',variants]]:[]),['org','اسم المؤسسة'],['unit','اسم المديرية'],['title','العنوان'],['slogan','العبارة المؤسسية'],['intro','الوصف'],...(forum?[['registration','رابط المشارك'],['atlasTitle','عنوان الخريطة'],['atlasCaption','اختيار المحافظة']]:axes.flatMap((key,i)=>[[key,'اسم المحور · '+defaults[key]],[key+'Message','رسالة '+defaults[key]],['domain'+i,'مجال المنصة · '+(i+1)]])),['action','زر الدخول']]],
         ['المظهر',[['font','الخط',{inheritStudio:'خط المنصة',BusolaWelcome:'IBM Plex Sans Arabic',Tahoma:'Tahoma',Arial:'Arial'}],['pitch','حجم النص',[.8,1.3,.05]],['background','لون الخلفية','color'],['surface','لون التدرج','color'],['metal','لون الإبراز','color'],['scale',forum?'حجم الخريطة':'حجم البوصلة',[.7,1.15,.05]],['side','توزيع الرسم والنص',{right:'اعتيادي',left:'معكوس'}],['logo','حجم الشعار',[.7,1.5,.05]],['brand','موضع الشعار',{start:'يمين',end:'يسار'}],['align','محاذاة النص',{start:'يمين',center:'وسط'}],['gap','المسافات',[.6,1.4,.1]],['radius','استدارة الزر',[0,40,1]]]],
-        ['الصورة والحركة',[['picture','استبدال الصورة','file'],['pos','موضع الصورة',[0,100,1]],['opacity','شفافية الصورة',[0,.75,.01]],['shine','التوهج',[0,.5,.01]],['speed','مدة حركة الرسم بالثواني',[.4,2.5,.1]]]],
+        ['الصورة والحركة',[['picture','استبدال الصورة','file'],['pos','موضع الصورة',[0,100,1]],['opacity','شفافية الصورة',[0,1,.01]],['shine','التوهج',[0,.5,.01]],['speed','مدة حركة الرسم بالثواني',[.4,2.5,.1]]]],
         ['الظهور',[['enabled','تفعيل الواجهة'],['motion','تفعيل الحركة'],['photo','الصورة'],['crest','الشعار'],['compass',forum?'الخريطة':'البوصلة'],['concepts','المفاهيم']]]
       ];
       function fields(){

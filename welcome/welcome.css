@@ -12,6 +12,8 @@
 .bw[data-theme=navy]{--base:#0f172a;--veil:#334155;--line:#a0bed4}
 .bw[data-theme=burgundy]{--base:#371627;--veil:#6c2947;--line:#d7a9ba}
 .bw[data-context=forum]{--base:#311927;--veil:#643d51;--line:#c2a7aa;grid-template-rows:auto 1fr}
+.bw[data-context=forum][data-theme=meeting]{--base:#232d2b;--veil:#593342;--line:#cebda0}
+.bw[data-context=forum][data-theme=meeting] .bw-wash{background:linear-gradient(110deg,#49605655 0%,#382331c4 52%,#292525 88%)}
 .bw[data-context=forum][data-theme=green]{--base:#19352d;--veil:#3a564c}
 .bw[data-context=forum][data-theme=navy]{--base:#162135;--veil:#334155}
 .bw[data-context=forum][data-theme=burgundy]{--base:#45182e;--veil:#6c2947}
@@ -81,17 +83,20 @@
 @keyframes welcome-ring{from{opacity:.12;transform:scale(.92) rotate(-16deg)}}
 @keyframes welcome-needle{from{transform:rotate(-54deg)}78%{transform:rotate(4deg)}to{transform:rotate(0)}}
 @keyframes welcome-route{from{stroke-dashoffset:1300}to{stroke-dashoffset:0}}
+@keyframes welcome-point{from{opacity:0}to{opacity:1}}
+@keyframes welcome-depart{to{transform:rotate(22deg) scale(1.05)}}
 @keyframes welcome-glint{from{filter:brightness(.94)}to{filter:brightness(1)}}
 @media(prefers-reduced-motion:no-preference){
  .bw[data-motion=on] .bw-photo{animation:welcome-wake 1s ease-out both}
  .bw[data-motion=on] .bw-brand{animation:welcome-rise .65s .12s both}
  .bw[data-motion=on] .bw-ring{animation:welcome-ring 1.05s .24s both}
  .bw[data-motion=on]:not(.bw-engaged) .bw-needle{animation:welcome-needle var(--turn) .62s both;direction:ltr}
- .bw[data-motion=on] .bw-copy{animation:welcome-rise .85s .85s both}
+ .bw[data-motion=on] .bw-copy :is(h1,h2,p){animation:welcome-rise .85s .85s both}
  .bw[data-motion=on] .bw-domains{animation:welcome-rise .75s 2.28s both}
  .bw[data-motion=on] .bw-go{animation:welcome-glint 1s 2.28s both}
- .bw[data-motion=on] .bw-routes{stroke-dasharray:1300;animation:welcome-route var(--turn) .45s both}
- .bw[data-motion=on] .bw-point{animation:welcome-glint .5s calc(.08s * var(--i)) both}
+ .bw[data-motion=on] .bw-routes{stroke-dasharray:1300;animation:welcome-route var(--turn) 1.05s both}
+ .bw[data-motion=on]:not(.bw-engaged) .bw-point{animation:welcome-point .45s calc(.07s * var(--i)) both}
+ .bw[data-motion=on].bw-leaving .bw-dial svg{animation:welcome-depart .26s ease-in both}
  .bw[data-motion=on].bw-leaving{opacity:0;transition:opacity .26s ease-in}
  .bw[data-motion=on].bw-leaving .bw-bearing{rotate:20deg;transition:rotate .26s ease-in}
 }
