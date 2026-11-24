@@ -107,6 +107,8 @@
   host.addEventListener('click', e => {
     if (e.target.closest('.bw-fallback a')) { e.preventDefault(); enter(); }
   });
+  // The dashboard also uses arrow keys for chapter navigation.
+  host.addEventListener('keydown', event => event.stopPropagation());
   host.addEventListener('cancel', e => { e.preventDefault(); if (editing) close(); });
   // Ignore the dashboard's initial default-section update. Browser traversal still
   // takes precedence over a visible welcome when returning to a bookmarked tab.
@@ -127,16 +129,21 @@
     }
     const button = document.querySelector('.bw-return');
     if (button) button.disabled = disabled;
-    const panel = document.querySelector(forum ? '#editor-toolbar' : '#busola-visual-editor');
-    if (!panel || panel.querySelector('#bw-editor-entry')) return;
-    const edit = document.createElement('button');
-    edit.id = 'bw-editor-entry'; edit.type = 'button'; edit.textContent = 'تحرير الصفحة الترحيبية';
-    edit.addEventListener('click', () => {
-      if (presentation() || panel.hidden) return;
-      panel.querySelector('#bv-close')?.click();
-      show(true);
-    });
-    panel.append(edit);
+    const panels = forum ? ['#busola-visual-editor', '#editor-toolbar'] : ['#busola-visual-editor'];
+    for (const selector of panels) {
+      const panel = document.querySelector(selector);
+      if (!panel || panel.querySelector('[data-welcome-editor]')) continue;
+      const edit = document.createElement('button');
+      edit.id = selector === '#editor-toolbar' ? 'bw-forum-editor-entry' : 'bw-editor-entry';
+      edit.dataset.welcomeEditor = '';
+      edit.type = 'button'; edit.textContent = 'تحرير الصفحة الترحيبية';
+      edit.addEventListener('click', () => {
+        if (presentation() || panel.hidden) return;
+        panel.querySelector('#bv-close')?.click();
+        show(true);
+      });
+      panel.append(edit);
+    }
   }
 
   function boot() {

@@ -24,7 +24,7 @@ html:fullscreen #bw-editor-entry,html.presentation-fullscreen #bw-editor-entry,h
 </style>
 <script>
 (function(){
-  if(window.top!==window.self || location.hash) return;
+  if(window.top!==window.self || location.hash || (document.documentElement.hasAttribute("data-forum-appearance") && new URLSearchParams(location.search).has("room"))) return;
   try{if(JSON.parse(localStorage.getItem("busola.welcome.v1"))?.enabled===false) return;}catch{}
   document.documentElement.dataset.busolaIntro="";
 })();
@@ -33,7 +33,7 @@ html:fullscreen #bw-editor-entry,html.presentation-fullscreen #bw-editor-entry,h
 HOST = """
 <dialog id="busola-welcome-host" dir="rtl" aria-label="بوصلة المتعامل">
   <div class="bw-fallback"><strong>صندوق الحماية الاجتماعية</strong><span>المديرية العامة لخدمات المتعاملين</span><h1>بوصلة المتعامل</h1><p>خير الناس أنفعهم للناس</p>
-  <a href="#overview" onclick="document.documentElement.removeAttribute('data-busola-intro');this.closest('dialog').close()">بدء استعراض المنصة</a></div>
+  <a href="#overview" onclick="document.documentElement.removeAttribute('data-busola-intro');this.closest('dialog').close()">دخول المنصة</a></div>
 </dialog>
 """
 
@@ -53,7 +53,7 @@ def attach(page, revision, forum):
     head = HEAD.replace("busola.welcome.v1", "busola.forum.welcome.v1") if forum else HEAD
     host = HOST
     if forum:
-        host = host.replace("بوصلة المتعامل", "ملتقى المدراء").replace("#overview", "#arrival-reception").replace("بدء استعراض المنصة", "الدخول إلى الملتقى")
+        host = host.replace("خير الناس أنفعهم للناس", "رؤية واحدة، وجهود متكاملة، وأثر ممتد.").replace("بوصلة المتعامل", "ملتقى دوائر المحافظات").replace("#overview", "#arrival-reception").replace("دخول المنصة", "دخول الملتقى")
     text = page.read_text()
     if 'id="busola-welcome-host"' in text:
         return

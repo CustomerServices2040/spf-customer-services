@@ -67,7 +67,7 @@
     entries[current].link.scrollIntoView({block:"nearest",inline:"nearest"});
 
     const hash="#"+entries[current].id;
-    if(location.hash!==hash){
+    if(location.hash!==hash && !document.documentElement.hasAttribute("data-busola-intro")){
       if(historyMode==="push")history.pushState({chapter:current},"",hash);
       else history.replaceState({chapter:current},"",hash);
     }
