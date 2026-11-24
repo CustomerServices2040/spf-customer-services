@@ -73,11 +73,16 @@
 .bw-cartography{position:relative;display:grid;place-items:center;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--line) 13%,transparent),transparent 70%),linear-gradient(90deg,transparent 49.8%,#dac9af19 50%,transparent 50.2%),linear-gradient(0deg,transparent 49.8%,#dac9af19 50%,transparent 50.2%);background-size:auto,3.2em 3.2em,3.2em 3.2em}
 .bw-atlas-svg{direction:ltr;display:block;width:auto;max-width:100%;height:calc(clamp(240px,53svh,1270px)*var(--scale))}
 .bw-routes{fill:none;stroke:#eac88c;stroke-width:2.6;opacity:.88}
-.bw-point{cursor:pointer}.bw-point .hit{fill:transparent}.bw-point .halo{fill:#263c38;stroke:#e9cb92;stroke-width:1.7}.bw-point .pin{fill:#edce8d}
-.bw-point.active .halo,.bw-point:hover .halo{fill:#ead29b;stroke:#fff5db;stroke-width:3}.bw-point.active .pin{fill:#3a4b3b}
-.bw-atlas figcaption{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.55em;padding:.7em .2em;border-top:1px solid #cbbca74d}
-.bw-atlas figcaption strong{font-size:.96em;color:#f5e2bc}.bw-atlas label{display:flex;align-items:center;gap:.55em;font-size:.86em}
-.bw-atlas select{min-height:44px;border:1px solid #b6a489;border-radius:.4em;color:#fff6e4;background:var(--base);padding:.22em .5em;max-width:100%}
+.bw-point .hit{fill:transparent}.bw-point .halo{fill:#263c38;stroke:#e9cb92;stroke-width:1.7}.bw-point .pin{fill:#edce8d}
+.bw-point:first-child .halo{fill:#ead29b;stroke:#fff5db;stroke-width:3}.bw-point:first-child .pin{fill:#3a4b3b}
+.bw-atlas figcaption{border-top:1px solid #cbbca74d}
+.bw-totals{margin:0;padding:.65em 0;display:grid;grid-template-columns:1fr 1fr}
+.bw-totals>div{min-width:0;display:flex;flex-direction:column-reverse;align-items:center;justify-content:flex-end;gap:.3em;text-align:center;padding:0 .45em}
+.bw-totals>div+div{border-inline-start:1px solid #cbbca74d}
+.bw-totals dt{font-size:clamp(14px,1.12vw,40px);line-height:1.45;color:#faf5eb}
+.bw-totals dd{direction:ltr;margin:0;color:#f0cf8b;font-size:clamp(40px,4.2vw,154px);line-height:1.08;font-weight:700;font-variant-numeric:tabular-nums}
+.bw[data-context=forum] .bw-brand img{width:calc(clamp(105px,13vw,420px) * var(--logo));border-radius:5px}
+
 @keyframes welcome-rise{from{transform:translateY(.36em);opacity:.38}to{transform:none;opacity:1}}
 @keyframes welcome-wake{from{opacity:0}to{opacity:var(--photo)}}
 @keyframes welcome-ring{from{opacity:.12;transform:scale(.92) rotate(-16deg)}}
@@ -123,7 +128,7 @@
  .bw[data-context=forum] h1{max-width:none;font-size:calc(clamp(39px,11vw,60px)*var(--pitch))}
  .bw[data-context=forum] h2{font-size:calc(19px*var(--pitch))}.bw[data-context=forum] .bw-brand{padding-bottom:.65em}
  .bw-atlas{max-width:100%;width:min(100%,25em)}.bw-atlas-svg{height:calc(clamp(215px,36svh,350px)*var(--scale))}
- .bw-atlas figcaption strong{font-size:.86em}.bw-atlas label{font-size:.82em}.bw-atlas select{min-height:44px}.bw-checkin{font-size:.93em}
+ .bw-totals{padding:.45em 0}.bw-checkin{font-size:.93em}
 }
 .bwe{box-sizing:border-box;position:fixed;inset:0 0 0 auto;margin:0;width:min(440px,100%);height:100dvh;max-height:100dvh;max-width:100%;z-index:100;background:#172e28;color:white;border:1px solid #82998b;padding:22px;overflow:auto;font:16px/1.5 BusolaWelcome,sans-serif;direction:rtl}.bwe[open]{display:flex;flex-direction:column;overflow:hidden;gap:10px}.bwe .fields{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-inline:3px 8px}.bwe h2,.bwe footer{flex:none}.bwe::backdrop{background:#0006}.bwe h2{margin:0}.bwe label{display:grid;gap:4px;margin:10px 0}.bwe input,.bwe textarea,.bwe select,.bwe button{border:1px solid #738b7d;background:#234139;color:white;border-radius:5px;padding:6px;max-width:100%}.bwe textarea{min-height:70px}.bwe label:has([type=checkbox]){display:flex}.bwe footer{background:#172e28;padding:8px 0 0;display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid #526c60}.bwe summary{cursor:pointer;padding:10px 0;color:#ead19d}.bwe [role=status]{margin:0}.bwe [role=status]:empty{display:none}.bwe [data-save]{color:#20372c;background:#ead19d;border-color:#ead19d;min-width:78px}.bwe footer button{min-height:42px;cursor:pointer}
 /* The artwork's light headdress sits behind the official gold lockup. */

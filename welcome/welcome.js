@@ -20,8 +20,8 @@
   const forumDefaults = {
     ...defaults, title:'ملتقى دوائر المحافظات', slogan:'رؤية واحدة، وجهود متكاملة، وأثر ممتد.',
     intro:'ملتقى يجمع القيادات المؤسسية والميدانية لتوحيد الجهود، وتبادل الخبرات، ورسم ملامح المستقبل.',
-    action:'دخول الملتقى', registration:'تسجيل وصول المشاركين', atlasTitle:'دوائر الحماية الاجتماعية',
-    atlasCaption:'اختر محافظة', opacity:.45
+    action:'دخول الملتقى', registration:'تسجيل وصول المشاركين', officeLabel:'دوائر الحماية الاجتماعية بالمحافظات',
+    staffLabel:'موظفو دوائر المحافظات', opacity:.45
   };
   // Map positions are in the coordinate system of the approved 724 × 940 map.
   const provinces = [
@@ -66,11 +66,11 @@
     for (const [key,value] of Object.entries(old)) if (config[key]===value) config[key]=initial[key];
     const root=document.createElement('section');
     root.className='bw';root.dir='rtl';root.lang='ar';root.dataset.context=forum?'forum':'main';host.append(root);
-    const brand='<header class="bw-brand"><img alt="شعار صندوق الحماية الاجتماعية"><div><strong></strong><span></span></div></header>';
+    const brand='<header class="bw-brand"><img alt=""><div><strong></strong><span></span></div></header>';
     const copy='<div class="bw-copy"><h1></h1><h2></h2><p></p><div class="bw-actions"><button class="bw-go" type="button" autofocus><b></b></button>'+(forum?'<a class="bw-checkin">'+icon('gate')+'<span></span></a>':'')+'</div></div>';
     const bearings=axes.map(key=>'<button type="button" class="bw-axis bw-'+key+'" data-axis="'+key+'">'+icon(key)+'<span></span></button>').join('');
     const instrument='<figure class="bw-instrument"><div class="bw-map">'+bearings+'<div class="bw-dial"></div></div><figcaption class="bw-message" aria-live="polite"></figcaption></figure>';
-    const territory='<figure class="bw-atlas"><div class="bw-cartography">'+atlas()+'</div><figcaption><strong></strong><label><span></span><select></select></label></figcaption></figure>';
+    const territory='<figure class="bw-atlas"><div class="bw-cartography">'+atlas()+'</div><figcaption><dl class="bw-totals"><div><dt data-office-label></dt><dd data-offices></dd></div><div><dt data-staff-label></dt><dd data-staff></dd></div></dl></figcaption></figure>';
     const domains='<footer class="bw-domains">'+['north','channel','performance','west'].map(s=>'<div>'+icon(s)+'<span></span></div>').join('')+'</footer>';
     root.innerHTML='<div class="bw-photo"></div><div class="bw-wash"></div><div class="bw-lines"></div>'+brand+'<div class="bw-layout">'+copy+(forum?territory:instrument)+'</div>'+(forum?'':domains);
     const get=selector=>root.querySelector(selector);
@@ -83,17 +83,12 @@
       for (const button of root.querySelectorAll('[data-axis]')) button.setAttribute('aria-pressed',String(button.dataset.axis===key));
       get('.bw-message').textContent=config[key+'Message'];
     }
-    function selectProvince(id) {
-      for (const node of root.querySelectorAll('.bw-point')) node.classList.toggle('active',node.dataset.id===id);
-      get('.bw-atlas select').value=id;
-    }
     if (forum) {
-      const select=get('.bw-atlas select');
-      provinces.forEach(([id,name])=>select.add(new Option(name,id)));
-      select.onchange=()=>{root.classList.add('bw-engaged');selectProvince(select.value)};
-      get('.bw-atlas-svg').onclick=event=>{const node=event.target.closest('.bw-point');if(node){root.classList.add('bw-engaged');selectProvince(node.dataset.id)}};
+      const records = window.FORUM_DATA?.governorates;
+      const offices = Object.entries(records || {}).filter(([key]) => key !== 'all');
+      get('[data-offices]').textContent = offices.length || provinces.length;
+      get('[data-staff]').textContent = records?.all?.staff ?? 169;
       get('.bw-checkin').href=asset('../forum/arrival/checkin.html');
-      selectProvince('muscat');
     } else {
       for (const b of root.querySelectorAll('[data-axis]')) b.onclick=()=>{root.classList.add('bw-engaged');selectAxis(b.dataset.axis)};
     }
@@ -107,14 +102,14 @@
         if(value!=='' && value!=null) root.style.setProperty('--'+key,value);else root.style.removeProperty('--'+key);
       }
       for (const [selector,key] of Object.entries({'.bw-brand strong':'org','.bw-brand span':'unit','h1':'title','h2':'slogan','.bw-copy p':'intro','.bw-go b':'action'})) get(selector).textContent=config[key];
-      const logo=get('.bw-brand img');logo.src=asset('spf-logo.webp');logo.hidden=!config.crest;
+      const logo=get('.bw-brand img');logo.src=asset(forum?'../forum/assets/meeting-logo.png':'spf-logo.webp');logo.alt=forum?'شعار ملتقى دوائر المحافظات':'شعار صندوق الحماية الاجتماعية';logo.hidden=!config.crest;
       const photo=get('.bw-photo');photo.hidden=!config.photo;
       photo.style.backgroundImage=/^data:image\/(webp|png|jpeg);base64,[A-Za-z0-9+/=]+$/.test(config.picture)?'url('+config.picture+')':'';
       const figure=get('figure');figure.hidden=!config.compass;root.classList.toggle('bw-text-only',figure.hidden);
       if (forum) {
         get('.bw-checkin span').textContent=config.registration;
-        get('.bw-atlas figcaption strong').textContent=config.atlasTitle;
-        get('.bw-atlas label span').textContent=config.atlasCaption;
+        get('[data-office-label]').textContent=config.officeLabel;
+        get('[data-staff-label]').textContent=config.staffLabel;
         get('.bw-atlas figcaption').hidden=!config.concepts;
       } else {
         if(current!==root.dataset.variant) {current=root.dataset.variant;get('.bw-dial').innerHTML=compass(current)}
@@ -135,7 +130,7 @@
       const original={...config};const dialog=document.createElement('dialog');editor=dialog;dialog.className='bwe';dialog.dir='rtl';dialog.setAttribute('aria-label','تحرير التجربة الافتتاحية');host.append(dialog);
       dialog.innerHTML='<h2>تحرير التجربة الافتتاحية</h2><div class="fields"></div><p role="status"></p><footer><button type="button" data-save>حفظ</button><button type="button" data-reset>استعادة الافتراضي</button><button type="button" data-close>إلغاء</button></footer>';
       const groups=[
-        ['المحتوى',[...(!forum?[['variant','التصور',variants]]:[]),['org','اسم المؤسسة'],['unit','اسم المديرية'],['title','العنوان'],['slogan','العبارة المؤسسية'],['intro','الوصف'],...(forum?[['registration','رابط المشارك'],['atlasTitle','عنوان الخريطة'],['atlasCaption','اختيار المحافظة']]:axes.flatMap((key,i)=>[[key,'اسم المحور · '+defaults[key]],[key+'Message','رسالة '+defaults[key]],['domain'+i,'مجال المنصة · '+(i+1)]])),['action','زر الدخول']]],
+        ['المحتوى',[...(!forum?[['variant','التصور',variants]]:[]),['org','اسم المؤسسة'],['unit','اسم المديرية'],['title','العنوان'],['slogan','العبارة المؤسسية'],['intro','الوصف'],...(forum?[['registration','رابط المشارك'],['officeLabel','عنوان عدد الدوائر'],['staffLabel','عنوان عدد الموظفين']]:axes.flatMap((key,i)=>[[key,'اسم المحور · '+defaults[key]],[key+'Message','رسالة '+defaults[key]],['domain'+i,'مجال المنصة · '+(i+1)]])),['action','زر الدخول']]],
         ['المظهر',[['font','الخط',{inheritStudio:'خط المنصة',BusolaWelcome:'IBM Plex Sans Arabic',Tahoma:'Tahoma',Arial:'Arial'}],['pitch','حجم النص',[.8,1.3,.05]],['background','لون الخلفية','color'],['surface','لون التدرج','color'],['metal','لون الإبراز','color'],['scale',forum?'حجم الخريطة':'حجم البوصلة',[.7,1.15,.05]],['side','توزيع الرسم والنص',{right:'اعتيادي',left:'معكوس'}],['logo','حجم الشعار',[.7,1.5,.05]],['brand','موضع الشعار',{start:'يمين',end:'يسار'}],['align','محاذاة النص',{start:'يمين',center:'وسط'}],['gap','المسافات',[.6,1.4,.1]],['radius','استدارة الزر',[0,40,1]]]],
         ['الصورة والحركة',[['picture','استبدال الصورة','file'],['pos','موضع الصورة',[0,100,1]],['opacity','شفافية الصورة',[0,1,.01]],['shine','التوهج',[0,.5,.01]],['speed','مدة حركة الرسم بالثواني',[.4,2.5,.1]]]],
         ['الظهور',[['enabled','تفعيل الواجهة'],['motion','تفعيل الحركة'],['photo','الصورة'],['crest','الشعار'],['compass',forum?'الخريطة':'البوصلة'],['concepts','المفاهيم']]]
